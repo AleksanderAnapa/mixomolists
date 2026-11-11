@@ -1,8 +1,8 @@
-name: 30-Min Monitor Final
+name: 5-Min Monitor Final
 
 on:
   schedule:
-    - cron: '*/30 * * * *'
+    - cron: '*/5 * * * *'
   workflow_dispatch:
 
 permissions:
@@ -13,10 +13,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Скачать репозиторий
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Настроить Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7
         with:
           python-version: '3.11'
 
