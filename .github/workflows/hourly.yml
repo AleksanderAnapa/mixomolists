@@ -7,10 +7,16 @@ on:
 
 permissions:
   contents: write
+  actions: write
+
+concurrency:
+  group: hourly-parse-and-test
+  cancel-in-progress: false
 
 jobs:
   parse_and_test:
     runs-on: ubuntu-latest
+    timeout-minutes: 55
     steps:
       - name: Скачать репозиторий
         uses: actions/checkout@v7
@@ -34,13 +40,21 @@ jobs:
           chmod +x mihomo
           rm -f *.gz
 
-      - name: Запустить парсинг и тест
+      - name: Запустить порционный парсинг и тест
+        id: run_script
         run: python parse_and_test.py
 
-      - name: Сохранить изменения в репозитории
+      - name: Сохранить прогресс в репозитории
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@://github.com"
-          git add test.txt testing.txt tested.txt final.txt .test_hash fail_counts.json || true
-          git commit -m "Hourly update and cleanup test.txt" || exit 0
+          git add test.txt testing.txt tested.txt final.txt fail_counts.json || true
+          git commit -m "Batch progress update" || exit 0
           git push
+
+      - name: Перезапустить если test.txt еще не до конца разобран
+        if: steps.run_script.outputs.has_more == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh workflow run hourly.yml --ref ${{ github.ref_name }}
