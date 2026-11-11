@@ -1,19 +1,33 @@
+from concurrent.futures import ThreadPoolExecutor, as_completed
 import json
 import os
 import subprocess
 import time
+import urllib.parse
 import requests
 import yaml
 
 FAIL_FILE = "fail_counts.json"
 MIHOMO_API = "http://127.0.0.1:9090"
 MAX_FAILS = 20
+TEST_URL = "https://cloudflare.com"
+EXPECTED_STATUS = 204
 
 def make_temp_uri(original_uri, temp_name):
     if original_uri.startswith("vmess://"):
         return original_uri
     base_uri = original_uri.split("#", 1)[0]
     return f"{base_uri}#{temp_name}"
+
+def check_node(t_name, orig_uri, encoded_test_url):
+    check_url = f"{MIHOMO_API}/proxies/{t_name}/delay?timeout=4000&url={encoded_test_url}&expected={EXPECTED_STATUS}"
+    try:
+        r = requests.get(check_url, timeout=5)
+        if r.status_code == 200 and "delay" in r.json() and int(r.json()["delay"]) > 0:
+            return orig_uri, True
+    except Exception:
+        pass
+    return orig_uri, False
 
 def main():
     if not os.path.exists("final.txt"):
@@ -57,17 +71,25 @@ def main():
     mihomo_proc = subprocess.Popen(["./mihomo", "-f", "temp_monitor.yaml"])
     time.sleep(3)
 
+    encoded_test_url = urllib.parse.quote(TEST_URL, safe="")
+    results = {}
+
+    with ThreadPoolExecutor(max_workers=15) as executor:
+        futures = [
+            executor.submit(check_node, t_name, orig_uri, encoded_test_url)
+            for t_name, orig_uri in temp_map.items()
+        ]
+        for future in as_completed(futures):
+            orig_uri, is_ok = future.result()
+            results[orig_uri] = is_ok
+
+    mihomo_proc.terminate()
+
     alive_servers = []
-    for idx, orig_uri in enumerate(servers):
-        t_name = f"mon_{idx}"
-        check_url = f"{MIHOMO_API}/proxies/{t_name}/delay?timeout=4000&url=http://gstatic.com"
-        try:
-            r = requests.get(check_url, timeout=5)
-            if r.status_code == 200 and "delay" in r.json():
-                fail_counts[orig_uri] = 0
-            else:
-                fail_counts[orig_uri] = fail_counts.get(orig_uri, 0) + 1
-        except Exception:
+    for orig_uri in servers:
+        if results.get(orig_uri, False):
+            fail_counts[orig_uri] = 0
+        else:
             fail_counts[orig_uri] = fail_counts.get(orig_uri, 0) + 1
 
         if fail_counts.get(orig_uri, 0) < MAX_FAILS:
@@ -75,8 +97,6 @@ def main():
         else:
             print(f"Удален после {MAX_FAILS} неудач: {orig_uri[:40]}...")
             fail_counts.pop(orig_uri, None)
-
-    mihomo_proc.terminate()
 
     with open("final.txt", "w", encoding="utf-8") as f:
         f.write("\n".join(alive_servers) + ("\n" if alive_servers else ""))
