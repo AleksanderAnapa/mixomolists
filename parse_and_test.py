@@ -10,7 +10,6 @@ import urllib.parse
 import requests
 import yaml
 
-# Оставляем только протоколы, поддерживающие WS / gRPC / CDN / XHTTP
 PROTOCOLS = ("vless://", "vmess://", "trojan://")
 ALLOWED_COUNTRIES = {"US", "DE", "NL", "FR", "GB"}
 MAX_PING = 200
@@ -114,7 +113,6 @@ def filter_by_country(uris):
     ips = list(ip_to_hosts.keys())
     allowed_uris = []
 
-    # Пакетная проверка через ip-api.com (по 100 IP за один запрос)
     for i in range(0, len(ips), 100):
         batch = ips[i:i + 100]
         try:
@@ -129,7 +127,7 @@ def filter_by_country(uris):
                         ip = item.get("query")
                         for h in ip_to_hosts.get(ip, []):
                             allowed_uris.extend(host_to_uris[h])
-            time.sleep(1.5)  # Пауза для соблюдения лимита API (45 запросов в минуту)
+            time.sleep(1.5)
         except Exception:
             pass
 
@@ -183,7 +181,6 @@ def main():
 
         continue
 
-    # Фильтруем новые узлы по нужным странам (US, DE, NL, FR, GB)
     print(f"Всего извлечено узлов (VLESS/VMess/Trojan): {len(all_nodes)}. Проверка стран...")
     geo_filtered_nodes = filter_by_country(list(all_nodes))
     print(f"После фильтрации по странам осталось: {len(geo_filtered_nodes)}")
@@ -234,7 +231,6 @@ def main():
                 print(f"Достигнут лимит в {MAX_WORKING} рабочих серверов. Остановка проверки.")
                 break
 
-            # Таймаут запроса ставим 2000 мс, но отбираем только те, где delay < MAX_PING (200 мс)
             check_url = f"{MIHOMO_API}/proxies/{t_name}/delay?timeout=2000&url=http://gstatic.com"
             try:
                 r = requests.get(check_url, timeout=3)
