@@ -1,8 +1,8 @@
-name: 5-Min Monitor Final
+name: 30-Min Monitor Final
 
 on:
   schedule:
-    - cron: '*/35 * * * *'
+    - cron: '*/30 * * * *'
   workflow_dispatch:
 
 permissions:
@@ -12,19 +12,27 @@ jobs:
   monitor:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Скачать репозиторий
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v5
+      - name: Настроить Python
+        uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - run: pip install pyyaml requests
+
+      - name: Установить зависимости
+        run: pip install pyyaml requests
 
       - name: Скачать Mihomo
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          LATEST_URL=$(curl -s https://github.com | grep "browser_download_url.*mihomo-linux-amd64-v" | grep -v "compatible" | grep ".gz\"" | cut -d '"' -f 4 | head -n 1)
-          curl -L "$LATEST_URL" -o mihomo.gz
-          gunzip mihomo.gz
+          gh release download -R MetaCubeX/mihomo -p "mihomo-linux-amd64*.gz" --clobber
+          rm -f *compatible* *go*
+          FILE=$(ls mihomo-linux-amd64*.gz | head -n 1)
+          gunzip -c "$FILE" > mihomo
           chmod +x mihomo
+          rm -f *.gz
 
       - name: Проверить final.txt
         run: python monitor.py
@@ -32,7 +40,7 @@ jobs:
       - name: Обновить final.txt
         run: |
           git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.email "github-actions[bot]@://github.com"
           git add final.txt fail_counts.json || true
           git commit -m "Monitor update" || exit 0
           git push
