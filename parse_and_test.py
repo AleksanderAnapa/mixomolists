@@ -1,5 +1,6 @@
 import base64
 import hashlib
+import ipaddress
 import json
 import os
 import re
@@ -11,9 +12,12 @@ import requests
 import yaml
 
 PROTOCOLS = ("vless://", "vmess://", "trojan://")
-ALLOWED_COUNTRIES = {"US", "DE", "NL", "FR", "GB"}
+ALLOWED_COUNTRY_CODES = ("us", "de", "nl", "fr", "gb")
 MAX_PING = 200
 MAX_WORKING = 30
+
+TEST_URL = "https://cp.cloudflare.com/generate_204"
+EXPECTED_STATUS = 204
 
 HASH_FILE = ".test_hash"
 MIHOMO_API = "http://127.0.0.1:9090"
@@ -95,42 +99,42 @@ def extract_host(uri):
     except Exception:
         return ""
 
+def load_country_networks():
+    networks = []
+    for code in ALLOWED_COUNTRY_CODES:
+        url = f"https://githubusercontent.com{code}.cidr"
+        try:
+            r = requests.get(url, timeout=10)
+            if r.status_code == 200:
+                for line in r.text.splitlines():
+                    line = line.strip()
+                    if line and not line.startswith("#"):
+                        networks.append(ipaddress.ip_network(line))
+        except Exception as e:
+            print(f"Ошибка загрузки подсетей {code}: {e}")
+    return networks
+
 def filter_by_country(uris):
-    host_to_uris = {}
+    networks = load_country_networks()
+    if not networks:
+        print("ВНИМАНИЕ: Не удалось загрузить базы подсетей, пропускаем серверы без гео-фильтра.")
+        return uris
+
+    allowed_uris = []
+    cache = {}
     for uri in uris:
         host = extract_host(uri)
-        if host:
-            host_to_uris.setdefault(host, []).append(uri)
-
-    ip_to_hosts = {}
-    for host in host_to_uris:
-        try:
-            ip = socket.gethostbyname(host)
-            ip_to_hosts.setdefault(ip, []).append(host)
-        except Exception:
+        if not host:
             continue
-
-    ips = list(ip_to_hosts.keys())
-    allowed_uris = []
-
-    for i in range(0, len(ips), 100):
-        batch = ips[i:i + 100]
-        try:
-            resp = requests.post(
-                "http://ip-api.com",
-                json=batch,
-                timeout=10
-            )
-            if resp.status_code == 200:
-                for item in resp.json():
-                    if item.get("status") == "success" and item.get("countryCode") in ALLOWED_COUNTRIES:
-                        ip = item.get("query")
-                        for h in ip_to_hosts.get(ip, []):
-                            allowed_uris.extend(host_to_uris[h])
-            time.sleep(1.5)
-        except Exception:
-            pass
-
+        if host not in cache:
+            try:
+                ip_str = socket.gethostbyname(host)
+                ip_obj = ipaddress.ip_address(ip_str)
+                cache[host] = any(ip_obj in net for net in networks)
+            except Exception:
+                cache[host] = False
+        if cache[host]:
+            allowed_uris.append(uri)
     return allowed_uris
 
 def make_temp_uri(original_uri, temp_name):
@@ -141,18 +145,19 @@ def make_temp_uri(original_uri, temp_name):
 
 def main():
     if not os.path.exists("test.txt"):
-        print("Файл test.txt не найден.")
+        print("ОШИБКА: Файл test.txt не найден.")
         return
 
     current_hash = get_file_hash("test.txt")
     old_hash = open(HASH_FILE).read().strip() if os.path.exists(HASH_FILE) else ""
     if current_hash == old_hash:
-        print("Файл test.txt не изменялся. Выход.")
+        print("ПРОПУСК: Файл test.txt не изменялся с прошлого запуска.")
         return
 
     with open("test.txt", "r", encoding="utf-8", errors="ignore") as f:
         raw_lines = f.readlines()
 
+    print(f"Прочитано строк из test.txt: {len(raw_lines)}")
     all_nodes = set()
     remaining_lines = []
 
@@ -174,20 +179,20 @@ def main():
                 resp = requests.get(url, timeout=10)
                 if resp.status_code == 200:
                     extracted = extract_nodes_from_text(resp.text)
+                    print(f"Загружено {len(extracted)} узлов из {url[:50]}...")
                     all_nodes.update(extracted)
-            except Exception:
-                pass
+            except Exception as e:
+                print(f"Сбой загрузки {url[:50]}: {e}")
             continue
 
-        continue
-
-    print(f"Всего извлечено узлов (VLESS/VMess/Trojan): {len(all_nodes)}. Проверка стран...")
+    print(f"Всего извлечено уникальных узлов: {len(all_nodes)}. Проверка стран...")
     geo_filtered_nodes = filter_by_country(list(all_nodes))
-    print(f"После фильтрации по странам осталось: {len(geo_filtered_nodes)}")
+    print(f"После фильтрации по странам (US, DE, NL, FR, GB) осталось: {len(geo_filtered_nodes)}")
 
     testing_list = sorted(list(set(geo_filtered_nodes)))
     with open("testing.txt", "w", encoding="utf-8") as f:
         f.write("\n".join(testing_list) + ("\n" if testing_list else ""))
+    print(f"Файл testing.txt записан ({len(testing_list)} строк).")
 
     tested_records = {}
     if os.path.exists("tested.txt"):
@@ -225,18 +230,20 @@ def main():
         mihomo_proc = subprocess.Popen(["./mihomo", "-f", "temp_mihomo.yaml"])
         time.sleep(4)
 
+        encoded_test_url = urllib.parse.quote(TEST_URL, safe="")
         new_tested = {}
+
         for t_name, orig_uri in temp_map.items():
             if len(new_tested) >= MAX_WORKING:
                 print(f"Достигнут лимит в {MAX_WORKING} рабочих серверов. Остановка проверки.")
                 break
 
-            check_url = f"{MIHOMO_API}/proxies/{t_name}/delay?timeout=2000&url=http://gstatic.com"
+            check_url = f"{MIHOMO_API}/proxies/{t_name}/delay?timeout=2000&url={encoded_test_url}&expected={EXPECTED_STATUS}"
             try:
                 r = requests.get(check_url, timeout=3)
                 if r.status_code == 200 and "delay" in r.json():
                     ping = int(r.json()["delay"])
-                    if ping < MAX_PING:
+                    if 0 < ping < MAX_PING:
                         new_tested[orig_uri] = ping
                         print(f"[{len(new_tested)}/{MAX_WORKING}] OK ({ping} ms)")
             except Exception:
@@ -253,6 +260,9 @@ def main():
         with open("final.txt", "w", encoding="utf-8") as f:
             for orig_uri, _ in sorted_items:
                 f.write(f"{orig_uri}\n")
+        print(f"Файлы tested.txt и final.txt успешно записаны ({len(sorted_items)} серверов).")
+    else:
+        print("Нет серверов для проверки через Mihomo.")
 
     with open("test.txt", "w", encoding="utf-8") as f:
         f.writelines(remaining_lines)
