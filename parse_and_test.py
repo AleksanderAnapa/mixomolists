@@ -1,17 +1,23 @@
 import base64
 import hashlib
+import json
 import os
 import re
+import socket
 import subprocess
 import time
 import urllib.parse
 import requests
 import yaml
 
-PROTOCOLS = ("vless://", "vmess://", "trojan://", "ss://", "ssr://", "hy2://", "hysteria2://", "tuic://")
+# Оставляем только протоколы, поддерживающие WS / gRPC / CDN / XHTTP
+PROTOCOLS = ("vless://", "vmess://", "trojan://")
+ALLOWED_COUNTRIES = {"US", "DE", "NL", "FR", "GB"}
+MAX_PING = 200
+MAX_WORKING = 30
+
 HASH_FILE = ".test_hash"
 MIHOMO_API = "http://127.0.0.1:9090"
-MAX_WORKING = 30
 
 def get_file_hash(filepath):
     if not os.path.exists(filepath):
@@ -31,20 +37,18 @@ def decode_base64_safe(data):
 
 def clash_proxy_to_uri(p):
     ptype = p.get("type")
+    if ptype not in ("vless", "vmess", "trojan"):
+        return None
     name = urllib.parse.quote(str(p.get("name", "node")))
     server = p.get("server")
     port = p.get("port")
     if not (server and port):
         return None
-    if ptype == "ss":
-        cipher = p.get("cipher", "")
-        password = p.get("password", "")
-        userinfo = base64.b64encode(f"{cipher}:{password}".encode()).decode()
-        return f"ss://{userinfo}@{server}:{port}#{name}"
-    elif ptype == "trojan":
+    if ptype == "trojan":
         password = p.get("password", "")
         sni = p.get("sni", server)
-        return f"trojan://{password}@{server}:{port}?sni={sni}#{name}"
+        net = p.get("network", "tcp")
+        return f"trojan://{password}@{server}:{port}?type={net}&sni={sni}#{name}"
     elif ptype == "vless":
         uuid = p.get("uuid", "")
         sni = p.get("servername", server)
@@ -78,6 +82,58 @@ def extract_nodes_from_text(text):
         except Exception:
             pass
     return nodes
+
+def extract_host(uri):
+    try:
+        if uri.startswith("vmess://"):
+            b64_part = uri[8:].split("#", 1)[0]
+            decoded = decode_base64_safe(b64_part)
+            data = json.loads(decoded)
+            return data.get("add", "").strip()
+        else:
+            parsed = urllib.parse.urlparse(uri)
+            return parsed.hostname or ""
+    except Exception:
+        return ""
+
+def filter_by_country(uris):
+    host_to_uris = {}
+    for uri in uris:
+        host = extract_host(uri)
+        if host:
+            host_to_uris.setdefault(host, []).append(uri)
+
+    ip_to_hosts = {}
+    for host in host_to_uris:
+        try:
+            ip = socket.gethostbyname(host)
+            ip_to_hosts.setdefault(ip, []).append(host)
+        except Exception:
+            continue
+
+    ips = list(ip_to_hosts.keys())
+    allowed_uris = []
+
+    # Пакетная проверка через ip-api.com (по 100 IP за один запрос)
+    for i in range(0, len(ips), 100):
+        batch = ips[i:i + 100]
+        try:
+            resp = requests.post(
+                "http://ip-api.com",
+                json=batch,
+                timeout=10
+            )
+            if resp.status_code == 200:
+                for item in resp.json():
+                    if item.get("status") == "success" and item.get("countryCode") in ALLOWED_COUNTRIES:
+                        ip = item.get("query")
+                        for h in ip_to_hosts.get(ip, []):
+                            allowed_uris.extend(host_to_uris[h])
+            time.sleep(1.5)  # Пауза для соблюдения лимита API (45 запросов в минуту)
+        except Exception:
+            pass
+
+    return allowed_uris
 
 def make_temp_uri(original_uri, temp_name):
     if original_uri.startswith("vmess://"):
@@ -127,7 +183,12 @@ def main():
 
         continue
 
-    testing_list = sorted(list(all_nodes))
+    # Фильтруем новые узлы по нужным странам (US, DE, NL, FR, GB)
+    print(f"Всего извлечено узлов (VLESS/VMess/Trojan): {len(all_nodes)}. Проверка стран...")
+    geo_filtered_nodes = filter_by_country(list(all_nodes))
+    print(f"После фильтрации по странам осталось: {len(geo_filtered_nodes)}")
+
+    testing_list = sorted(list(set(geo_filtered_nodes)))
     with open("testing.txt", "w", encoding="utf-8") as f:
         f.write("\n".join(testing_list) + ("\n" if testing_list else ""))
 
@@ -139,7 +200,6 @@ def main():
                 if len(parts) == 2 and parts[0].isdigit():
                     tested_records[parts[1]] = int(parts[0])
 
-    # Сначала ставим на проверку уже проверенные ранее серверы, затем новые
     combined_to_check = list(tested_records.keys()) + [u for u in testing_list if u not in tested_records]
 
     if combined_to_check:
@@ -170,18 +230,19 @@ def main():
 
         new_tested = {}
         for t_name, orig_uri in temp_map.items():
-            # Прерываем цикл, если уже набрали 30 рабочих серверов
             if len(new_tested) >= MAX_WORKING:
                 print(f"Достигнут лимит в {MAX_WORKING} рабочих серверов. Остановка проверки.")
                 break
 
-            check_url = f"{MIHOMO_API}/proxies/{t_name}/delay?timeout=4000&url=http://gstatic.com"
+            # Таймаут запроса ставим 2000 мс, но отбираем только те, где delay < MAX_PING (200 мс)
+            check_url = f"{MIHOMO_API}/proxies/{t_name}/delay?timeout=2000&url=http://gstatic.com"
             try:
-                r = requests.get(check_url, timeout=5)
+                r = requests.get(check_url, timeout=3)
                 if r.status_code == 200 and "delay" in r.json():
-                    ping = min(int(r.json()["delay"]), 999)
-                    new_tested[orig_uri] = ping
-                    print(f"[{len(new_tested)}/{MAX_WORKING}] OK ({ping} ms)")
+                    ping = int(r.json()["delay"])
+                    if ping < MAX_PING:
+                        new_tested[orig_uri] = ping
+                        print(f"[{len(new_tested)}/{MAX_WORKING}] OK ({ping} ms)")
             except Exception:
                 pass
 
