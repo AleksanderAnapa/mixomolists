@@ -1,6 +1,5 @@
 import base64
 import hashlib
-import json
 import os
 import re
 import subprocess
@@ -30,7 +29,6 @@ def decode_base64_safe(data):
         return ""
 
 def clash_proxy_to_uri(p):
-    # Конвертация базовых узлов из Clash YAML в URI-ссылки для единообразия
     ptype = p.get("type")
     name = urllib.parse.quote(str(p.get("name", "node")))
     server = p.get("server")
@@ -56,13 +54,11 @@ def clash_proxy_to_uri(p):
 
 def extract_nodes_from_text(text):
     nodes = set()
-    # 1. Прямой поиск ссылок в тексте
     for line in text.splitlines():
         line = line.strip()
         if any(line.startswith(proto) for proto in PROTOCOLS):
             nodes.add(line)
     
-    # 2. Попытка декодировать как Base64 подписку
     if not nodes:
         decoded = decode_base64_safe(text)
         for line in decoded.splitlines():
@@ -70,7 +66,6 @@ def extract_nodes_from_text(text):
             if any(line.startswith(proto) for proto in PROTOCOLS):
                 nodes.add(line)
 
-    # 3. Попытка разобрать как Clash YAML
     if not nodes and "proxies:" in text:
         try:
             data = yaml.safe_load(text)
@@ -83,8 +78,17 @@ def extract_nodes_from_text(text):
             pass
     return nodes
 
+def make_temp_uri(original_uri, temp_name):
+    if original_uri.startswith("vmess://"):
+        return original_uri
+    base_uri = original_uri.split("#", 1)[0]
+    return f"{base_uri}#{temp_name}"
+
 def main():
-    # Проверка изменения файла test.txt
+    if not os.path.exists("test.txt"):
+        print("Файл test.txt не найден.")
+        return
+
     current_hash = get_file_hash("test.txt")
     old_hash = open(HASH_FILE).read().strip() if os.path.exists(HASH_FILE) else ""
     if current_hash == old_hash:
@@ -95,18 +99,23 @@ def main():
         raw_lines = f.readlines()
 
     all_nodes = set()
-    for line in raw_lines:
-        line = line.strip()
-        if not line or line.startswith("#"):
+    remaining_lines = []
+
+    for raw_line in raw_lines:
+        stripped = raw_line.strip()
+        
+        # Пустые строки и комментарии (#) оставляем в файле нетронутыми
+        if not stripped or stripped.startswith("#"):
+            remaining_lines.append(raw_line)
             continue
         
-        # Если это готовая прокси-ссылка
-        if any(line.startswith(proto) for proto in PROTOCOLS):
-            all_nodes.add(line)
+        # Если это готовая прокси-ссылка — забираем и удаляем строку из test.txt
+        if any(stripped.startswith(proto) for proto in PROTOCOLS):
+            all_nodes.add(stripped)
             continue
 
-        # Если это HTTP/HTTPS ссылка (подписка или YAML)
-        url_match = re.search(r"https?://[^\s]+", line)
+        # Если это HTTP/HTTPS ссылка — скачиваем и удаляем строку из test.txt
+        url_match = re.search(r"https?://[^\s]+", stripped)
         if url_match:
             url = url_match.group(0)
             try:
@@ -116,35 +125,17 @@ def main():
                     all_nodes.update(extracted)
             except Exception:
                 pass
+            continue
 
-    # Этап 2: Сохраняем все вытащенные серверы в testing.txt
+        # Любой другой нераспознанный текст также не оставляем висеть
+        continue
+
     testing_list = sorted(list(all_nodes))
     with open("testing.txt", "w", encoding="utf-8") as f:
-        f.write("\n".join(testing_list) + "\n")
+        f.write("\n".join(testing_list) + ("\n" if testing_list else ""))
 
-    if not testing_list:
-        with open(HASH_FILE, "w") as f:
-            f.write(current_hash)
-        return
-
-    # Формируем временный конфиг для ядра Mihomo через proxy-provider
-    temp_config = {
-        "external-controller": "127.0.0.1:9090",
-        "proxy-providers": {
-            "test_pool": {
-                "type": "file",
-                "path": "./testing.txt"
-            }
-        }
-    }
-    with open("temp_mihomo.yaml", "w", encoding="utf-8") as f:
-        yaml.dump(temp_config, f)
-
-    mihomo_proc = subprocess.Popen(["./mihomo", "-f", "temp_mihomo.yaml"])
-    time.sleep(4)
-
-    # Загружаем уже существующие серверы из tested.txt для перепроверки и сортировки
-    tested_records = {}  # {server_uri: ping}
+    # Загружаем уже существующие серверы из tested.txt
+    tested_records = {}
     if os.path.exists("tested.txt"):
         with open("tested.txt", "r", encoding="utf-8") as f:
             for line in f:
@@ -152,55 +143,66 @@ def main():
                 if len(parts) == 2 and parts[0].isdigit():
                     tested_records[parts[1]] = int(parts[0])
 
-    # Получаем список загруженных прокси из API Mihomo
-    try:
-        proxies_data = requests.get(f"{MIHOMO_API}/proxies", timeout=5).json().get("proxies", {})
-    except Exception:
-        proxies_data = {}
+    combined_to_check = list(set(testing_list) | set(tested_records.keys()))
 
-    # Сопоставляем имена в Mihomo с исходными URI (Mihomo берет имя после #)
-    uri_by_name = {}
-    for uri in testing_list:
-        if "#" in uri:
-            raw_name = urllib.parse.unquote(uri.split("#", 1)[1]).strip()
-            uri_by_name[raw_name] = uri
+    if combined_to_check:
+        temp_map = {}
+        temp_uris = []
+        for idx, orig_uri in enumerate(combined_to_check):
+            t_name = f"node_{idx}"
+            temp_map[t_name] = orig_uri
+            temp_uris.append(make_temp_uri(orig_uri, t_name))
 
-    # Проверяем каждый узел через API Mihomo
-    for proxy_name, info in proxies_data.items():
-        if info.get("type") in ("Direct", "Reject", "Selector", "URLTest", "Fallback", "LoadBalance"):
-            continue
-        uri = uri_by_name.get(proxy_name)
-        if not uri:
-            continue
+        with open("temp_sub.txt", "w", encoding="utf-8") as f:
+            f.write("\n".join(temp_uris) + "\n")
 
-        encoded_name = urllib.parse.quote(proxy_name, safe="")
-        check_url = f"{MIHOMO_API}/proxies/{encoded_name}/delay?timeout=4000&url=http://gstatic.com"
-        try:
-            r = requests.get(check_url, timeout=5)
-            if r.status_code == 200 and "delay" in r.json():
-                ping = min(int(r.json()["delay"]), 999)
-                tested_records[uri] = ping
-            else:
-                tested_records.pop(uri, None)
-        except Exception:
-            tested_records.pop(uri, None)
+        temp_config = {
+            "external-controller": "127.0.0.1:9090",
+            "proxy-providers": {
+                "test_pool": {
+                    "type": "file",
+                    "path": "./temp_sub.txt"
+                }
+            }
+        }
+        with open("temp_mihomo.yaml", "w", encoding="utf-8") as f:
+            yaml.dump(temp_config, f)
 
-    mihomo_proc.terminate()
+        mihomo_proc = subprocess.Popen(["./mihomo", "-f", "temp_mihomo.yaml"])
+        time.sleep(4)
 
-    # Сортируем по пингу и записываем tested.txt (формат: "127 vless://...")
-    sorted_items = sorted(tested_records.items(), key=lambda x: x[1])
-    with open("tested.txt", "w", encoding="utf-8") as f:
-        for uri, ping in sorted_items:
-            f.write(f"{ping:03d} {uri}\n")
+        new_tested = {}
+        for t_name, orig_uri in temp_map.items():
+            check_url = f"{MIHOMO_API}/proxies/{t_name}/delay?timeout=4000&url=http://gstatic.com"
+            try:
+                r = requests.get(check_url, timeout=5)
+                if r.status_code == 200 and "delay" in r.json():
+                    ping = min(int(r.json()["delay"]), 999)
+                    new_tested[orig_uri] = ping
+            except Exception:
+                pass
 
-    # Записываем финальный отсортированный список без пинга в final.txt
-    with open("final.txt", "w", encoding="utf-8") as f:
-        for uri, _ in sorted_items:
-            f.write(f"{uri}\n")
+        mihomo_proc.terminate()
 
-    # Обновляем хеш test.txt и сбрасываем счетчик ошибок для monitor.py
-    with open(HASH_FILE, "w") as f:
-        f.write(current_hash)
+        sorted_items = sorted(new_tested.items(), key=lambda x: x[1])
+
+        with open("tested.txt", "w", encoding="utf-8") as f:
+            for orig_uri, ping in sorted_items:
+                f.write(f"{ping:03d} {orig_uri}\n")
+
+        with open("final.txt", "w", encoding="utf-8") as f:
+            for orig_uri, _ in sorted_items:
+                f.write(f"{orig_uri}\n")
+
+    # Перезаписываем test.txt (удаляя проверенные строки)
+    with open("test.txt", "w", encoding="utf-8") as f:
+        f.writelines(remaining_lines)
+
+    # Сохраняем новый хеш очищенного test.txt, чтобы не перезапускаться впустую
+    new_hash = get_file_hash("test.txt")
+    with open(HASH_FILE, "w", encoding="utf-8") as f:
+        f.write(new_hash)
+
     if os.path.exists("fail_counts.json"):
         os.remove("fail_counts.json")
 
