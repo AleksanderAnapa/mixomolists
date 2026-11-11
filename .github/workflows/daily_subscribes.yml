@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Скачать репозиторий
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Добавить subscribes.txt в test.txt
         run: |
