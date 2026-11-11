@@ -1,0 +1,38 @@
+name: Hourly Parse and Test
+
+on:
+  schedule:
+    - cron: '0 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  parse_and_test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install pyyaml requests
+
+      - name: Скачать Mihomo
+        run: |
+          LATEST_URL=$(curl -s https://github.com | grep "browser_download_url.*mihomo-linux-amd64-v" | grep -v "compatible" | grep ".gz\"" | cut -d '"' -f 4 | head -n 1)
+          curl -L "$LATEST_URL" -o mihomo.gz
+          gunzip mihomo.gz
+          chmod +x mihomo
+
+      - name: Запустить парсинг и тест
+        run: python parse_and_test.py
+
+      - name: Сохранить файлы
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add testing.txt tested.txt final.txt .test_hash fail_counts.json || true
+          git commit -m "Hourly update" || exit 0
+          git push
