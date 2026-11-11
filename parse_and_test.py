@@ -104,17 +104,14 @@ def main():
     for raw_line in raw_lines:
         stripped = raw_line.strip()
         
-        # Пустые строки и комментарии (#) оставляем в файле нетронутыми
         if not stripped or stripped.startswith("#"):
             remaining_lines.append(raw_line)
             continue
         
-        # Если это готовая прокси-ссылка — забираем и удаляем строку из test.txt
         if any(stripped.startswith(proto) for proto in PROTOCOLS):
             all_nodes.add(stripped)
             continue
 
-        # Если это HTTP/HTTPS ссылка — скачиваем и удаляем строку из test.txt
         url_match = re.search(r"https?://[^\s]+", stripped)
         if url_match:
             url = url_match.group(0)
@@ -127,14 +124,12 @@ def main():
                 pass
             continue
 
-        # Любой другой нераспознанный текст также не оставляем висеть
         continue
 
     testing_list = sorted(list(all_nodes))
     with open("testing.txt", "w", encoding="utf-8") as f:
         f.write("\n".join(testing_list) + ("\n" if testing_list else ""))
 
-    # Загружаем уже существующие серверы из tested.txt
     tested_records = {}
     if os.path.exists("tested.txt"):
         with open("tested.txt", "r", encoding="utf-8") as f:
@@ -194,11 +189,9 @@ def main():
             for orig_uri, _ in sorted_items:
                 f.write(f"{orig_uri}\n")
 
-    # Перезаписываем test.txt (удаляя проверенные строки)
     with open("test.txt", "w", encoding="utf-8") as f:
         f.writelines(remaining_lines)
 
-    # Сохраняем новый хеш очищенного test.txt, чтобы не перезапускаться впустую
     new_hash = get_file_hash("test.txt")
     with open(HASH_FILE, "w", encoding="utf-8") as f:
         f.write(new_hash)
