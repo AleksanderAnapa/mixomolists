@@ -11,6 +11,7 @@ import yaml
 PROTOCOLS = ("vless://", "vmess://", "trojan://", "ss://", "ssr://", "hy2://", "hysteria2://", "tuic://")
 HASH_FILE = ".test_hash"
 MIHOMO_API = "http://127.0.0.1:9090"
+MAX_WORKING = 30
 
 def get_file_hash(filepath):
     if not os.path.exists(filepath):
@@ -138,7 +139,8 @@ def main():
                 if len(parts) == 2 and parts[0].isdigit():
                     tested_records[parts[1]] = int(parts[0])
 
-    combined_to_check = list(set(testing_list) | set(tested_records.keys()))
+    # Сначала ставим на проверку уже проверенные ранее серверы, затем новые
+    combined_to_check = list(tested_records.keys()) + [u for u in testing_list if u not in tested_records]
 
     if combined_to_check:
         temp_map = {}
@@ -168,18 +170,24 @@ def main():
 
         new_tested = {}
         for t_name, orig_uri in temp_map.items():
+            # Прерываем цикл, если уже набрали 30 рабочих серверов
+            if len(new_tested) >= MAX_WORKING:
+                print(f"Достигнут лимит в {MAX_WORKING} рабочих серверов. Остановка проверки.")
+                break
+
             check_url = f"{MIHOMO_API}/proxies/{t_name}/delay?timeout=4000&url=http://gstatic.com"
             try:
                 r = requests.get(check_url, timeout=5)
                 if r.status_code == 200 and "delay" in r.json():
                     ping = min(int(r.json()["delay"]), 999)
                     new_tested[orig_uri] = ping
+                    print(f"[{len(new_tested)}/{MAX_WORKING}] OK ({ping} ms)")
             except Exception:
                 pass
 
         mihomo_proc.terminate()
 
-        sorted_items = sorted(new_tested.items(), key=lambda x: x[1])
+        sorted_items = sorted(new_tested.items(), key=lambda x: x[1])[:MAX_WORKING]
 
         with open("tested.txt", "w", encoding="utf-8") as f:
             for orig_uri, ping in sorted_items:
