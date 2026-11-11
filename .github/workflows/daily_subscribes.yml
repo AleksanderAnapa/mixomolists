@@ -1,0 +1,35 @@
+name: Daily Append Subscribes
+
+on:
+  schedule:
+    # 00:00 UTC = 03:00 MSK (Москва)
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  append_subscribes:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Скачать репозиторий
+        uses: actions/checkout@v4
+
+      - name: Добавить subscribes.txt в test.txt
+        run: |
+          if [ -s subscribes.txt ]; then
+            echo "" >> test.txt
+            cat subscribes.txt >> test.txt
+          else
+            echo "Файл subscribes.txt пуст или не найден."
+            exit 0
+          fi
+
+      - name: Сохранить обновленный test.txt
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@://github.com"
+          git add test.txt
+          git commit -m "Daily append from subscribes.txt" || exit 0
+          git push
