@@ -27,11 +27,12 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh release download -R MetaCubeX/mihomo -p "mihomo-linux-amd64-v*.gz" --clobber
-          rm -f *compatible*
-          mv mihomo-linux-amd64-v*.gz mihomo.gz
-          gunzip -f mihomo.gz
+          gh release download -R MetaCubeX/mihomo -p "mihomo-linux-amd64*.gz" --clobber
+          rm -f *compatible* *go*
+          FILE=$(ls mihomo-linux-amd64*.gz | head -n 1)
+          gunzip -c "$FILE" > mihomo
           chmod +x mihomo
+          rm -f *.gz
 
       - name: Запустить парсинг и тест
         run: python parse_and_test.py
