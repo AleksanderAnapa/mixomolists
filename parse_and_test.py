@@ -2,6 +2,7 @@ import base64
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import ipaddress
 import json
+import operator
 import os
 import re
 import socket
@@ -13,9 +14,10 @@ import yaml
 
 PROTOCOLS = ("vless://", "vmess://", "trojan://")
 ALLOWED_COUNTRY_CODES = ("us", "de", "nl", "fr", "gb")
-MAX_PING = 500
+MAX_PING = 1000
 MAX_WORKING = 30
-BATCH_SIZE = 5
+BATCH_SIZE = 1
+CHUNK_SIZE = 200
 MAX_WORKERS = 20
 MAX_RUNTIME_SECONDS = 2700
 
@@ -152,7 +154,7 @@ def load_tested_records():
     return records
 
 def save_results(records):
-    sorted_items = sorted(records.items(), key=lambda item: item[1])[:MAX_WORKING]
+    sorted_items = sorted(records.items(), key=operator.itemgetter(1))[:MAX_WORKING]
     with open("tested.txt", "w", encoding="utf-8") as f:
         for orig_uri, ping in sorted_items:
             f.write(f"{ping:03d} {orig_uri}\n")
@@ -179,7 +181,6 @@ def test_nodes_with_mihomo(nodes_to_test, existing_records):
 
     encoded_test_url = urllib.parse.quote(TEST_URL, safe="")
 
-    # Режем огромный список на порции по CHUNK_SIZE (200 шт)
     for start_idx in range(0, len(nodes_to_test), CHUNK_SIZE):
         if len(existing_records) >= MAX_WORKING:
             break
@@ -202,13 +203,26 @@ def test_nodes_with_mihomo(nodes_to_test, existing_records):
                     "type": "file",
                     "path": "./temp_sub.txt"
                 }
-            }
+            },
+            "proxy-groups": [
+                {
+                    "name": "AUTO",
+                    "type": "select",
+                    "use": ["test_pool"]
+                }
+            ]
         }
         with open("temp_mihomo.yaml", "w", encoding="utf-8") as f:
             yaml.dump(temp_config, f)
 
         mihomo_proc = subprocess.Popen(["./mihomo", "-f", "temp_mihomo.yaml"])
         time.sleep(3)
+
+        try:
+            r_debug = requests.get(f"{MIHOMO_API}/proxies/node_0", timeout=3)
+            print("Статус проверки первого узла node_0:", r_debug.status_code, r_debug.text[:120])
+        except Exception as e:
+            print("Ошибка API Mihomo:", e)
 
         with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
             futures = [
@@ -228,7 +242,6 @@ def test_nodes_with_mihomo(nodes_to_test, existing_records):
         mihomo_proc.terminate()
         mihomo_proc.wait()
 
-        # Сохраняем найденные серверы после каждой порции из 200 штук
         if existing_records:
             existing_records = save_results(existing_records)
             print(f"Промежуточное сохранение: найдено {len(existing_records)}/{MAX_WORKING} рабочих серверов.")
