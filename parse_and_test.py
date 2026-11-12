@@ -13,11 +13,11 @@ import yaml
 
 PROTOCOLS = ("vless://", "vmess://", "trojan://")
 ALLOWED_COUNTRY_CODES = ("us", "de", "nl", "fr", "gb")
-MAX_PING = 200
+MAX_PING = 500
 MAX_WORKING = 30
-BATCH_SIZE = 5               # Сколько строк из test.txt обрабатывать за один мини-цикл
-MAX_WORKERS = 20             # Количество потоков для одновременной проверки серверов
-MAX_RUNTIME_SECONDS = 2700   # 45 минут безопасной работы до перезапуска
+BATCH_SIZE = 5
+MAX_WORKERS = 20
+MAX_RUNTIME_SECONDS = 2700
 
 TEST_URL = "https://cloudflare.com"
 EXPECTED_STATUS = 204
@@ -90,7 +90,8 @@ def extract_nodes_from_text(text):
 def extract_host(uri):
     try:
         if uri.startswith("vmess://"):
-            b64_part = uri[8:].split("#", 1)[0]
+            raw_b64 = uri.replace("vmess://", "", 1)
+            b64_part, _, _ = raw_b64.partition("#")
             decoded = decode_base64_safe(b64_part)
             data = json.loads(decoded)
             return data.get("add", "").strip()
@@ -138,20 +139,20 @@ def filter_by_country(uris, networks, dns_cache):
 def make_temp_uri(original_uri, temp_name):
     if original_uri.startswith("vmess://"):
         return original_uri
-    base_uri = original_uri.split("#", 1)[0]
+    base_uri, _, _ = original_uri.partition("#")
     return f"{base_uri}#{temp_name}"
 def load_tested_records():
     records = {}
     if os.path.exists("tested.txt"):
         with open("tested.txt", "r", encoding="utf-8") as f:
             for line in f:
-                parts = line.strip().split(" ", 1)
-                if len(parts) == 2 and parts[0].isdigit():
-                    records[parts[1]] = int(parts[0])
+                ping_str, sep, orig_uri = line.strip().partition(" ")
+                if sep and ping_str.isdigit():
+                    records[orig_uri] = int(ping_str)
     return records
 
 def save_results(records):
-    sorted_items = sorted(records.items(), key=lambda x: x[1])[:MAX_WORKING]
+    sorted_items = sorted(records.items(), key=lambda item: item[1])[:MAX_WORKING]
     with open("tested.txt", "w", encoding="utf-8") as f:
         for orig_uri, ping in sorted_items:
             f.write(f"{ping:03d} {orig_uri}\n")
@@ -161,9 +162,9 @@ def save_results(records):
     return dict(sorted_items)
 
 def check_single_proxy(t_name, orig_uri, encoded_test_url):
-    check_url = f"{MIHOMO_API}/proxies/{t_name}/delay?timeout=2000&url={encoded_test_url}&expected={EXPECTED_STATUS}"
+    check_url = f"{MIHOMO_API}/proxies/{t_name}/delay?timeout=4000&url={encoded_test_url}&expected={EXPECTED_STATUS}"
     try:
-        r = requests.get(check_url, timeout=3)
+        r = requests.get(check_url, timeout=5)
         if r.status_code == 200 and "delay" in r.json():
             ping = int(r.json()["delay"])
             if 0 < ping < MAX_PING:
@@ -199,7 +200,13 @@ def test_nodes_with_mihomo(nodes_to_test, existing_records):
         yaml.dump(temp_config, f)
 
     mihomo_proc = subprocess.Popen(["./mihomo", "-f", "temp_mihomo.yaml"])
-    time.sleep(3)
+    time.sleep(5)
+
+    try:
+        loaded = requests.get(f"{MIHOMO_API}/proxies", timeout=5).json().get("proxies", {})
+        print(f"Mihomo загрузил прокси в память: {len(loaded)}")
+    except Exception as e:
+        print(f"Ошибка подключения к API Mihomo: {e}")
 
     encoded_test_url = urllib.parse.quote(TEST_URL, safe="")
 
@@ -216,7 +223,7 @@ def test_nodes_with_mihomo(nodes_to_test, existing_records):
                     existing_records[orig_uri] = ping
 
                 if len(existing_records) > MAX_WORKING:
-                    existing_records = dict(sorted(existing_records.items(), key=lambda x: x[1])[:MAX_WORKING])
+                    existing_records = dict(sorted(existing_records.items(), key=lambda item: item[1])[:MAX_WORKING])
 
     mihomo_proc.terminate()
     return existing_records
@@ -254,11 +261,11 @@ def main():
 
     while has_unprocessed_lines(lines):
         if time.time() - start_time > MAX_RUNTIME_SECONDS:
-            print("Достигнут лимит времени работы (45 мин). Сохраняем прогресс и передаем эстафету.")
+            print("Достигнут лимит времени работы (45 мин). Сохраняем прогресс.")
             break
 
         if len(tested_records) >= MAX_WORKING:
-            print(f"Набрано {MAX_WORKING} рабочих серверов. Очищаем оставшиеся очереди.")
+            print(f"Набрано {MAX_WORKING} рабочих серверов. Очищаем очередь.")
             lines = [l for l in lines if not l.strip() or l.strip().startswith("#")]
             with open("test.txt", "w", encoding="utf-8") as f:
                 f.writelines(lines)
@@ -295,8 +302,10 @@ def main():
                 except Exception:
                     pass
 
+        print(f"Извлечено из порции: {len(batch_nodes)} узлов.")
         geo_nodes = filter_by_country(list(batch_nodes), networks, dns_cache)
         unique_geo_nodes = sorted(list(set(geo_nodes)))
+        print(f"После фильтра стран осталось: {len(unique_geo_nodes)} узлов.")
 
         with open("testing.txt", "w", encoding="utf-8") as f:
             f.write("\n".join(unique_geo_nodes) + ("\n" if unique_geo_nodes else ""))
@@ -315,10 +324,8 @@ def main():
         os.remove("fail_counts.json")
 
     if has_unprocessed_lines(lines):
-        print("В test.txt остались необработанные строки. Запрашиваем перезапуск workflow.")
         set_github_output("has_more", "true")
     else:
-        print("Все строки из test.txt успешно обработаны.")
         set_github_output("has_more", "false")
 
 if __name__ == "__main__":
