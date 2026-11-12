@@ -177,55 +177,62 @@ def test_nodes_with_mihomo(nodes_to_test, existing_records):
     if not nodes_to_test:
         return existing_records
 
-    temp_map = {}
-    temp_uris = []
-    for idx, orig_uri in enumerate(nodes_to_test):
-        t_name = f"node_{idx}"
-        temp_map[t_name] = orig_uri
-        temp_uris.append(make_temp_uri(orig_uri, t_name))
-
-    with open("temp_sub.txt", "w", encoding="utf-8") as f:
-        f.write("\n".join(temp_uris) + "\n")
-
-    temp_config = {
-        "external-controller": "127.0.0.1:9090",
-        "proxy-providers": {
-            "test_pool": {
-                "type": "file",
-                "path": "./temp_sub.txt"
-            }
-        }
-    }
-    with open("temp_mihomo.yaml", "w", encoding="utf-8") as f:
-        yaml.dump(temp_config, f)
-
-    mihomo_proc = subprocess.Popen(["./mihomo", "-f", "temp_mihomo.yaml"])
-    time.sleep(5)
-
-    try:
-        loaded = requests.get(f"{MIHOMO_API}/proxies", timeout=5).json().get("proxies", {})
-        print(f"Mihomo загрузил прокси в память: {len(loaded)}")
-    except Exception as e:
-        print(f"Ошибка подключения к API Mihomo: {e}")
-
     encoded_test_url = urllib.parse.quote(TEST_URL, safe="")
 
-    with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
-        futures = [
-            executor.submit(check_single_proxy, t_name, orig_uri, encoded_test_url)
-            for t_name, orig_uri in temp_map.items()
-        ]
-        for future in as_completed(futures):
-            res = future.result()
-            if res:
-                orig_uri, ping = res
-                if orig_uri not in existing_records or ping < existing_records[orig_uri]:
-                    existing_records[orig_uri] = ping
+    # Режем огромный список на порции по CHUNK_SIZE (200 шт)
+    for start_idx in range(0, len(nodes_to_test), CHUNK_SIZE):
+        if len(existing_records) >= MAX_WORKING:
+            break
 
-                if len(existing_records) > MAX_WORKING:
-                    existing_records = dict(sorted(existing_records.items(), key=lambda item: item[1])[:MAX_WORKING])
+        chunk = nodes_to_test[start_idx:start_idx + CHUNK_SIZE]
+        temp_map = {}
+        temp_uris = []
+        for idx, orig_uri in enumerate(chunk):
+            t_name = f"node_{idx}"
+            temp_map[t_name] = orig_uri
+            temp_uris.append(make_temp_uri(orig_uri, t_name))
 
-    mihomo_proc.terminate()
+        with open("temp_sub.txt", "w", encoding="utf-8") as f:
+            f.write("\n".join(temp_uris) + "\n")
+
+        temp_config = {
+            "external-controller": "127.0.0.1:9090",
+            "proxy-providers": {
+                "test_pool": {
+                    "type": "file",
+                    "path": "./temp_sub.txt"
+                }
+            }
+        }
+        with open("temp_mihomo.yaml", "w", encoding="utf-8") as f:
+            yaml.dump(temp_config, f)
+
+        mihomo_proc = subprocess.Popen(["./mihomo", "-f", "temp_mihomo.yaml"])
+        time.sleep(3)
+
+        with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
+            futures = [
+                executor.submit(check_single_proxy, t_name, orig_uri, encoded_test_url)
+                for t_name, orig_uri in temp_map.items()
+            ]
+            for future in as_completed(futures):
+                res = future.result()
+                if res:
+                    orig_uri, ping = res
+                    if orig_uri not in existing_records or ping < existing_records[orig_uri]:
+                        existing_records[orig_uri] = ping
+
+                    if len(existing_records) >= MAX_WORKING:
+                        break
+
+        mihomo_proc.terminate()
+        mihomo_proc.wait()
+
+        # Сохраняем найденные серверы после каждой порции из 200 штук
+        if existing_records:
+            existing_records = save_results(existing_records)
+            print(f"Промежуточное сохранение: найдено {len(existing_records)}/{MAX_WORKING} рабочих серверов.")
+
     return existing_records
 
 def has_unprocessed_lines(lines):
