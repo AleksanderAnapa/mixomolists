@@ -23,6 +23,7 @@ BASE_PORT = 9100
 MAX_RUNTIME_SECONDS = 2700
 
 TEST_URL = "https" + "://" + "cp." + "cloudflare.com" + "/generate_204"
+CIDR_BASE_URL = "https" + "://" + "://githubusercontent.com" + "/herrbischoff/country-ip-blocks/master/ipv4/"
 
 def log_debug(msg):
     ts = time.strftime("%H:%M:%S")
@@ -211,7 +212,7 @@ def extract_host(uri):
 def load_country_networks():
     networks = []
     for code in ALLOWED_COUNTRY_CODES:
-        url = f"https://githubusercontent.com{code}.cidr"
+        url = CIDR_BASE_URL + f"{code}.cidr"
         try:
             r = requests.get(url, timeout=10)
             if r.status_code == 200:
@@ -303,7 +304,8 @@ def test_one_server_isolated(orig_uri, slot_id, encoded_test_url):
         if proc.poll() is not None:
             return orig_uri, 0, "MIHOMO_REJECTED_NODE"
 
-        check_url = f"http://127.0.0.1:{api_port}/proxies/single_node/delay?timeout=3500&url={encoded_test_url}"
+        api_base = "http" + "://" + f"127.0.0.1:{api_port}"
+        check_url = f"{api_base}/proxies/single_node/delay?timeout=3500&url={encoded_test_url}&expected=204"
         r = requests.get(check_url, timeout=4.5)
         if r.status_code == 200 and "delay" in r.json():
             ping = int(r.json()["delay"])
@@ -330,7 +332,6 @@ def test_nodes_individually(nodes_to_test, existing_records):
     encoded_test_url = urllib.parse.quote(TEST_URL, safe="")
     sample_logged = 0
 
-    # Идем шагами по MAX_WORKERS (15 независимых серверов одновременно)
     for start_idx in range(0, len(nodes_to_test), MAX_WORKERS):
         if len(existing_records) >= MAX_WORKING:
             break
