@@ -16,7 +16,7 @@ EXPECTED_STATUS = 204
 def make_temp_uri(original_uri, temp_name):
     if original_uri.startswith("vmess://"):
         return original_uri
-    base_uri = original_uri.split("#", 1)[0]
+    base_uri, _, _ = original_uri.partition("#")
     return f"{base_uri}#{temp_name}"
 
 def check_node(t_name, orig_uri, encoded_test_url):
@@ -56,19 +56,27 @@ def main():
     with open("temp_monitor_sub.txt", "w", encoding="utf-8") as f:
         f.write("\n".join(temp_uris) + "\n")
 
+    abs_mon_path = os.path.abspath("temp_monitor_sub.txt")
     temp_config = {
         "external-controller": "127.0.0.1:9090",
         "proxy-providers": {
             "final_pool": {
                 "type": "file",
-                "path": "./temp_monitor_sub.txt"
+                "path": abs_mon_path
             }
-        }
+        },
+        "proxy-groups": [
+            {
+                "name": "AUTO",
+                "type": "select",
+                "use": ["final_pool"]
+            }
+        ]
     }
     with open("temp_monitor.yaml", "w", encoding="utf-8") as f:
         yaml.dump(temp_config, f)
 
-    mihomo_proc = subprocess.Popen(["./mihomo", "-f", "temp_monitor.yaml"])
+    mihomo_proc = subprocess.Popen(["./mihomo", "-d", ".", "-f", "temp_monitor.yaml"])
     time.sleep(3)
 
     encoded_test_url = urllib.parse.quote(TEST_URL, safe="")
@@ -84,6 +92,7 @@ def main():
             results[orig_uri] = is_ok
 
     mihomo_proc.terminate()
+    mihomo_proc.wait()
 
     alive_servers = []
     for orig_uri in servers:
