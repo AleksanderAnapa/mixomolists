@@ -81,8 +81,10 @@ def main():
             }
         ]
     }
-    with open("temp_monitor.yaml", "w", encoding="utf-8") as f:
-        yaml.dump(temp_config, f)
+    raw_mon = "\n".join(temp_uris) + "\n"
+    b64_mon = base64.b64encode(raw_mon.encode("utf-8")).decode("utf-8")
+    with open("temp_monitor_sub.txt", "w", encoding="utf-8") as f:
+        f.write(b64_mon)
 
     mihomo_proc = subprocess.Popen(["./mihomo", "-d", ".", "-f", "temp_monitor.yaml"])
     time.sleep(3)
