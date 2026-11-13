@@ -112,3 +112,137 @@ def uri_to_clash_dict(uri, temp_name):
             elif net == "grpc":
                 proxy["grpc-opts"] = {"grpc-service-name": get_p("serviceName", "")}
             return proxy
+        if uri.startswith("trojan://"):
+            proxy = {
+                "name": temp_name,
+                "type": "trojan",
+                "server": str(parsed.hostname),
+                "port": int(parsed.port),
+                "password": str(parsed.username),
+                "udp": True,
+                "sni": sni,
+                "skip-cert-verify": True,
+                "network": net
+            }
+            if net == "ws":
+                proxy["ws-opts"] = {
+                    "path": get_p("path", "/"),
+                    "headers": {"Host": get_p("host", sni)}
+                }
+            elif net == "grpc":
+                proxy["grpc-opts"] = {"grpc-service-name": get_p("serviceName", "")}
+            return proxy
+    except Exception:
+        return None
+    return None
+
+def test_one_server_isolated(orig_uri, slot_id, encoded_test_url):
+    p_dict = uri_to_clash_dict(orig_uri, "single_node")
+    if not p_dict:
+        return orig_uri, False
+
+    api_port = BASE_PORT + slot_id
+    temp_config = {
+        "external-controller": f"127.0.0.1:{api_port}",
+        "dns": {
+            "enable": True,
+            "ipv6": False,
+            "nameserver": ["1.1.1.1", "8.8.8.8"]
+        },
+        "proxies": [p_dict],
+        "proxy-groups": [
+            {
+                "name": "AUTO",
+                "type": "select",
+                "proxies": ["single_node"]
+            }
+        ]
+    }
+
+    fd, cfg_path = tempfile.mkstemp(prefix=f"mon_{slot_id}_", suffix=".yaml", dir=".")
+    os.close(fd)
+    proc = None
+    try:
+        with open(cfg_path, "w", encoding="utf-8") as f:
+            yaml.dump(temp_config, f, allow_unicode=True)
+
+        proc = subprocess.Popen(
+            ["./mihomo", "-d", ".", "-f", cfg_path],
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL
+        )
+        time.sleep(0.8)
+
+        if proc.poll() is not None:
+            return orig_uri, False
+
+        api_base = "http" + "://" + f"127.0.0.1:{api_port}"
+        check_url = f"{api_base}/proxies/single_node/delay?timeout=4000&url={encoded_test_url}&expected=204"
+        r = requests.get(check_url, timeout=5)
+        if r.status_code == 200 and "delay" in r.json() and int(r.json()["delay"]) > 0:
+            return orig_uri, True
+        return orig_uri, False
+    except Exception:
+        return orig_uri, False
+    finally:
+        if proc and proc.poll() is None:
+            proc.terminate()
+            try:
+                proc.wait(timeout=2)
+            except Exception:
+                proc.kill()
+        if os.path.exists(cfg_path):
+            os.remove(cfg_path)
+
+def main():
+    if not os.path.exists("final.txt"):
+        print("Файл final.txt отсутствует. Стоп.")
+        return
+
+    with open("final.txt", "r", encoding="utf-8") as f:
+        servers = [line.strip() for line in f if line.strip()]
+
+    if not servers:
+        print("Файл final.txt пустой. Стоп.")
+        return
+
+    fail_counts = {}
+    if os.path.exists(FAIL_FILE):
+        with open(FAIL_FILE, "r", encoding="utf-8") as f:
+            fail_counts = json.load(f)
+
+    encoded_test_url = urllib.parse.quote(TEST_URL, safe="")
+    results = {}
+
+    for start_idx in range(0, len(servers), MAX_WORKERS):
+        wave = servers[start_idx:start_idx + MAX_WORKERS]
+        with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
+            futures = [
+                executor.submit(test_one_server_isolated, orig_uri, slot, encoded_test_url)
+                for slot, orig_uri in enumerate(wave)
+            ]
+            for future in as_completed(futures):
+                orig_uri, is_ok = future.result()
+                results[orig_uri] = is_ok
+
+    alive_servers = []
+    for orig_uri in servers:
+        if results.get(orig_uri, False):
+            fail_counts[orig_uri] = 0
+        else:
+            fail_counts[orig_uri] = fail_counts.get(orig_uri, 0) + 1
+
+        if fail_counts.get(orig_uri, 0) < MAX_FAILS:
+            alive_servers.append(orig_uri)
+        else:
+            print(f"Удален после {MAX_FAILS} неудач: {orig_uri[:40]}...")
+            fail_counts.pop(orig_uri, None)
+
+    with open("final.txt", "w", encoding="utf-8") as f:
+        f.write("\n".join(alive_servers) + ("\n" if alive_servers else ""))
+
+    with open(FAIL_FILE, "w", encoding="utf-8") as f:
+        json.dump(fail_counts, f, ensure_ascii=False, indent=2)
+
+if __name__ == "__main__":
+    main()
