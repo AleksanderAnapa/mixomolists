@@ -11,10 +11,8 @@ FAIL_FILE = "fail_counts.json"
 MIHOMO_API = "http://127.0.0.1:9090"
 MAX_FAILS = 20
 
-URL_SCHEME = "https://"
-URL_HOST = "://cloudflare.com"
-URL_PATH = "/generate_204"
-TEST_URL = URL_SCHEME + URL_HOST + URL_PATH
+TEST_URL = "https" + "://" + "cp." + "cloudflare.com" + "/generate_204"
+
 
 def make_temp_uri(original_uri, temp_name):
     if original_uri.startswith("vmess://"):
