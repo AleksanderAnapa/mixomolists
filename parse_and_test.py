@@ -7,6 +7,7 @@ import os
 import re
 import socket
 import subprocess
+import tempfile
 import time
 import urllib.parse
 import requests
@@ -17,15 +18,11 @@ ALLOWED_COUNTRY_CODES = ("us", "de", "nl", "fr", "gb")
 MAX_PING = 1000
 MAX_WORKING = 30
 BATCH_SIZE = 1
-CHUNK_SIZE = 100
-MAX_WORKERS = 20
+MAX_WORKERS = 15
+BASE_PORT = 9100
 MAX_RUNTIME_SECONDS = 2700
 
-URL_SCHEME = "https://"
-URL_HOST = "://cloudflare.com"
-URL_PATH = "/generate_204"
-TEST_URL = URL_SCHEME + URL_HOST + URL_PATH
-MIHOMO_API = "http://127.0.0.1:9090"
+TEST_URL = "https" + "://" + "cp." + "cloudflare.com" + "/generate_204"
 
 def log_debug(msg):
     ts = time.strftime("%H:%M:%S")
@@ -117,11 +114,14 @@ def uri_to_clash_dict(uri, temp_name):
                 proxy["flow"] = flow
             if security == "reality":
                 pbk = get_p("pbk")
+                sid = get_p("sid", "")
                 if not pbk:
+                    return None
+                if sid and (len(sid) > 16 or len(sid) % 2 != 0 or not re.fullmatch(r"[0-9a-fA-F]+", sid)):
                     return None
                 proxy["reality-opts"] = {
                     "public-key": pbk,
-                    "short-id": get_p("sid", "")
+                    "short-id": sid
                 }
                 proxy["client-fingerprint"] = get_p("fp", "chrome")
             if net == "ws":
@@ -253,6 +253,7 @@ def load_tested_records():
                 if sep and ping_str.isdigit():
                     records[orig_uri] = int(ping_str)
     return records
+
 def save_results(records):
     sorted_items = sorted(records.items(), key=operator.itemgetter(1))[:MAX_WORKING]
     with open("tested.txt", "w", encoding="utf-8") as f:
@@ -262,91 +263,96 @@ def save_results(records):
         for orig_uri, _ in sorted_items:
             f.write(f"{orig_uri}\n")
     return dict(sorted_items)
+def test_one_server_isolated(orig_uri, slot_id, encoded_test_url):
+    p_dict = uri_to_clash_dict(orig_uri, "single_node")
+    if not p_dict:
+        return orig_uri, 0, "INVALID_FORMAT"
 
-def check_single_proxy(t_name, orig_uri, encoded_test_url):
-    check_url = f"{MIHOMO_API}/proxies/{t_name}/delay?timeout=4000&url={encoded_test_url}"
-    try:
-        r = requests.get(check_url, timeout=5)
-        if r.status_code == 200 and "delay" in r.json():
-            ping = int(r.json()["delay"])
-            if 0 < ping < MAX_PING:
-                return orig_uri, ping, "OK"
-            return orig_uri, ping, f"HIGH_PING({ping})"
-        return orig_uri, 0, f"HTTP_{r.status_code}:{r.text[:60]}"
-    except Exception as e:
-        return orig_uri, 0, f"ERR:{e}"
-
-def run_mihomo_batch(chunk, existing_records, encoded_test_url):
-    temp_map = {}
-    proxies_list = []
-    for idx, orig_uri in enumerate(chunk):
-        t_name = f"node_{idx}"
-        p_dict = uri_to_clash_dict(orig_uri, t_name)
-        if p_dict:
-            temp_map[t_name] = orig_uri
-            proxies_list.append(p_dict)
-
-    log_debug(f"Конвертировано в YAML для Mihomo: {len(proxies_list)} из {len(chunk)} узлов.")
-    if not proxies_list:
-        return existing_records
-
+    api_port = BASE_PORT + slot_id
     temp_config = {
-        "external-controller": "127.0.0.1:9090",
+        "external-controller": f"127.0.0.1:{api_port}",
         "dns": {
             "enable": True,
             "ipv6": False,
             "nameserver": ["1.1.1.1", "8.8.8.8"]
         },
-        "proxies": proxies_list,
+        "proxies": [p_dict],
         "proxy-groups": [
             {
                 "name": "AUTO",
                 "type": "select",
-                "proxies": list(temp_map.keys())
+                "proxies": ["single_node"]
             }
         ]
     }
-    with open("temp_mihomo.yaml", "w", encoding="utf-8") as f:
-        yaml.dump(temp_config, f, allow_unicode=True)
 
-    mihomo_proc = subprocess.Popen(["./mihomo", "-d", ".", "-f", "temp_mihomo.yaml"])
-    time.sleep(2)
+    fd, cfg_path = tempfile.mkstemp(prefix=f"mihomo_{slot_id}_", suffix=".yaml", dir=".")
+    os.close(fd)
+    proc = None
+    try:
+        with open(cfg_path, "w", encoding="utf-8") as f:
+            yaml.dump(temp_config, f, allow_unicode=True)
 
-    sample_logged = 0
-    with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
-        futures = [
-            executor.submit(check_single_proxy, t_name, orig_uri, encoded_test_url)
-            for t_name, orig_uri in temp_map.items()
-        ]
-        for future in as_completed(futures):
-            orig_uri, ping, status = future.result()
-            if status == "OK":
-                if orig_uri not in existing_records or ping < existing_records[orig_uri]:
-                    existing_records[orig_uri] = ping
-            elif sample_logged < 3:
-                log_debug(f"Пример отказа узла: {status} | {orig_uri[:45]}")
-                sample_logged += 1
+        proc = subprocess.Popen(
+            ["./mihomo", "-d", ".", "-f", cfg_path],
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL
+        )
+        time.sleep(0.8)
 
-    mihomo_proc.terminate()
-    mihomo_proc.wait()
-    return existing_records
+        if proc.poll() is not None:
+            return orig_uri, 0, "MIHOMO_REJECTED_NODE"
 
-def test_nodes_with_mihomo(nodes_to_test, existing_records):
+        check_url = f"http://127.0.0.1:{api_port}/proxies/single_node/delay?timeout=3500&url={encoded_test_url}"
+        r = requests.get(check_url, timeout=4.5)
+        if r.status_code == 200 and "delay" in r.json():
+            ping = int(r.json()["delay"])
+            if 0 < ping < MAX_PING:
+                return orig_uri, ping, "OK"
+            return orig_uri, ping, f"HIGH_PING({ping})"
+        return orig_uri, 0, f"HTTP_{r.status_code}"
+    except Exception as e:
+        return orig_uri, 0, f"ERR:{e}"
+    finally:
+        if proc and proc.poll() is None:
+            proc.terminate()
+            try:
+                proc.wait(timeout=2)
+            except Exception:
+                proc.kill()
+        if os.path.exists(cfg_path):
+            os.remove(cfg_path)
+
+def test_nodes_individually(nodes_to_test, existing_records):
     if not nodes_to_test:
         return existing_records
 
     encoded_test_url = urllib.parse.quote(TEST_URL, safe="")
+    sample_logged = 0
 
-    for start_idx in range(0, len(nodes_to_test), CHUNK_SIZE):
+    # Идем шагами по MAX_WORKERS (15 независимых серверов одновременно)
+    for start_idx in range(0, len(nodes_to_test), MAX_WORKERS):
         if len(existing_records) >= MAX_WORKING:
             break
 
-        chunk = nodes_to_test[start_idx:start_idx + CHUNK_SIZE]
-        existing_records = run_mihomo_batch(chunk, existing_records, encoded_test_url)
+        wave = nodes_to_test[start_idx:start_idx + MAX_WORKERS]
+        with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
+            futures = [
+                executor.submit(test_one_server_isolated, orig_uri, slot, encoded_test_url)
+                for slot, orig_uri in enumerate(wave)
+            ]
+            for future in as_completed(futures):
+                orig_uri, ping, status = future.result()
+                if status == "OK":
+                    if orig_uri not in existing_records or ping < existing_records[orig_uri]:
+                        existing_records[orig_uri] = ping
+                    log_debug(f"[OK {ping}ms] ({len(existing_records)}/{MAX_WORKING}) {orig_uri[:55]}")
+                elif sample_logged < 5:
+                    log_debug(f"[ОТБРОШЕН: {status}] {orig_uri[:55]}")
+                    sample_logged += 1
 
         if existing_records:
             existing_records = save_results(existing_records)
-            log_debug(f"Сохранено рабочих серверов: {len(existing_records)}/{MAX_WORKING}")
 
     return existing_records
 
@@ -359,7 +365,7 @@ def has_unprocessed_lines(lines):
 
 def main():
     with open("debug_log.txt", "w", encoding="utf-8") as f:
-        f.write("=== СТАРТ ПРОВЕРКИ ===\n")
+        f.write("=== СТАРТ ИНДИВИДУАЛЬНОЙ ПРОВЕРКИ ===\n")
 
     start_time = time.time()
     if not os.path.exists("test.txt"):
@@ -381,7 +387,7 @@ def main():
 
     if tested_records:
         log_debug(f"Перепроверка {len(tested_records)} существующих серверов...")
-        rechecked = test_nodes_with_mihomo(list(tested_records.keys()), {})
+        rechecked = test_nodes_individually(list(tested_records.keys()), {})
         tested_records = save_results(rechecked)
 
     while has_unprocessed_lines(lines):
@@ -411,7 +417,7 @@ def main():
                 continue
 
             processed_in_batch += 1
-            log_debug(f"Обработка строки из test.txt: {stripped[:65]}")
+            log_debug(f"Обработка строки: {stripped[:65]}")
 
             if any(stripped.startswith(proto) for proto in PROTOCOLS) and uri_to_clash_dict(stripped, "test"):
                 batch_nodes.add(stripped)
@@ -422,7 +428,6 @@ def main():
                 url = url_match.group(0)
                 try:
                     resp = requests.get(url, timeout=10)
-                    log_debug(f"HTTP {resp.status_code} | Размер ответа: {len(resp.text)} байт")
                     if resp.status_code == 200:
                         extracted = extract_nodes_from_text(resp.text)
                         log_debug(f"Извлечено валидных URI: {len(extracted)}")
@@ -439,13 +444,13 @@ def main():
 
         if unique_geo_nodes:
             new_candidates = [u for u in unique_geo_nodes if u not in tested_records]
-            tested_records = test_nodes_with_mihomo(new_candidates, tested_records)
+            tested_records = test_nodes_individually(new_candidates, tested_records)
             tested_records = save_results(tested_records)
 
         lines = new_lines
         with open("test.txt", "w", encoding="utf-8") as f:
             f.writelines(lines)
-        log_debug(f"Порция завершена. Итого рабочих: {len(tested_records)}/{MAX_WORKING}")
+        log_debug(f"Строка завершена. Итого рабочих: {len(tested_records)}/{MAX_WORKING}")
 
     if os.path.exists("fail_counts.json"):
         os.remove("fail_counts.json")
