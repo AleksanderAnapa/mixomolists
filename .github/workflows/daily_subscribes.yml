@@ -8,6 +8,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: proxy-repo-sync
+  cancel-in-progress: false
+
 jobs:
   append_subscribes:
     runs-on: ubuntu-latest
@@ -31,4 +35,5 @@ jobs:
           git config user.email "github-actions[bot]@://github.com"
           git add test.txt
           git commit -m "Daily append from subscribes.txt" || exit 0
+          git pull --rebase origin ${{ github.ref_name }}
           git push
