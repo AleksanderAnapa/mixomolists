@@ -214,8 +214,11 @@ def run_mihomo_batch(chunk, existing_records, encoded_test_url):
     if not temp_uris:
         return existing_records, True
 
+    raw_sub = "\n".join(temp_uris) + "\n"
+    b64_sub = base64.b64encode(raw_sub.encode("utf-8")).decode("utf-8")
     with open("temp_sub.txt", "w", encoding="utf-8") as f:
-        f.write("\n".join(temp_uris) + "\n")
+        f.write(b64_sub)
+
 
     abs_sub_path = os.path.abspath("temp_sub.txt")
     temp_config = {
