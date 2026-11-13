@@ -48,8 +48,8 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@://github.com"
-          git add test.txt testing.txt tested.txt final.txt fail_counts.json || true
-          git commit -m "Batch progress update" || exit 0
+          git add test.txt testing.txt tested.txt final.txt debug_log.txt fail_counts.json || true
+          git commit -m "Hourly progress update" || exit 0
           git push
 
       - name: Перезапустить если test.txt еще не до конца разобран
