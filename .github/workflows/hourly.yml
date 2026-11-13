@@ -52,7 +52,7 @@ jobs:
           rm -f mihomo mihomo_*.yaml
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@://github.com"
-          git add test.txt testing.txt tested.txt final.txt debug_log.txt fail_counts.json || true
+          git add -A
           git commit -m "Hourly progress update" || exit 0
           git pull --rebase origin ${{ github.ref_name }}
           git push
