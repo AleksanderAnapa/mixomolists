@@ -22,10 +22,9 @@ MAX_WORKERS = 20
 MAX_RUNTIME_SECONDS = 2700
 
 URL_SCHEME = "https://"
-URL_HOST = "cp.cloudflare.com"
+URL_HOST = "://cloudflare.com"
 URL_PATH = "/generate_204"
 TEST_URL = URL_SCHEME + URL_HOST + URL_PATH
-EXPECTED_STATUS = 204
 MIHOMO_API = "http://127.0.0.1:9090"
 
 def set_github_output(name, value):
@@ -74,9 +73,6 @@ def is_valid_uri(uri):
             data = json.loads(decode_base64_safe(b64_part))
             if not data.get("add") or not data.get("port") or not data.get("id"):
                 return False
-            scy = str(data.get("scy", "auto")).lower()
-            if scy in ("null", "none", ""):
-                data["scy"] = "auto"
             return True
         else:
             parsed = urllib.parse.urlparse(uri)
@@ -194,7 +190,7 @@ def save_results(records):
     return dict(sorted_items)
 
 def check_single_proxy(t_name, orig_uri, encoded_test_url):
-    check_url = f"{MIHOMO_API}/proxies/{t_name}/delay?timeout=4000&url={encoded_test_url}&expected={EXPECTED_STATUS}"
+    check_url = f"{MIHOMO_API}/proxies/{t_name}/delay?timeout=4000&url={encoded_test_url}"
     try:
         r = requests.get(check_url, timeout=5)
         if r.status_code == 200 and "delay" in r.json():
@@ -224,6 +220,11 @@ def run_mihomo_batch(chunk, existing_records, encoded_test_url):
     abs_sub_path = os.path.abspath("temp_sub.txt")
     temp_config = {
         "external-controller": "127.0.0.1:9090",
+        "dns": {
+            "enable": True,
+            "ipv6": False,
+            "nameserver": ["1.1.1.1", "8.8.8.8"]
+        },
         "proxy-providers": {
             "test_pool": {
                 "type": "file",
@@ -242,21 +243,24 @@ def run_mihomo_batch(chunk, existing_records, encoded_test_url):
         yaml.dump(temp_config, f)
 
     mihomo_proc = subprocess.Popen(["./mihomo", "-d", ".", "-f", "temp_mihomo.yaml"])
-    time.sleep(2.5)
+    time.sleep(3)
 
-    provider_ok = False
+    loaded_proxies = {}
     try:
-        r_debug = requests.get(f"{MIHOMO_API}/proxies/node_0", timeout=3)
-        if r_debug.status_code == 200:
-            provider_ok = True
+        r_all = requests.get(f"{MIHOMO_API}/proxies", timeout=4)
+        if r_all.status_code == 200:
+            loaded_proxies = r_all.json().get("proxies", {})
     except Exception:
         pass
+
+    valid_targets = {name: orig for name, orig in temp_map.items() if name in loaded_proxies}
+    provider_ok = len(valid_targets) > 0
 
     if provider_ok:
         with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
             futures = [
                 executor.submit(check_single_proxy, t_name, orig_uri, encoded_test_url)
-                for t_name, orig_uri in temp_map.items()
+                for t_name, orig_uri in valid_targets.items()
             ]
             for future in as_completed(futures):
                 res = future.result()
@@ -282,7 +286,6 @@ def test_nodes_with_mihomo(nodes_to_test, existing_records):
         chunk = nodes_to_test[start_idx:start_idx + CHUNK_SIZE]
         existing_records, ok = run_mihomo_batch(chunk, existing_records, encoded_test_url)
 
-        # Если в пачке из 100 штук попалась 1 битая ссылка и Mihomo отклонил пачку — дробим по 10 штук
         if not ok and len(chunk) > 10:
             for sub_idx in range(0, len(chunk), 10):
                 if len(existing_records) >= MAX_WORKING:
