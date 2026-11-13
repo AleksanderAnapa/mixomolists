@@ -10,7 +10,7 @@ permissions:
   actions: write
 
 concurrency:
-  group: hourly-parse-and-test
+  group: proxy-repo-sync
   cancel-in-progress: false
 
 jobs:
@@ -40,20 +40,25 @@ jobs:
           chmod +x mihomo
           rm -f *.gz
 
-      - name: Запустить порционный парсинг и тест
+      - name: Запустить парсинг и тест
         id: run_script
-        run: python parse_and_test.py
+        run: |
+          python -u parse_and_test.py
+          rm -f mihomo
 
       - name: Сохранить прогресс в репозитории
+        if: always()
         run: |
+          rm -f mihomo mihomo_*.yaml
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@://github.com"
           git add test.txt testing.txt tested.txt final.txt debug_log.txt fail_counts.json || true
           git commit -m "Hourly progress update" || exit 0
+          git pull --rebase origin ${{ github.ref_name }}
           git push
 
       - name: Перезапустить если test.txt еще не до конца разобран
-        if: steps.run_script.outputs.has_more == 'true'
+        if: always() && steps.run_script.outputs.has_more == 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
