@@ -81,7 +81,7 @@ def extract_nodes_from_text(text):
         try:
             data = yaml.safe_load(text)
             if isinstance(data, dict) and isinstance(data.get("proxies"), list):
-                for p in data["proxies"]:
+                for p in data.get("proxies", []):
                     uri = clash_proxy_to_uri(p)
                     if uri:
                         nodes.add(uri)
@@ -196,12 +196,13 @@ def test_nodes_with_mihomo(nodes_to_test, existing_records):
         with open("temp_sub.txt", "w", encoding="utf-8") as f:
             f.write("\n".join(temp_uris) + "\n")
 
+        abs_sub_path = os.path.abspath("temp_sub.txt")
         temp_config = {
             "external-controller": "127.0.0.1:9090",
             "proxy-providers": {
                 "test_pool": {
                     "type": "file",
-                    "path": "./temp_sub.txt"
+                    "path": abs_sub_path
                 }
             },
             "proxy-groups": [
@@ -215,7 +216,7 @@ def test_nodes_with_mihomo(nodes_to_test, existing_records):
         with open("temp_mihomo.yaml", "w", encoding="utf-8") as f:
             yaml.dump(temp_config, f)
 
-        mihomo_proc = subprocess.Popen(["./mihomo", "-f", "temp_mihomo.yaml"])
+        mihomo_proc = subprocess.Popen(["./mihomo", "-d", ".", "-f", "temp_mihomo.yaml"])
         time.sleep(3)
 
         try:
