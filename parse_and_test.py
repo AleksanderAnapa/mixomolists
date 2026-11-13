@@ -17,7 +17,7 @@ ALLOWED_COUNTRY_CODES = ("us", "de", "nl", "fr", "gb")
 MAX_PING = 1000
 MAX_WORKING = 30
 BATCH_SIZE = 1
-CHUNK_SIZE = 200
+CHUNK_SIZE = 100
 MAX_WORKERS = 20
 MAX_RUNTIME_SECONDS = 2700
 
@@ -63,27 +63,45 @@ def clash_proxy_to_uri(p):
         return f"vless://{uuid}@{server}:{port}?security={tls}&type={net}&sni={sni}#{name}"
     return None
 
+def is_valid_uri(uri):
+    try:
+        if uri.startswith("vmess://"):
+            raw_b64 = uri.replace("vmess://", "", 1)
+            b64_part, _, _ = raw_b64.partition("#")
+            data = json.loads(decode_base64_safe(b64_part))
+            if not data.get("add") or not data.get("port") or not data.get("id"):
+                return False
+            scy = str(data.get("scy", "auto")).lower()
+            if scy in ("null", "none", ""):
+                data["scy"] = "auto"
+            return True
+        else:
+            parsed = urllib.parse.urlparse(uri)
+            return bool(parsed.hostname and parsed.port and parsed.username)
+    except Exception:
+        return False
+
 def extract_nodes_from_text(text):
     nodes = set()
     for line in text.splitlines():
         line = line.strip()
-        if any(line.startswith(proto) for proto in PROTOCOLS):
+        if any(line.startswith(proto) for proto in PROTOCOLS) and is_valid_uri(line):
             nodes.add(line)
     
     if not nodes:
         decoded = decode_base64_safe(text)
         for line in decoded.splitlines():
             line = line.strip()
-            if any(line.startswith(proto) for proto in PROTOCOLS):
+            if any(line.startswith(proto) for proto in PROTOCOLS) and is_valid_uri(line):
                 nodes.add(line)
 
     if not nodes and "proxies:" in text:
         try:
             data = yaml.safe_load(text)
             if isinstance(data, dict) and isinstance(data.get("proxies"), list):
-                for p in data.get("proxies", []):
+                for p in data["proxies"]:
                     uri = clash_proxy_to_uri(p)
-                    if uri:
+                    if uri and is_valid_uri(uri):
                         nodes.add(uri)
         except Exception:
             pass
@@ -94,9 +112,8 @@ def extract_host(uri):
         if uri.startswith("vmess://"):
             raw_b64 = uri.replace("vmess://", "", 1)
             b64_part, _, _ = raw_b64.partition("#")
-            decoded = decode_base64_safe(b64_part)
-            data = json.loads(decoded)
-            return data.get("add", "").strip()
+            data = json.loads(decode_base64_safe(b64_part))
+            return str(data.get("add", "")).strip()
         else:
             parsed = urllib.parse.urlparse(uri)
             return parsed.hostname or ""
@@ -140,7 +157,17 @@ def filter_by_country(uris, networks, dns_cache):
 
 def make_temp_uri(original_uri, temp_name):
     if original_uri.startswith("vmess://"):
-        return original_uri
+        try:
+            raw_b64 = original_uri.replace("vmess://", "", 1)
+            b64_part, _, _ = raw_b64.partition("#")
+            data = json.loads(decode_base64_safe(b64_part))
+            data["ps"] = temp_name
+            if str(data.get("scy", "auto")).lower() in ("null", "none", ""):
+                data["scy"] = "auto"
+            new_b64 = base64.b64encode(json.dumps(data, ensure_ascii=False).encode("utf-8")).decode("utf-8")
+            return f"vmess://{new_b64}"
+        except Exception:
+            return None
     base_uri, _, _ = original_uri.partition("#")
     return f"{base_uri}#{temp_name}"
 def load_tested_records():
@@ -175,56 +202,54 @@ def check_single_proxy(t_name, orig_uri, encoded_test_url):
         pass
     return None
 
-def test_nodes_with_mihomo(nodes_to_test, existing_records):
-    if not nodes_to_test:
-        return existing_records
-
-    encoded_test_url = urllib.parse.quote(TEST_URL, safe="")
-
-    for start_idx in range(0, len(nodes_to_test), CHUNK_SIZE):
-        if len(existing_records) >= MAX_WORKING:
-            break
-
-        chunk = nodes_to_test[start_idx:start_idx + CHUNK_SIZE]
-        temp_map = {}
-        temp_uris = []
-        for idx, orig_uri in enumerate(chunk):
-            t_name = f"node_{idx}"
+def run_mihomo_batch(chunk, existing_records, encoded_test_url):
+    temp_map = {}
+    temp_uris = []
+    for idx, orig_uri in enumerate(chunk):
+        t_name = f"node_{idx}"
+        t_uri = make_temp_uri(orig_uri, t_name)
+        if t_uri:
             temp_map[t_name] = orig_uri
-            temp_uris.append(make_temp_uri(orig_uri, t_name))
+            temp_uris.append(t_uri)
 
-        with open("temp_sub.txt", "w", encoding="utf-8") as f:
-            f.write("\n".join(temp_uris) + "\n")
+    if not temp_uris:
+        return existing_records, True
 
-        abs_sub_path = os.path.abspath("temp_sub.txt")
-        temp_config = {
-            "external-controller": "127.0.0.1:9090",
-            "proxy-providers": {
-                "test_pool": {
-                    "type": "file",
-                    "path": abs_sub_path
-                }
-            },
-            "proxy-groups": [
-                {
-                    "name": "AUTO",
-                    "type": "select",
-                    "use": ["test_pool"]
-                }
-            ]
-        }
-        with open("temp_mihomo.yaml", "w", encoding="utf-8") as f:
-            yaml.dump(temp_config, f)
+    with open("temp_sub.txt", "w", encoding="utf-8") as f:
+        f.write("\n".join(temp_uris) + "\n")
 
-        mihomo_proc = subprocess.Popen(["./mihomo", "-d", ".", "-f", "temp_mihomo.yaml"])
-        time.sleep(3)
+    abs_sub_path = os.path.abspath("temp_sub.txt")
+    temp_config = {
+        "external-controller": "127.0.0.1:9090",
+        "proxy-providers": {
+            "test_pool": {
+                "type": "file",
+                "path": abs_sub_path
+            }
+        },
+        "proxy-groups": [
+            {
+                "name": "AUTO",
+                "type": "select",
+                "use": ["test_pool"]
+            }
+        ]
+    }
+    with open("temp_mihomo.yaml", "w", encoding="utf-8") as f:
+        yaml.dump(temp_config, f)
 
-        try:
-            r_debug = requests.get(f"{MIHOMO_API}/proxies/node_0", timeout=3)
-            print("Статус проверки первого узла node_0:", r_debug.status_code, r_debug.text[:120])
-        except Exception as e:
-            print("Ошибка API Mihomo:", e)
+    mihomo_proc = subprocess.Popen(["./mihomo", "-d", ".", "-f", "temp_mihomo.yaml"])
+    time.sleep(2.5)
 
+    provider_ok = False
+    try:
+        r_debug = requests.get(f"{MIHOMO_API}/proxies/node_0", timeout=3)
+        if r_debug.status_code == 200:
+            provider_ok = True
+    except Exception:
+        pass
+
+    if provider_ok:
         with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
             futures = [
                 executor.submit(check_single_proxy, t_name, orig_uri, encoded_test_url)
@@ -237,15 +262,34 @@ def test_nodes_with_mihomo(nodes_to_test, existing_records):
                     if orig_uri not in existing_records or ping < existing_records[orig_uri]:
                         existing_records[orig_uri] = ping
 
-                    if len(existing_records) >= MAX_WORKING:
-                        break
+    mihomo_proc.terminate()
+    mihomo_proc.wait()
+    return existing_records, provider_ok
 
-        mihomo_proc.terminate()
-        mihomo_proc.wait()
+def test_nodes_with_mihomo(nodes_to_test, existing_records):
+    if not nodes_to_test:
+        return existing_records
+
+    encoded_test_url = urllib.parse.quote(TEST_URL, safe="")
+
+    for start_idx in range(0, len(nodes_to_test), CHUNK_SIZE):
+        if len(existing_records) >= MAX_WORKING:
+            break
+
+        chunk = nodes_to_test[start_idx:start_idx + CHUNK_SIZE]
+        existing_records, ok = run_mihomo_batch(chunk, existing_records, encoded_test_url)
+
+        # Если в пачке из 100 штук попалась 1 битая ссылка и Mihomo отклонил пачку — дробим по 10 штук
+        if not ok and len(chunk) > 10:
+            for sub_idx in range(0, len(chunk), 10):
+                if len(existing_records) >= MAX_WORKING:
+                    break
+                sub_chunk = chunk[sub_idx:sub_idx + 10]
+                existing_records, _ = run_mihomo_batch(sub_chunk, existing_records, encoded_test_url)
 
         if existing_records:
             existing_records = save_results(existing_records)
-            print(f"Промежуточное сохранение: найдено {len(existing_records)}/{MAX_WORKING} рабочих серверов.")
+            print(f"Сохранено рабочих серверов: {len(existing_records)}/{MAX_WORKING}")
 
     return existing_records
 
@@ -308,7 +352,7 @@ def main():
 
             processed_in_batch += 1
 
-            if any(stripped.startswith(proto) for proto in PROTOCOLS):
+            if any(stripped.startswith(proto) for proto in PROTOCOLS) and is_valid_uri(stripped):
                 batch_nodes.add(stripped)
                 continue
 
@@ -323,10 +367,8 @@ def main():
                 except Exception:
                     pass
 
-        print(f"Извлечено из порции: {len(batch_nodes)} узлов.")
         geo_nodes = filter_by_country(list(batch_nodes), networks, dns_cache)
         unique_geo_nodes = sorted(list(set(geo_nodes)))
-        print(f"После фильтра стран осталось: {len(unique_geo_nodes)} узлов.")
 
         with open("testing.txt", "w", encoding="utf-8") as f:
             f.write("\n".join(unique_geo_nodes) + ("\n" if unique_geo_nodes else ""))
