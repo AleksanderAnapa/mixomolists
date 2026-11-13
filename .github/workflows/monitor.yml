@@ -9,7 +9,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: monitor-final-list
+  group: proxy-repo-sync
   cancel-in-progress: false
 
 jobs:
@@ -40,12 +40,17 @@ jobs:
           rm -f *.gz
 
       - name: Проверить final.txt
-        run: python monitor.py
+        run: |
+          python -u monitor.py
+          rm -f mihomo
 
       - name: Обновить final.txt
+        if: always()
         run: |
+          rm -f mihomo mon_*.yaml
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@://github.com"
           git add final.txt fail_counts.json || true
           git commit -m "Monitor update" || exit 0
+          git pull --rebase origin ${{ github.ref_name }}
           git push
