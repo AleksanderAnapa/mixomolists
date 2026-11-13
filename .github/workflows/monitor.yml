@@ -50,7 +50,8 @@ jobs:
           rm -f mihomo mon_*.yaml
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@://github.com"
-          git add final.txt fail_counts.json || true
+          git add -A
           git commit -m "Monitor update" || exit 0
           git pull --rebase origin ${{ github.ref_name }}
           git push
+
