@@ -27,6 +27,13 @@ URL_PATH = "/generate_204"
 TEST_URL = URL_SCHEME + URL_HOST + URL_PATH
 MIHOMO_API = "http://127.0.0.1:9090"
 
+def log_debug(msg):
+    ts = time.strftime("%H:%M:%S")
+    line = f"[{ts}] {msg}"
+    print(line)
+    with open("debug_log.txt", "a", encoding="utf-8") as f:
+        f.write(line + "\n")
+
 def set_github_output(name, value):
     output_file = os.environ.get("GITHUB_OUTPUT")
     if output_file:
@@ -42,6 +49,112 @@ def decode_base64_safe(data):
         return base64.b64decode(cleaned).decode("utf-8", errors="ignore")
     except Exception:
         return ""
+
+def uri_to_clash_dict(uri, temp_name):
+    try:
+        if uri.startswith("vmess://"):
+            raw_b64 = uri.replace("vmess://", "", 1)
+            b64_part, _, _ = raw_b64.partition("#")
+            d = json.loads(decode_base64_safe(b64_part))
+            if not d.get("add") or not d.get("port") or not d.get("id"):
+                return None
+            net = str(d.get("net", "tcp"))
+            tls = str(d.get("tls", "")).lower() in ("tls", "1", "true")
+            proxy = {
+                "name": temp_name,
+                "type": "vmess",
+                "server": str(d["add"]).strip(),
+                "port": int(d["port"]),
+                "uuid": str(d["id"]).strip(),
+                "alterId": int(d.get("aid", 0)),
+                "cipher": "auto",
+                "udp": True,
+                "tls": tls,
+                "skip-cert-verify": True,
+                "network": net
+            }
+            if d.get("sni"):
+                proxy["servername"] = str(d["sni"])
+            elif d.get("host"):
+                proxy["servername"] = str(d["host"])
+            if net == "ws":
+                proxy["ws-opts"] = {
+                    "path": str(d.get("path", "/")),
+                    "headers": {"Host": str(d.get("host", d["add"]))}
+                }
+            elif net == "grpc":
+                proxy["grpc-opts"] = {"grpc-service-name": str(d.get("path", ""))}
+            return proxy
+
+        parsed = urllib.parse.urlparse(uri)
+        params = urllib.parse.parse_qs(parsed.query)
+        def get_p(k, default=""):
+            vals = params.get(k)
+            return str(next(iter(vals))) if vals else default
+
+        if not (parsed.hostname and parsed.port and parsed.username):
+            return None
+
+        net = get_p("type", "tcp")
+        security = get_p("security", "none")
+        sni = get_p("sni") or get_p("peer") or str(parsed.hostname)
+
+        if uri.startswith("vless://"):
+            proxy = {
+                "name": temp_name,
+                "type": "vless",
+                "server": str(parsed.hostname),
+                "port": int(parsed.port),
+                "uuid": str(parsed.username),
+                "udp": True,
+                "tls": security in ("tls", "reality"),
+                "skip-cert-verify": True,
+                "servername": sni,
+                "network": net
+            }
+            flow = get_p("flow")
+            if flow:
+                proxy["flow"] = flow
+            if security == "reality":
+                pbk = get_p("pbk")
+                if not pbk:
+                    return None
+                proxy["reality-opts"] = {
+                    "public-key": pbk,
+                    "short-id": get_p("sid", "")
+                }
+                proxy["client-fingerprint"] = get_p("fp", "chrome")
+            if net == "ws":
+                proxy["ws-opts"] = {
+                    "path": get_p("path", "/"),
+                    "headers": {"Host": get_p("host", sni)}
+                }
+            elif net == "grpc":
+                proxy["grpc-opts"] = {"grpc-service-name": get_p("serviceName", "")}
+            return proxy
+        if uri.startswith("trojan://"):
+            proxy = {
+                "name": temp_name,
+                "type": "trojan",
+                "server": str(parsed.hostname),
+                "port": int(parsed.port),
+                "password": str(parsed.username),
+                "udp": True,
+                "sni": sni,
+                "skip-cert-verify": True,
+                "network": net
+            }
+            if net == "ws":
+                proxy["ws-opts"] = {
+                    "path": get_p("path", "/"),
+                    "headers": {"Host": get_p("host", sni)}
+                }
+            elif net == "grpc":
+                proxy["grpc-opts"] = {"grpc-service-name": get_p("serviceName", "")}
+            return proxy
+    except Exception:
+        return None
+    return None
 
 def clash_proxy_to_uri(p):
     ptype = p.get("type")
@@ -65,33 +178,18 @@ def clash_proxy_to_uri(p):
         return f"vless://{uuid}@{server}:{port}?security={tls}&type={net}&sni={sni}#{name}"
     return None
 
-def is_valid_uri(uri):
-    try:
-        if uri.startswith("vmess://"):
-            raw_b64 = uri.replace("vmess://", "", 1)
-            b64_part, _, _ = raw_b64.partition("#")
-            data = json.loads(decode_base64_safe(b64_part))
-            if not data.get("add") or not data.get("port") or not data.get("id"):
-                return False
-            return True
-        else:
-            parsed = urllib.parse.urlparse(uri)
-            return bool(parsed.hostname and parsed.port and parsed.username)
-    except Exception:
-        return False
-
 def extract_nodes_from_text(text):
     nodes = set()
     for line in text.splitlines():
         line = line.strip()
-        if any(line.startswith(proto) for proto in PROTOCOLS) and is_valid_uri(line):
+        if any(line.startswith(proto) for proto in PROTOCOLS) and uri_to_clash_dict(line, "test"):
             nodes.add(line)
     
     if not nodes:
         decoded = decode_base64_safe(text)
         for line in decoded.splitlines():
             line = line.strip()
-            if any(line.startswith(proto) for proto in PROTOCOLS) and is_valid_uri(line):
+            if any(line.startswith(proto) for proto in PROTOCOLS) and uri_to_clash_dict(line, "test"):
                 nodes.add(line)
 
     if not nodes and "proxies:" in text:
@@ -100,24 +198,15 @@ def extract_nodes_from_text(text):
             if isinstance(data, dict) and isinstance(data.get("proxies"), list):
                 for p in data["proxies"]:
                     uri = clash_proxy_to_uri(p)
-                    if uri and is_valid_uri(uri):
+                    if uri and uri_to_clash_dict(uri, "test"):
                         nodes.add(uri)
         except Exception:
             pass
     return nodes
 
 def extract_host(uri):
-    try:
-        if uri.startswith("vmess://"):
-            raw_b64 = uri.replace("vmess://", "", 1)
-            b64_part, _, _ = raw_b64.partition("#")
-            data = json.loads(decode_base64_safe(b64_part))
-            return str(data.get("add", "")).strip()
-        else:
-            parsed = urllib.parse.urlparse(uri)
-            return parsed.hostname or ""
-    except Exception:
-        return ""
+    d = uri_to_clash_dict(uri, "test")
+    return d["server"] if d else ""
 
 def load_country_networks():
     networks = []
@@ -130,8 +219,9 @@ def load_country_networks():
                     line = line.strip()
                     if line and not line.startswith("#"):
                         networks.append(ipaddress.ip_network(line))
-        except Exception:
-            pass
+        except Exception as e:
+            log_debug(f"Ошибка загрузки подсетей {code}: {e}")
+    log_debug(f"Загружено CIDR-подсетей стран: {len(networks)}")
     return networks
 
 def filter_by_country(uris, networks, dns_cache):
@@ -154,21 +244,6 @@ def filter_by_country(uris, networks, dns_cache):
             allowed_uris.append(uri)
     return allowed_uris
 
-def make_temp_uri(original_uri, temp_name):
-    if original_uri.startswith("vmess://"):
-        try:
-            raw_b64 = original_uri.replace("vmess://", "", 1)
-            b64_part, _, _ = raw_b64.partition("#")
-            data = json.loads(decode_base64_safe(b64_part))
-            data["ps"] = temp_name
-            if str(data.get("scy", "auto")).lower() in ("null", "none", ""):
-                data["scy"] = "auto"
-            new_b64 = base64.b64encode(json.dumps(data, ensure_ascii=False).encode("utf-8")).decode("utf-8")
-            return f"vmess://{new_b64}"
-        except Exception:
-            return None
-    base_uri, _, _ = original_uri.partition("#")
-    return f"{base_uri}#{temp_name}"
 def load_tested_records():
     records = {}
     if os.path.exists("tested.txt"):
@@ -178,7 +253,6 @@ def load_tested_records():
                 if sep and ping_str.isdigit():
                     records[orig_uri] = int(ping_str)
     return records
-
 def save_results(records):
     sorted_items = sorted(records.items(), key=operator.itemgetter(1))[:MAX_WORKING]
     with open("tested.txt", "w", encoding="utf-8") as f:
@@ -196,31 +270,26 @@ def check_single_proxy(t_name, orig_uri, encoded_test_url):
         if r.status_code == 200 and "delay" in r.json():
             ping = int(r.json()["delay"])
             if 0 < ping < MAX_PING:
-                return orig_uri, ping
-    except Exception:
-        pass
-    return None
+                return orig_uri, ping, "OK"
+            return orig_uri, ping, f"HIGH_PING({ping})"
+        return orig_uri, 0, f"HTTP_{r.status_code}:{r.text[:60]}"
+    except Exception as e:
+        return orig_uri, 0, f"ERR:{e}"
 
 def run_mihomo_batch(chunk, existing_records, encoded_test_url):
     temp_map = {}
-    temp_uris = []
+    proxies_list = []
     for idx, orig_uri in enumerate(chunk):
         t_name = f"node_{idx}"
-        t_uri = make_temp_uri(orig_uri, t_name)
-        if t_uri:
+        p_dict = uri_to_clash_dict(orig_uri, t_name)
+        if p_dict:
             temp_map[t_name] = orig_uri
-            temp_uris.append(t_uri)
+            proxies_list.append(p_dict)
 
-    if not temp_uris:
-        return existing_records, True
+    log_debug(f"Конвертировано в YAML для Mihomo: {len(proxies_list)} из {len(chunk)} узлов.")
+    if not proxies_list:
+        return existing_records
 
-    raw_sub = "\n".join(temp_uris) + "\n"
-    b64_sub = base64.b64encode(raw_sub.encode("utf-8")).decode("utf-8")
-    with open("temp_sub.txt", "w", encoding="utf-8") as f:
-        f.write(b64_sub)
-
-
-    abs_sub_path = os.path.abspath("temp_sub.txt")
     temp_config = {
         "external-controller": "127.0.0.1:9090",
         "dns": {
@@ -228,53 +297,39 @@ def run_mihomo_batch(chunk, existing_records, encoded_test_url):
             "ipv6": False,
             "nameserver": ["1.1.1.1", "8.8.8.8"]
         },
-        "proxy-providers": {
-            "test_pool": {
-                "type": "file",
-                "path": abs_sub_path
-            }
-        },
+        "proxies": proxies_list,
         "proxy-groups": [
             {
                 "name": "AUTO",
                 "type": "select",
-                "use": ["test_pool"]
+                "proxies": list(temp_map.keys())
             }
         ]
     }
     with open("temp_mihomo.yaml", "w", encoding="utf-8") as f:
-        yaml.dump(temp_config, f)
+        yaml.dump(temp_config, f, allow_unicode=True)
 
     mihomo_proc = subprocess.Popen(["./mihomo", "-d", ".", "-f", "temp_mihomo.yaml"])
-    time.sleep(3)
+    time.sleep(2)
 
-    loaded_proxies = {}
-    try:
-        r_all = requests.get(f"{MIHOMO_API}/proxies", timeout=4)
-        if r_all.status_code == 200:
-            loaded_proxies = r_all.json().get("proxies", {})
-    except Exception:
-        pass
-
-    valid_targets = {name: orig for name, orig in temp_map.items() if name in loaded_proxies}
-    provider_ok = len(valid_targets) > 0
-
-    if provider_ok:
-        with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
-            futures = [
-                executor.submit(check_single_proxy, t_name, orig_uri, encoded_test_url)
-                for t_name, orig_uri in valid_targets.items()
-            ]
-            for future in as_completed(futures):
-                res = future.result()
-                if res:
-                    orig_uri, ping = res
-                    if orig_uri not in existing_records or ping < existing_records[orig_uri]:
-                        existing_records[orig_uri] = ping
+    sample_logged = 0
+    with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
+        futures = [
+            executor.submit(check_single_proxy, t_name, orig_uri, encoded_test_url)
+            for t_name, orig_uri in temp_map.items()
+        ]
+        for future in as_completed(futures):
+            orig_uri, ping, status = future.result()
+            if status == "OK":
+                if orig_uri not in existing_records or ping < existing_records[orig_uri]:
+                    existing_records[orig_uri] = ping
+            elif sample_logged < 3:
+                log_debug(f"Пример отказа узла: {status} | {orig_uri[:45]}")
+                sample_logged += 1
 
     mihomo_proc.terminate()
     mihomo_proc.wait()
-    return existing_records, provider_ok
+    return existing_records
 
 def test_nodes_with_mihomo(nodes_to_test, existing_records):
     if not nodes_to_test:
@@ -287,18 +342,11 @@ def test_nodes_with_mihomo(nodes_to_test, existing_records):
             break
 
         chunk = nodes_to_test[start_idx:start_idx + CHUNK_SIZE]
-        existing_records, ok = run_mihomo_batch(chunk, existing_records, encoded_test_url)
-
-        if not ok and len(chunk) > 10:
-            for sub_idx in range(0, len(chunk), 10):
-                if len(existing_records) >= MAX_WORKING:
-                    break
-                sub_chunk = chunk[sub_idx:sub_idx + 10]
-                existing_records, _ = run_mihomo_batch(sub_chunk, existing_records, encoded_test_url)
+        existing_records = run_mihomo_batch(chunk, existing_records, encoded_test_url)
 
         if existing_records:
             existing_records = save_results(existing_records)
-            print(f"Сохранено рабочих серверов: {len(existing_records)}/{MAX_WORKING}")
+            log_debug(f"Сохранено рабочих серверов: {len(existing_records)}/{MAX_WORKING}")
 
     return existing_records
 
@@ -310,9 +358,12 @@ def has_unprocessed_lines(lines):
     return False
 
 def main():
+    with open("debug_log.txt", "w", encoding="utf-8") as f:
+        f.write("=== СТАРТ ПРОВЕРКИ ===\n")
+
     start_time = time.time()
     if not os.path.exists("test.txt"):
-        print("Файл test.txt не найден.")
+        log_debug("Файл test.txt не найден.")
         set_github_output("has_more", "false")
         return
 
@@ -320,7 +371,7 @@ def main():
         lines = f.readlines()
 
     if not has_unprocessed_lines(lines):
-        print("В test.txt нет новых ссылок для обработки.")
+        log_debug("В test.txt нет новых ссылок для обработки.")
         set_github_output("has_more", "false")
         return
 
@@ -329,17 +380,17 @@ def main():
     tested_records = load_tested_records()
 
     if tested_records:
-        print(f"Перепроверка {len(tested_records)} существующих серверов...")
+        log_debug(f"Перепроверка {len(tested_records)} существующих серверов...")
         rechecked = test_nodes_with_mihomo(list(tested_records.keys()), {})
         tested_records = save_results(rechecked)
 
     while has_unprocessed_lines(lines):
         if time.time() - start_time > MAX_RUNTIME_SECONDS:
-            print("Достигнут лимит времени работы (45 мин). Сохраняем прогресс.")
+            log_debug("Достигнут лимит времени работы (45 мин). Сохраняем прогресс.")
             break
 
         if len(tested_records) >= MAX_WORKING:
-            print(f"Набрано {MAX_WORKING} рабочих серверов. Очищаем очередь.")
+            log_debug(f"Набрано {MAX_WORKING} рабочих серверов. Очищаем очередь.")
             lines = [l for l in lines if not l.strip() or l.strip().startswith("#")]
             with open("test.txt", "w", encoding="utf-8") as f:
                 f.writelines(lines)
@@ -360,8 +411,9 @@ def main():
                 continue
 
             processed_in_batch += 1
+            log_debug(f"Обработка строки из test.txt: {stripped[:65]}")
 
-            if any(stripped.startswith(proto) for proto in PROTOCOLS) and is_valid_uri(stripped):
+            if any(stripped.startswith(proto) for proto in PROTOCOLS) and uri_to_clash_dict(stripped, "test"):
                 batch_nodes.add(stripped)
                 continue
 
@@ -370,14 +422,17 @@ def main():
                 url = url_match.group(0)
                 try:
                     resp = requests.get(url, timeout=10)
+                    log_debug(f"HTTP {resp.status_code} | Размер ответа: {len(resp.text)} байт")
                     if resp.status_code == 200:
                         extracted = extract_nodes_from_text(resp.text)
+                        log_debug(f"Извлечено валидных URI: {len(extracted)}")
                         batch_nodes.update(extracted)
-                except Exception:
-                    pass
+                except Exception as e:
+                    log_debug(f"Ошибка скачивания {url[:45]}: {e}")
 
         geo_nodes = filter_by_country(list(batch_nodes), networks, dns_cache)
         unique_geo_nodes = sorted(list(set(geo_nodes)))
+        log_debug(f"После фильтра стран осталось: {len(unique_geo_nodes)}")
 
         with open("testing.txt", "w", encoding="utf-8") as f:
             f.write("\n".join(unique_geo_nodes) + ("\n" if unique_geo_nodes else ""))
@@ -390,7 +445,7 @@ def main():
         lines = new_lines
         with open("test.txt", "w", encoding="utf-8") as f:
             f.writelines(lines)
-        print(f"Порция обработана. Рабочих серверов в базе: {len(tested_records)}/{MAX_WORKING}")
+        log_debug(f"Порция завершена. Итого рабочих: {len(tested_records)}/{MAX_WORKING}")
 
     if os.path.exists("fail_counts.json"):
         os.remove("fail_counts.json")
