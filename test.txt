@@ -1,6 +1,4 @@
-
 #       V2RAY
-
 
 https://github.com/nikita29a/FreeProxyList/raw/refs/heads/main/mirror/21.txt
 https://github.com/nikita29a/FreeProxyList/raw/refs/heads/main/mirror/22.txt
