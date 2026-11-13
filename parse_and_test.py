@@ -21,7 +21,10 @@ CHUNK_SIZE = 100
 MAX_WORKERS = 20
 MAX_RUNTIME_SECONDS = 2700
 
-TEST_URL = "https://cloudflare.com"
+URL_SCHEME = "https://"
+URL_HOST = "cp.cloudflare.com"
+URL_PATH = "/generate_204"
+TEST_URL = URL_SCHEME + URL_HOST + URL_PATH
 EXPECTED_STATUS = 204
 MIHOMO_API = "http://127.0.0.1:9090"
 
