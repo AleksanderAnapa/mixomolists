@@ -10,11 +10,11 @@ import yaml
 FAIL_FILE = "fail_counts.json"
 MIHOMO_API = "http://127.0.0.1:9090"
 MAX_FAILS = 20
+
 URL_SCHEME = "https://"
-URL_HOST = "cp.cloudflare.com"
+URL_HOST = "://cloudflare.com"
 URL_PATH = "/generate_204"
 TEST_URL = URL_SCHEME + URL_HOST + URL_PATH
-EXPECTED_STATUS = 204
 
 def make_temp_uri(original_uri, temp_name):
     if original_uri.startswith("vmess://"):
@@ -23,7 +23,7 @@ def make_temp_uri(original_uri, temp_name):
     return f"{base_uri}#{temp_name}"
 
 def check_node(t_name, orig_uri, encoded_test_url):
-    check_url = f"{MIHOMO_API}/proxies/{t_name}/delay?timeout=4000&url={encoded_test_url}&expected={EXPECTED_STATUS}"
+    check_url = f"{MIHOMO_API}/proxies/{t_name}/delay?timeout=4000&url={encoded_test_url}"
     try:
         r = requests.get(check_url, timeout=5)
         if r.status_code == 200 and "delay" in r.json() and int(r.json()["delay"]) > 0:
@@ -62,6 +62,11 @@ def main():
     abs_mon_path = os.path.abspath("temp_monitor_sub.txt")
     temp_config = {
         "external-controller": "127.0.0.1:9090",
+        "dns": {
+            "enable": True,
+            "ipv6": False,
+            "nameserver": ["1.1.1.1", "8.8.8.8"]
+        },
         "proxy-providers": {
             "final_pool": {
                 "type": "file",
