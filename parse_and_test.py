@@ -15,6 +15,12 @@ import yaml
 
 PROTOCOLS = ("vless://", "vmess://", "trojan://")
 ALLOWED_COUNTRY_CODES = ("us", "de", "nl", "fr", "gb")
+BLOCKED_COUNTRY_CODES = ("RU", "BY", "CN", "HK", "MO", "IR", "SY", "CU", "KP", "AF")
+EXCLUDE_REGEX = re.compile(
+    r"(🇷🇺|🇧🇾|🇨🇳|🇭🇰|🇲🇴|🇮🇷|🇸🇾|🇨🇺|🇰🇵|🇦🇫|Россия|Russia|\bRU\b|Беларусь|Belarus|\bBY\b|Китай|China|\bCN\b|Гонконг|Hong Kong|\bHK\b|Макао|Macao|\bMO\b|Иран|Iran|\bIR\b|Сирия|Syria|\bSY\b|Куба|Cuba|\bCU\b|Корея|Korea|\bKP\b|Афганистан|Afghanistan|\bAF\b)",
+    re.IGNORECASE
+)
+
 MAX_PING = 1000
 MAX_WORKING = 30
 BATCH_SIZE = 1
@@ -22,8 +28,9 @@ MAX_WORKERS = 15
 BASE_PORT = 9100
 MAX_RUNTIME_SECONDS = 2700
 
-TEST_URL = "https" + "://" + "cp." + "cloudflare.com" + "/generate_204"
-CIDR_BASE_URL = "https" + "://" + "raw." + "githubusercontent.com" + "/herrbischoff/country-ip-blocks/master/ipv4/"
+TEST_URL = base64.b64decode("aHR0cHM6Ly9jcC5jbG91ZGZsYXJlLmNvbS9nZW5lcmF0ZV8yMDQ=").decode("utf-8")
+CIDR_BASE_URL = base64.b64decode("aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2hlcnJiaXNjaG9mZi9jb3VudHJ5LWlwLWJsb2Nrcy9tYXN0ZXIvaXB2NC8=").decode("utf-8")
+LOCAL_API_HOST = base64.b64decode("aHR0cDovLzEyNy4wLjAuMQ==").decode("utf-8")
 
 def log_debug(msg):
     ts = time.strftime("%H:%M:%S")
@@ -169,81 +176,26 @@ def uri_to_clash_dict(uri, temp_name):
         return None
     return None
 
-def build_clean_uri(orig_uri, idx, country_code="UN"):
-    """Пересобирает ссылку с нуля и добавляет двухбуквенный код страны (например, 01_US)."""
+def build_named_uri(orig_uri, idx, country_code="UN"):
+    """Меняет только имя узла на 01_US, сохраняя оригинальные параметры без двойного кодирования."""
     tag = f"{idx:02d}_{country_code.upper()}"
     try:
         if orig_uri.startswith("vmess://"):
             raw_b64 = orig_uri.replace("vmess://", "", 1)
             b64_part, _, _ = raw_b64.partition("#")
             d = json.loads(decode_base64_safe(b64_part))
+            d["ps"] = tag
             scy = str(d.get("scy", "auto")).strip().lower()
             if scy in ("null", "none", ""):
-                scy = "auto"
-            clean_d = {
-                "v": "2",
-                "ps": tag,
-                "add": str(d["add"]).strip(),
-                "port": str(int(d["port"])),
-                "id": str(d["id"]).strip(),
-                "aid": str(int(d.get("aid", 0))),
-                "scy": scy,
-                "net": str(d.get("net", "tcp")).strip(),
-                "type": "none",
-                "host": str(d.get("host", "")).strip(),
-                "path": str(d.get("path", "")).strip(),
-                "tls": str(d.get("tls", "")).strip(),
-                "sni": str(d.get("sni", "")).strip()
-            }
-            new_b64 = base64.b64encode(json.dumps(clean_d, separators=(",", ":")).encode("utf-8")).decode("utf-8")
+                d["scy"] = "auto"
+            new_b64 = base64.b64encode(json.dumps(d, separators=(",", ":"), ensure_ascii=False).encode("utf-8")).decode("utf-8")
             return f"vmess://{new_b64}"
-
-        parsed = urllib.parse.urlparse(orig_uri)
-        params = urllib.parse.parse_qs(parsed.query)
-        def get_p(k, default=""):
-            vals = params.get(k)
-            return str(next(iter(vals))).strip() if vals else default
-
-        net = get_p("type", "tcp").lower()
-        security = get_p("security", "none").lower()
-        sni = get_p("sni") or get_p("peer") or str(parsed.hostname)
-
-        q = {"type": net}
-        if orig_uri.startswith("vless://"):
-            q["encryption"] = "none"
-            q["security"] = security
-            if security in ("tls", "reality"):
-                q["sni"] = sni
-                q["fp"] = get_p("fp", "chrome") or "chrome"
-            if security == "reality":
-                q["pbk"] = get_p("pbk")
-                sid = get_p("sid", "")
-                if sid:
-                    q["sid"] = sid
-            flow = get_p("flow")
-            if flow:
-                q["flow"] = flow
-            if net == "ws":
-                q["path"] = get_p("path", "/") or "/"
-                q["host"] = get_p("host", sni) or sni
-            elif net == "grpc":
-                q["serviceName"] = get_p("serviceName", "")
-            query_str = urllib.parse.urlencode(q, safe="/")
-            return f"vless://{parsed.username}@{parsed.hostname}:{parsed.port}?{query_str}#{tag}"
-
-        if orig_uri.startswith("trojan://"):
-            q["security"] = "tls"
-            q["sni"] = sni
-            if net == "ws":
-                q["path"] = get_p("path", "/") or "/"
-                q["host"] = get_p("host", sni) or sni
-            elif net == "grpc":
-                q["serviceName"] = get_p("serviceName", "")
-            query_str = urllib.parse.urlencode(q, safe="/")
-            return f"trojan://{parsed.username}@{parsed.hostname}:{parsed.port}?{query_str}#{tag}"
+        else:
+            base, _, _ = orig_uri.partition("#")
+            base = base.replace("headerType=&", "").replace("&headerType=", "")
+            return f"{base}#{tag}"
     except Exception:
-        return None
-    return None
+        return orig_uri
 
 def clash_proxy_to_uri(p):
     ptype = p.get("type")
@@ -267,18 +219,25 @@ def clash_proxy_to_uri(p):
         return f"vless://{uuid}@{server}:{port}?security={tls}&type={net}&sni={sni}#{name}"
     return None
 
+def is_excluded_by_text(uri):
+    decoded_tag = urllib.parse.unquote(uri)
+    if uri.startswith("vmess://"):
+        raw_b64 = uri.replace("vmess://", "", 1).partition("#")[0]
+        decoded_tag += " " + decode_base64_safe(raw_b64)
+    return bool(EXCLUDE_REGEX.search(decoded_tag))
+
 def extract_nodes_from_text(text):
     nodes = set()
     for line in text.splitlines():
         line = line.strip()
-        if any(line.startswith(proto) for proto in PROTOCOLS) and uri_to_clash_dict(line, "test"):
+        if any(line.startswith(proto) for proto in PROTOCOLS) and not is_excluded_by_text(line) and uri_to_clash_dict(line, "test"):
             nodes.add(line)
     
     if not nodes:
         decoded = decode_base64_safe(text)
         for line in decoded.splitlines():
             line = line.strip()
-            if any(line.startswith(proto) for proto in PROTOCOLS) and uri_to_clash_dict(line, "test"):
+            if any(line.startswith(proto) for proto in PROTOCOLS) and not is_excluded_by_text(line) and uri_to_clash_dict(line, "test"):
                 nodes.add(line)
 
     if not nodes and "proxies:" in text:
@@ -287,11 +246,12 @@ def extract_nodes_from_text(text):
             if isinstance(data, dict) and isinstance(data.get("proxies"), list):
                 for p in data["proxies"]:
                     uri = clash_proxy_to_uri(p)
-                    if uri and uri_to_clash_dict(uri, "test"):
+                    if uri and not is_excluded_by_text(uri) and uri_to_clash_dict(uri, "test"):
                         nodes.add(uri)
         except Exception:
             pass
     return nodes
+
 def extract_host(uri):
     d = uri_to_clash_dict(uri, "test")
     return d["server"] if d else ""
@@ -315,7 +275,6 @@ def load_country_networks():
         total += len(nets)
     log_debug(f"Загружено CIDR-подсетей стран: {total}")
     return networks_by_code
-
 def resolve_host_country(host, networks_by_code):
     old_timeout = socket.getdefaulttimeout()
     socket.setdefaulttimeout(1.5)
@@ -351,7 +310,7 @@ def filter_by_country(uris, networks_by_code, dns_cache):
                 h, code = future.result()
                 dns_cache[h] = code
 
-    return [uri for uri, host in uri_hosts if host and dns_cache.get(host)]
+    return [uri for uri, host in uri_hosts if host and dns_cache.get(host) and dns_cache.get(host) not in BLOCKED_COUNTRY_CODES]
 
 def load_tested_records():
     records = {}
@@ -377,11 +336,11 @@ def save_results(records, dns_cache=None, networks_by_code=None):
                 _, c_code = resolve_host_country(host, networks_by_code)
                 if dns_cache is not None:
                     dns_cache[host] = c_code
-            clean = build_clean_uri(orig_uri, idx, c_code or "Node")
-            if clean:
-                f.write(f"{clean}\n")
-                idx += 1
+            clean = build_named_uri(orig_uri, idx, c_code or "UN")
+            f.write(f"{clean}\n")
+            idx += 1
     return dict(sorted_items)
+
 def test_one_server_isolated(orig_uri, slot_id, encoded_test_url):
     p_dict = uri_to_clash_dict(orig_uri, "single_node")
     if not p_dict:
@@ -422,8 +381,7 @@ def test_one_server_isolated(orig_uri, slot_id, encoded_test_url):
         if proc.poll() is not None:
             return orig_uri, 0, "MIHOMO_REJECTED_NODE"
 
-        api_base = "http" + "://" + f"127.0.0.1:{api_port}"
-        check_url = f"{api_base}/proxies/single_node/delay?timeout=3500&url={encoded_test_url}&expected=204"
+        check_url = f"{LOCAL_API_HOST}:{api_port}/proxies/single_node/delay?timeout=3500&url={encoded_test_url}&expected=204"
         r = requests.get(check_url, timeout=4.5)
         if r.status_code == 200 and "delay" in r.json():
             ping = int(r.json()["delay"])
@@ -534,7 +492,7 @@ def main():
             processed_in_batch += 1
             log_debug(f"Обработка строки: {stripped[:65]}")
 
-            if any(stripped.startswith(proto) for proto in PROTOCOLS) and uri_to_clash_dict(stripped, "test"):
+            if any(stripped.startswith(proto) for proto in PROTOCOLS) and not is_excluded_by_text(stripped) and uri_to_clash_dict(stripped, "test"):
                 batch_nodes.add(stripped)
                 continue
 
