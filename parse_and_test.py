@@ -276,12 +276,15 @@ def make_unique_uri(orig_uri, idx):
             d = json.loads(decode_base64_safe(b64_part))
             old_ps = str(d.get("ps", "Node")).strip()
             d["ps"] = f"{idx:02d}_{old_ps}"
+            if str(d.get("scy", "auto")).lower() in ("null", "none", ""):
+                d["scy"] = "auto"
             new_b64 = base64.b64encode(json.dumps(d, ensure_ascii=False).encode("utf-8")).decode("utf-8")
             return f"vmess://{new_b64}"
         except Exception:
             return orig_uri
     else:
         base, sep, tag = orig_uri.partition("#")
+        base = base.replace("headerType=&", "").replace("&headerType=", "")
         clean_tag = urllib.parse.unquote(tag).strip() if sep and tag else "Node"
         safe_tag = urllib.parse.quote(f"{idx:02d}_{clean_tag}")
         return f"{base}#{safe_tag}"
