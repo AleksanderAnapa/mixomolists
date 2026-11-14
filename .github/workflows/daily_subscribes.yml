@@ -33,7 +33,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@://github.com"
-          git add test.txt
+          git add -A
           git commit -m "Daily append from subscribes.txt" || exit 0
           git pull --rebase origin ${{ github.ref_name }}
           git push
