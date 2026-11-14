@@ -169,8 +169,9 @@ def uri_to_clash_dict(uri, temp_name):
         return None
     return None
 
-def build_clean_uri(orig_uri, idx):
-    """Пересобирает ссылку с нуля без мусорных параметров, дублей и битых кодировок."""
+def build_clean_uri(orig_uri, idx, country_code="UN"):
+    """Пересобирает ссылку с нуля и добавляет двухбуквенный код страны (например, 01_US)."""
+    tag = f"{idx:02d}_{country_code.upper()}"
     try:
         if orig_uri.startswith("vmess://"):
             raw_b64 = orig_uri.replace("vmess://", "", 1)
@@ -181,7 +182,7 @@ def build_clean_uri(orig_uri, idx):
                 scy = "auto"
             clean_d = {
                 "v": "2",
-                "ps": f"{idx:02d}_Node",
+                "ps": tag,
                 "add": str(d["add"]).strip(),
                 "port": str(int(d["port"])),
                 "id": str(d["id"]).strip(),
@@ -206,7 +207,6 @@ def build_clean_uri(orig_uri, idx):
         net = get_p("type", "tcp").lower()
         security = get_p("security", "none").lower()
         sni = get_p("sni") or get_p("peer") or str(parsed.hostname)
-        tag = f"{idx:02d}_Node"
 
         q = {"type": net}
         if orig_uri.startswith("vless://"):
@@ -297,35 +297,43 @@ def extract_host(uri):
     return d["server"] if d else ""
 
 def load_country_networks():
-    networks = []
+    networks_by_code = {}
+    total = 0
     for code in ALLOWED_COUNTRY_CODES:
         url = CIDR_BASE_URL + f"{code}.cidr"
+        nets = []
         try:
             r = requests.get(url, timeout=10)
             if r.status_code == 200:
                 for line in r.text.splitlines():
                     line = line.strip()
                     if line and not line.startswith("#"):
-                        networks.append(ipaddress.ip_network(line))
+                        nets.append(ipaddress.ip_network(line))
         except Exception as e:
             log_debug(f"Ошибка загрузки подсетей {code}: {e}")
-    log_debug(f"Загружено CIDR-подсетей стран: {len(networks)}")
-    return networks
+        networks_by_code[code.upper()] = nets
+        total += len(nets)
+    log_debug(f"Загружено CIDR-подсетей стран: {total}")
+    return networks_by_code
 
-def resolve_host_fast(host, networks):
+def resolve_host_country(host, networks_by_code):
     old_timeout = socket.getdefaulttimeout()
     socket.setdefaulttimeout(1.5)
     try:
         ip_str = socket.gethostbyname(host)
         ip_obj = ipaddress.ip_address(ip_str)
-        return host, any(ip_obj in net for net in networks)
+        for code, nets in networks_by_code.items():
+            if any(ip_obj in net for net in nets):
+                return host, code
+        return host, None
     except Exception:
-        return host, False
+        return host, None
     finally:
         socket.setdefaulttimeout(old_timeout)
 
-def filter_by_country(uris, networks, dns_cache):
-    if not networks:
+def filter_by_country(uris, networks_by_code, dns_cache):
+    has_any_nets = any(len(v) > 0 for v in networks_by_code.values())
+    if not has_any_nets:
         return uris
 
     hosts_to_resolve = set()
@@ -338,12 +346,12 @@ def filter_by_country(uris, networks, dns_cache):
 
     if hosts_to_resolve:
         with ThreadPoolExecutor(max_workers=30) as executor:
-            futures = [executor.submit(resolve_host_fast, h, networks) for h in hosts_to_resolve]
+            futures = [executor.submit(resolve_host_country, h, networks_by_code) for h in hosts_to_resolve]
             for future in as_completed(futures):
-                h, is_allowed = future.result()
-                dns_cache[h] = is_allowed
+                h, code = future.result()
+                dns_cache[h] = code
 
-    return [uri for uri, host in uri_hosts if host and dns_cache.get(host, False)]
+    return [uri for uri, host in uri_hosts if host and dns_cache.get(host)]
 
 def load_tested_records():
     records = {}
@@ -355,7 +363,7 @@ def load_tested_records():
                     records[orig_uri] = int(ping_str)
     return records
 
-def save_results(records):
+def save_results(records, dns_cache=None, networks_by_code=None):
     sorted_items = sorted(records.items(), key=operator.itemgetter(1))[:MAX_WORKING]
     with open("tested.txt", "w", encoding="utf-8") as f:
         for orig_uri, ping in sorted_items:
@@ -363,12 +371,17 @@ def save_results(records):
     with open("final.txt", "w", encoding="utf-8") as f:
         idx = 1
         for orig_uri, _ in sorted_items:
-            clean = build_clean_uri(orig_uri, idx)
+            host = extract_host(orig_uri)
+            c_code = dns_cache.get(host) if dns_cache else None
+            if not c_code and host and networks_by_code:
+                _, c_code = resolve_host_country(host, networks_by_code)
+                if dns_cache is not None:
+                    dns_cache[host] = c_code
+            clean = build_clean_uri(orig_uri, idx, c_code or "Node")
             if clean:
                 f.write(f"{clean}\n")
                 idx += 1
     return dict(sorted_items)
-
 def test_one_server_isolated(orig_uri, slot_id, encoded_test_url):
     p_dict = uri_to_clash_dict(orig_uri, "single_node")
     if not p_dict:
@@ -430,7 +443,7 @@ def test_one_server_isolated(orig_uri, slot_id, encoded_test_url):
         if os.path.exists(cfg_path):
             os.remove(cfg_path)
 
-def test_nodes_individually(nodes_to_test, existing_records):
+def test_nodes_individually(nodes_to_test, existing_records, dns_cache=None, networks_by_code=None):
     if not nodes_to_test:
         return existing_records
 
@@ -454,7 +467,7 @@ def test_nodes_individually(nodes_to_test, existing_records):
                     log_debug(f"[OK {ping}ms] ({len(existing_records)}/{MAX_WORKING}) {orig_uri[:55]}")
 
         if existing_records:
-            existing_records = save_results(existing_records)
+            existing_records = save_results(existing_records, dns_cache, networks_by_code)
 
     return existing_records
 
@@ -483,14 +496,14 @@ def main():
         set_github_output("has_more", "false")
         return
 
-    networks = load_country_networks()
+    networks_by_code = load_country_networks()
     dns_cache = {}
     tested_records = load_tested_records()
 
     if tested_records:
         log_debug(f"Перепроверка {len(tested_records)} существующих серверов...")
-        rechecked = test_nodes_individually(list(tested_records.keys()), {})
-        tested_records = save_results(rechecked)
+        rechecked = test_nodes_individually(list(tested_records.keys()), {}, dns_cache, networks_by_code)
+        tested_records = save_results(rechecked, dns_cache, networks_by_code)
 
     while has_unprocessed_lines(lines):
         if time.time() - start_time > MAX_RUNTIME_SECONDS:
@@ -537,7 +550,7 @@ def main():
                 except Exception as e:
                     log_debug(f"Ошибка скачивания {url[:45]}: {e}")
 
-        geo_nodes = filter_by_country(list(batch_nodes), networks, dns_cache)
+        geo_nodes = filter_by_country(list(batch_nodes), networks_by_code, dns_cache)
         unique_geo_nodes = sorted(list(set(geo_nodes)))
         log_debug(f"После фильтра стран осталось: {len(unique_geo_nodes)}")
 
@@ -546,8 +559,8 @@ def main():
 
         if unique_geo_nodes:
             new_candidates = [u for u in unique_geo_nodes if u not in tested_records]
-            tested_records = test_nodes_individually(new_candidates, tested_records)
-            tested_records = save_results(tested_records)
+            tested_records = test_nodes_individually(new_candidates, tested_records, dns_cache, networks_by_code)
+            tested_records = save_results(tested_records, dns_cache, networks_by_code)
 
         lines = new_lines
         with open("test.txt", "w", encoding="utf-8") as f:
