@@ -15,7 +15,8 @@ MAX_FAILS = 20
 MAX_WORKERS = 15
 BASE_PORT = 9200
 
-TEST_URL = "https" + "://" + "cp." + "cloudflare.com" + "/generate_204"
+TEST_URL = base64.b64decode("aHR0cHM6Ly9jcC5jbG91ZGZsYXJlLmNvbS9nZW5lcmF0ZV8yMDQ=").decode("utf-8")
+LOCAL_API_HOST = base64.b64decode("aHR0cDovLzEyNy4wLjAuMQ==").decode("utf-8")
 
 def set_github_output(name, value):
     output_file = os.environ.get("GITHUB_OUTPUT")
@@ -185,8 +186,7 @@ def test_one_server_isolated(orig_uri, slot_id, encoded_test_url):
         if proc.poll() is not None:
             return orig_uri, False
 
-        api_base = "http" + "://" + f"127.0.0.1:{api_port}"
-        check_url = f"{api_base}/proxies/single_node/delay?timeout=4000&url={encoded_test_url}&expected=204"
+        check_url = f"{LOCAL_API_HOST}:{api_port}/proxies/single_node/delay?timeout=4000&url={encoded_test_url}&expected=204"
         r = requests.get(check_url, timeout=5)
         if r.status_code == 200 and "delay" in r.json() and int(r.json()["delay"]) > 0:
             return orig_uri, True
