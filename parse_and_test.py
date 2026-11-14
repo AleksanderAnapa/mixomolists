@@ -56,45 +56,57 @@ def uri_to_clash_dict(uri, temp_name):
             d = json.loads(decode_base64_safe(b64_part))
             if not d.get("add") or not d.get("port") or not d.get("id"):
                 return None
-            net = str(d.get("net", "tcp"))
+            port = int(d["port"])
+            if not (1 <= port <= 65535):
+                return None
+            net = str(d.get("net", "tcp")).strip().lower()
+            if net not in ("tcp", "ws", "grpc", "http", "h2", "httpupgrade"):
+                return None
             tls = str(d.get("tls", "")).lower() in ("tls", "1", "true")
+            scy = str(d.get("scy", "auto")).strip().lower()
+            if scy in ("null", "none", ""):
+                scy = "auto"
             proxy = {
                 "name": temp_name,
                 "type": "vmess",
                 "server": str(d["add"]).strip(),
-                "port": int(d["port"]),
+                "port": port,
                 "uuid": str(d["id"]).strip(),
                 "alterId": int(d.get("aid", 0)),
-                "cipher": "auto",
+                "cipher": scy,
                 "udp": True,
                 "tls": tls,
                 "skip-cert-verify": True,
                 "network": net
             }
             if d.get("sni"):
-                proxy["servername"] = str(d["sni"])
+                proxy["servername"] = str(d["sni"]).strip()
             elif d.get("host"):
-                proxy["servername"] = str(d["host"])
+                proxy["servername"] = str(d["host"]).strip()
             if net == "ws":
                 proxy["ws-opts"] = {
-                    "path": str(d.get("path", "/")),
-                    "headers": {"Host": str(d.get("host", d["add"]))}
+                    "path": str(d.get("path", "/")).strip() or "/",
+                    "headers": {"Host": str(d.get("host", d["add"])).strip()}
                 }
             elif net == "grpc":
-                proxy["grpc-opts"] = {"grpc-service-name": str(d.get("path", ""))}
+                proxy["grpc-opts"] = {"grpc-service-name": str(d.get("path", "")).strip()}
             return proxy
 
         parsed = urllib.parse.urlparse(uri)
         params = urllib.parse.parse_qs(parsed.query)
         def get_p(k, default=""):
             vals = params.get(k)
-            return str(next(iter(vals))) if vals else default
+            return str(next(iter(vals))).strip() if vals else default
 
         if not (parsed.hostname and parsed.port and parsed.username):
             return None
+        if not (1 <= int(parsed.port) <= 65535):
+            return None
 
-        net = get_p("type", "tcp")
-        security = get_p("security", "none")
+        net = get_p("type", "tcp").lower()
+        if net not in ("tcp", "ws", "grpc", "http", "h2", "httpupgrade", "xhttp", "splithttp"):
+            return None
+        security = get_p("security", "none").lower()
         sni = get_p("sni") or get_p("peer") or str(parsed.hostname)
 
         if uri.startswith("vless://"):
@@ -124,11 +136,11 @@ def uri_to_clash_dict(uri, temp_name):
                     "public-key": pbk,
                     "short-id": sid
                 }
-                proxy["client-fingerprint"] = get_p("fp", "chrome")
+                proxy["client-fingerprint"] = get_p("fp", "chrome") or "chrome"
             if net == "ws":
                 proxy["ws-opts"] = {
-                    "path": get_p("path", "/"),
-                    "headers": {"Host": get_p("host", sni)}
+                    "path": get_p("path", "/") or "/",
+                    "headers": {"Host": get_p("host", sni) or sni}
                 }
             elif net == "grpc":
                 proxy["grpc-opts"] = {"grpc-service-name": get_p("serviceName", "")}
@@ -147,12 +159,88 @@ def uri_to_clash_dict(uri, temp_name):
             }
             if net == "ws":
                 proxy["ws-opts"] = {
-                    "path": get_p("path", "/"),
-                    "headers": {"Host": get_p("host", sni)}
+                    "path": get_p("path", "/") or "/",
+                    "headers": {"Host": get_p("host", sni) or sni}
                 }
             elif net == "grpc":
                 proxy["grpc-opts"] = {"grpc-service-name": get_p("serviceName", "")}
             return proxy
+    except Exception:
+        return None
+    return None
+
+def build_clean_uri(orig_uri, idx):
+    """Пересобирает ссылку с нуля без мусорных параметров, дублей и битых кодировок."""
+    try:
+        if orig_uri.startswith("vmess://"):
+            raw_b64 = orig_uri.replace("vmess://", "", 1)
+            b64_part, _, _ = raw_b64.partition("#")
+            d = json.loads(decode_base64_safe(b64_part))
+            scy = str(d.get("scy", "auto")).strip().lower()
+            if scy in ("null", "none", ""):
+                scy = "auto"
+            clean_d = {
+                "v": "2",
+                "ps": f"{idx:02d}_Node",
+                "add": str(d["add"]).strip(),
+                "port": str(int(d["port"])),
+                "id": str(d["id"]).strip(),
+                "aid": str(int(d.get("aid", 0))),
+                "scy": scy,
+                "net": str(d.get("net", "tcp")).strip(),
+                "type": "none",
+                "host": str(d.get("host", "")).strip(),
+                "path": str(d.get("path", "")).strip(),
+                "tls": str(d.get("tls", "")).strip(),
+                "sni": str(d.get("sni", "")).strip()
+            }
+            new_b64 = base64.b64encode(json.dumps(clean_d, separators=(",", ":")).encode("utf-8")).decode("utf-8")
+            return f"vmess://{new_b64}"
+
+        parsed = urllib.parse.urlparse(orig_uri)
+        params = urllib.parse.parse_qs(parsed.query)
+        def get_p(k, default=""):
+            vals = params.get(k)
+            return str(next(iter(vals))).strip() if vals else default
+
+        net = get_p("type", "tcp").lower()
+        security = get_p("security", "none").lower()
+        sni = get_p("sni") or get_p("peer") or str(parsed.hostname)
+        tag = f"{idx:02d}_Node"
+
+        q = {"type": net}
+        if orig_uri.startswith("vless://"):
+            q["encryption"] = "none"
+            q["security"] = security
+            if security in ("tls", "reality"):
+                q["sni"] = sni
+                q["fp"] = get_p("fp", "chrome") or "chrome"
+            if security == "reality":
+                q["pbk"] = get_p("pbk")
+                sid = get_p("sid", "")
+                if sid:
+                    q["sid"] = sid
+            flow = get_p("flow")
+            if flow:
+                q["flow"] = flow
+            if net == "ws":
+                q["path"] = get_p("path", "/") or "/"
+                q["host"] = get_p("host", sni) or sni
+            elif net == "grpc":
+                q["serviceName"] = get_p("serviceName", "")
+            query_str = urllib.parse.urlencode(q, safe="/")
+            return f"vless://{parsed.username}@{parsed.hostname}:{parsed.port}?{query_str}#{tag}"
+
+        if orig_uri.startswith("trojan://"):
+            q["security"] = "tls"
+            q["sni"] = sni
+            if net == "ws":
+                q["path"] = get_p("path", "/") or "/"
+                q["host"] = get_p("host", sni) or sni
+            elif net == "grpc":
+                q["serviceName"] = get_p("serviceName", "")
+            query_str = urllib.parse.urlencode(q, safe="/")
+            return f"trojan://{parsed.username}@{parsed.hostname}:{parsed.port}?{query_str}#{tag}"
     except Exception:
         return None
     return None
@@ -204,7 +292,6 @@ def extract_nodes_from_text(text):
         except Exception:
             pass
     return nodes
-
 def extract_host(uri):
     d = uri_to_clash_dict(uri, "test")
     return d["server"] if d else ""
@@ -268,36 +355,20 @@ def load_tested_records():
                     records[orig_uri] = int(ping_str)
     return records
 
-def make_unique_uri(orig_uri, idx):
-    if orig_uri.startswith("vmess://"):
-        try:
-            raw_b64 = orig_uri.replace("vmess://", "", 1)
-            b64_part, _, _ = raw_b64.partition("#")
-            d = json.loads(decode_base64_safe(b64_part))
-            old_ps = str(d.get("ps", "Node")).strip()
-            d["ps"] = f"{idx:02d}_{old_ps}"
-            if str(d.get("scy", "auto")).lower() in ("null", "none", ""):
-                d["scy"] = "auto"
-            new_b64 = base64.b64encode(json.dumps(d, ensure_ascii=False).encode("utf-8")).decode("utf-8")
-            return f"vmess://{new_b64}"
-        except Exception:
-            return orig_uri
-    else:
-        base, sep, tag = orig_uri.partition("#")
-        base = base.replace("headerType=&", "").replace("&headerType=", "")
-        clean_tag = urllib.parse.unquote(tag).strip() if sep and tag else "Node"
-        safe_tag = urllib.parse.quote(f"{idx:02d}_{clean_tag}")
-        return f"{base}#{safe_tag}"
-
 def save_results(records):
     sorted_items = sorted(records.items(), key=operator.itemgetter(1))[:MAX_WORKING]
     with open("tested.txt", "w", encoding="utf-8") as f:
         for orig_uri, ping in sorted_items:
             f.write(f"{ping:03d} {orig_uri}\n")
     with open("final.txt", "w", encoding="utf-8") as f:
-        for idx, (orig_uri, _) in enumerate(sorted_items, start=1):
-            f.write(f"{make_unique_uri(orig_uri, idx)}\n")
+        idx = 1
+        for orig_uri, _ in sorted_items:
+            clean = build_clean_uri(orig_uri, idx)
+            if clean:
+                f.write(f"{clean}\n")
+                idx += 1
     return dict(sorted_items)
+
 def test_one_server_isolated(orig_uri, slot_id, encoded_test_url):
     p_dict = uri_to_clash_dict(orig_uri, "single_node")
     if not p_dict:
@@ -364,7 +435,6 @@ def test_nodes_individually(nodes_to_test, existing_records):
         return existing_records
 
     encoded_test_url = urllib.parse.quote(TEST_URL, safe="")
-    sample_logged = 0
 
     for start_idx in range(0, len(nodes_to_test), MAX_WORKERS):
         if len(existing_records) >= MAX_WORKING:
@@ -382,9 +452,6 @@ def test_nodes_individually(nodes_to_test, existing_records):
                     if orig_uri not in existing_records or ping < existing_records[orig_uri]:
                         existing_records[orig_uri] = ping
                     log_debug(f"[OK {ping}ms] ({len(existing_records)}/{MAX_WORKING}) {orig_uri[:55]}")
-                elif sample_logged < 5:
-                    log_debug(f"[ОТБРОШЕН: {status}] {orig_uri[:55]}")
-                    sample_logged += 1
 
         if existing_records:
             existing_records = save_results(existing_records)
