@@ -62,6 +62,15 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh workflow run daily_subscribes.yml --ref ${{ github.ref_name }}
-          sleep 10
+          : > tested.txt
+          if [ -s subscribes.txt ]; then
+            cat subscribes.txt > test.txt
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@://github.com"
+          git add test.txt tested.txt
+          git commit -m "Refill test.txt from subscribes.txt" || true
+          git pull --rebase origin ${{ github.ref_name }}
+          git push
           gh workflow run hourly.yml --ref ${{ github.ref_name }}
+
