@@ -1,7 +1,11 @@
 https://github.com/FLAT447/v2ray-lists/raw/refs/heads/main/BLACK_LTE.txt
 https://github.com/kort0881/vpn-vless-configs-russia/blob/main/output/vless.txt
+https://github.com/igareck/vpn-configs-for-russia/raw/refs/heads/main/WHITE-CIDR-RU-all.txt
 https://github.com/igareck/vpn-configs-for-russia/raw/refs/heads/main/Vless-Reality-White-Lists-Rus-Mobile.txt
 https://github.com/igareck/vpn-configs-for-russia/raw/refs/heads/main/BLACK_VLESS_RUS_mobile.txt
+https://raw.githubusercontent.com/luxxuria/harvester/refs/heads/main/non_ru.txt
+
+https://warp-gen.cyb-portal.org/CP-005
 
 https://raw.githubusercontent.com/Epodonios/bulk-xray-v2ray-vless-vmess-...-configs/main/sub/United%20States/config.txt
 https://raw.githubusercontent.com/Epodonios/bulk-xray-v2ray-vless-vmess-...-configs/main/sub/Germany/config.txt
