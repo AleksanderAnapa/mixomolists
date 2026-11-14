@@ -17,6 +17,12 @@ BASE_PORT = 9200
 
 TEST_URL = "https" + "://" + "cp." + "cloudflare.com" + "/generate_204"
 
+def set_github_output(name, value):
+    output_file = os.environ.get("GITHUB_OUTPUT")
+    if output_file:
+        with open(output_file, "a", encoding="utf-8") as f:
+            f.write(f"{name}={value}\n")
+
 def decode_base64_safe(data):
     try:
         cleaned = re.sub(r"\s+", "", data)
@@ -35,8 +41,11 @@ def uri_to_clash_dict(uri, temp_name):
             d = json.loads(decode_base64_safe(b64_part))
             if not d.get("add") or not d.get("port") or not d.get("id"):
                 return None
-            net = str(d.get("net", "tcp"))
+            net = str(d.get("net", "tcp")).strip().lower()
             tls = str(d.get("tls", "")).lower() in ("tls", "1", "true")
+            scy = str(d.get("scy", "auto")).strip().lower()
+            if scy in ("null", "none", ""):
+                scy = "auto"
             proxy = {
                 "name": temp_name,
                 "type": "vmess",
@@ -44,36 +53,36 @@ def uri_to_clash_dict(uri, temp_name):
                 "port": int(d["port"]),
                 "uuid": str(d["id"]).strip(),
                 "alterId": int(d.get("aid", 0)),
-                "cipher": "auto",
+                "cipher": scy,
                 "udp": True,
                 "tls": tls,
                 "skip-cert-verify": True,
                 "network": net
             }
             if d.get("sni"):
-                proxy["servername"] = str(d["sni"])
+                proxy["servername"] = str(d["sni"]).strip()
             elif d.get("host"):
-                proxy["servername"] = str(d["host"])
+                proxy["servername"] = str(d["host"]).strip()
             if net == "ws":
                 proxy["ws-opts"] = {
-                    "path": str(d.get("path", "/")),
-                    "headers": {"Host": str(d.get("host", d["add"]))}
+                    "path": str(d.get("path", "/")).strip() or "/",
+                    "headers": {"Host": str(d.get("host", d["add"])).strip()}
                 }
             elif net == "grpc":
-                proxy["grpc-opts"] = {"grpc-service-name": str(d.get("path", ""))}
+                proxy["grpc-opts"] = {"grpc-service-name": str(d.get("path", "")).strip()}
             return proxy
 
         parsed = urllib.parse.urlparse(uri)
         params = urllib.parse.parse_qs(parsed.query)
         def get_p(k, default=""):
             vals = params.get(k)
-            return str(next(iter(vals))) if vals else default
+            return str(next(iter(vals))).strip() if vals else default
 
         if not (parsed.hostname and parsed.port and parsed.username):
             return None
 
-        net = get_p("type", "tcp")
-        security = get_p("security", "none")
+        net = get_p("type", "tcp").lower()
+        security = get_p("security", "none").lower()
         sni = get_p("sni") or get_p("peer") or str(parsed.hostname)
 
         if uri.startswith("vless://"):
@@ -103,11 +112,11 @@ def uri_to_clash_dict(uri, temp_name):
                     "public-key": pbk,
                     "short-id": sid
                 }
-                proxy["client-fingerprint"] = get_p("fp", "chrome")
+                proxy["client-fingerprint"] = get_p("fp", "chrome") or "chrome"
             if net == "ws":
                 proxy["ws-opts"] = {
-                    "path": get_p("path", "/"),
-                    "headers": {"Host": get_p("host", sni)}
+                    "path": get_p("path", "/") or "/",
+                    "headers": {"Host": get_p("host", sni) or sni}
                 }
             elif net == "grpc":
                 proxy["grpc-opts"] = {"grpc-service-name": get_p("serviceName", "")}
@@ -126,8 +135,8 @@ def uri_to_clash_dict(uri, temp_name):
             }
             if net == "ws":
                 proxy["ws-opts"] = {
-                    "path": get_p("path", "/"),
-                    "headers": {"Host": get_p("host", sni)}
+                    "path": get_p("path", "/") or "/",
+                    "headers": {"Host": get_p("host", sni) or sni}
                 }
             elif net == "grpc":
                 proxy["grpc-opts"] = {"grpc-service-name": get_p("serviceName", "")}
@@ -196,14 +205,16 @@ def test_one_server_isolated(orig_uri, slot_id, encoded_test_url):
 
 def main():
     if not os.path.exists("final.txt"):
-        print("Файл final.txt отсутствует. Стоп.")
+        print("Файл final.txt отсутствует. Запрашиваем пополнение.")
+        set_github_output("need_refill", "true")
         return
 
     with open("final.txt", "r", encoding="utf-8") as f:
         servers = [line.strip() for line in f if line.strip()]
 
     if not servers:
-        print("Файл final.txt пустой. Стоп.")
+        print("Файл final.txt пустой. Запрашиваем пополнение.")
+        set_github_output("need_refill", "true")
         return
 
     fail_counts = {}
@@ -243,6 +254,13 @@ def main():
 
     with open(FAIL_FILE, "w", encoding="utf-8") as f:
         json.dump(fail_counts, f, ensure_ascii=False, indent=2)
+
+    if not alive_servers:
+        print("Все серверы в final.txt оказались мертвыми. Запрашиваем пополнение.")
+        set_github_output("need_refill", "true")
+    else:
+        print(f"Осталось живых серверов в final.txt: {len(alive_servers)}")
+        set_github_output("need_refill", "false")
 
 if __name__ == "__main__":
     main()
