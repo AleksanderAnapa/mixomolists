@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   group: proxy-repo-sync
@@ -40,6 +41,7 @@ jobs:
           rm -f *.gz
 
       - name: Проверить final.txt
+        id: check_final
         run: |
           python -u monitor.py
           rm -f mihomo
@@ -55,3 +57,11 @@ jobs:
           git pull --rebase origin ${{ github.ref_name }}
           git push
 
+      - name: Запустить пополнение если final.txt пуст
+        if: always() && steps.check_final.outputs.need_refill == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh workflow run daily_subscribes.yml --ref ${{ github.ref_name }}
+          sleep 10
+          gh workflow run hourly.yml --ref ${{ github.ref_name }}
