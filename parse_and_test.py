@@ -23,12 +23,12 @@ BASE_PORT = 9100
 MAX_RUNTIME_SECONDS = 2700
 
 TEST_URL = "https" + "://" + "cp." + "cloudflare.com" + "/generate_204"
-CIDR_BASE_URL = "https" + "://" + "://githubusercontent.com" + "/herrbischoff/country-ip-blocks/master/ipv4/"
+CIDR_BASE_URL = "https" + "://" + "raw." + "githubusercontent.com" + "/herrbischoff/country-ip-blocks/master/ipv4/"
 
 def log_debug(msg):
     ts = time.strftime("%H:%M:%S")
     line = f"[{ts}] {msg}"
-    print(line)
+    print(line, flush=True)
     with open("debug_log.txt", "a", encoding="utf-8") as f:
         f.write(line + "\n")
 
@@ -225,25 +225,38 @@ def load_country_networks():
     log_debug(f"Загружено CIDR-подсетей стран: {len(networks)}")
     return networks
 
+def resolve_host_fast(host, networks):
+    old_timeout = socket.getdefaulttimeout()
+    socket.setdefaulttimeout(1.5)
+    try:
+        ip_str = socket.gethostbyname(host)
+        ip_obj = ipaddress.ip_address(ip_str)
+        return host, any(ip_obj in net for net in networks)
+    except Exception:
+        return host, False
+    finally:
+        socket.setdefaulttimeout(old_timeout)
+
 def filter_by_country(uris, networks, dns_cache):
     if not networks:
         return uris
 
-    allowed_uris = []
+    hosts_to_resolve = set()
+    uri_hosts = []
     for uri in uris:
         host = extract_host(uri)
-        if not host:
-            continue
-        if host not in dns_cache:
-            try:
-                ip_str = socket.gethostbyname(host)
-                ip_obj = ipaddress.ip_address(ip_str)
-                dns_cache[host] = any(ip_obj in net for net in networks)
-            except Exception:
-                dns_cache[host] = False
-        if dns_cache[host]:
-            allowed_uris.append(uri)
-    return allowed_uris
+        uri_hosts.append((uri, host))
+        if host and host not in dns_cache:
+            hosts_to_resolve.add(host)
+
+    if hosts_to_resolve:
+        with ThreadPoolExecutor(max_workers=30) as executor:
+            futures = [executor.submit(resolve_host_fast, h, networks) for h in hosts_to_resolve]
+            for future in as_completed(futures):
+                h, is_allowed = future.result()
+                dns_cache[h] = is_allowed
+
+    return [uri for uri, host in uri_hosts if host and dns_cache.get(host, False)]
 
 def load_tested_records():
     records = {}
@@ -255,14 +268,32 @@ def load_tested_records():
                     records[orig_uri] = int(ping_str)
     return records
 
+def make_unique_uri(orig_uri, idx):
+    if orig_uri.startswith("vmess://"):
+        try:
+            raw_b64 = orig_uri.replace("vmess://", "", 1)
+            b64_part, _, _ = raw_b64.partition("#")
+            d = json.loads(decode_base64_safe(b64_part))
+            old_ps = str(d.get("ps", "Node")).strip()
+            d["ps"] = f"{idx:02d}_{old_ps}"
+            new_b64 = base64.b64encode(json.dumps(d, ensure_ascii=False).encode("utf-8")).decode("utf-8")
+            return f"vmess://{new_b64}"
+        except Exception:
+            return orig_uri
+    else:
+        base, sep, tag = orig_uri.partition("#")
+        clean_tag = urllib.parse.unquote(tag).strip() if sep and tag else "Node"
+        safe_tag = urllib.parse.quote(f"{idx:02d}_{clean_tag}")
+        return f"{base}#{safe_tag}"
+
 def save_results(records):
     sorted_items = sorted(records.items(), key=operator.itemgetter(1))[:MAX_WORKING]
     with open("tested.txt", "w", encoding="utf-8") as f:
         for orig_uri, ping in sorted_items:
             f.write(f"{ping:03d} {orig_uri}\n")
     with open("final.txt", "w", encoding="utf-8") as f:
-        for orig_uri, _ in sorted_items:
-            f.write(f"{orig_uri}\n")
+        for idx, (orig_uri, _) in enumerate(sorted_items, start=1):
+            f.write(f"{make_unique_uri(orig_uri, idx)}\n")
     return dict(sorted_items)
 def test_one_server_isolated(orig_uri, slot_id, encoded_test_url):
     p_dict = uri_to_clash_dict(orig_uri, "single_node")
