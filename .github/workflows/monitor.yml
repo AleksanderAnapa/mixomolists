@@ -68,9 +68,8 @@ jobs:
           fi
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@://github.com"
-          git add test.txt tested.txt
+          git add -A
           git commit -m "Refill test.txt from subscribes.txt" || true
           git pull --rebase origin ${{ github.ref_name }}
           git push
           gh workflow run hourly.yml --ref ${{ github.ref_name }}
-
