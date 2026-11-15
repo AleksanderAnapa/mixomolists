@@ -24,11 +24,11 @@ def set_github_output(name, value):
             f.write(f"{name}={value}\n")
 
 def test_one_server_isolated(orig_uri, slot_id, encoded_test_url):
-    """Тестирует оригинальную ссылку 1-в-1 через провайдер Mihomo без изменения параметров."""
+    """Тестирует оригинальную ссылку 1-в-1 через провайдер Mihomo (в Base64) без изменения параметров."""
     if orig_uri.startswith("vmess://"):
         test_uri = orig_uri
     else:
-        base = orig_uri.rpartition("#")[0] if "#" in orig_uri else orig_uri
+        base, _, _ = orig_uri.rpartition("#") if "#" in orig_uri else (orig_uri, "", "")
         test_uri = f"{base}#single_node"
 
     b64_sub = base64.b64encode((test_uri + "\n").encode("utf-8")).decode("utf-8")
@@ -74,7 +74,7 @@ def test_one_server_isolated(orig_uri, slot_id, encoded_test_url):
             stdout=subprocess.DEVNULL,
             stderr=subprocess.DEVNULL
         )
-        time.sleep(1.0)
+        time.sleep(1.2)
 
         if proc.poll() is not None:
             return orig_uri, False
