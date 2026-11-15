@@ -2,6 +2,7 @@ import base64
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import ipaddress
 import json
+import operator
 import os
 import re
 import socket
@@ -205,7 +206,7 @@ def save_results(records, dns_cache=None, networks_by_code=None):
         prio_idx = priority_order.index(c_up) if c_up in priority_order else 999
         enriched.append((prio_idx, ping, orig_uri, c_up))
 
-    enriched.sort(key=lambda item: (item[0], item[1]))
+    enriched.sort(key=operator.itemgetter(0, 1))
     selected = enriched[:MAX_WORKING]
 
     with open("tested.txt", "w", encoding="utf-8") as f:
@@ -219,13 +220,14 @@ def save_results(records, dns_cache=None, networks_by_code=None):
 
     return {uri: ping for _, ping, uri, _ in selected}
 def test_one_server_isolated(orig_uri, slot_id, encoded_test_url):
-    """Тестирует оригинальную ссылку 1-в-1 через провайдер Mihomo без изменения параметров."""
+    """Тестирует оригинальную ссылку 1-в-1 через провайдер Mihomo (в Base64) без изменения параметров."""
     if orig_uri.startswith("vmess://"):
         test_uri = orig_uri
     else:
         base, _, _ = orig_uri.rpartition("#") if "#" in orig_uri else (orig_uri, "", "")
         test_uri = f"{base}#single_node"
 
+    b64_sub = base64.b64encode((test_uri + "\n").encode("utf-8")).decode("utf-8")
     api_port = BASE_PORT + slot_id
 
     fd_sub, sub_path = tempfile.mkstemp(prefix=f"sub_{slot_id}_", suffix=".txt", dir=".")
@@ -236,7 +238,7 @@ def test_one_server_isolated(orig_uri, slot_id, encoded_test_url):
     proc = None
     try:
         with open(sub_path, "w", encoding="utf-8") as f:
-            f.write(test_uri + "\n")
+            f.write(b64_sub)
 
         temp_config = {
             "external-controller": f"127.0.0.1:{api_port}",
@@ -268,7 +270,7 @@ def test_one_server_isolated(orig_uri, slot_id, encoded_test_url):
             stdout=subprocess.DEVNULL,
             stderr=subprocess.DEVNULL
         )
-        time.sleep(1.0)
+        time.sleep(1.2)
 
         if proc.poll() is not None:
             return orig_uri, 0, "MIHOMO_CRASH"
@@ -314,6 +316,7 @@ def test_nodes_individually(nodes_to_test, existing_records, dns_cache=None, net
         return existing_records
 
     encoded_test_url = urllib.parse.quote(TEST_URL, safe="")
+    sample_logged = 0
 
     for start_idx in range(0, len(nodes_to_test), MAX_WORKERS):
         if len(existing_records) >= MAX_WORKING:
@@ -331,6 +334,9 @@ def test_nodes_individually(nodes_to_test, existing_records, dns_cache=None, net
                     if orig_uri not in existing_records or ping < existing_records[orig_uri]:
                         existing_records[orig_uri] = ping
                     log_debug(f"[OK {ping}ms] ({len(existing_records)}/{MAX_WORKING}) {orig_uri[:55]}")
+                elif sample_logged < 5:
+                    log_debug(f"[ОТБРОШЕН: {status}] {orig_uri[:55]}")
+                    sample_logged += 1
 
         if existing_records:
             existing_records = save_results(existing_records, dns_cache, networks_by_code)
