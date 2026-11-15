@@ -117,7 +117,6 @@ def uri_to_clash_dict(uri, temp_name):
             return None
         security = get_p("security", "none").lower()
         sni = get_p("sni") or get_p("peer") or str(parsed.hostname)
-
         if uri.startswith("vless://"):
             proxy = {
                 "name": temp_name,
@@ -154,6 +153,7 @@ def uri_to_clash_dict(uri, temp_name):
             elif net == "grpc":
                 proxy["grpc-opts"] = {"grpc-service-name": get_p("serviceName", "")}
             return proxy
+
         if uri.startswith("trojan://"):
             proxy = {
                 "name": temp_name,
@@ -225,10 +225,9 @@ def clash_proxy_to_uri(p):
 def is_excluded_by_text(uri):
     decoded_tag = urllib.parse.unquote(uri)
     if uri.startswith("vmess://"):
-        raw_b64 = uri.replace("vmess://", "", 1).partition("#")[0]
+        raw_b64 = uri.replace("vmess://", "", 1).partition("#")
         decoded_tag += " " + decode_base64_safe(raw_b64)
     return bool(EXCLUDE_REGEX.search(decoded_tag))
-
 def extract_nodes_from_text(text):
     nodes = set()
     for line in text.splitlines():
@@ -278,6 +277,7 @@ def load_country_networks():
         total += len(nets)
     log_debug(f"Загружено CIDR-подсетей стран: {total}")
     return networks_by_code
+
 def resolve_host_country(host, networks_by_code, use_api_fallback=False):
     old_timeout = socket.getdefaulttimeout()
     socket.setdefaulttimeout(1.5)
@@ -349,7 +349,6 @@ def save_results(records, dns_cache=None, networks_by_code=None):
             f.write(f"{clean}\n")
             idx += 1
     return dict(sorted_items)
-
 def test_one_server_isolated(orig_uri, slot_id, encoded_test_url):
     p_dict = uri_to_clash_dict(orig_uri, "single_node")
     if not p_dict:
@@ -532,12 +531,15 @@ def main():
         lines = new_lines
         with open("test.txt", "w", encoding="utf-8") as f:
             f.writelines(lines)
-            log_debug(f"Строка завершена. Итого рабочих: {len(tested_records)}/{MAX_WORKING}")
-       if os.path.exists("fail_counts.json"):
-            os.remove("fail_counts.json")
-       if has_unprocessed_lines(lines):
-            set_github_output("has_more", "true")
-       else:
-            set_github_output("has_more", "false")
-       if name == "main":
-            main()
+        log_debug(f"Строка завершена. Итого рабочих: {len(tested_records)}/{MAX_WORKING}")
+
+    if os.path.exists("fail_counts.json"):
+        os.remove("fail_counts.json")
+
+    if has_unprocessed_lines(lines):
+        set_github_output("has_more", "true")
+    else:
+        set_github_output("has_more", "false")
+
+if __name__ == "__main__":
+    main()
