@@ -14,14 +14,14 @@ import requests
 import yaml
 
 PROTOCOLS = ("vless://", "vmess://", "trojan://")
-ALLOWED_COUNTRY_CODES = ("us", "de", "nl", "fr", "gb")
+ALLOWED_COUNTRY_CODES = ("de", "nl", "fr", "gb", "us")
 BLOCKED_COUNTRY_CODES = ("RU", "BY", "CN", "HK", "MO", "IR", "SY", "CU", "KP", "AF")
 EXCLUDE_REGEX = re.compile(
     r"(🇷🇺|🇧🇾|🇨🇳|🇭🇰|🇲🇴|🇮🇷|🇸🇾|🇨🇺|🇰🇵|🇦🇫|Россия|Russia|\bRU\b|Беларусь|Belarus|\bBY\b|Китай|China|\bCN\b|Гонконг|Hong Kong|\bHK\b|Макао|Macao|\bMO\b|Иран|Iran|\bIR\b|Сирия|Syria|\bSY\b|Куба|Cuba|\bCU\b|Корея|Korea|\bKP\b|Афганистан|Afghanistan|\bAF\b)",
     re.IGNORECASE
 )
 
-MAX_PING = 1000
+MAX_PING = 300
 MAX_WORKING = 30
 BATCH_SIZE = 1
 MAX_WORKERS = 15
@@ -179,7 +179,7 @@ def uri_to_clash_dict(uri, temp_name):
     return None
 
 def build_named_uri(orig_uri, idx, country_code="UN"):
-    """Меняет только имя узла на 01_US и чистит &amp;."""
+    """Меняет только имя узла на 01_DE и корректно очищает пустой headerType."""
     tag = f"{idx:02d}_{country_code.upper()}"
     try:
         orig_uri = orig_uri.replace("&amp;", "&")
@@ -195,7 +195,7 @@ def build_named_uri(orig_uri, idx, country_code="UN"):
             return f"vmess://{new_b64}"
         else:
             base, _, _ = orig_uri.partition("#")
-            base = base.replace("headerType=&", "").replace("&headerType=", "")
+            base = re.sub(r"([?&])headerType=[^&]*&?", r"\1", base).rstrip("?&")
             return f"{base}#{tag}"
     except Exception:
         return orig_uri
@@ -225,7 +225,7 @@ def clash_proxy_to_uri(p):
 def is_excluded_by_text(uri):
     decoded_tag = urllib.parse.unquote(uri)
     if uri.startswith("vmess://"):
-        raw_b64 = uri.replace("vmess://", "", 1).partition("#")
+        raw_b64 = uri.replace("vmess://", "", 1).partition("#")[0]
         decoded_tag += " " + decode_base64_safe(raw_b64)
     return bool(EXCLUDE_REGEX.search(decoded_tag))
 def extract_nodes_from_text(text):
@@ -284,9 +284,10 @@ def resolve_host_country(host, networks_by_code, use_api_fallback=False):
     try:
         ip_str = socket.gethostbyname(host)
         ip_obj = ipaddress.ip_address(ip_str)
-        for code, nets in networks_by_code.items():
-            if any(ip_obj in net for net in nets):
-                return host, code
+        for code in ALLOWED_COUNTRY_CODES:
+            c_up = code.upper()
+            if any(ip_obj in net for net in networks_by_code.get(c_up, ())):
+                return host, c_up
         if use_api_fallback:
             r = requests.get(f"{GEO_API_URL}{ip_str}", timeout=4)
             if r.status_code == 200:
@@ -299,7 +300,8 @@ def resolve_host_country(host, networks_by_code, use_api_fallback=False):
     finally:
         socket.setdefaulttimeout(old_timeout)
 
-def filter_by_country(uris, networks_by_code, dns_cache):
+def filter_and_sort_by_priority(uris, networks_by_code, dns_cache):
+    """Оставляет только разрешенные страны и сортирует их строго по приоритету DE -> NL -> FR -> GB -> US."""
     has_any_nets = any(len(v) > 0 for v in networks_by_code.values())
     if not has_any_nets:
         return uris
@@ -319,7 +321,13 @@ def filter_by_country(uris, networks_by_code, dns_cache):
                 h, code = future.result()
                 dns_cache[h] = code
 
-    return [uri for uri, host in uri_hosts if host and dns_cache.get(host) and dns_cache.get(host) not in BLOCKED_COUNTRY_CODES]
+    priority_order = [c.upper() for c in ALLOWED_COUNTRY_CODES]
+    ordered_uris = []
+    for target_cc in priority_order:
+        for uri, host in uri_hosts:
+            if host and dns_cache.get(host) == target_cc:
+                ordered_uris.append(uri)
+    return ordered_uris
 
 def load_tested_records():
     records = {}
@@ -332,23 +340,37 @@ def load_tested_records():
     return records
 
 def save_results(records, dns_cache=None, networks_by_code=None):
-    sorted_items = sorted(records.items(), key=operator.itemgetter(1))[:MAX_WORKING]
+    priority_order = [c.upper() for c in ALLOWED_COUNTRY_CODES]
+    enriched = []
+    for orig_uri, ping in records.items():
+        if ping >= MAX_PING:
+            continue
+        host = extract_host(orig_uri)
+        c_code = dns_cache.get(host) if dns_cache else None
+        if not c_code and host:
+            _, c_code = resolve_host_country(host, networks_by_code or {}, True)
+            if dns_cache is not None and c_code:
+                dns_cache[host] = c_code
+        c_up = (c_code or "UN").upper()
+        if c_up in BLOCKED_COUNTRY_CODES:
+            continue
+        prio_idx = priority_order.index(c_up) if c_up in priority_order else 999
+        enriched.append((prio_idx, ping, orig_uri, c_up))
+
+    # Сортируем: сначала по приоритету страны (DE -> NL -> FR -> GB -> US), затем по пингу
+    enriched.sort(key=lambda item: (item[0], item[1]))
+    selected = enriched[:MAX_WORKING]
+
     with open("tested.txt", "w", encoding="utf-8") as f:
-        for orig_uri, ping in sorted_items:
+        for _, ping, orig_uri, _ in selected:
             f.write(f"{ping:03d} {orig_uri}\n")
+
     with open("final.txt", "w", encoding="utf-8") as f:
-        idx = 1
-        for orig_uri, _ in sorted_items:
-            host = extract_host(orig_uri)
-            c_code = dns_cache.get(host) if dns_cache else None
-            if not c_code and host:
-                _, c_code = resolve_host_country(host, networks_by_code or {}, True)
-                if dns_cache is not None and c_code:
-                    dns_cache[host] = c_code
-            clean = build_named_uri(orig_uri, idx, c_code or "UN")
+        for idx, (_, _, orig_uri, c_up) in enumerate(selected, start=1):
+            clean = build_named_uri(orig_uri, idx, c_up)
             f.write(f"{clean}\n")
-            idx += 1
-    return dict(sorted_items)
+
+    return {uri: ping for _, ping, uri, _ in selected}
 def test_one_server_isolated(orig_uri, slot_id, encoded_test_url):
     p_dict = uri_to_clash_dict(orig_uri, "single_node")
     if not p_dict:
@@ -516,9 +538,8 @@ def main():
                 except Exception as e:
                     log_debug(f"Ошибка скачивания {url[:45]}: {e}")
 
-        geo_nodes = filter_by_country(list(batch_nodes), networks_by_code, dns_cache)
-        unique_geo_nodes = sorted(list(set(geo_nodes)))
-        log_debug(f"После фильтра стран осталось: {len(unique_geo_nodes)}")
+        unique_geo_nodes = filter_and_sort_by_priority(list(set(batch_nodes)), networks_by_code, dns_cache)
+        log_debug(f"После фильтра стран (DE->NL->FR->GB->US) осталось: {len(unique_geo_nodes)}")
 
         with open("testing.txt", "w", encoding="utf-8") as f:
             f.write("\n".join(unique_geo_nodes) + ("\n" if unique_geo_nodes else ""))
