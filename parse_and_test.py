@@ -59,17 +59,13 @@ def extract_host(uri):
     try:
         if uri.startswith("vmess://"):
             body = uri.replace("vmess://", "", 1)
-            raw_b64 = body.rpartition("#")[0] if "#" in body else body
+            raw_b64, _, _ = body.rpartition("#") if "#" in body else (body, "", "")
             d = json.loads(decode_base64_safe(raw_b64))
             return str(d.get("add", "")).strip()
         else:
-            clean_uri = uri.rpartition("#")[0] if "#" in uri else uri
-            after_proto = clean_uri.split("://", 1)[1]
-            after_at = after_proto.split("@", 1)[-1]
-            host_port = after_at.split("/", 1)[0].split("?", 1)[0]
-            if host_port.startswith("["):
-                return host_port.split("]")[0] + "]"
-            return host_port.split(":")[0].strip()
+            clean_uri, _, _ = uri.rpartition("#") if "#" in uri else (uri, "", "")
+            parsed = urllib.parse.urlparse(clean_uri)
+            return str(parsed.hostname or "").strip()
     except Exception:
         return ""
 
@@ -83,7 +79,7 @@ def is_excluded_by_text(uri):
     decoded_tag = urllib.parse.unquote(uri)
     if uri.startswith("vmess://"):
         body = uri.replace("vmess://", "", 1)
-        raw_b64 = body.rpartition("#")[0] if "#" in body else body
+        raw_b64, _, _ = body.rpartition("#") if "#" in body else (body, "", "")
         decoded_tag += " " + decode_base64_safe(raw_b64)
     return bool(EXCLUDE_REGEX.search(decoded_tag))
 
@@ -227,10 +223,9 @@ def test_one_server_isolated(orig_uri, slot_id, encoded_test_url):
     if orig_uri.startswith("vmess://"):
         test_uri = orig_uri
     else:
-        base = orig_uri.rpartition("#")[0] if "#" in orig_uri else orig_uri
+        base, _, _ = orig_uri.rpartition("#") if "#" in orig_uri else (orig_uri, "", "")
         test_uri = f"{base}#single_node"
 
-    b64_sub = base64.b64encode((test_uri + "\n").encode("utf-8")).decode("utf-8")
     api_port = BASE_PORT + slot_id
 
     fd_sub, sub_path = tempfile.mkstemp(prefix=f"sub_{slot_id}_", suffix=".txt", dir=".")
@@ -241,7 +236,7 @@ def test_one_server_isolated(orig_uri, slot_id, encoded_test_url):
     proc = None
     try:
         with open(sub_path, "w", encoding="utf-8") as f:
-            f.write(b64_sub)
+            f.write(test_uri + "\n")
 
         temp_config = {
             "external-controller": f"127.0.0.1:{api_port}",
