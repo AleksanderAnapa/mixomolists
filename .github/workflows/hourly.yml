@@ -49,7 +49,7 @@ jobs:
       - name: Сохранить прогресс в репозитории
         if: always()
         run: |
-          rm -f mihomo mihomo_*.yaml
+          rm -f mihomo mihomo_*.yaml sub_*.txt
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@://github.com"
           git add -A
