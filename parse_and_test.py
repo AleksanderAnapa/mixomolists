@@ -179,23 +179,18 @@ def uri_to_clash_dict(uri, temp_name):
     return None
 
 def build_named_uri(orig_uri, idx, country_code="UN"):
-    """Меняет только имя узла на 01_DE и корректно очищает пустой headerType."""
+    """Меняет только имя узла после #, оставляя саму ссылку нетронутой."""
     tag = f"{idx:02d}_{country_code.upper()}"
     try:
-        orig_uri = orig_uri.replace("&amp;", "&")
         if orig_uri.startswith("vmess://"):
             raw_b64 = orig_uri.replace("vmess://", "", 1)
             b64_part, _, _ = raw_b64.partition("#")
             d = json.loads(decode_base64_safe(b64_part))
             d["ps"] = tag
-            scy = str(d.get("scy", "auto")).strip().lower()
-            if scy in ("null", "none", ""):
-                d["scy"] = "auto"
             new_b64 = base64.b64encode(json.dumps(d, separators=(",", ":"), ensure_ascii=False).encode("utf-8")).decode("utf-8")
             return f"vmess://{new_b64}"
         else:
             base, _, _ = orig_uri.partition("#")
-            base = re.sub(r"([?&])headerType=[^&]*&?", r"\1", base).rstrip("?&")
             return f"{base}#{tag}"
     except Exception:
         return orig_uri
