@@ -1,2 +1,111 @@
 === СТАРТ ИНДИВИДУАЛЬНОЙ ПРОВЕРКИ ===
-[01:28:59] В test.txt нет новых ссылок для обработки.
+[08:44:06] Загружено CIDR-подсетей стран: 0
+[08:44:06] Перепроверка 30 существующих серверов...
+[08:44:07] [OK 136ms] (1/30) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@169.197.140.2
+[08:44:07] [OK 102ms] (2/30) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@170.101.101.1
+[08:44:07] [OK 189ms] (3/30) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.156.6
+[08:44:07] [OK 156ms] (4/30) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@169.197.140.2
+[08:44:07] [OK 232ms] (5/30) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.155.5
+[08:44:07] [OK 357ms] (6/30) vless://59548d2d-5d7c-4328-aa81-0d5614da0c1b@198.247.12
+[08:44:07] [OK 367ms] (7/30) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@167.88.61.198
+[08:44:07] [OK 390ms] (8/30) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@167.88.61.193
+[08:44:07] [OK 385ms] (9/30) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@193.108.119.7
+[08:44:07] [OK 488ms] (10/30) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@167.88.61.193
+[08:44:08] [OK 283ms] (11/30) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.155.5
+[08:44:08] [OK 254ms] (12/30) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.106.186.4
+[08:44:08] [OK 260ms] (13/30) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.106.186.3
+[08:44:08] [OK 527ms] (14/30) vless://667016ca-f02e-4b5f-bfc3-3d8ed81e9bec@base.hosam
+[08:44:08] [OK 550ms] (15/30) vless://97fd7807-7e2b-49da-8a0e-e40197088f97@196.240.12
+[08:44:08] [OK 607ms] (16/30) vless://97fd7807-7e2b-49da-8a0e-e40197088f97@196.240.12
+[08:44:09] [OK 700ms] (17/30) vless://97fd7807-7e2b-49da-8a0e-e40197088f97@196.240.12
+[08:44:09] [OK 738ms] (18/30) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@158.247.253.2
+[08:44:11] Обработка строки: https://github.com/FLAT447/v2ray-lists/raw/refs/heads/main/BLACK_
+[08:44:12] Извлечено валидных URI: 24
+[08:44:12] После фильтра стран осталось: 24
+[08:44:20] Строка завершена. Итого рабочих: 18/30
+[08:44:20] Обработка строки: https://github.com/kort0881/vpn-vless-configs-russia/blob/main/ou
+[08:44:21] Извлечено валидных URI: 0
+[08:44:21] После фильтра стран осталось: 0
+[08:44:21] Строка завершена. Итого рабочих: 18/30
+[08:44:21] Обработка строки: https://github.com/igareck/vpn-configs-for-russia/raw/refs/heads/
+[08:44:21] Извлечено валидных URI: 126
+[08:44:21] После фильтра стран осталось: 126
+[08:44:47] Строка завершена. Итого рабочих: 18/30
+[08:44:47] Обработка строки: https://github.com/igareck/vpn-configs-for-russia/raw/refs/heads/
+[08:44:47] Извлечено валидных URI: 126
+[08:44:47] После фильтра стран осталось: 126
+[08:44:58] [OK 932ms] (19/30) vless://4b50270b-5caf-4c34-b3da-17b4525604a6@201.34.133
+[08:45:14] Строка завершена. Итого рабочих: 19/30
+[08:45:14] Обработка строки: https://github.com/igareck/vpn-configs-for-russia/raw/refs/heads/
+[08:45:14] Извлечено валидных URI: 143
+[08:45:14] После фильтра стран осталось: 143
+[08:45:21] [OK 401ms] (20/30) vless://555b35c4-30f9-40c6-a61a-7f53ab1bea45@5.175.211.
+[08:45:40] [OK 457ms] (21/30) vmess://eyJhZGQiOiJVUzEyMjIwOC5zc2dyZWVuLm9yZyIsImFpZCI
+[08:45:40] [OK 466ms] (22/30) vmess://eyJ2IjoiMiIsInBzIjoi8J+HuvCfh7ggVW5pdGVkIFN0YXR
+[08:45:40] [OK 481ms] (23/30) vmess://eyJ2IjoiMiIsInBzIjoi8J+HuvCfh7ggVW5pdGVkIFN0YXR
+[08:45:40] [OK 490ms] (24/30) vmess://eyJ2IjoiMiIsInBzIjoi8J+HuvCfh7ggVW5pdGVkIFN0YXR
+[08:45:43] Строка завершена. Итого рабочих: 24/30
+[08:45:43] Обработка строки: https://raw.githubusercontent.com/luxxuria/harvester/refs/heads/m
+[08:45:43] Извлечено валидных URI: 10
+[08:45:43] После фильтра стран осталось: 10
+[08:45:47] Строка завершена. Итого рабочих: 24/30
+[08:45:47] Обработка строки: https://warp-gen.cyb-portal.org/CP-005
+[08:45:48] Извлечено валидных URI: 61
+[08:45:48] После фильтра стран осталось: 61
+[08:46:04] Строка завершена. Итого рабочих: 24/30
+[08:46:04] Обработка строки: https://raw.githubusercontent.com/Epodonios/bulk-xray-v2ray-vless
+[08:46:04] После фильтра стран осталось: 0
+[08:46:04] Строка завершена. Итого рабочих: 24/30
+[08:46:04] Обработка строки: https://raw.githubusercontent.com/Epodonios/bulk-xray-v2ray-vless
+[08:46:04] После фильтра стран осталось: 0
+[08:46:04] Строка завершена. Итого рабочих: 24/30
+[08:46:04] Обработка строки: https://raw.githubusercontent.com/Epodonios/bulk-xray-v2ray-vless
+[08:46:04] После фильтра стран осталось: 0
+[08:46:04] Строка завершена. Итого рабочих: 24/30
+[08:46:04] Обработка строки: https://github.com/Epodonios/bulk-xray-v2ray-vless-vmess-...-conf
+[08:46:04] После фильтра стран осталось: 0
+[08:46:04] Строка завершена. Итого рабочих: 24/30
+[08:46:04] Обработка строки: https://github.com/mermeroo/V2RAY-FREE/raw/main/All_Configs_base6
+[08:46:04] После фильтра стран осталось: 0
+[08:46:04] Строка завершена. Итого рабочих: 24/30
+[08:46:04] Обработка строки: https://raw.githubusercontent.com/mermeroo/free-v2ray-collector/m
+[08:46:04] После фильтра стран осталось: 0
+[08:46:04] Строка завершена. Итого рабочих: 24/30
+[08:46:04] Обработка строки: https://raw.githubusercontent.com/mermeroo/free-v2ray-collector/m
+[08:46:04] После фильтра стран осталось: 0
+[08:46:04] Строка завершена. Итого рабочих: 24/30
+[08:46:04] Обработка строки: https://raw.githubusercontent.com/mermeroo/free-v2ray-collector/m
+[08:46:04] После фильтра стран осталось: 0
+[08:46:04] Строка завершена. Итого рабочих: 24/30
+[08:46:04] Обработка строки: https://raw.githubusercontent.com/mermeroo/free-v2ray-collector/m
+[08:46:04] После фильтра стран осталось: 0
+[08:46:04] Строка завершена. Итого рабочих: 24/30
+[08:46:04] Обработка строки: https://raw.githubusercontent.com/mermeroo/free-v2ray-collector/m
+[08:46:04] После фильтра стран осталось: 0
+[08:46:04] Строка завершена. Итого рабочих: 24/30
+[08:46:04] Обработка строки: https://raw.githubusercontent.com/AzadNetCH/Clash/refs/heads/main
+[08:46:04] Извлечено валидных URI: 6
+[08:46:04] После фильтра стран осталось: 6
+[08:46:09] Строка завершена. Итого рабочих: 24/30
+[08:46:09] Обработка строки: https://raw.githubusercontent.com/w1770946466/Auto_proxy/main/Lon
+[08:46:09] Извлечено валидных URI: 249
+[08:46:09] После фильтра стран осталось: 249
+[08:47:23] Строка завершена. Итого рабочих: 24/30
+[08:47:23] Обработка строки: https://raw.githubusercontent.com/ermaozi01/free_clash_vpn/main/s
+[08:47:23] Извлечено валидных URI: 7
+[08:47:23] После фильтра стран осталось: 7
+[08:47:24] [OK 462ms] (25/30) vmess://eyJ2IjoiMiIsInBzIjoi8J+HuvCfh7gg5py65Zy65o6o6I2
+[08:47:24] [OK 468ms] (26/30) vmess://eyJ2IjoiMiIsInBzIjoiQERlbHRhS3JvbmVja2VyR2l0aHV
+[08:47:24] [OK 474ms] (27/30) vmess://eyJ2IjoiMiIsInBzIjoi8J+HuvCfh7hfVVNf576O5Zu9X0l
+[08:47:24] [OK 497ms] (28/30) vmess://eyJ2IjoiMiIsInBzIjoi8J+HuvCfh7gg5py65Zy65o6o6I2
+[08:47:27] Строка завершена. Итого рабочих: 28/30
+[08:47:27] Обработка строки: https://raw.githubusercontent.com/mheidari98/.proxy/main/all
+[08:47:29] Извлечено валидных URI: 9007
+[08:47:29] После фильтра стран осталось: 9007
+[08:47:34] [OK 129ms] (29/30) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@169.197.140.1
+[08:47:34] [OK 139ms] (30/30) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@169.197.140.2
+[08:47:34] [OK 162ms] (31/30) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@169.197.140.1
+[08:47:35] [OK 361ms] (32/30) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@167.88.61.198
+[08:47:35] [OK 879ms] (33/30) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@139.84.231.14
+[08:47:35] Строка завершена. Итого рабочих: 30/30
+[08:47:35] Набрано 30 рабочих серверов. Очищаем очередь.
