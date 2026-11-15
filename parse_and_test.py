@@ -29,7 +29,8 @@ BASE_PORT = 9100
 MAX_RUNTIME_SECONDS = 2700
 
 TEST_URL = base64.b64decode("aHR0cHM6Ly9jcC5jbG91ZGZsYXJlLmNvbS9nZW5lcmF0ZV8yMDQ=").decode("utf-8")
-CIDR_BASE_URL = base64.b64decode("aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2hlcnJiaXNjaG9mZi9jb3VudHJ5LWlwLWJsb2Nrcy9tYXN0ZXIvaXB2NC8=").decode("utf-8")
+CIDR_BASE_URL = base64.b64decode("aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2lwdmVyc2UvcmlyLWlwL21hc3Rlci9jb3VudHJ5Lw==").decode("utf-8")
+GEO_API_URL = base64.b64decode("aHR0cHM6Ly9pcHdoby5pcy8=").decode("utf-8")
 LOCAL_API_HOST = base64.b64decode("aHR0cDovLzEyNy4wLjAuMQ==").decode("utf-8")
 
 def log_debug(msg):
@@ -57,6 +58,7 @@ def decode_base64_safe(data):
 
 def uri_to_clash_dict(uri, temp_name):
     try:
+        uri = uri.replace("&amp;", "&")
         if uri.startswith("vmess://"):
             raw_b64 = uri.replace("vmess://", "", 1)
             b64_part, _, _ = raw_b64.partition("#")
@@ -177,9 +179,10 @@ def uri_to_clash_dict(uri, temp_name):
     return None
 
 def build_named_uri(orig_uri, idx, country_code="UN"):
-    """Меняет только имя узла на 01_US, сохраняя оригинальные параметры без двойного кодирования."""
+    """Меняет только имя узла на 01_US и чистит &amp;."""
     tag = f"{idx:02d}_{country_code.upper()}"
     try:
+        orig_uri = orig_uri.replace("&amp;", "&")
         if orig_uri.startswith("vmess://"):
             raw_b64 = orig_uri.replace("vmess://", "", 1)
             b64_part, _, _ = raw_b64.partition("#")
@@ -260,7 +263,7 @@ def load_country_networks():
     networks_by_code = {}
     total = 0
     for code in ALLOWED_COUNTRY_CODES:
-        url = CIDR_BASE_URL + f"{code}.cidr"
+        url = CIDR_BASE_URL + f"{code}/ipv4-aggregated.txt"
         nets = []
         try:
             r = requests.get(url, timeout=10)
@@ -275,7 +278,7 @@ def load_country_networks():
         total += len(nets)
     log_debug(f"Загружено CIDR-подсетей стран: {total}")
     return networks_by_code
-def resolve_host_country(host, networks_by_code):
+def resolve_host_country(host, networks_by_code, use_api_fallback=False):
     old_timeout = socket.getdefaulttimeout()
     socket.setdefaulttimeout(1.5)
     try:
@@ -284,6 +287,12 @@ def resolve_host_country(host, networks_by_code):
         for code, nets in networks_by_code.items():
             if any(ip_obj in net for net in nets):
                 return host, code
+        if use_api_fallback:
+            r = requests.get(f"{GEO_API_URL}{ip_str}", timeout=4)
+            if r.status_code == 200:
+                cc = str(r.json().get("country_code", "")).upper()
+                if len(cc) == 2:
+                    return host, cc
         return host, None
     except Exception:
         return host, None
@@ -305,7 +314,7 @@ def filter_by_country(uris, networks_by_code, dns_cache):
 
     if hosts_to_resolve:
         with ThreadPoolExecutor(max_workers=30) as executor:
-            futures = [executor.submit(resolve_host_country, h, networks_by_code) for h in hosts_to_resolve]
+            futures = [executor.submit(resolve_host_country, h, networks_by_code, False) for h in hosts_to_resolve]
             for future in as_completed(futures):
                 h, code = future.result()
                 dns_cache[h] = code
@@ -332,9 +341,9 @@ def save_results(records, dns_cache=None, networks_by_code=None):
         for orig_uri, _ in sorted_items:
             host = extract_host(orig_uri)
             c_code = dns_cache.get(host) if dns_cache else None
-            if not c_code and host and networks_by_code:
-                _, c_code = resolve_host_country(host, networks_by_code)
-                if dns_cache is not None:
+            if not c_code and host:
+                _, c_code = resolve_host_country(host, networks_by_code or {}, True)
+                if dns_cache is not None and c_code:
                     dns_cache[host] = c_code
             clean = build_named_uri(orig_uri, idx, c_code or "UN")
             f.write(f"{clean}\n")
@@ -523,15 +532,12 @@ def main():
         lines = new_lines
         with open("test.txt", "w", encoding="utf-8") as f:
             f.writelines(lines)
-        log_debug(f"Строка завершена. Итого рабочих: {len(tested_records)}/{MAX_WORKING}")
-
-    if os.path.exists("fail_counts.json"):
-        os.remove("fail_counts.json")
-
-    if has_unprocessed_lines(lines):
-        set_github_output("has_more", "true")
-    else:
-        set_github_output("has_more", "false")
-
-if __name__ == "__main__":
-    main()
+            log_debug(f"Строка завершена. Итого рабочих: {len(tested_records)}/{MAX_WORKING}")
+       if os.path.exists("fail_counts.json"):
+            os.remove("fail_counts.json")
+       if has_unprocessed_lines(lines):
+            set_github_output("has_more", "true")
+       else:
+            set_github_output("has_more", "false")
+       if name == "main":
+            main()
