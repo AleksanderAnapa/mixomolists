@@ -1,167 +1,190 @@
 === СТАРТ ИНДИВИДУАЛЬНОЙ ПРОВЕРКИ ===
-[20:23:40] Загружено CIDR-подсетей стран: 56615
-[20:23:40] Перепроверка 30 существующих серверов...
-[20:23:41] [OK 274ms] (1/50) vless://c83f15bf-1817-4ec8-a19f-6393d226434c@172.67.199
-[20:23:41] [OK 293ms] (2/50) vless://e3149c82-00f6-4227-b2c0-b78f1dd81279@104.21.58.
-[20:23:41] [OK 305ms] (3/50) vless://e3149c82-00f6-4227-b2c0-b78f1dd81279@fast.14577
-[20:23:41] [OK 309ms] (4/50) vless://c83f15bf-1817-4ec8-a19f-6393d226434c@fast.14577
-[20:23:41] [OK 288ms] (5/50) vless://c83f15bf-1817-4ec8-a19f-6393d226434c@104.21.58.
-[20:23:41] [OK 295ms] (6/50) vless://c83f15bf-1817-4ec8-a19f-6393d226434c@fast.14577
-[20:23:41] [OK 282ms] (7/50) vless://e3149c82-00f6-4227-b2c0-b78f1dd81279@172.67.199
-[20:23:41] [OK 346ms] (8/50) vless://c83f15bf-1817-4ec8-a19f-6393d226434c@fast.14577
-[20:23:41] [OK 400ms] (9/50) vless://c83f15bf-1817-4ec8-a19f-6393d226434c@fast.14577
-[20:23:41] [OK 415ms] (10/50) vless://e3149c82-00f6-4227-b2c0-b78f1dd81279@fast.14577
-[20:23:41] [OK 449ms] (11/50) vless://c83f15bf-1817-4ec8-a19f-6393d226434c@172.67.199
-[20:23:41] [OK 433ms] (12/50) vless://c83f15bf-1817-4ec8-a19f-6393d226434c@104.21.58.
-[20:23:41] [OK 426ms] (13/50) vless://e3149c82-00f6-4227-b2c0-b78f1dd81279@fast.14577
-[20:23:41] [OK 452ms] (14/50) vless://c83f15bf-1817-4ec8-a19f-6393d226434c@fast.14577
-[20:23:41] [OK 481ms] (15/50) vless://e3149c82-00f6-4227-b2c0-b78f1dd81279@172.67.199
-[20:23:42] [OK 216ms] (16/50) vless://31f11af0-9a05-41a9-b4d0-f4e66e38c00c@155.94.251
-[20:23:42] [OK 289ms] (17/50) vless://c83f15bf-1817-4ec8-a19f-6393d226434c@fast.14577
-[20:23:42] [OK 293ms] (18/50) vless://e3149c82-00f6-4227-b2c0-b78f1dd81279@172.67.199
-[20:23:42] [OK 314ms] (19/50) vless://e3149c82-00f6-4227-b2c0-b78f1dd81279@104.21.58.
-[20:23:42] [OK 310ms] (20/50) vless://e3149c82-00f6-4227-b2c0-b78f1dd81279@104.21.58.
-[20:23:42] [OK 320ms] (21/50) vless://e3149c82-00f6-4227-b2c0-b78f1dd81279@172.67.199
-[20:23:42] [OK 316ms] (22/50) vless://c83f15bf-1817-4ec8-a19f-6393d226434c@fast.14577
-[20:23:42] [OK 309ms] (23/50) vless://e3149c82-00f6-4227-b2c0-b78f1dd81279@fast.14577
-[20:23:42] [OK 319ms] (24/50) vless://e3149c82-00f6-4227-b2c0-b78f1dd81279@104.21.58.
-[20:23:42] [OK 347ms] (25/50) vless://e3149c82-00f6-4227-b2c0-b78f1dd81279@104.21.58.
-[20:23:42] [OK 410ms] (26/50) vless://e3149c82-00f6-4227-b2c0-b78f1dd81279@fast.14577
-[20:23:42] [OK 425ms] (27/50) vless://e3149c82-00f6-4227-b2c0-b78f1dd81279@fast.14577
-[20:23:42] [OK 425ms] (28/50) vless://e3149c82-00f6-4227-b2c0-b78f1dd81279@104.21.58.
-[20:23:42] [OK 415ms] (29/50) vless://e3149c82-00f6-4227-b2c0-b78f1dd81279@104.21.58.
-[20:23:42] [OK 564ms] (30/50) vless://e3149c82-00f6-4227-b2c0-b78f1dd81279@fast.14577
-[20:23:43] Обработка строки: https://github.com/FLAT447/v2ray-lists/raw/refs/heads/main/BLACK_
-[20:23:43] Извлечено валидных URI: 24
-[20:23:43] После фильтра стран (DE->NL->FR->GB->US) осталось: 14
-[20:23:44] [ОТБРОШЕН: HTTP_503] vless://ab5a19cf-cadc-4648-a5e9-b510aca8f732@104.18.20.
-[20:23:44] [OK 108ms] (31/50) vless://59548d2d-5d7c-4328-aa81-0d5614da0c1b@198.247.12
-[20:23:44] [ОТБРОШЕН: HTTP_503] vless://f8cb3c89-32af-4255-bebc-d90aad175069@194.180.20
-[20:23:44] [ОТБРОШЕН: HTTP_503] vless://e83bc3fd-5732-4b64-8f91-19fc7aa0edb0@144.31.225
-[20:23:44] [ОТБРОШЕН: HTTP_503] vless://26cfcdeb-3bdc-4b55-9a7f-a5f8c38aafd8@201.8.64.2
-[20:23:44] [ОТБРОШЕН: HTTP_503] vless://c53ea5e9-ed8b-4990-805d-7f1d6451426c@179.254.16
-[20:23:48] Строка завершена. Итого рабочих: 31/50
-[20:23:48] Обработка строки: https://github.com/kort0881/vpn-vless-configs-russia/blob/main/ou
-[20:23:48] Извлечено валидных URI: 0
-[20:23:48] После фильтра стран (DE->NL->FR->GB->US) осталось: 0
-[20:23:48] Строка завершена. Итого рабочих: 31/50
-[20:23:48] Обработка строки: https://github.com/igareck/vpn-configs-for-russia/raw/refs/heads/
-[20:23:48] Извлечено валидных URI: 112
-[20:23:49] После фильтра стран (DE->NL->FR->GB->US) осталось: 20
-[20:23:51] [ОТБРОШЕН: HIGH_PING(1408)] vless://4b50270b-5caf-4c34-b3da-17b4525604a6@luminexori
-[20:23:51] [ОТБРОШЕН: HIGH_PING(1619)] vless://4b50270b-5caf-4c34-b3da-17b4525604a6@201.34.133
-[20:23:51] [ОТБРОШЕН: HIGH_PING(1611)] vless://4b50270b-5caf-4c34-b3da-17b4525604a6@luminexori
-[20:23:52] [ОТБРОШЕН: HIGH_PING(2156)] vless://4b50270b-5caf-4c34-b3da-17b4525604a6@luminexori
-[20:23:52] [ОТБРОШЕН: HIGH_PING(2431)] vless://4b50270b-5caf-4c34-b3da-17b4525604a6@luminexori
-[20:23:57] Строка завершена. Итого рабочих: 31/50
-[20:23:57] Обработка строки: https://github.com/igareck/vpn-configs-for-russia/raw/refs/heads/
-[20:23:57] Извлечено валидных URI: 112
-[20:23:57] После фильтра стран (DE->NL->FR->GB->US) осталось: 20
-[20:23:59] [ОТБРОШЕН: HIGH_PING(1327)] vless://4b50270b-5caf-4c34-b3da-17b4525604a6@luminexori
-[20:24:00] [ОТБРОШЕН: HIGH_PING(1475)] vless://4b50270b-5caf-4c34-b3da-17b4525604a6@201.34.133
-[20:24:00] [ОТБРОШЕН: HIGH_PING(1801)] vless://4b50270b-5caf-4c34-b3da-17b4525604a6@luminexori
-[20:24:00] [ОТБРОШЕН: HIGH_PING(1824)] vless://4b50270b-5caf-4c34-b3da-17b4525604a6@luminexori
-[20:24:00] [ОТБРОШЕН: HIGH_PING(1823)] vless://4b50270b-5caf-4c34-b3da-17b4525604a6@201.34.133
-[20:24:06] Строка завершена. Итого рабочих: 31/50
-[20:24:06] Обработка строки: https://github.com/igareck/vpn-configs-for-russia/raw/refs/heads/
-[20:24:06] Извлечено валидных URI: 136
-[20:24:07] После фильтра стран (DE->NL->FR->GB->US) осталось: 133
-[20:24:08] [ОТБРОШЕН: HTTP_503] vmess://eyJ2IjoiMiIsInBzIjoi8J+Hr/Cfh7UgSmFwYW4sIE9zYWt
-[20:24:08] [ОТБРОШЕН: HTTP_503] vless://a0144f3b-b7d4-47c3-b0bc-413194f001a8@151.101.3.
-[20:24:08] [OK 189ms] (32/50) vless://7e0e7ca3-7aab-420e-9b40-c15a228ef33a@ws137.mydo
-[20:24:08] [OK 309ms] (33/50) vless://c83f15bf-1817-4ec8-a19f-6393d226434c@fast.14577
-[20:24:08] [OK 334ms] (34/50) vless://c83f15bf-1817-4ec8-a19f-6393d226434c@104.21.58.
-[20:24:08] [OK 346ms] (35/50) vless://c83f15bf-1817-4ec8-a19f-6393d226434c@172.67.199
-[20:24:08] [ОТБРОШЕН: HTTP_503] vless://30610baf-4645-4c7b-9a22-0d0a0a79eab5@mao.kipfel
-[20:24:08] [ОТБРОШЕН: HTTP_503] vless://30610baf-4645-4c7b-9a22-0d0a0a79eab5@mao.kipfel
-[20:24:08] [ОТБРОШЕН: HTTP_503] vless://30610baf-4645-4c7b-9a22-0d0a0a79eab5@172.67.183
-[20:24:08] [OK 421ms] (36/50) vless://c83f15bf-1817-4ec8-a19f-6393d226434c@104.21.58.
-[20:24:08] [OK 443ms] (37/50) vless://e3149c82-00f6-4227-b2c0-b78f1dd81279@104.21.58.
-[20:24:12] [OK 287ms] (38/50) vless://c83f15bf-1817-4ec8-a19f-6393d226434c@172.67.199
-[20:24:13] [OK 430ms] (39/50) vless://c83f15bf-1817-4ec8-a19f-6393d226434c@172.67.199
-[20:24:13] [OK 489ms] (40/50) vless://e3149c82-00f6-4227-b2c0-b78f1dd81279@104.21.58.
-[20:24:21] [OK 190ms] (41/50) vless://56066a03-d283-48cf-8120-eb8d810025cb@ws137.mydo
-[20:24:25] [OK 124ms] (42/50) vless://FCEAD694-2E27-4EEB-8836-9D4ACF3E028B@ws.liuzedo
-[20:24:30] [OK 176ms] (43/50) vless://44be961e-c60d-463c-86d6-50ce6d8866c5@ws137.mydo
-[20:24:30] [OK 180ms] (44/50) vless://369360e9-ff90-43c3-b81b-ebac420fce73@ws137.mydo
-[20:24:38] Строка завершена. Итого рабочих: 44/50
-[20:24:38] Обработка строки: https://raw.githubusercontent.com/luxxuria/harvester/refs/heads/m
-[20:24:38] Извлечено валидных URI: 27
-[20:24:38] После фильтра стран (DE->NL->FR->GB->US) осталось: 17
-[20:24:39] [ОТБРОШЕН: HTTP_503] vless://ad9a885d-93bb-48e3-9937-57f1116b64e3@151.101.36
-[20:24:39] [OK 69ms] (45/50) vless://74b86103-0a6e-4a0e-8430-2aa84af805fc@104.168.10
-[20:24:39] [ОТБРОШЕН: HTTP_503] vless://f8d52ece-fad4-478d-875d-df6eed3befa7@31.77.12.3
-[20:24:39] [ОТБРОШЕН: HTTP_503] vless://6fb89451-b573-4391-b046-d45ab9a6db49@179.254.69
-[20:24:39] [OK 184ms] (46/50) vless://44be961e-c60d-463c-86d6-50ce6d8866c5@ws137.mydo
-[20:24:39] [OK 169ms] (47/50) vless://31f11af0-9a05-41a9-b4d0-f4e66e38c00c@155.94.251
-[20:24:39] [ОТБРОШЕН: HTTP_503] vless://2232d904-8e6a-4202-8240-6efd8aec02e9@50.7.95.23
-[20:24:39] [ОТБРОШЕН: HTTP_503] vless://e83bc3fd-5732-4b64-8f91-19fc7aa0edb0@144.31.225
-[20:24:41] [OK 573ms] (48/50) vless://2208b003-78b1-453c-b5ca-ce847ff0efd6@b1eb8et.de
-[20:24:41] Строка завершена. Итого рабочих: 48/50
-[20:24:41] Обработка строки: https://warp-gen.cyb-portal.org/CP-005
-[20:24:42] Извлечено валидных URI: 61
-[20:24:42] После фильтра стран (DE->NL->FR->GB->US) осталось: 5
-[20:24:47] [ОТБРОШЕН: HTTP_504] vless://981c7ccc-2b17-473c-8358-7fd1d6eec1b4@lte-v2-ws.
-[20:24:47] [ОТБРОШЕН: HTTP_504] vless://981c7ccc-2b17-473c-8358-7fd1d6eec1b4@lte-v2-ws.
-[20:24:47] [ОТБРОШЕН: HTTP_504] vless://981c7ccc-2b17-473c-8358-7fd1d6eec1b4@lte-v2-ws.
-[20:24:47] [ОТБРОШЕН: HTTP_504] vless://981c7ccc-2b17-473c-8358-7fd1d6eec1b4@lte-v2-ws.
-[20:24:47] [ОТБРОШЕН: HTTP_504] vless://981c7ccc-2b17-473c-8358-7fd1d6eec1b4@lte-v2-ws.
-[20:24:47] Строка завершена. Итого рабочих: 48/50
-[20:24:47] Обработка строки: https://raw.githubusercontent.com/Epodonios/bulk-xray-v2ray-vless
-[20:24:47] После фильтра стран (DE->NL->FR->GB->US) осталось: 0
-[20:24:47] Строка завершена. Итого рабочих: 48/50
-[20:24:47] Обработка строки: https://raw.githubusercontent.com/Epodonios/bulk-xray-v2ray-vless
-[20:24:47] После фильтра стран (DE->NL->FR->GB->US) осталось: 0
-[20:24:47] Строка завершена. Итого рабочих: 48/50
-[20:24:47] Обработка строки: https://raw.githubusercontent.com/Epodonios/bulk-xray-v2ray-vless
-[20:24:47] После фильтра стран (DE->NL->FR->GB->US) осталось: 0
-[20:24:47] Строка завершена. Итого рабочих: 48/50
-[20:24:47] Обработка строки: https://github.com/Epodonios/bulk-xray-v2ray-vless-vmess-...-conf
-[20:24:47] После фильтра стран (DE->NL->FR->GB->US) осталось: 0
-[20:24:47] Строка завершена. Итого рабочих: 48/50
-[20:24:47] Обработка строки: https://github.com/mermeroo/V2RAY-FREE/raw/main/All_Configs_base6
-[20:24:48] После фильтра стран (DE->NL->FR->GB->US) осталось: 0
-[20:24:48] Строка завершена. Итого рабочих: 48/50
-[20:24:48] Обработка строки: https://raw.githubusercontent.com/mermeroo/free-v2ray-collector/m
-[20:24:48] После фильтра стран (DE->NL->FR->GB->US) осталось: 0
-[20:24:48] Строка завершена. Итого рабочих: 48/50
-[20:24:48] Обработка строки: https://raw.githubusercontent.com/mermeroo/free-v2ray-collector/m
-[20:24:48] После фильтра стран (DE->NL->FR->GB->US) осталось: 0
-[20:24:48] Строка завершена. Итого рабочих: 48/50
-[20:24:48] Обработка строки: https://raw.githubusercontent.com/mermeroo/free-v2ray-collector/m
-[20:24:48] После фильтра стран (DE->NL->FR->GB->US) осталось: 0
-[20:24:48] Строка завершена. Итого рабочих: 48/50
-[20:24:48] Обработка строки: https://raw.githubusercontent.com/mermeroo/free-v2ray-collector/m
-[20:24:48] После фильтра стран (DE->NL->FR->GB->US) осталось: 0
-[20:24:48] Строка завершена. Итого рабочих: 48/50
-[20:24:48] Обработка строки: https://raw.githubusercontent.com/mermeroo/free-v2ray-collector/m
-[20:24:48] После фильтра стран (DE->NL->FR->GB->US) осталось: 0
-[20:24:48] Строка завершена. Итого рабочих: 48/50
-[20:24:48] Обработка строки: https://raw.githubusercontent.com/AzadNetCH/Clash/refs/heads/main
-[20:24:48] Извлечено валидных URI: 6
-[20:24:48] После фильтра стран (DE->NL->FR->GB->US) осталось: 6
-[20:24:53] [ОТБРОШЕН: HTTP_504] trojan://your_password@43.218.139.54:443/?type=tcp&secu
-[20:24:53] [ОТБРОШЕН: HTTP_504] trojan://your_password@43.218.139.54:443/?type=tcp&secu
-[20:24:53] [ОТБРОШЕН: HTTP_504] trojan://your_password@43.218.139.54:443/?type=tcp&secu
-[20:24:53] [ОТБРОШЕН: HTTP_504] trojan://your_password@43.218.139.54:443/?type=tcp&secu
-[20:24:53] [ОТБРОШЕН: HTTP_504] trojan://your_password@43.218.139.54:443/?type=tcp&secu
-[20:24:53] Строка завершена. Итого рабочих: 48/50
-[20:24:53] Обработка строки: https://raw.githubusercontent.com/w1770946466/Auto_proxy/main/Lon
-[20:24:53] Извлечено валидных URI: 249
-[20:25:04] После фильтра стран (DE->NL->FR->GB->US) осталось: 129
-[20:25:05] [ОТБРОШЕН: HTTP_503] vless://f775978b-6e22-41a8-ae5e-5f9779e6745f@45.80.111.
-[20:25:05] [ОТБРОШЕН: HTTP_503] vless://f775978b-6e22-41a8-ae5e-5f9779e6745f@94.247.142
-[20:25:05] [ОТБРОШЕН: HTTP_503] vless://f775978b-6e22-41a8-ae5e-5f9779e6745f@194.36.55.
-[20:25:05] [ОТБРОШЕН: HTTP_503] vless://f775978b-6e22-41a8-ae5e-5f9779e6745f@94.247.142
-[20:25:05] [ОТБРОШЕН: HTTP_503] vmess://eyJ2IjoiMiIsInBzIjoi8J+Hq/Cfh7dfRlJf5rOV5Zu9Iiw
-[20:25:43] Строка завершена. Итого рабочих: 48/50
-[20:25:43] Обработка строки: https://raw.githubusercontent.com/ermaozi01/free_clash_vpn/main/s
-[20:25:44] Извлечено валидных URI: 7
-[20:25:44] После фильтра стран (DE->NL->FR->GB->US) осталось: 5
-[20:25:45] [OK 80ms] (49/50) vmess://eyJ2IjoiMiIsInBzIjoiQERlbHRhS3JvbmVja2VyR2l0aHV
-[20:25:45] [OK 86ms] (50/50) vmess://eyJ2IjoiMiIsInBzIjoi8J+HuvCfh7gg5py65Zy65o6o6I2
-[20:25:45] [OK 86ms] (51/50) vmess://eyJ2IjoiMiIsInBzIjoi8J+HuvCfh7gg5py65Zy65o6o6I2
-[20:25:45] [OK 97ms] (52/50) vmess://eyJ2IjoiMiIsInBzIjoi8J+HuvCfh7hfVVNf576O5Zu9X0l
-[20:25:48] [ОТБРОШЕН: HTTP_504] vless://57beeeb0-03fc-4fc9-94da-7604488a7134@zfapi.zalo
-[20:25:48] Строка завершена. Итого рабочих: 50/50
-[20:25:48] Набрано 50 рабочих серверов. Очищаем очередь.
+[20:35:36] Загружено CIDR-подсетей стран: 56615
+[20:35:36] Перепроверка 50 существующих серверов...
+[20:35:37] [OK 61ms] (1/60) vless://74b86103-0a6e-4a0e-8430-2aa84af805fc@104.168.10
+[20:35:37] [OK 95ms] (2/60) vmess://eyJ2IjoiMiIsInBzIjoi8J+HuvCfh7gg5py65Zy65o6o6I2
+[20:35:37] [OK 99ms] (3/60) vmess://eyJ2IjoiMiIsInBzIjoi8J+HuvCfh7gg5py65Zy65o6o6I2
+[20:35:37] [OK 109ms] (4/60) vmess://eyJ2IjoiMiIsInBzIjoiQERlbHRhS3JvbmVja2VyR2l0aHV
+[20:35:37] [OK 100ms] (5/60) vmess://eyJ2IjoiMiIsInBzIjoi8J+HuvCfh7hfVVNf576O5Zu9X0l
+[20:35:37] [OK 110ms] (6/60) vless://59548d2d-5d7c-4328-aa81-0d5614da0c1b@198.247.12
+[20:35:37] [OK 116ms] (7/60) vless://FCEAD694-2E27-4EEB-8836-9D4ACF3E028B@ws.liuzedo
+[20:35:37] [OK 187ms] (8/60) vless://31f11af0-9a05-41a9-b4d0-f4e66e38c00c@155.94.251
+[20:35:37] [OK 190ms] (9/60) vless://31f11af0-9a05-41a9-b4d0-f4e66e38c00c@155.94.251
+[20:35:37] [OK 362ms] (10/60) vless://44be961e-c60d-463c-86d6-50ce6d8866c5@ws137.mydo
+[20:35:37] [OK 366ms] (11/60) vless://369360e9-ff90-43c3-b81b-ebac420fce73@ws137.mydo
+[20:35:37] [OK 354ms] (12/60) vless://7e0e7ca3-7aab-420e-9b40-c15a228ef33a@ws137.mydo
+[20:35:37] [OK 341ms] (13/60) vless://56066a03-d283-48cf-8120-eb8d810025cb@ws137.mydo
+[20:35:37] [OK 369ms] (14/60) vless://44be961e-c60d-463c-86d6-50ce6d8866c5@ws137.mydo
+[20:35:41] [ОТБРОШЕН: HTTP_504] vless://c83f15bf-1817-4ec8-a19f-6393d226434c@172.67.199
+[20:35:45] [ОТБРОШЕН: HTTP_504] vless://e3149c82-00f6-4227-b2c0-b78f1dd81279@172.67.199
+[20:35:45] [ОТБРОШЕН: HTTP_504] vless://c83f15bf-1817-4ec8-a19f-6393d226434c@fast.14577
+[20:35:45] [ОТБРОШЕН: HTTP_504] vless://c83f15bf-1817-4ec8-a19f-6393d226434c@172.67.199
+[20:35:45] [ОТБРОШЕН: HTTP_504] vless://e3149c82-00f6-4227-b2c0-b78f1dd81279@104.21.58.
+[20:35:54] Обработка строки: https://github.com/FLAT447/v2ray-lists/raw/refs/heads/main/BLACK_
+[20:35:54] Извлечено валидных URI: 24
+[20:35:55] После фильтра стран (DE->NL->FR->GB->US) осталось: 14
+[20:35:56] [ОТБРОШЕН: HTTP_503] vless://ab5a19cf-cadc-4648-a5e9-b510aca8f732@104.18.20.
+[20:35:56] [ОТБРОШЕН: HTTP_503] vless://f8cb3c89-32af-4255-bebc-d90aad175069@194.180.20
+[20:35:56] [ОТБРОШЕН: HTTP_503] vless://e83bc3fd-5732-4b64-8f91-19fc7aa0edb0@144.31.225
+[20:35:56] [ОТБРОШЕН: HTTP_503] vless://c53ea5e9-ed8b-4990-805d-7f1d6451426c@179.254.16
+[20:35:56] [ОТБРОШЕН: HTTP_503] vless://26cfcdeb-3bdc-4b55-9a7f-a5f8c38aafd8@201.8.64.2
+[20:35:56] [OK 629ms] (15/60) vless://cda0862a-0f87-4be9-8ed8-1d0c9e382839@201.8.64.2
+[20:35:56] [OK 629ms] (16/60) vless://cda0862a-0f87-4be9-8ed8-1d0c9e382839@201.8.64.2
+[20:35:56] [OK 735ms] (17/60) vless://ba0dbd83-3569-46dc-bc3d-ef6e58ffc97b@153.56.229
+[20:35:58] [OK 1990ms] (18/60) vless://cda0862a-0f87-4be9-8ed8-1d0c9e382839@201.8.64.2
+[20:35:58] Строка завершена. Итого рабочих: 18/60
+[20:35:58] Обработка строки: https://github.com/kort0881/vpn-vless-configs-russia/blob/main/ou
+[20:35:59] Извлечено валидных URI: 0
+[20:35:59] После фильтра стран (DE->NL->FR->GB->US) осталось: 0
+[20:35:59] Строка завершена. Итого рабочих: 18/60
+[20:35:59] Обработка строки: https://github.com/igareck/vpn-configs-for-russia/raw/refs/heads/
+[20:35:59] Извлечено валидных URI: 112
+[20:35:59] После фильтра стран (DE->NL->FR->GB->US) осталось: 20
+[20:36:01] [OK 1246ms] (19/60) vless://4b50270b-5caf-4c34-b3da-17b4525604a6@luminexori
+[20:36:01] [OK 1597ms] (20/60) vless://4b50270b-5caf-4c34-b3da-17b4525604a6@201.34.133
+[20:36:01] [OK 1600ms] (21/60) vless://4b50270b-5caf-4c34-b3da-17b4525604a6@luminexori
+[20:36:02] [OK 1645ms] (22/60) vless://4b50270b-5caf-4c34-b3da-17b4525604a6@201.34.133
+[20:36:02] [OK 1710ms] (23/60) vless://4b50270b-5caf-4c34-b3da-17b4525604a6@luminexori
+[20:36:02] [ОТБРОШЕН: HIGH_PING(2080)] vless://4b50270b-5caf-4c34-b3da-17b4525604a6@luminexori
+[20:36:02] [ОТБРОШЕН: HIGH_PING(2091)] vless://4b50270b-5caf-4c34-b3da-17b4525604a6@luminexori
+[20:36:02] [ОТБРОШЕН: HIGH_PING(2224)] vless://4b50270b-5caf-4c34-b3da-17b4525604a6@luminexori
+[20:36:03] [ОТБРОШЕН: HIGH_PING(2903)] vless://4b50270b-5caf-4c34-b3da-17b4525604a6@luminexori
+[20:36:03] [ОТБРОШЕН: HTTP_504] vless://a31b6d17-1c4a-44e3-9402-ce78f1fb7eb5@46.243.232
+[20:36:06] [OK 1534ms] (24/60) vless://4b50270b-5caf-4c34-b3da-17b4525604a6@201.34.133
+[20:36:07] Строка завершена. Итого рабочих: 24/60
+[20:36:07] Обработка строки: https://github.com/igareck/vpn-configs-for-russia/raw/refs/heads/
+[20:36:07] Извлечено валидных URI: 112
+[20:36:07] После фильтра стран (DE->NL->FR->GB->US) осталось: 20
+[20:36:10] [OK 1232ms] (25/60) vless://4b50270b-5caf-4c34-b3da-17b4525604a6@luminexori
+[20:36:11] [ОТБРОШЕН: HIGH_PING(2288)] vless://4b50270b-5caf-4c34-b3da-17b4525604a6@luminexori
+[20:36:11] [ОТБРОШЕН: HIGH_PING(2276)] vless://4b50270b-5caf-4c34-b3da-17b4525604a6@luminexori
+[20:36:11] [ОТБРОШЕН: HIGH_PING(2406)] vless://4b50270b-5caf-4c34-b3da-17b4525604a6@luminexori
+[20:36:11] [ОТБРОШЕН: HIGH_PING(2430)] vless://4b50270b-5caf-4c34-b3da-17b4525604a6@luminexori
+[20:36:11] [ОТБРОШЕН: HIGH_PING(2591)] vless://4b50270b-5caf-4c34-b3da-17b4525604a6@luminexori
+[20:36:12] Строка завершена. Итого рабочих: 25/60
+[20:36:12] Обработка строки: https://github.com/igareck/vpn-configs-for-russia/raw/refs/heads/
+[20:36:12] Извлечено валидных URI: 136
+[20:36:13] После фильтра стран (DE->NL->FR->GB->US) осталось: 133
+[20:36:14] [ОТБРОШЕН: HTTP_503] vmess://eyJhZGQiOiIxNjIuMTU5LjEyOC4xNyIsImFpZCI6IjAiLCJ
+[20:36:14] [ОТБРОШЕН: HTTP_503] vmess://eyJhZGQiOiIxNjIuMTU5LjEyOC4xNyIsImFpZCI6IjAiLCJ
+[20:36:14] [ОТБРОШЕН: HTTP_503] vmess://eyJhZGQiOiIxMDQuMjcuMC4xIiwiYWlkIjoiMCIsImFscG4
+[20:36:14] [ОТБРОШЕН: HTTP_503] vless://30610baf-4645-4c7b-9a22-0d0a0a79eab5@mao.kipfel
+[20:36:14] [ОТБРОШЕН: HTTP_503] vless://30610baf-4645-4c7b-9a22-0d0a0a79eab5@mao.kipfel
+[20:36:32] [OK 1082ms] (26/60) vless://3692de53-42e6-4aed-a522-40ec355dcd2f@104.17.70.
+[20:36:37] [OK 1175ms] (27/60) vless://3692de53-42e6-4aed-a522-40ec355dcd2f@104.17.70.
+[20:36:38] [OK 1998ms] (28/60) vless://ad9a885d-93bb-48e3-9937-57f1116b64e3@3.169.218.
+[20:36:46] [OK 1289ms] (29/60) vless://3692de53-42e6-4aed-a522-40ec355dcd2f@104.17.70.
+[20:36:50] [OK 1753ms] (30/60) vless://3692de53-42e6-4aed-a522-40ec355dcd2f@104.17.70.
+[20:36:52] Строка завершена. Итого рабочих: 30/60
+[20:36:52] Обработка строки: https://raw.githubusercontent.com/luxxuria/harvester/refs/heads/m
+[20:36:52] Извлечено валидных URI: 13
+[20:36:52] После фильтра стран (DE->NL->FR->GB->US) осталось: 8
+[20:36:54] [ОТБРОШЕН: HTTP_503] vless://2232d904-8e6a-4202-8240-6efd8aec02e9@50.7.95.23
+[20:36:54] [ОТБРОШЕН: HTTP_503] vless://2208b003-78b1-453c-b5ca-ce847ff0efd6@54cc62x.de
+[20:36:54] [ОТБРОШЕН: HTTP_503] vless://62995b2a-8f82-41f8-ac80-dfdfc1253e76@se2.h1clou
+[20:36:54] [OK 704ms] (31/60) vless://60de825c-54eb-4c9a-abb0-8c7eedb6130f@cdn-nl.vpn
+[20:36:54] [OK 794ms] (32/60) vless://d54061b7-f698-4a0e-aa6c-c565d2cc42b0@cdn-nl.vpn
+[20:36:55] [ОТБРОШЕН: HTTP_503] vless://f203fd20-2c61-4b6e-a8a7-75e9581e497b@187.54.4.4
+[20:36:56] [ОТБРОШЕН: HTTP_503] vless://62995b2a-8f82-41f8-ac80-dfdfc1253e76@132.243.16
+[20:36:57] Строка завершена. Итого рабочих: 32/60
+[20:36:57] Обработка строки: https://warp-gen.cyb-portal.org/CP-005
+[20:36:58] Извлечено валидных URI: 61
+[20:36:58] После фильтра стран (DE->NL->FR->GB->US) осталось: 5
+[20:37:02] [ОТБРОШЕН: HTTP_504] vless://981c7ccc-2b17-473c-8358-7fd1d6eec1b4@lte-v2-ws.
+[20:37:02] [ОТБРОШЕН: HTTP_504] vless://981c7ccc-2b17-473c-8358-7fd1d6eec1b4@lte-v2-ws.
+[20:37:02] [ОТБРОШЕН: HTTP_503] vless://981c7ccc-2b17-473c-8358-7fd1d6eec1b4@lte-v2-ws.
+[20:37:02] [ОТБРОШЕН: HTTP_504] vless://981c7ccc-2b17-473c-8358-7fd1d6eec1b4@lte-v2-ws.
+[20:37:02] [ОТБРОШЕН: HTTP_503] vless://981c7ccc-2b17-473c-8358-7fd1d6eec1b4@lte-v2-ws.
+[20:37:02] Строка завершена. Итого рабочих: 32/60
+[20:37:02] Обработка строки: https://raw.githubusercontent.com/Epodonios/bulk-xray-v2ray-vless
+[20:37:02] После фильтра стран (DE->NL->FR->GB->US) осталось: 0
+[20:37:02] Строка завершена. Итого рабочих: 32/60
+[20:37:02] Обработка строки: https://raw.githubusercontent.com/Epodonios/bulk-xray-v2ray-vless
+[20:37:03] После фильтра стран (DE->NL->FR->GB->US) осталось: 0
+[20:37:03] Строка завершена. Итого рабочих: 32/60
+[20:37:03] Обработка строки: https://raw.githubusercontent.com/Epodonios/bulk-xray-v2ray-vless
+[20:37:03] После фильтра стран (DE->NL->FR->GB->US) осталось: 0
+[20:37:03] Строка завершена. Итого рабочих: 32/60
+[20:37:03] Обработка строки: https://github.com/Epodonios/bulk-xray-v2ray-vless-vmess-...-conf
+[20:37:03] После фильтра стран (DE->NL->FR->GB->US) осталось: 0
+[20:37:03] Строка завершена. Итого рабочих: 32/60
+[20:37:03] Обработка строки: https://github.com/mermeroo/V2RAY-FREE/raw/main/All_Configs_base6
+[20:37:03] После фильтра стран (DE->NL->FR->GB->US) осталось: 0
+[20:37:03] Строка завершена. Итого рабочих: 32/60
+[20:37:03] Обработка строки: https://raw.githubusercontent.com/mermeroo/free-v2ray-collector/m
+[20:37:04] После фильтра стран (DE->NL->FR->GB->US) осталось: 0
+[20:37:04] Строка завершена. Итого рабочих: 32/60
+[20:37:04] Обработка строки: https://raw.githubusercontent.com/mermeroo/free-v2ray-collector/m
+[20:37:04] После фильтра стран (DE->NL->FR->GB->US) осталось: 0
+[20:37:04] Строка завершена. Итого рабочих: 32/60
+[20:37:04] Обработка строки: https://raw.githubusercontent.com/mermeroo/free-v2ray-collector/m
+[20:37:04] После фильтра стран (DE->NL->FR->GB->US) осталось: 0
+[20:37:04] Строка завершена. Итого рабочих: 32/60
+[20:37:04] Обработка строки: https://raw.githubusercontent.com/mermeroo/free-v2ray-collector/m
+[20:37:04] После фильтра стран (DE->NL->FR->GB->US) осталось: 0
+[20:37:04] Строка завершена. Итого рабочих: 32/60
+[20:37:04] Обработка строки: https://raw.githubusercontent.com/mermeroo/free-v2ray-collector/m
+[20:37:04] После фильтра стран (DE->NL->FR->GB->US) осталось: 0
+[20:37:04] Строка завершена. Итого рабочих: 32/60
+[20:37:04] Обработка строки: https://raw.githubusercontent.com/AzadNetCH/Clash/refs/heads/main
+[20:37:04] Извлечено валидных URI: 6
+[20:37:04] После фильтра стран (DE->NL->FR->GB->US) осталось: 6
+[20:37:09] [ОТБРОШЕН: HTTP_504] trojan://your_password@43.218.139.54:443/?type=tcp&secu
+[20:37:09] [ОТБРОШЕН: HTTP_504] trojan://your_password@43.218.139.54:443/?type=tcp&secu
+[20:37:09] [ОТБРОШЕН: HTTP_504] trojan://your_password@43.218.139.54:443/?type=tcp&secu
+[20:37:09] [ОТБРОШЕН: HTTP_504] trojan://your_password@43.218.139.54:443/?type=tcp&secu
+[20:37:09] [ОТБРОШЕН: HTTP_504] trojan://your_password@43.218.139.54:443/?type=tcp&secu
+[20:37:09] Строка завершена. Итого рабочих: 32/60
+[20:37:09] Обработка строки: https://raw.githubusercontent.com/w1770946466/Auto_proxy/main/Lon
+[20:37:09] Извлечено валидных URI: 249
+[20:37:20] После фильтра стран (DE->NL->FR->GB->US) осталось: 128
+[20:37:20] [ОТБРОШЕН: HTTP_503] vless://f775978b-6e22-41a8-ae5e-5f9779e6745f@94.247.142
+[20:37:20] [ОТБРОШЕН: HTTP_503] vless://f775978b-6e22-41a8-ae5e-5f9779e6745f@45.80.111.
+[20:37:20] [ОТБРОШЕН: HTTP_503] vless://f775978b-6e22-41a8-ae5e-5f9779e6745f@94.247.142
+[20:37:20] [ОТБРОШЕН: HTTP_503] vless://f775978b-6e22-41a8-ae5e-5f9779e6745f@194.36.55.
+[20:37:20] [ОТБРОШЕН: HTTP_503] vmess://eyJ2IjoiMiIsInBzIjoi8J+Hq/Cfh7dfRlJf5rOV5Zu9Iiw
+[20:37:59] Строка завершена. Итого рабочих: 32/60
+[20:37:59] Обработка строки: https://raw.githubusercontent.com/ermaozi01/free_clash_vpn/main/s
+[20:37:59] Извлечено валидных URI: 7
+[20:37:59] После фильтра стран (DE->NL->FR->GB->US) осталось: 5
+[20:38:03] [ОТБРОШЕН: HTTP_504] vless://57beeeb0-03fc-4fc9-94da-7604488a7134@zfapi.zalo
+[20:38:03] Строка завершена. Итого рабочих: 32/60
+[20:38:03] Обработка строки: https://raw.githubusercontent.com/mheidari98/.proxy/main/all
+[20:38:06] Извлечено валидных URI: 9836
+[20:38:44] После фильтра стран (DE->NL->FR->GB->US) осталось: 7405
+[20:38:45] [ОТБРОШЕН: HTTP_503] vless://c27e9b8b-52ea-43e2-b491-aaca7d955cd4@91.107.245
+[20:38:45] [ОТБРОШЕН: HTTP_503] vmess://eyJhZGQiOiAiMTg4LjQwLjEzMi4xMDciLCAiYWlkIjogMCw
+[20:38:45] [ОТБРОШЕН: HTTP_503] vless://2ae1bbd2-dd81-4737-bbec-6a8c1c74e8f1@159.195.13
+[20:38:45] [OK 396ms] (33/60) vless://a6d20e79-d326-42c1-bc20-f4cecc6dc42d@45.134.9.1
+[20:38:45] [ОТБРОШЕН: HTTP_503] vless://b9bfa54d-bc44-4592-a6d6-89a9665d286f@edge.bookm
+[20:38:45] [ОТБРОШЕН: HTTP_503] vless://d86e6fda-e519-46ab-98eb-9ff9a9da5984@5.83.129.2
+[20:38:45] [OK 448ms] (34/60) vless://855c7aaa-e7d6-463e-971e-d36032744428@159.195.20
+[20:38:45] [OK 739ms] (35/60) vless://0386df1b-7abd-4676-f3c6-d65d691023b9@sino.bests
+[20:38:50] [OK 955ms] (36/60) vless://b79d736d-0f10-4169-b626-362059d18204@95.216.27.
+[20:38:54] [OK 294ms] (37/60) vless://d65cc14c-f53f-4fe2-b262-97856601319c@169.40.42.
+[20:38:54] [OK 426ms] (38/60) vless://d65cc14c-f53f-4fe2-b262-97856601319c@169.40.42.
+[20:38:54] [OK 730ms] (39/60) vless://b082567f-6291-4abf-be72-acdda82d4351@153.56.229
+[20:38:58] [OK 348ms] (40/60) vless://d65cc14c-f53f-4fe2-b262-97856601319c@169.40.42.
+[20:38:58] [OK 300ms] (41/60) vless://d65cc14c-f53f-4fe2-b262-97856601319c@169.40.42.
+[20:38:59] [OK 705ms] (42/60) vless://26843758-24de-4f76-b5d0-624038e353c4@153.56.229
+[20:38:59] [OK 723ms] (43/60) vless://0386df1b-7abd-4676-f3c6-d65d691023b9@91.107.247
+[20:38:59] [OK 947ms] (44/60) vless://68512eac-cd53-4de3-8d1e-08f6e04af1a9@13.140.56.
+[20:39:03] [OK 407ms] (45/60) vless://a6d20e79-d326-42c1-bc20-f4cecc6dc42d@ul-mexico1
+[20:39:03] [OK 673ms] (46/60) vless://beda6bd0-7ce4-477a-91f1-860d018dbfcb@sizipe.hag
+[20:39:03] [OK 931ms] (47/60) vless://4e4f1f70-5e56-4a76-bb9d-db087f4690c4@45.142.126
+[20:39:03] [OK 943ms] (48/60) vless://17930566-4faa-43bc-9ebb-ad63356abd10@fdh12.mobi
+[20:39:11] [OK 304ms] (49/60) vless://d65cc14c-f53f-4fe2-b262-97856601319c@169.40.42.
+[20:39:11] [OK 548ms] (50/60) vless://ead0dd61-d398-40ad-80d6-a0e1e516d7d3@212.227.23
+[20:39:12] [OK 689ms] (51/60) vless://086bf957-9cd0-4e55-8280-bbef10435b41@ai.smrtai.
+[20:39:16] [OK 595ms] (52/60) vless://b9bfa54d-bc44-4592-a6d6-89a9665d286f@163.245.42
+[20:39:16] [OK 645ms] (53/60) vless://287db857-de04-4212-bd69-5d14083e340e@167.233.12
+[20:39:20] [OK 689ms] (54/60) vless://ba0dbd83-3569-46dc-bc3d-ef6e58ffc97b@153.56.229
+[20:39:20] [OK 733ms] (55/60) vless://0386df1b-7abd-4676-f3c6-d65d691023b9@sino.bests
+[20:39:21] [OK 947ms] (56/60) vless://68512eac-cd53-4de3-8d1e-08f6e04af1a9@13.140.56.
+[20:39:26] [OK 290ms] (57/60) vless://d65cc14c-f53f-4fe2-b262-97856601319c@169.40.42.
+[20:39:26] [OK 398ms] (58/60) vless://a6d20e79-d326-42c1-bc20-f4cecc6dc42d@UL-Mexico1
+[20:39:27] [OK 884ms] (59/60) vless://cda0862a-0f87-4be9-8ed8-1d0c9e382839@93.123.85.
+[20:39:27] [OK 989ms] (60/60) vless://6bdc8320-7eae-46fc-be08-f5f54e65dfc8@in.smrtai.
+[20:39:28] [OK 1853ms] (61/60) vless://4e4f1f70-5e56-4a76-bb9d-db087f4690c4@45.129.8.2
+[20:39:29] Строка завершена. Итого рабочих: 60/60
+[20:39:29] Набрано 60 рабочих серверов. Очищаем очередь.
