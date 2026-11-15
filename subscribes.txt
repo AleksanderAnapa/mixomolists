@@ -5,7 +5,20 @@ https://github.com/igareck/vpn-configs-for-russia/raw/refs/heads/main/Vless-Real
 https://github.com/igareck/vpn-configs-for-russia/raw/refs/heads/main/BLACK_VLESS_RUS_mobile.txt
 https://raw.githubusercontent.com/luxxuria/harvester/refs/heads/main/non_ru.txt
 
+https://warp-gen.cyb-portal.org/CP-001
+https://warp-gen.cyb-portal.org/CP-002
+https://warp-gen.cyb-portal.org/CP-003
 https://warp-gen.cyb-portal.org/CP-005
+https://warp-gen.cyb-portal.org/CP-009
+https://warp-gen.cyb-portal.org/CP-010
+https://warp-gen.cyb-portal.org/CP-012
+https://warp-gen.cyb-portal.org/CP-019
+https://warp-gen.cyb-portal.org/CP-035
+https://warp-gen.cyb-portal.org/CP-038
+https://warp-gen.cyb-portal.org/CP-040
+https://warp-gen.cyb-portal.org/CP-041
+https://warp-gen.cyb-portal.org/CP-042
+https://warp-gen.cyb-portal.org/CP-044
 
 https://raw.githubusercontent.com/Epodonios/bulk-xray-v2ray-vless-vmess-...-configs/main/sub/United%20States/config.txt
 https://raw.githubusercontent.com/Epodonios/bulk-xray-v2ray-vless-vmess-...-configs/main/sub/Germany/config.txt
