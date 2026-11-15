@@ -49,7 +49,7 @@ jobs:
       - name: Обновить final.txt
         if: always()
         run: |
-          rm -f mihomo mon_*.yaml
+          rm -f mihomo mon_*.yaml msub_*.txt
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@://github.com"
           git add -A
