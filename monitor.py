@@ -2,6 +2,7 @@ import base64
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import json
 import os
+import re
 import subprocess
 import tempfile
 import time
@@ -23,49 +24,157 @@ def set_github_output(name, value):
         with open(output_file, "a", encoding="utf-8") as f:
             f.write(f"{name}={value}\n")
 
+def decode_base64_safe(data):
+    try:
+        cleaned = re.sub(r"\s+", "", data)
+        missing_padding = len(cleaned) % 4
+        if missing_padding:
+            cleaned += "=" * (4 - missing_padding)
+        return base64.b64decode(cleaned).decode("utf-8", errors="ignore")
+    except Exception:
+        return ""
+
+def uri_to_clash_dict(uri, temp_name):
+    try:
+        clean_uri = uri.replace("&amp;", "&")
+        if clean_uri.startswith("vmess://"):
+            body = clean_uri.replace("vmess://", "", 1)
+            raw_b64, _, _ = body.rpartition("#") if "#" in body else (body, "", "")
+            d = json.loads(decode_base64_safe(raw_b64))
+            if not d.get("add") or not d.get("port") or not d.get("id"):
+                return None
+            net = str(d.get("net", "tcp")).strip().lower()
+            tls = str(d.get("tls", "")).lower() in ("tls", "1", "true")
+            scy = str(d.get("scy", "auto")).strip().lower()
+            if scy in ("null", "none", ""):
+                scy = "auto"
+            proxy = {
+                "name": temp_name,
+                "type": "vmess",
+                "server": str(d["add"]).strip(),
+                "port": int(d["port"]),
+                "uuid": str(d["id"]).strip(),
+                "alterId": int(d.get("aid", 0)),
+                "cipher": scy,
+                "udp": True,
+                "tls": tls,
+                "skip-cert-verify": True,
+                "network": net
+            }
+            if d.get("sni"):
+                proxy["servername"] = str(d["sni"]).strip()
+            elif d.get("host"):
+                proxy["servername"] = str(d["host"]).strip()
+            if net == "ws":
+                proxy["ws-opts"] = {
+                    "path": str(d.get("path", "/")).strip() or "/",
+                    "headers": {"Host": str(d.get("host", d["add"])).strip()}
+                }
+            elif net == "grpc":
+                proxy["grpc-opts"] = {"grpc-service-name": str(d.get("path", "")).strip()}
+            return proxy
+
+        no_tag, _, _ = clean_uri.rpartition("#") if "#" in clean_uri else (clean_uri, "", "")
+        parsed = urllib.parse.urlparse(no_tag)
+        params = urllib.parse.parse_qs(parsed.query)
+        def get_p(k, default=""):
+            vals = params.get(k)
+            return str(next(iter(vals))).strip() if vals else default
+
+        if not (parsed.hostname and parsed.port and parsed.username):
+            return None
+
+        net = get_p("type", "tcp").lower()
+        security = get_p("security", "none").lower()
+        sni = get_p("sni") or get_p("peer") or str(parsed.hostname)
+
+        if no_tag.startswith("vless://"):
+            proxy = {
+                "name": temp_name,
+                "type": "vless",
+                "server": str(parsed.hostname),
+                "port": int(parsed.port),
+                "uuid": str(parsed.username),
+                "udp": True,
+                "tls": security in ("tls", "reality"),
+                "skip-cert-verify": True,
+                "servername": sni,
+                "network": net
+            }
+            flow = get_p("flow")
+            if flow:
+                proxy["flow"] = flow
+            if security == "reality":
+                pbk = get_p("pbk")
+                sid = get_p("sid", "")
+                if not pbk:
+                    return None
+                if sid and (len(sid) > 16 or len(sid) % 2 != 0 or not re.fullmatch(r"[0-9a-fA-F]+", sid)):
+                    return None
+                proxy["reality-opts"] = {
+                    "public-key": pbk,
+                    "short-id": sid
+                }
+                proxy["client-fingerprint"] = get_p("fp", "chrome") or "chrome"
+            if net == "ws":
+                proxy["ws-opts"] = {
+                    "path": get_p("path", "/") or "/",
+                    "headers": {"Host": get_p("host", sni) or sni}
+                }
+            elif net == "grpc":
+                proxy["grpc-opts"] = {"grpc-service-name": get_p("serviceName", "")}
+            return proxy
+        if no_tag.startswith("trojan://"):
+            proxy = {
+                "name": temp_name,
+                "type": "trojan",
+                "server": str(parsed.hostname),
+                "port": int(parsed.port),
+                "password": str(parsed.username),
+                "udp": True,
+                "sni": sni,
+                "skip-cert-verify": True,
+                "network": net
+            }
+            if net == "ws":
+                proxy["ws-opts"] = {
+                    "path": get_p("path", "/") or "/",
+                    "headers": {"Host": get_p("host", sni) or sni}
+                }
+            elif net == "grpc":
+                proxy["grpc-opts"] = {"grpc-service-name": get_p("serviceName", "")}
+            return proxy
+    except Exception:
+        return None
+    return None
+
 def test_one_server_isolated(orig_uri, slot_id, encoded_test_url):
-    """Тестирует оригинальную ссылку 1-в-1 через провайдер Mihomo (в Base64) без изменения параметров."""
-    if orig_uri.startswith("vmess://"):
-        test_uri = orig_uri
-    else:
-        base, _, _ = orig_uri.rpartition("#") if "#" in orig_uri else (orig_uri, "", "")
-        test_uri = f"{base}#single_node"
+    p_dict = uri_to_clash_dict(orig_uri, "single_node")
+    if not p_dict:
+        return orig_uri, False
 
-    b64_sub = base64.b64encode((test_uri + "\n").encode("utf-8")).decode("utf-8")
     api_port = BASE_PORT + slot_id
+    temp_config = {
+        "external-controller": f"127.0.0.1:{api_port}",
+        "dns": {
+            "enable": True,
+            "ipv6": False,
+            "nameserver": ["1.1.1.1", "8.8.8.8"]
+        },
+        "proxies": [p_dict],
+        "proxy-groups": [
+            {
+                "name": "AUTO",
+                "type": "select",
+                "proxies": ["single_node"]
+            }
+        ]
+    }
 
-    fd_sub, sub_path = tempfile.mkstemp(prefix=f"msub_{slot_id}_", suffix=".txt", dir=".")
-    os.close(fd_sub)
-    fd_cfg, cfg_path = tempfile.mkstemp(prefix=f"mon_{slot_id}_", suffix=".yaml", dir=".")
-    os.close(fd_cfg)
-
+    fd, cfg_path = tempfile.mkstemp(prefix=f"mon_{slot_id}_", suffix=".yaml", dir=".")
+    os.close(fd)
     proc = None
     try:
-        with open(sub_path, "w", encoding="utf-8") as f:
-            f.write(b64_sub)
-
-        temp_config = {
-            "external-controller": f"127.0.0.1:{api_port}",
-            "dns": {
-                "enable": True,
-                "ipv6": False,
-                "nameserver": ["1.1.1.1", "8.8.8.8"]
-            },
-            "proxy-providers": {
-                "pool": {
-                    "type": "file",
-                    "path": os.path.abspath(sub_path)
-                }
-            },
-            "proxy-groups": [
-                {
-                    "name": "AUTO",
-                    "type": "select",
-                    "use": ["pool"]
-                }
-            ]
-        }
-
         with open(cfg_path, "w", encoding="utf-8") as f:
             yaml.dump(temp_config, f, allow_unicode=True)
 
@@ -74,27 +183,12 @@ def test_one_server_isolated(orig_uri, slot_id, encoded_test_url):
             stdout=subprocess.DEVNULL,
             stderr=subprocess.DEVNULL
         )
-        time.sleep(1.2)
+        time.sleep(0.8)
 
         if proc.poll() is not None:
             return orig_uri, False
 
-        r_list = requests.get(f"{LOCAL_API_HOST}:{api_port}/proxies", timeout=3)
-        if r_list.status_code != 200:
-            return orig_uri, False
-
-        proxies_dict = r_list.json().get("proxies", {})
-        target_name = None
-        for pname in proxies_dict.keys():
-            if pname not in ("DIRECT", "REJECT", "GLOBAL", "AUTO", "COMPATIBLE", "PASS"):
-                target_name = pname
-                break
-
-        if not target_name:
-            return orig_uri, False
-
-        enc_name = urllib.parse.quote(target_name, safe="")
-        check_url = f"{LOCAL_API_HOST}:{api_port}/proxies/{enc_name}/delay?timeout=4000&url={encoded_test_url}&expected=204"
+        check_url = f"{LOCAL_API_HOST}:{api_port}/proxies/single_node/delay?timeout=4000&url={encoded_test_url}&expected=204"
         r = requests.get(check_url, timeout=5)
         if r.status_code == 200 and "delay" in r.json() and int(r.json()["delay"]) > 0:
             return orig_uri, True
@@ -110,8 +204,7 @@ def test_one_server_isolated(orig_uri, slot_id, encoded_test_url):
                 proc.kill()
         if os.path.exists(cfg_path):
             os.remove(cfg_path)
-        if os.path.exists(sub_path):
-            os.remove(sub_path)
+
 def main():
     if not os.path.exists("final.txt"):
         print("Файл final.txt отсутствует. Запрашиваем пополнение.")
