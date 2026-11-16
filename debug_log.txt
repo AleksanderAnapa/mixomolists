@@ -1,2 +1,174 @@
-=== СТАРТ ИНДИВИДУАЛЬНОЙ ПРОВЕРКИ ===
-[19:12:00] В test.txt нет новых ссылок для обработки.
+=== СТАРТ ПОПОЛНЕНИЯ FINAL.TXT ===
+[19:38:47] В текущем final.txt уже есть серверов: 2/60
+[19:38:49] Загружено CIDR-подсетей стран: 56615
+[19:38:49] Проверка подписки [1/98]: https://github.com/FLAT447/v2ray-lists/raw/refs/heads/main/BLACK_
+[19:38:49] Извлечено валидных URI: 24
+[19:38:50] После фильтра стран (DE->NL->FR->GB->US) осталось: 14
+[19:38:51] [OK 97ms] (3/60) vless://59548d2d-5d7c-4328-aa81-0d5614da0c1b@198.247.12
+[19:38:52] [OK 1407ms] (4/60) vless://cda0862a-0f87-4be9-8ed8-1d0c9e382839@201.8.64.2
+[19:38:52] [OK 1420ms] (5/60) vless://cda0862a-0f87-4be9-8ed8-1d0c9e382839@201.8.64.2
+[19:38:55] Подписка рабочая (+3 серверов). Всего в final.txt: 5/60
+[19:38:55] Проверка подписки [2/98]: https://github.com/kort0881/vpn-vless-configs-russia/blob/main/ou
+[19:38:55] Ошибка скачивания https://github.com/kort0881/vpn-vless-configs-russ: Invalid URL 'https://://githubusercontent.comkort0881/vpn-vless-configs-russia/main/output/vless.txt': No host supplied
+[19:38:55] Помечаем как BAD!: https://github.com/kort0881/vpn-vless-configs-russia/blob/main/ou
+[19:38:55] Проверка подписки [3/98]: https://github.com/igareck/vpn-configs-for-russia/raw/refs/heads/
+[19:38:56] Извлечено валидных URI: 111
+[19:38:56] После фильтра стран (DE->NL->FR->GB->US) осталось: 2
+[19:38:59] Помечаем как BAD!: https://github.com/igareck/vpn-configs-for-russia/raw/refs/heads/
+[19:38:59] Проверка подписки [4/98]: https://github.com/igareck/vpn-configs-for-russia/raw/refs/heads/
+[19:39:00] Извлечено валидных URI: 111
+[19:39:00] После фильтра стран (DE->NL->FR->GB->US) осталось: 2
+[19:39:05] Помечаем как BAD!: https://github.com/igareck/vpn-configs-for-russia/raw/refs/heads/
+[19:39:05] Проверка подписки [5/98]: https://github.com/igareck/vpn-configs-for-russia/raw/refs/heads/
+[19:39:06] Извлечено валидных URI: 143
+[19:39:06] После фильтра стран (DE->NL->FR->GB->US) осталось: 131
+[19:39:08] [OK 1448ms] (6/60) vless://3692de53-42e6-4aed-a522-40ec355dcd2f@104.17.70.
+[19:39:14] [OK 1552ms] (7/60) vless://3692de53-42e6-4aed-a522-40ec355dcd2f@104.17.70.
+[19:39:14] [OK 1629ms] (8/60) vmess://eyJ2IjoiMiIsInBzIjoi8J+HuvCfh7ggVW5pdGVkIFN0YXR
+[19:39:18] [OK 322ms] (9/60) vless://e3149c82-00f6-4227-b2c0-b78f1dd81279@172.67.199
+[19:39:19] [OK 1312ms] (10/60) vmess://eyJ2IjoiMiIsInBzIjoi8J+HuPCfh6wgU2luZ2Fwb3JlLCB
+[19:39:19] [OK 1284ms] (11/60) vmess://eyJ2IjoiMiIsInBzIjoi8J+HuPCfh6wgU2luZ2Fwb3JlLCB
+[19:39:19] [OK 1549ms] (12/60) vless://3692de53-42e6-4aed-a522-40ec355dcd2f@104.17.70.
+[19:39:24] [OK 454ms] (13/60) vless://e3149c82-00f6-4227-b2c0-b78f1dd81279@172.67.199
+[19:39:24] [OK 444ms] (14/60) vless://c83f15bf-1817-4ec8-a19f-6393d226434c@104.21.58.
+[19:39:30] [OK 1506ms] (15/60) vless://3692de53-42e6-4aed-a522-40ec355dcd2f@104.17.70.
+[19:39:30] [OK 1506ms] (16/60) vless://3692de53-42e6-4aed-a522-40ec355dcd2f@104.17.70.
+[19:39:35] [OK 1073ms] (17/60) vless://c83f15bf-1817-4ec8-a19f-6393d226434c@104.21.58.
+[19:39:40] [OK 1148ms] (18/60) vless://c83f15bf-1817-4ec8-a19f-6393d226434c@104.21.58.
+[19:39:45] [OK 450ms] (19/60) vless://e3149c82-00f6-4227-b2c0-b78f1dd81279@172.67.199
+[19:39:45] [OK 711ms] (20/60) vmess://eyJhZGQiOiIxNzIuNjQuODAuMSIsImFpZCI6IjAiLCJob3N
+[19:39:45] [OK 726ms] (21/60) vmess://eyJ2IjoiMiIsInBzIjoi8J+HuvCfh7ggVW5pdGVkIFN0YXR
+[19:39:51] [OK 1200ms] (22/60) vmess://eyJhZGQiOiJ3dG8ub3JnIiwiYWlkIjoiMCIsImhvc3QiOiJ
+[19:39:51] [OK 1319ms] (23/60) vmess://eyJhZGQiOiJuZXdzLnpvb20udXMiLCJhaWQiOiIwIiwiZnA
+[19:39:54] Подписка рабочая (+18 серверов). Всего в final.txt: 23/60
+[19:39:54] Проверка подписки [6/98]: https://raw.githubusercontent.com/luxxuria/harvester/refs/heads/m
+[19:39:55] Извлечено валидных URI: 29
+[19:39:55] После фильтра стран (DE->NL->FR->GB->US) осталось: 25
+[19:39:56] [OK 656ms] (24/60) vless://49db4ce7-ad48-41a3-9b6f-4c6dabd94504@50.7.115.2
+[19:39:56] [OK 737ms] (25/60) vless://49db4ce7-ad48-41a3-9b6f-4c6dabd94504@50.7.21.25
+[19:39:56] [OK 735ms] (26/60) vless://49db4ce7-ad48-41a3-9b6f-4c6dabd94504@67.159.52.
+[19:39:57] [OK 784ms] (27/60) vless://372931d3-91c5-4564-b79c-041302de9a17@31.77.28.1
+[19:40:02] [OK 634ms] (28/60) vless://372931d3-91c5-4564-b79c-041302de9a17@191.217.21
+[19:40:02] [OK 728ms] (29/60) vless://372931d3-91c5-4564-b79c-041302de9a17@31.77.28.6
+[19:40:02] [OK 785ms] (30/60) vless://fdd8f4d0-4500-11ef-8227-1577c1651679@104.17.3.8
+[19:40:02] [OK 957ms] (31/60) vless://49db4ce7-ad48-41a3-9b6f-4c6dabd94504@23.237.59.
+[19:40:02] [OK 1015ms] (32/60) vless://dfe50e18-28ce-459e-a6b9-0f2585bcc3b6@ee.point.c
+[19:40:03] [OK 1486ms] (33/60) vless://49db4ce7-ad48-41a3-9b6f-4c6dabd94504@50.7.89.67
+[19:40:04] Подписка рабочая (+10 серверов). Всего в final.txt: 33/60
+[19:40:04] Проверка подписки [8/98]: https://warp-gen.cyb-portal.org/CP-001
+[19:40:07] Ошибка HTTP 502 для https://warp-gen.cyb-portal.org/CP-001
+[19:40:07] Помечаем как BAD!: https://warp-gen.cyb-portal.org/CP-001
+[19:40:07] Проверка подписки [9/98]: https://warp-gen.cyb-portal.org/CP-002
+[19:40:10] Ошибка HTTP 502 для https://warp-gen.cyb-portal.org/CP-002
+[19:40:10] Помечаем как BAD!: https://warp-gen.cyb-portal.org/CP-002
+[19:40:10] Проверка подписки [10/98]: https://warp-gen.cyb-portal.org/CP-003
+[19:40:10] Ошибка HTTP 502 для https://warp-gen.cyb-portal.org/CP-003
+[19:40:10] Помечаем как BAD!: https://warp-gen.cyb-portal.org/CP-003
+[19:40:10] Проверка подписки [11/98]: https://warp-gen.cyb-portal.org/CP-005
+[19:40:13] Ошибка HTTP 502 для https://warp-gen.cyb-portal.org/CP-005
+[19:40:13] Помечаем как BAD!: https://warp-gen.cyb-portal.org/CP-005
+[19:40:13] Проверка подписки [12/98]: https://warp-gen.cyb-portal.org/CP-009
+[19:40:15] Ошибка HTTP 502 для https://warp-gen.cyb-portal.org/CP-009
+[19:40:15] Помечаем как BAD!: https://warp-gen.cyb-portal.org/CP-009
+[19:40:15] Проверка подписки [13/98]: https://warp-gen.cyb-portal.org/CP-010
+[19:40:16] Ошибка HTTP 502 для https://warp-gen.cyb-portal.org/CP-010
+[19:40:16] Помечаем как BAD!: https://warp-gen.cyb-portal.org/CP-010
+[19:40:16] Проверка подписки [14/98]: https://warp-gen.cyb-portal.org/CP-012
+[19:40:17] Ошибка HTTP 502 для https://warp-gen.cyb-portal.org/CP-012
+[19:40:17] Помечаем как BAD!: https://warp-gen.cyb-portal.org/CP-012
+[19:40:17] Проверка подписки [15/98]: https://warp-gen.cyb-portal.org/CP-019
+[19:40:18] Ошибка HTTP 502 для https://warp-gen.cyb-portal.org/CP-019
+[19:40:18] Помечаем как BAD!: https://warp-gen.cyb-portal.org/CP-019
+[19:40:18] Проверка подписки [16/98]: https://warp-gen.cyb-portal.org/CP-035
+[19:40:19] Ошибка HTTP 502 для https://warp-gen.cyb-portal.org/CP-035
+[19:40:19] Помечаем как BAD!: https://warp-gen.cyb-portal.org/CP-035
+[19:40:19] Проверка подписки [17/98]: https://warp-gen.cyb-portal.org/CP-038
+[19:40:20] Ошибка HTTP 502 для https://warp-gen.cyb-portal.org/CP-038
+[19:40:20] Помечаем как BAD!: https://warp-gen.cyb-portal.org/CP-038
+[19:40:20] Проверка подписки [18/98]: https://warp-gen.cyb-portal.org/CP-040
+[19:40:21] Ошибка HTTP 502 для https://warp-gen.cyb-portal.org/CP-040
+[19:40:21] Помечаем как BAD!: https://warp-gen.cyb-portal.org/CP-040
+[19:40:21] Проверка подписки [19/98]: https://warp-gen.cyb-portal.org/CP-041
+[19:40:22] Ошибка HTTP 502 для https://warp-gen.cyb-portal.org/CP-041
+[19:40:22] Помечаем как BAD!: https://warp-gen.cyb-portal.org/CP-041
+[19:40:22] Проверка подписки [20/98]: https://warp-gen.cyb-portal.org/CP-042
+[19:40:23] Ошибка HTTP 502 для https://warp-gen.cyb-portal.org/CP-042
+[19:40:23] Помечаем как BAD!: https://warp-gen.cyb-portal.org/CP-042
+[19:40:23] Проверка подписки [21/98]: https://warp-gen.cyb-portal.org/CP-044
+[19:40:27] Ошибка HTTP 502 для https://warp-gen.cyb-portal.org/CP-044
+[19:40:27] Помечаем как BAD!: https://warp-gen.cyb-portal.org/CP-044
+[19:40:27] Проверка подписки [23/98]: https://raw.githubusercontent.com/Epodonios/bulk-xray-v2ray-vless
+[19:40:27] Ошибка HTTP 404 для https://raw.githubusercontent.com/Epodonios/bulk-x
+[19:40:27] Помечаем как BAD!: https://raw.githubusercontent.com/Epodonios/bulk-xray-v2ray-vless
+[19:40:27] Проверка подписки [24/98]: https://raw.githubusercontent.com/Epodonios/bulk-xray-v2ray-vless
+[19:40:27] Ошибка HTTP 404 для https://raw.githubusercontent.com/Epodonios/bulk-x
+[19:40:27] Помечаем как BAD!: https://raw.githubusercontent.com/Epodonios/bulk-xray-v2ray-vless
+[19:40:27] Проверка подписки [25/98]: https://raw.githubusercontent.com/Epodonios/bulk-xray-v2ray-vless
+[19:40:27] Ошибка HTTP 404 для https://raw.githubusercontent.com/Epodonios/bulk-x
+[19:40:27] Помечаем как BAD!: https://raw.githubusercontent.com/Epodonios/bulk-xray-v2ray-vless
+[19:40:27] Проверка подписки [26/98]: https://github.com/Epodonios/bulk-xray-v2ray-vless-vmess-...-conf
+[19:40:27] Ошибка HTTP 404 для https://github.com/Epodonios/bulk-xray-v2ray-vless
+[19:40:27] Помечаем как BAD!: https://github.com/Epodonios/bulk-xray-v2ray-vless-vmess-...-conf
+[19:40:27] Проверка подписки [28/98]: https://github.com/mermeroo/V2RAY-FREE/raw/main/All_Configs_base6
+[19:40:28] Ошибка HTTP 404 для https://github.com/mermeroo/V2RAY-FREE/raw/main/Al
+[19:40:28] Помечаем как BAD!: https://github.com/mermeroo/V2RAY-FREE/raw/main/All_Configs_base6
+[19:40:28] Проверка подписки [29/98]: https://raw.githubusercontent.com/mermeroo/free-v2ray-collector/m
+[19:40:28] Ошибка HTTP 404 для https://raw.githubusercontent.com/mermeroo/free-v2
+[19:40:28] Помечаем как BAD!: https://raw.githubusercontent.com/mermeroo/free-v2ray-collector/m
+[19:40:28] Проверка подписки [30/98]: https://raw.githubusercontent.com/mermeroo/free-v2ray-collector/m
+[19:40:28] Ошибка HTTP 404 для https://raw.githubusercontent.com/mermeroo/free-v2
+[19:40:28] Помечаем как BAD!: https://raw.githubusercontent.com/mermeroo/free-v2ray-collector/m
+[19:40:28] Проверка подписки [31/98]: https://raw.githubusercontent.com/mermeroo/free-v2ray-collector/m
+[19:40:28] Ошибка HTTP 404 для https://raw.githubusercontent.com/mermeroo/free-v2
+[19:40:28] Помечаем как BAD!: https://raw.githubusercontent.com/mermeroo/free-v2ray-collector/m
+[19:40:28] Проверка подписки [32/98]: https://raw.githubusercontent.com/mermeroo/free-v2ray-collector/m
+[19:40:28] Ошибка HTTP 404 для https://raw.githubusercontent.com/mermeroo/free-v2
+[19:40:28] Помечаем как BAD!: https://raw.githubusercontent.com/mermeroo/free-v2ray-collector/m
+[19:40:28] Проверка подписки [33/98]: https://raw.githubusercontent.com/mermeroo/free-v2ray-collector/m
+[19:40:29] Ошибка HTTP 404 для https://raw.githubusercontent.com/mermeroo/free-v2
+[19:40:29] Помечаем как BAD!: https://raw.githubusercontent.com/mermeroo/free-v2ray-collector/m
+[19:40:29] Проверка подписки [34/98]: https://raw.githubusercontent.com/AzadNetCH/Clash/refs/heads/main
+[19:40:29] Извлечено валидных URI: 6
+[19:40:29] После фильтра стран (DE->NL->FR->GB->US) осталось: 6
+[19:40:34] Помечаем как BAD!: https://raw.githubusercontent.com/AzadNetCH/Clash/refs/heads/main
+[19:40:34] Проверка подписки [35/98]: https://raw.githubusercontent.com/w1770946466/Auto_proxy/main/Lon
+[19:40:34] Извлечено валидных URI: 249
+[19:40:45] После фильтра стран (DE->NL->FR->GB->US) осталось: 129
+[19:41:33] Помечаем как BAD!: https://raw.githubusercontent.com/w1770946466/Auto_proxy/main/Lon
+[19:41:33] Проверка подписки [36/98]: https://raw.githubusercontent.com/ermaozi01/free_clash_vpn/main/s
+[19:41:34] Извлечено валидных URI: 7
+[19:41:34] После фильтра стран (DE->NL->FR->GB->US) осталось: 5
+[19:41:35] [OK 160ms] (34/60) vmess://eyJ2IjoiMiIsInBzIjoiQERlbHRhS3JvbmVja2VyR2l0aHV
+[19:41:35] [OK 159ms] (35/60) vmess://eyJ2IjoiMiIsInBzIjoi8J+HuvCfh7hfVVNf576O5Zu9X0l
+[19:41:35] [OK 162ms] (36/60) vmess://eyJ2IjoiMiIsInBzIjoi8J+HuvCfh7gg5py65Zy65o6o6I2
+[19:41:35] [OK 202ms] (37/60) vmess://eyJ2IjoiMiIsInBzIjoi8J+HuvCfh7gg5py65Zy65o6o6I2
+[19:41:39] Подписка рабочая (+4 серверов). Всего в final.txt: 37/60
+[19:41:39] Проверка подписки [37/98]: https://raw.githubusercontent.com/mheidari98/.proxy/main/all
+[19:41:42] Извлечено валидных URI: 10064
+[19:42:23] После фильтра стран (DE->NL->FR->GB->US) осталось: 7540
+[19:42:24] [OK 347ms] (38/60) vless://d65cc14c-f53f-4fe2-b262-97856601319c@169.40.42.
+[19:42:24] [OK 593ms] (39/60) vless://4201786b-d99b-4147-a5f0-20d47acddb81@185.255.11
+[19:42:24] [OK 728ms] (40/60) vless://0386df1b-7abd-4676-f3c6-d65d691023b9@91.107.247
+[19:42:30] [OK 480ms] (41/60) vless://855c7aaa-e7d6-463e-971e-d36032744428@159.195.20
+[19:42:30] [OK 590ms] (42/60) vless://b9bfa54d-bc44-4592-a6d6-89a9665d286f@163.245.42
+[19:42:30] [OK 994ms] (43/60) vless://6bdc8320-7eae-46fc-be08-f5f54e65dfc8@178.212.35
+[19:42:35] [OK 349ms] (44/60) vless://d65cc14c-f53f-4fe2-b262-97856601319c@169.40.42.
+[19:42:35] [OK 536ms] (45/60) vless://8197b9b9-8945-460f-99c9-325ef8a8a7c3@88.214.24.
+[19:42:35] [OK 752ms] (46/60) vless://0386df1b-7abd-4676-f3c6-d65d691023b9@sino.bests
+[19:42:35] [OK 1008ms] (47/60) vless://6bdc8320-7eae-46fc-be08-f5f54e65dfc8@in.smrtai.
+[19:42:36] [OK 1091ms] (48/60) vless://8197b9b9-8945-460f-99c9-325ef8a8a7c3@195.72.62.
+[19:42:36] [OK 1390ms] (49/60) vless://68512eac-cd53-4de3-8d1e-08f6e04af1a9@13.140.56.
+[19:42:40] [OK 667ms] (50/60) vless://88a558b1-9645-42f3-89e5-341570d8486d@157.180.98
+[19:42:41] [OK 1085ms] (51/60) vless://6bdc8320-7eae-46fc-be08-f5f54e65dfc8@in.smrtai.
+[19:42:49] [OK 576ms] (52/60) vless://ead0dd61-d398-40ad-80d6-a0e1e516d7d3@212.227.23
+[19:42:55] [OK 1124ms] (53/60) vless://4201786b-d99b-4147-a5f0-20d47acddb81@185.255.11
+[19:43:01] [OK 1704ms] (54/60) vless://68512eac-cd53-4de3-8d1e-08f6e04af1a9@13.140.56.
+[19:43:05] [OK 458ms] (55/60) vless://855c7aaa-e7d6-463e-971e-d36032744428@159.195.20
+[19:43:06] [OK 1354ms] (56/60) vless://26843758-24de-4f76-b5d0-624038e353c4@153.56.229
+[19:43:10] [OK 291ms] (57/60) vless://d65cc14c-f53f-4fe2-b262-97856601319c@169.40.42.
+[19:43:10] [OK 723ms] (58/60) vless://0386df1b-7abd-4676-f3c6-d65d691023b9@91.107.247
+[19:43:11] [OK 1049ms] (59/60) vless://cda0862a-0f87-4be9-8ed8-1d0c9e382839@93.123.85.
+[19:43:15] [OK 372ms] (60/60) vless://d65cc14c-f53f-4fe2-b262-97856601319c@169.40.42.
+[19:43:16] [OK 598ms] (61/60) vless://b9bfa54d-bc44-4592-a6d6-89a9665d286f@163.245.42
+[19:43:16] [OK 637ms] (62/60) vless://55458d10-24ab-4ea6-a522-13741b546f2a@153.56.229
+[19:43:20] Подписка рабочая (+25 серверов). Всего в final.txt: 60/60
