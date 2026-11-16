@@ -23,10 +23,13 @@ EXCLUDE_REGEX = re.compile(
 
 MAX_PING = 2000
 MAX_WORKING = 60
-BATCH_SIZE = 1
 MAX_WORKERS = 15
 BASE_PORT = 9100
 MAX_RUNTIME_SECONDS = 2700
+
+SUBSCRIBES_FILE = "subscribes.txt"
+FINAL_FILE = "final.txt"
+CURSOR_FILE = "sub_cursor.txt"
 
 TEST_URL = base64.b64decode("aHR0cHM6Ly9jcC5jbG91ZGZsYXJlLmNvbS9nZW5lcmF0ZV8yMDQ=").decode("utf-8")
 CIDR_BASE_URL = base64.b64decode("aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2lwdmVyc2UvcmlyLWlwL21hc3Rlci9jb3VudHJ5Lw==").decode("utf-8")
@@ -174,6 +177,15 @@ def extract_host(uri):
     d = uri_to_clash_dict(uri, "test")
     return d["server"] if d else ""
 
+def normalize_core_uri(uri):
+    """Возвращает ссылку без хвоста после # для сравнения дубликатов."""
+    if uri.startswith("vmess://"):
+        return uri.strip()
+    if "#" in uri:
+        base, _, _ = uri.rpartition("#")
+        return base.strip()
+    return uri.strip()
+
 def is_valid_basic_uri(uri):
     if not any(uri.startswith(p) for p in PROTOCOLS):
         return False
@@ -281,22 +293,25 @@ def build_named_uri(orig_uri, idx, country_code="UN"):
         return f"{base}#{tag}"
     return f"{orig_uri}#{tag}"
 
-def load_tested_records():
-    records = {}
-    if os.path.exists("tested.txt"):
-        with open("tested.txt", "r", encoding="utf-8") as f:
+def load_existing_final():
+    """Загружает уже существующие рабочие серверы из final.txt без повторной отбраковки."""
+    existing = {}
+    if os.path.exists(FINAL_FILE):
+        with open(FINAL_FILE, "r", encoding="utf-8", errors="ignore") as f:
             for line in f:
-                ping_str, sep, orig_uri = line.strip().partition(" ")
-                if sep and ping_str.isdigit():
-                    records[orig_uri] = int(ping_str)
-    return records
+                uri = line.strip()
+                if uri and any(uri.startswith(p) for p in PROTOCOLS):
+                    core = normalize_core_uri(uri)
+                    if core not in existing:
+                        # Сохраняем существующий сервер с базовым приоритетом 0 (чтобы он остался в топе)
+                        existing[core] = (1, uri)
+    return existing
 
-def save_results(records, dns_cache=None, networks_by_code=None):
+def save_final_pool(records, dns_cache=None, networks_by_code=None):
+    """Сохраняет объединенный список (существующие + новые) в final.txt до MAX_WORKING штук."""
     priority_order = [c.upper() for c in ALLOWED_COUNTRY_CODES]
     enriched = []
-    for orig_uri, ping in records.items():
-        if ping >= MAX_PING:
-            continue
+    for core, (ping, orig_uri) in records.items():
         host = extract_host(orig_uri)
         c_code = dns_cache.get(host) if dns_cache else None
         if not c_code and host:
@@ -312,16 +327,12 @@ def save_results(records, dns_cache=None, networks_by_code=None):
     enriched.sort(key=operator.itemgetter(0, 1))
     selected = enriched[:MAX_WORKING]
 
-    with open("tested.txt", "w", encoding="utf-8") as f:
-        for _, ping, orig_uri, _ in selected:
-            f.write(f"{ping:03d} {orig_uri}\n")
-
-    with open("final.txt", "w", encoding="utf-8") as f:
+    with open(FINAL_FILE, "w", encoding="utf-8") as f:
         for idx, (_, _, orig_uri, c_up) in enumerate(selected, start=1):
             clean = build_named_uri(orig_uri, idx, c_up)
             f.write(f"{clean}\n")
 
-    return {uri: ping for _, ping, uri, _ in selected}
+    return {normalize_core_uri(uri): (ping, uri) for _, ping, uri, _ in selected}
 
 def test_one_server_isolated(orig_uri, slot_id, encoded_test_url):
     p_dict = uri_to_clash_dict(orig_uri, "single_node")
@@ -363,8 +374,8 @@ def test_one_server_isolated(orig_uri, slot_id, encoded_test_url):
         if proc.poll() is not None:
             return orig_uri, 0, "MIHOMO_REJECTED_NODE"
 
-        check_url = f"{LOCAL_API_HOST}:{api_port}/proxies/single_node/delay?timeout=3500&url={encoded_test_url}&expected=204"
-        r = requests.get(check_url, timeout=4.5)
+        check_url = f"{LOCAL_API_HOST}:{api_port}/proxies/single_node/delay?timeout=4500&url={encoded_test_url}&expected=204"
+        r = requests.get(check_url, timeout=5.5)
         if r.status_code == 200 and "delay" in r.json():
             ping = int(r.json()["delay"])
             if 0 < ping < MAX_PING:
@@ -383,11 +394,12 @@ def test_one_server_isolated(orig_uri, slot_id, encoded_test_url):
         if os.path.exists(cfg_path):
             os.remove(cfg_path)
 def test_nodes_individually(nodes_to_test, existing_records, dns_cache=None, networks_by_code=None):
+    """Тестирует кандидатов и добавляет рабочие к existing_records до MAX_WORKING. Возвращает (records, added_count)."""
     if not nodes_to_test:
-        return existing_records
+        return existing_records, 0
 
     encoded_test_url = urllib.parse.quote(TEST_URL, safe="")
-    sample_logged = 0
+    added_count = 0
 
     for start_idx in range(0, len(nodes_to_test), MAX_WORKERS):
         if len(existing_records) >= MAX_WORKING:
@@ -402,117 +414,156 @@ def test_nodes_individually(nodes_to_test, existing_records, dns_cache=None, net
             for future in as_completed(futures):
                 orig_uri, ping, status = future.result()
                 if status == "OK":
-                    if orig_uri not in existing_records or ping < existing_records[orig_uri]:
-                        existing_records[orig_uri] = ping
-                    log_debug(f"[OK {ping}ms] ({len(existing_records)}/{MAX_WORKING}) {orig_uri[:55]}")
-                elif sample_logged < 5:
-                    log_debug(f"[ОТБРОШЕН: {status}] {orig_uri[:55]}")
-                    sample_logged += 1
+                    core = normalize_core_uri(orig_uri)
+                    if core not in existing_records:
+                        existing_records[core] = (ping, orig_uri)
+                        added_count += 1
+                        log_debug(f"[OK {ping}ms] ({len(existing_records)}/{MAX_WORKING}) {orig_uri[:55]}")
 
-        if existing_records:
-            existing_records = save_results(existing_records, dns_cache, networks_by_code)
+        if added_count > 0:
+            existing_records = save_final_pool(existing_records, dns_cache, networks_by_code)
 
-    return existing_records
+    return existing_records, added_count
 
-def has_unprocessed_lines(lines):
-    for line in lines:
-        s = line.strip()
-        if s and not s.startswith("#"):
-            return True
-    return False
+def read_cursor():
+    if os.path.exists(CURSOR_FILE):
+        try:
+            with open(CURSOR_FILE, "r", encoding="utf-8") as f:
+                val = f.read().strip()
+                if val.isdigit():
+                    return int(val)
+        except Exception:
+            pass
+    return 0
+
+def write_cursor(idx):
+    with open(CURSOR_FILE, "w", encoding="utf-8") as f:
+        f.write(str(idx))
+
+def normalize_github_url(url):
+    """Превращает ссылки ://github.com... в прямые raw-ссылки."""
+    if "github.com/" in url and "/blob/" in url:
+        return url.replace("github.com/", "://githubusercontent.com").replace("/blob/", "/")
+    return url
 
 def main():
     with open("debug_log.txt", "w", encoding="utf-8") as f:
-        f.write("=== СТАРТ ИНДИВИДУАЛЬНОЙ ПРОВЕРКИ ===\n")
+        f.write("=== СТАРТ ПОПОЛНЕНИЯ FINAL.TXT ===\n")
 
     start_time = time.time()
-    if not os.path.exists("test.txt"):
-        log_debug("Файл test.txt не найден.")
+    records = load_existing_final()
+    log_debug(f"В текущем {FINAL_FILE} уже есть серверов: {len(records)}/{MAX_WORKING}")
+
+    if len(records) >= MAX_WORKING:
+        log_debug("Список уже полон (60/60). Новые серверы не требуются.")
         set_github_output("has_more", "false")
         return
 
-    with open("test.txt", "r", encoding="utf-8", errors="ignore") as f:
-        lines = f.readlines()
+    if not os.path.exists(SUBSCRIBES_FILE):
+        log_debug(f"Файл {SUBSCRIBES_FILE} не найден.")
+        set_github_output("has_more", "false")
+        return
 
-    if not has_unprocessed_lines(lines):
-        log_debug("В test.txt нет новых ссылок для обработки.")
+    with open(SUBSCRIBES_FILE, "r", encoding="utf-8", errors="ignore") as f:
+        sub_lines = f.readlines()
+
+    total_lines = len(sub_lines)
+    if total_lines == 0:
+        set_github_output("has_more", "false")
+        return
+
+    # Проверяем, есть ли вообще активные (не BAD! и не #) подписки
+    active_indices = [
+        i for i, l in enumerate(sub_lines)
+        if l.strip() and not l.strip().startswith("#") and not l.strip().upper().startswith("BAD!")
+    ]
+    if not active_indices:
+        log_debug("В subscribes.txt не осталось рабочих подписок (все помечены BAD!).")
         set_github_output("has_more", "false")
         return
 
     networks_by_code = load_country_networks()
     dns_cache = {}
-    tested_records = load_tested_records()
+    records = save_final_pool(records, dns_cache, networks_by_code)
 
-    if tested_records:
-        log_debug(f"Перепроверка {len(tested_records)} существующих серверов...")
-        rechecked = test_nodes_individually(list(tested_records.keys()), {}, dns_cache, networks_by_code)
-        tested_records = save_results(rechecked, dns_cache, networks_by_code)
+    cursor = read_cursor()
+    if cursor >= total_lines:
+        cursor = 0
 
-    while has_unprocessed_lines(lines):
+    checked_this_run = 0
+    timed_out = False
+
+    while len(records) < MAX_WORKING and checked_this_run < total_lines:
         if time.time() - start_time > MAX_RUNTIME_SECONDS:
-            log_debug("Достигнут лимит времени работы (45 мин). Сохраняем прогресс.")
+            log_debug("Достигнут лимит времени работы (45 мин). Продолжим в следующем запуске.")
+            timed_out = True
             break
 
-        if len(tested_records) >= MAX_WORKING:
-            log_debug(f"Набрано {MAX_WORKING} рабочих серверов. Очищаем очередь.")
-            lines = [l for l in lines if not l.strip() or l.strip().startswith("#")]
-            with open("test.txt", "w", encoding="utf-8") as f:
-                f.writelines(lines)
-            break
+        idx = cursor
+        cursor = (cursor + 1) % total_lines
+        checked_this_run += 1
+
+        raw_line = sub_lines[idx]
+        stripped = raw_line.strip()
+
+        # Пропускаем пустые строки, комментарии и уже помеченные BAD!
+        if not stripped or stripped.startswith("#") or stripped.upper().startswith("BAD!"):
+            write_cursor(cursor)
+            continue
+
+        url_match = re.search(r"https?://[^\s]+", stripped)
+        if not url_match:
+            write_cursor(cursor)
+            continue
+
+        orig_url = url_match.group(0)
+        fetch_url = normalize_github_url(orig_url)
+        log_debug(f"Проверка подписки [{idx + 1}/{total_lines}]: {orig_url[:65]}")
 
         batch_nodes = set()
-        new_lines = []
-        processed_in_batch = 0
+        download_ok = False
+        try:
+            resp = requests.get(fetch_url, timeout=12)
+            if resp.status_code == 200:
+                download_ok = True
+                batch_nodes = extract_nodes_from_text(resp.text)
+                log_debug(f"Извлечено валидных URI: {len(batch_nodes)}")
+            else:
+                log_debug(f"Ошибка HTTP {resp.status_code} для {orig_url[:50]}")
+        except Exception as e:
+            log_debug(f"Ошибка скачивания {orig_url[:50]}: {e}")
 
-        for raw_line in lines:
-            stripped = raw_line.strip()
-            if not stripped or stripped.startswith("#"):
-                new_lines.append(raw_line)
-                continue
+        added_from_sub = 0
+        if download_ok and batch_nodes:
+            geo_nodes = filter_and_sort_by_priority(list(batch_nodes), networks_by_code, dns_cache)
+            log_debug(f"После фильтра стран (DE->NL->FR->GB->US) осталось: {len(geo_nodes)}")
+            new_candidates = [u for u in geo_nodes if normalize_core_uri(u) not in records]
+            if new_candidates:
+                records, added_from_sub = test_nodes_individually(new_candidates, records, dns_cache, networks_by_code)
 
-            if processed_in_batch >= BATCH_SIZE:
-                new_lines.append(raw_line)
-                continue
+        # Если подписка не загрузилась или дала 0 рабочих серверов -> помечаем BAD!
+        if not download_ok or added_from_sub == 0:
+            log_debug(f"Помечаем как BAD!: {orig_url[:65]}")
+            ending = "\n" if raw_line.endswith("\n") else ""
+            sub_lines[idx] = f"BAD! {stripped}{ending}"
+            with open(SUBSCRIBES_FILE, "w", encoding="utf-8") as f:
+                f.writelines(sub_lines)
+        else:
+            log_debug(f"Подписка рабочая (+{added_from_sub} серверов). Всего в final.txt: {len(records)}/{MAX_WORKING}")
 
-            processed_in_batch += 1
-            log_debug(f"Обработка строки: {stripped[:65]}")
+        write_cursor(cursor)
 
-            if is_valid_basic_uri(stripped) and not is_excluded_by_text(stripped):
-                batch_nodes.add(stripped)
-                continue
+    # Удаляем устаревшие файлы, если они оставались в репозитории
+    for old_f in ("tested.txt", "testing.txt", "test.txt", "fail_counts.json"):
+        if os.path.exists(old_f):
+            os.remove(old_f)
 
-            url_match = re.search(r"https?://[^\s]+", stripped)
-            if url_match:
-                url = url_match.group(0)
-                try:
-                    resp = requests.get(url, timeout=10)
-                    if resp.status_code == 200:
-                        extracted = extract_nodes_from_text(resp.text)
-                        log_debug(f"Извлечено валидных URI: {len(extracted)}")
-                        batch_nodes.update(extracted)
-                except Exception as e:
-                    log_debug(f"Ошибка скачивания {url[:45]}: {e}")
-
-        unique_geo_nodes = filter_and_sort_by_priority(list(set(batch_nodes)), networks_by_code, dns_cache)
-        log_debug(f"После фильтра стран (DE->NL->FR->GB->US) осталось: {len(unique_geo_nodes)}")
-
-        with open("testing.txt", "w", encoding="utf-8") as f:
-            f.write("\n".join(unique_geo_nodes) + ("\n" if unique_geo_nodes else ""))
-
-        if unique_geo_nodes:
-            new_candidates = [u for u in unique_geo_nodes if u not in tested_records]
-            tested_records = test_nodes_individually(new_candidates, tested_records, dns_cache, networks_by_code)
-            tested_records = save_results(tested_records, dns_cache, networks_by_code)
-
-        lines = new_lines
-        with open("test.txt", "w", encoding="utf-8") as f:
-            f.writelines(lines)
-        log_debug(f"Строка завершена. Итого рабочих: {len(tested_records)}/{MAX_WORKING}")
-
-    if os.path.exists("fail_counts.json"):
-        os.remove("fail_counts.json")
-
-    if has_unprocessed_lines(lines):
+    # Перезапуск только если не добрали до 60 из-за таймаута 45 мин и еще есть активные подписки
+    still_active = any(
+        l.strip() and not l.strip().startswith("#") and not l.strip().upper().startswith("BAD!")
+        for l in sub_lines
+    )
+    if timed_out and len(records) < MAX_WORKING and still_active:
         set_github_output("has_more", "true")
     else:
         set_github_output("has_more", "false")
