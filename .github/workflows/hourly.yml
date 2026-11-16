@@ -1,8 +1,8 @@
-name: Hourly Parse and Test
+name: Parse and ReTest
 
 on:
   schedule:
-    - cron: '0 * * * *'
+    - cron: '10 * * * *'
   workflow_dispatch:
 
 permissions:
