@@ -35,7 +35,7 @@ https://warp-gen.cyb-portal.org/CP-038
 https://warp-gen.cyb-portal.org/CP-040
 https://warp-gen.cyb-portal.org/CP-041
 https://warp-gen.cyb-portal.org/CP-042
-https://warp-gen.cyb-portal.org/CP-044
+BAD!_01 https://warp-gen.cyb-portal.org/CP-044
 
 https://raw.githubusercontent.com/ermaozi01/free_clash_vpn/main/subscribe/v2ray.txt
 https://raw.githubusercontent.com/mheidari98/.proxy/main/all
