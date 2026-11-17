@@ -2,5 +2,13 @@
   "https://warp-gen.cyb-portal.org/CP-044": {
     "days": 1,
     "last_fail_date": "2026-11-16"
+  },
+  "https://raw.githubusercontent.com/a2470982985/getNode/main/v2ray.txt": {
+    "days": 1,
+    "last_fail_date": "2026-11-17"
+  },
+  "https://raw.githubusercontent.com/yaney01/Yaney01/main/yaney_01": {
+    "days": 1,
+    "last_fail_date": "2026-11-17"
   }
 }
