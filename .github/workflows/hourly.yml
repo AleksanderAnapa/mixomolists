@@ -1,4 +1,4 @@
-name: Hourly Parse and Test
+name: Parse and Test
 
 on:
   schedule:
