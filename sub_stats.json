@@ -50,5 +50,13 @@
   "https://raw.githubusercontent.com/wenxig/free-nodes-sub/refs/heads/main/data/sub.txt": {
     "days": 1,
     "last_fail_date": "2026-11-17"
+  },
+  "https://raw.githubusercontent.com/mahdibland/V2RayAggregator/main/sub/list/66.txt": {
+    "days": 1,
+    "last_fail_date": "2026-11-17"
+  },
+  "https://raw.githubusercontent.com/Epodonios/v2ray-configs/main/Sub45.txt": {
+    "days": 1,
+    "last_fail_date": "2026-11-17"
   }
 }
