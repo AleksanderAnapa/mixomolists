@@ -89,9 +89,9 @@ https://raw.githubusercontent.com/Lewis-1217/FreeNodes/main/bpjzx2
 https://raw.githubusercontent.com/NicProxy/V2ray/main/configs
 https://raw.githubusercontent.com/xiyaowong/freeFQ/main/v2ray
 https://raw.githubusercontent.com/vxiaov/free_proxies/main/links.txt
-https://raw.githubusercontent.com/mfuu/v2ray/master/merge/merge.txt
+BAD!_01 https://raw.githubusercontent.com/mfuu/v2ray/master/merge/merge.txt
 https://raw.githubusercontent.com/Strongmiao168/v2ray/main/1203
-https://raw.githubusercontent.com/wenxig/free-nodes-sub/refs/heads/main/data/sub.txt
+BAD!_01 https://raw.githubusercontent.com/wenxig/free-nodes-sub/refs/heads/main/data/sub.txt
 https://raw.githubusercontent.com/free18/v2ray/refs/heads/main/v.txt
 https://raw.githubusercontent.com/mahdibland/V2RayAggregator/main/sub/list/66.txt
 https://raw.githubusercontent.com/Epodonios/v2ray-configs/main/Sub45.txt

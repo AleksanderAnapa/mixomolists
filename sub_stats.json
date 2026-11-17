@@ -42,5 +42,13 @@
   "https://raw.githubusercontent.com/mfuu/v2ray/refs/heads/master/v2ray": {
     "days": 1,
     "last_fail_date": "2026-11-17"
+  },
+  "https://raw.githubusercontent.com/mfuu/v2ray/master/merge/merge.txt": {
+    "days": 1,
+    "last_fail_date": "2026-11-17"
+  },
+  "https://raw.githubusercontent.com/wenxig/free-nodes-sub/refs/heads/main/data/sub.txt": {
+    "days": 1,
+    "last_fail_date": "2026-11-17"
   }
 }
