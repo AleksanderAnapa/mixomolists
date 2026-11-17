@@ -10,5 +10,37 @@
   "https://raw.githubusercontent.com/yaney01/Yaney01/main/yaney_01": {
     "days": 1,
     "last_fail_date": "2026-11-17"
+  },
+  "https://raw.githubusercontent.com/eycorsican/rule-sets/master/kitsunebi_sub": {
+    "days": 1,
+    "last_fail_date": "2026-11-17"
+  },
+  "https://raw.githubusercontent.com/relcom/ssr_subscrible_tool/refs/heads/master/node.txt": {
+    "days": 1,
+    "last_fail_date": "2026-11-17"
+  },
+  "https://raw.githubusercontent.com/lisylva-lee/v2dyku/main/v2dy": {
+    "days": 1,
+    "last_fail_date": "2026-11-17"
+  },
+  "https://raw.githubusercontent.com/iwxf/free-v2ray/master/index.html": {
+    "days": 1,
+    "last_fail_date": "2026-11-17"
+  },
+  "https://raw.githubusercontent.com/aiboboxx/v2rayfree/main/v2": {
+    "days": 1,
+    "last_fail_date": "2026-11-17"
+  },
+  "https://raw.githubusercontent.com/budamu/clashconfig/main/v2ray.txt": {
+    "days": 1,
+    "last_fail_date": "2026-11-17"
+  },
+  "https://raw.githubusercontent.com/budamu/clashconfig/main/v2ray2.txt": {
+    "days": 1,
+    "last_fail_date": "2026-11-17"
+  },
+  "https://raw.githubusercontent.com/mfuu/v2ray/refs/heads/master/v2ray": {
+    "days": 1,
+    "last_fail_date": "2026-11-17"
   }
 }
