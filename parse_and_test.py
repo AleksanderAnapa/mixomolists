@@ -180,11 +180,13 @@ def extract_host(uri):
     d = uri_to_clash_dict(uri, "test")
     return d["server"] if d else ""
 
-def normalize_core_uri(uri):
-    """Возвращает ссылку без хвоста после # для сравнения дубликатов."""
-    if uri.startswith("vmess://"):
-        return uri.strip()
-    if "#" in uri:
+def get_server_fingerprint(uri):
+    """Уникальный отпечаток сервера (протокол + адрес + порт + uuid/пароль) для защиты от дубликатов."""
+    d = uri_to_clash_dict(uri, "fp")
+    if d:
+        cred = d.get("uuid") or d.get("password") or ""
+        return f"{d.get('type')}|{str(d.get('server', '')).lower()}|{d.get('port')}|{cred}"
+    if "#" in uri and not uri.startswith("vmess://"):
         base, _, _ = uri.rpartition("#")
         return base.strip()
     return uri.strip()
@@ -203,19 +205,27 @@ def is_excluded_by_text(uri):
     return bool(EXCLUDE_REGEX.search(decoded_tag))
 
 def extract_nodes_from_text(text):
-    nodes = set()
-    for line in text.splitlines():
-        line = line.strip()
-        if is_valid_basic_uri(line) and not is_excluded_by_text(line):
-            nodes.add(line)
+    """Возвращает (список_подходящих_серверов, общее_число_найденных_серверов_в_подписке)."""
+    nodes = {}
+    total_found_any = 0
 
-    if not nodes:
-        decoded = decode_base64_safe(text)
-        for line in decoded.splitlines():
+    def process_lines(lines_iter):
+        nonlocal total_found_any
+        for line in lines_iter:
             line = line.strip()
-            if is_valid_basic_uri(line) and not is_excluded_by_text(line):
-                nodes.add(line)
-    return nodes
+            if is_valid_basic_uri(line):
+                total_found_any += 1
+                if not is_excluded_by_text(line):
+                    fp = get_server_fingerprint(line)
+                    if fp not in nodes:
+                        nodes[fp] = line
+
+    process_lines(text.splitlines())
+    if total_found_any == 0:
+        decoded = decode_base64_safe(text)
+        process_lines(decoded.splitlines())
+
+    return list(nodes.values()), total_found_any
 
 def load_country_networks():
     networks_by_code = {}
@@ -297,23 +307,29 @@ def build_named_uri(orig_uri, idx, country_code="UN"):
     return f"{orig_uri}#{tag}"
 
 def load_existing_final():
-    """Загружает уже существующие рабочие серверы из final.txt без повторной отбраковки."""
+    """Загружает существующие рабочие серверы из final.txt, сразу отсекая возможные дубликаты."""
     existing = {}
     if os.path.exists(FINAL_FILE):
         with open(FINAL_FILE, "r", encoding="utf-8", errors="ignore") as f:
             for line in f:
                 uri = line.strip()
                 if uri and any(uri.startswith(p) for p in PROTOCOLS):
-                    core = normalize_core_uri(uri)
-                    if core not in existing:
-                        existing[core] = (1, uri)
+                    fp = get_server_fingerprint(uri)
+                    if fp not in existing:
+                        existing[fp] = (1, uri)
     return existing
 
 def save_final_pool(records, dns_cache=None, networks_by_code=None):
-    """Сохраняет объединенный список (существующие + новые) в final.txt до MAX_WORKING штук."""
+    """Сохраняет объединенный список уникальных серверов (существующие + новые) в final.txt до MAX_WORKING."""
     priority_order = [c.upper() for c in ALLOWED_COUNTRY_CODES]
     enriched = []
-    for core, (ping, orig_uri) in records.items():
+    seen_fps = set()
+
+    for fp, (ping, orig_uri) in records.items():
+        if fp in seen_fps:
+            continue
+        seen_fps.add(fp)
+
         host = extract_host(orig_uri)
         c_code = dns_cache.get(host) if dns_cache else None
         if not c_code and host:
@@ -324,17 +340,17 @@ def save_final_pool(records, dns_cache=None, networks_by_code=None):
         if c_up in BLOCKED_COUNTRY_CODES:
             continue
         prio_idx = priority_order.index(c_up) if c_up in priority_order else 999
-        enriched.append((prio_idx, ping, orig_uri, c_up))
+        enriched.append((prio_idx, ping, orig_uri, c_up, fp))
 
     enriched.sort(key=operator.itemgetter(0, 1))
     selected = enriched[:MAX_WORKING]
 
     with open(FINAL_FILE, "w", encoding="utf-8") as f:
-        for idx, (_, _, orig_uri, c_up) in enumerate(selected, start=1):
+        for idx, (_, _, orig_uri, c_up, _) in enumerate(selected, start=1):
             clean = build_named_uri(orig_uri, idx, c_up)
             f.write(f"{clean}\n")
 
-    return {normalize_core_uri(uri): (ping, uri) for _, ping, uri, _ in selected}
+    return {fp: (ping, uri) for _, ping, uri, _, fp in selected}
 
 def test_one_server_isolated(orig_uri, slot_id, encoded_test_url):
     p_dict = uri_to_clash_dict(orig_uri, "single_node")
@@ -396,7 +412,7 @@ def test_one_server_isolated(orig_uri, slot_id, encoded_test_url):
         if os.path.exists(cfg_path):
             os.remove(cfg_path)
 def test_nodes_individually(nodes_to_test, existing_records, dns_cache=None, networks_by_code=None):
-    """Тестирует кандидатов и добавляет рабочие к existing_records до MAX_WORKING."""
+    """Тестирует уникальных кандидатов и добавляет рабочие к existing_records до MAX_WORKING."""
     if not nodes_to_test:
         return existing_records, 0
 
@@ -416,9 +432,9 @@ def test_nodes_individually(nodes_to_test, existing_records, dns_cache=None, net
             for future in as_completed(futures):
                 orig_uri, ping, status = future.result()
                 if status == "OK":
-                    core = normalize_core_uri(orig_uri)
-                    if core not in existing_records:
-                        existing_records[core] = (ping, orig_uri)
+                    fp = get_server_fingerprint(orig_uri)
+                    if fp not in existing_records:
+                        existing_records[fp] = (ping, orig_uri)
                         added_count += 1
                         log_debug(f"[OK {ping}ms] ({len(existing_records)}/{MAX_WORKING}) {orig_uri[:55]}")
 
@@ -478,7 +494,7 @@ def main():
     start_time = time.time()
     today_str = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     records = load_existing_final()
-    log_debug(f"В текущем {FINAL_FILE} уже есть серверов: {len(records)}/{MAX_WORKING}")
+    log_debug(f"В текущем {FINAL_FILE} уже есть уникальных серверов: {len(records)}/{MAX_WORKING}")
 
     if len(records) >= MAX_WORKING:
         log_debug("Список уже полон (60/60). Новые серверы не требуются.")
@@ -555,14 +571,15 @@ def main():
         fetch_url = normalize_github_url(orig_url)
         log_debug(f"Проверка подписки [{idx + 1}/{total_lines}] (сбоев: {curr_days} дн.): {orig_url[:60]}")
 
-        batch_nodes = set()
+        batch_nodes = []
+        total_found_any = 0
         download_ok = False
         try:
             resp = requests.get(fetch_url, timeout=12)
             if resp.status_code == 200:
                 download_ok = True
-                batch_nodes = extract_nodes_from_text(resp.text)
-                log_debug(f"Извлечено валидных URI: {len(batch_nodes)}")
+                batch_nodes, total_found_any = extract_nodes_from_text(resp.text)
+                log_debug(f"Найдено серверов в подписке: {total_found_any} (подходящих: {len(batch_nodes)})")
             else:
                 log_debug(f"Ошибка HTTP {resp.status_code} для {orig_url[:50]}")
         except Exception as e:
@@ -570,27 +587,24 @@ def main():
 
         added_from_sub = 0
         if download_ok and batch_nodes:
-            geo_nodes = filter_and_sort_by_priority(list(batch_nodes), networks_by_code, dns_cache)
+            geo_nodes = filter_and_sort_by_priority(batch_nodes, networks_by_code, dns_cache)
             log_debug(f"После фильтра стран (DE->NL->FR->GB->US) осталось: {len(geo_nodes)}")
-            new_candidates = [u for u in geo_nodes if normalize_core_uri(u) not in records]
+            new_candidates = [u for u in geo_nodes if get_server_fingerprint(u) not in records]
             if new_candidates:
                 records, added_from_sub = test_nodes_individually(new_candidates, records, dns_cache, networks_by_code)
 
         ending = "\n" if raw_line.endswith("\n") else ""
 
-        if added_from_sub > 0:
-            # Подписка рабочая -> снимаем BAD!_XX полностью и сбрасываем статистику
+        # Подписка считается живой, если скачалась и в ней есть хотя бы 1 валидный сервер (total_found_any > 0)
+        if download_ok and total_found_any > 0:
             if curr_days > 0:
-                log_debug(f"Подписка ожила (+{added_from_sub} серверов)! Снимаем метку BAD! с {orig_url[:55]}")
+                log_debug(f"Подписка живая (найдено {total_found_any} серверов)! Снимаем метку BAD! с {orig_url[:55]}")
             else:
-                log_debug(f"Подписка рабочая (+{added_from_sub} серверов). Всего в final.txt: {len(records)}/{MAX_WORKING}")
+                log_debug(f"Подписка живая (+{added_from_sub} в пул). Всего в final.txt: {len(records)}/{MAX_WORKING}")
             sub_lines[idx] = f"{clean_line}{ending}"
             sub_stats.pop(orig_url, None)
-        elif len(records) >= MAX_WORKING:
-            # Остановились потому что уже набрали 60/60 -> подписку не штрафуем
-            log_debug(f"Пул полон (60/60), подписка не штрафуется: {orig_url[:55]}")
         else:
-            # Подписка сбоит -> прибавляем 1 день сбоя (не чаще 1 раза в календарный день)
+            # Подписка не скачалась или в ней вообще нет серверов (0 ссылок / мусор) -> начисляем день сбоя
             entry = sub_stats.get(orig_url, {"days": curr_days, "last_fail_date": ""})
             days = max(curr_days, int(entry.get("days", 0)))
             if entry.get("last_fail_date") != today_str:
@@ -603,11 +617,11 @@ def main():
             sub_stats[orig_url] = entry
 
             if days > MAX_BAD_DAYS:
-                log_debug(f"Более {MAX_BAD_DAYS} дней сбоев -> постоянный бан BAD!_00: {orig_url[:55]}")
+                log_debug(f"Более {MAX_BAD_DAYS} дней сбоев (пусто/ошибка) -> постоянный бан BAD!_00: {orig_url[:55]}")
                 sub_lines[idx] = f"BAD!_00 {clean_line}{ending}"
             else:
                 tag = f"BAD!_{days:02d}"
-                log_debug(f"Сбой подписки -> {tag}: {orig_url[:55]}")
+                log_debug(f"Подписка пуста или недоступна -> {tag}: {orig_url[:55]}")
                 sub_lines[idx] = f"{tag} {clean_line}{ending}"
 
         with open(SUBSCRIBES_FILE, "w", encoding="utf-8") as f:
