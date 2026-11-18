@@ -1,18 +1,161 @@
 === СТАРТ ПОПОЛНЕНИЯ FINAL.TXT ===
-[12:00:27] В текущем final.txt уже есть уникальных серверов: 53/60
-[12:00:28] Загружено CIDR-подсетей стран: 56719
-[12:00:28] Проверка подписки [53/105] (сбоев: 0 дн.): https://raw.githubusercontent.com/Leon406/SubCrawler/refs/he
-[12:00:28] Найдено серверов в подписке: 112 (подходящих: 86)
-[12:00:29] После фильтра стран (DE->NL->FR->GB->US) осталось: 69
-[12:00:30] [OK 47ms] (54/60) vmess://eyJhZGQiOiI2Ny4yMjAuOTUuMyIsInBvcnQiOiIxODAwMCI
-[12:00:30] [OK 79ms] (55/60) vmess://eyJhZGQiOiIyMy4xNjIuMjAwLjE5OCIsInBvcnQiOiIxODA
-[12:00:30] [OK 111ms] (56/60) vmess://eyJhZGQiOiIzOC4xMTAuMS4yNDYiLCJwb3J0IjoiMTgwMDA
-[12:00:30] [OK 312ms] (57/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.112.12
-[12:00:30] [OK 477ms] (58/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@64.176.7.205:
-[12:00:30] [OK 481ms] (59/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.238.104.1
-[12:00:30] [OK 547ms] (60/60) vmess://eyJhZGQiOiIxNDEuMTEuMTM5LjEwMiIsInBvcnQiOiIzMjU
-[12:00:30] [OK 715ms] (61/60) vmess://eyJhZGQiOiIxNDkuODguMjMuMjAyIiwicG9ydCI6IjE4MDA
-[12:00:30] [OK 790ms] (62/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@45.63.30.142:
-[12:00:31] [OK 895ms] (63/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@139.84.231.14
-[12:00:31] [OK 1586ms] (64/60) vmess://eyJhZGQiOiIxMDQuMTcuNzcuNzciLCJwb3J0IjoiODQ0MyI
-[12:00:34] Подписка живая (+11 в пул). Всего в final.txt: 60/60
+[12:15:27] В текущем final.txt уже есть уникальных серверов: 10/60
+[12:15:28] Загружено CIDR-подсетей стран: 56719
+[12:15:28] Проверка подписки [54/105] (сбоев: 0 дн.): https://raw.githubusercontent.com/ZY-404/v2ray/main/v2ray.tx
+[12:15:28] Найдено серверов в подписке: 447 (подходящих: 213)
+[12:15:39] После фильтра стран (DE->NL->FR->GB->US) осталось: 84
+[12:16:11] Подписка живая (+0 в пул). Всего в final.txt: 10/60
+[12:16:11] Проверка подписки [55/105] (сбоев: 0 дн.): https://raw.githubusercontent.com/jiquanxiang/abc/main/v7
+[12:16:11] Найдено серверов в подписке: 42 (подходящих: 24)
+[12:16:12] После фильтра стран (DE->NL->FR->GB->US) осталось: 6
+[12:16:17] Подписка живая (+0 в пул). Всего в final.txt: 10/60
+[12:16:17] Проверка подписки [56/105] (сбоев: 0 дн.): https://raw.githubusercontent.com/zhlx2835/freefq/main/v2
+[12:16:17] Найдено серверов в подписке: 19 (подходящих: 16)
+[12:16:17] После фильтра стран (DE->NL->FR->GB->US) осталось: 2
+[12:16:23] Подписка живая (+0 в пул). Всего в final.txt: 10/60
+[12:16:23] Проверка подписки [57/105] (сбоев: 0 дн.): https://raw.githubusercontent.com/ZywChannel/free/main/sub
+[12:16:23] Найдено серверов в подписке: 215 (подходящих: 159)
+[12:16:24] После фильтра стран (DE->NL->FR->GB->US) осталось: 100
+[12:16:57] Подписка живая (+0 в пул). Всего в final.txt: 10/60
+[12:16:57] Проверка подписки [58/105] (сбоев: 0 дн.): https://raw.githubusercontent.com/zjr13808836946/zjr_clash/m
+[12:16:57] Найдено серверов в подписке: 5 (подходящих: 4)
+[12:16:58] После фильтра стран (DE->NL->FR->GB->US) осталось: 1
+[12:17:03] Подписка живая (+0 в пул). Всего в final.txt: 10/60
+[12:17:03] Проверка подписки [59/105] (сбоев: 0 дн.): https://raw.githubusercontent.com/baipiao0/baipiao02/main/v2
+[12:17:03] Найдено серверов в подписке: 14 (подходящих: 14)
+[12:17:03] После фильтра стран (DE->NL->FR->GB->US) осталось: 0
+[12:17:03] Подписка живая (+0 в пул). Всего в final.txt: 10/60
+[12:17:03] Проверка подписки [60/105] (сбоев: 0 дн.): https://raw.githubusercontent.com/codingbox/Free-Node-Merge/
+[12:17:03] Найдено серверов в подписке: 44 (подходящих: 32)
+[12:17:03] После фильтра стран (DE->NL->FR->GB->US) осталось: 7
+[12:17:09] Подписка живая (+0 в пул). Всего в final.txt: 10/60
+[12:17:09] Проверка подписки [61/105] (сбоев: 0 дн.): https://raw.githubusercontent.com/245237866/v2rayn/main/ever
+[12:17:09] Найдено серверов в подписке: 401 (подходящих: 101)
+[12:17:09] После фильтра стран (DE->NL->FR->GB->US) осталось: 28
+[12:17:20] Подписка живая (+0 в пул). Всего в final.txt: 10/60
+[12:17:20] Проверка подписки [62/105] (сбоев: 0 дн.): https://raw.githubusercontent.com/Creativveb/v2configs/main/
+[12:17:20] Найдено серверов в подписке: 83 (подходящих: 57)
+[12:17:30] После фильтра стран (DE->NL->FR->GB->US) осталось: 36
+[12:17:46] Подписка живая (+0 в пул). Всего в final.txt: 10/60
+[12:17:46] Проверка подписки [63/105] (сбоев: 0 дн.): https://raw.githubusercontent.com/dalazhi/v2ray/main/v2ray%E
+[12:17:46] Найдено серверов в подписке: 18 (подходящих: 15)
+[12:17:47] После фильтра стран (DE->NL->FR->GB->US) осталось: 15
+[12:17:52] Подписка живая (+0 в пул). Всего в final.txt: 10/60
+[12:17:52] Проверка подписки [64/105] (сбоев: 0 дн.): https://raw.githubusercontent.com/hsb4657/v2ray/main/lastest
+[12:17:52] Найдено серверов в подписке: 13 (подходящих: 3)
+[12:17:52] После фильтра стран (DE->NL->FR->GB->US) осталось: 3
+[12:17:57] Подписка живая (+0 в пул). Всего в final.txt: 10/60
+[12:17:57] Проверка подписки [65/105] (сбоев: 2 дн.): https://raw.githubusercontent.com/eycorsican/rule-sets/maste
+[12:17:58] Найдено серверов в подписке: 0 (подходящих: 0)
+[12:17:58] Подписка пуста или недоступна -> BAD!_02: https://raw.githubusercontent.com/eycorsican/rule-sets/
+[12:17:58] Проверка подписки [66/105] (сбоев: 0 дн.): https://raw.githubusercontent.com/imohammadkhalili/V2RAY/mai
+[12:17:58] Найдено серверов в подписке: 32 (подходящих: 24)
+[12:18:08] После фильтра стран (DE->NL->FR->GB->US) осталось: 5
+[12:18:13] Подписка живая (+0 в пул). Всего в final.txt: 10/60
+[12:18:13] Проверка подписки [67/105] (сбоев: 0 дн.): https://raw.githubusercontent.com/Jia-Pingwa/free-v2ray-merg
+[12:18:13] Найдено серверов в подписке: 292 (подходящих: 244)
+[12:18:24] После фильтра стран (DE->NL->FR->GB->US) осталось: 105
+[12:19:01] Подписка живая (+0 в пул). Всего в final.txt: 10/60
+[12:19:01] Проверка подписки [68/105] (сбоев: 2 дн.): https://raw.githubusercontent.com/relcom/ssr_subscrible_tool
+[12:19:01] Найдено серверов в подписке: 0 (подходящих: 0)
+[12:19:01] Подписка пуста или недоступна -> BAD!_02: https://raw.githubusercontent.com/relcom/ssr_subscrible
+[12:19:01] Проверка подписки [69/105] (сбоев: 2 дн.): https://raw.githubusercontent.com/lisylva-lee/v2dyku/main/v2
+[12:19:01] Ошибка HTTP 404 для https://raw.githubusercontent.com/lisylva-lee/v2dy
+[12:19:01] Подписка пуста или недоступна -> BAD!_02: https://raw.githubusercontent.com/lisylva-lee/v2dyku/ma
+[12:19:01] Проверка подписки [70/105] (сбоев: 0 дн.): https://raw.githubusercontent.com/jikelonglie/meskell/main/m
+[12:19:02] Найдено серверов в подписке: 12 (подходящих: 8)
+[12:19:02] После фильтра стран (DE->NL->FR->GB->US) осталось: 7
+[12:19:07] Подписка живая (+0 в пул). Всего в final.txt: 10/60
+[12:19:07] Проверка подписки [71/105] (сбоев: 2 дн.): https://raw.githubusercontent.com/iwxf/free-v2ray/master/ind
+[12:19:07] Найдено серверов в подписке: 0 (подходящих: 0)
+[12:19:07] Подписка пуста или недоступна -> BAD!_02: https://raw.githubusercontent.com/iwxf/free-v2ray/maste
+[12:19:07] Проверка подписки [72/105] (сбоев: 0 дн.): https://raw.githubusercontent.com/lflflf999/0516/main/BX-JD
+[12:19:07] Найдено серверов в подписке: 149 (подходящих: 62)
+[12:19:08] После фильтра стран (DE->NL->FR->GB->US) осталось: 3
+[12:19:13] Подписка живая (+0 в пул). Всего в final.txt: 10/60
+[12:19:13] Проверка подписки [73/105] (сбоев: 0 дн.): https://raw.githubusercontent.com/adminaliang/v2ray/main/v2r
+[12:19:13] Найдено серверов в подписке: 3 (подходящих: 3)
+[12:19:13] После фильтра стран (DE->NL->FR->GB->US) осталось: 1
+[12:19:14] Подписка живая (+0 в пул). Всего в final.txt: 10/60
+[12:19:14] Проверка подписки [74/105] (сбоев: 2 дн.): https://raw.githubusercontent.com/aiboboxx/v2rayfree/main/v2
+[12:19:14] Ошибка HTTP 404 для https://raw.githubusercontent.com/aiboboxx/v2rayfr
+[12:19:14] Подписка пуста или недоступна -> BAD!_02: https://raw.githubusercontent.com/aiboboxx/v2rayfree/ma
+[12:19:14] Проверка подписки [75/105] (сбоев: 0 дн.): https://raw.githubusercontent.com/ripaojiedian/freenode/main
+[12:19:14] Найдено серверов в подписке: 10 (подходящих: 9)
+[12:19:14] После фильтра стран (DE->NL->FR->GB->US) осталось: 9
+[12:19:15] [OK 387ms] (11/60) vless://b9bfa54d-bc44-4592-a6d6-89a9665d286f@edge.bookm
+[12:19:16] Подписка живая (+1 в пул). Всего в final.txt: 11/60
+[12:19:16] Проверка подписки [76/105] (сбоев: 0 дн.): https://raw.githubusercontent.com/gitbigg/permalink/main/sub
+[12:19:16] Найдено серверов в подписке: 7 (подходящих: 6)
+[12:19:16] После фильтра стран (DE->NL->FR->GB->US) осталось: 0
+[12:19:16] Подписка живая (+0 в пул). Всего в final.txt: 11/60
+[12:19:16] Проверка подписки [77/105] (сбоев: 0 дн.): https://raw.githubusercontent.com/gtang8/SubCrawler/main/sub
+[12:19:16] Найдено серверов в подписке: 67 (подходящих: 55)
+[12:19:26] После фильтра стран (DE->NL->FR->GB->US) осталось: 39
+[12:19:38] Подписка живая (+0 в пул). Всего в final.txt: 11/60
+[12:19:38] Проверка подписки [78/105] (сбоев: 2 дн.): https://raw.githubusercontent.com/budamu/clashconfig/main/v2
+[12:19:38] Ошибка HTTP 404 для https://raw.githubusercontent.com/budamu/clashconf
+[12:19:38] Подписка пуста или недоступна -> BAD!_02: https://raw.githubusercontent.com/budamu/clashconfig/ma
+[12:19:38] Проверка подписки [79/105] (сбоев: 2 дн.): https://raw.githubusercontent.com/budamu/clashconfig/main/v2
+[12:19:38] Ошибка HTTP 404 для https://raw.githubusercontent.com/budamu/clashconf
+[12:19:38] Подписка пуста или недоступна -> BAD!_02: https://raw.githubusercontent.com/budamu/clashconfig/ma
+[12:19:38] Проверка подписки [80/105] (сбоев: 2 дн.): https://raw.githubusercontent.com/mfuu/v2ray/refs/heads/mast
+[12:19:38] Ошибка HTTP 404 для https://raw.githubusercontent.com/mfuu/v2ray/refs/
+[12:19:38] Подписка пуста или недоступна -> BAD!_02: https://raw.githubusercontent.com/mfuu/v2ray/refs/heads
+[12:19:38] Проверка подписки [81/105] (сбоев: 0 дн.): https://raw.githubusercontent.com/snakem982/proxypool/main/s
+[12:19:38] Найдено серверов в подписке: 51 (подходящих: 42)
+[12:19:38] После фильтра стран (DE->NL->FR->GB->US) осталось: 34
+[12:19:40] [OK 567ms] (12/60) vless://4cf2635f-400a-4556-bb66-645990da5fe1@191.217.25
+[12:19:44] [OK 392ms] (13/60) vless://955d8dc7-5e3b-40ac-b2bb-bd8aa20fc7e6@191.217.25
+[12:19:44] [OK 425ms] (14/60) vless://955d8dc7-5e3b-40ac-b2bb-bd8aa20fc7e6@191.217.25
+[12:19:44] [OK 462ms] (15/60) vless://955d8dc7-5e3b-40ac-b2bb-bd8aa20fc7e6@191.217.25
+[12:19:44] [OK 522ms] (16/60) vless://955d8dc7-5e3b-40ac-b2bb-bd8aa20fc7e6@144.31.0.1
+[12:19:45] [OK 452ms] (17/60) vmess://eyJ2IjoiMiIsInBzIjoi8J+HuvCfh7gg576O5Zu9IHwgVVN
+[12:19:45] Подписка живая (+6 в пул). Всего в final.txt: 17/60
+[12:19:45] Проверка подписки [82/105] (сбоев: 0 дн.): https://raw.githubusercontent.com/10ium/VpnClashFaCollector/
+[12:19:46] Найдено серверов в подписке: 1772 (подходящих: 491)
+[12:19:58] После фильтра стран (DE->NL->FR->GB->US) осталось: 322
+[12:19:59] [OK 405ms] (18/60) vless://352a250d-080b-47b5-b7db-f9f8fa31c551@130.78.30.
+[12:19:59] [OK 551ms] (19/60) vless://287db857-de04-4212-bd69-5d14083e340e@167.233.12
+[12:20:04] [OK 131ms] (20/60) vless://d65cc14c-f53f-4fe2-b262-97856601319c@169.40.42.
+[12:20:04] [OK 144ms] (21/60) vless://d65cc14c-f53f-4fe2-b262-97856601319c@169.40.42.
+[12:20:04] [OK 201ms] (22/60) vless://d65cc14c-f53f-4fe2-b262-97856601319c@169.40.42.
+[12:20:04] [OK 380ms] (23/60) vless://b9bfa54d-bc44-4592-a6d6-89a9665d286f@163.245.42
+[12:20:04] [OK 506ms] (24/60) vless://88a558b1-9645-42f3-89e5-341570d8486d@157.180.98
+[12:20:15] [OK 378ms] (25/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
+[12:20:15] [OK 391ms] (26/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
+[12:20:15] [OK 386ms] (27/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
+[12:20:15] [OK 408ms] (28/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
+[12:20:15] [OK 406ms] (29/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
+[12:20:20] [OK 377ms] (30/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
+[12:20:20] [OK 379ms] (31/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
+[12:20:20] [OK 376ms] (32/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
+[12:20:20] [OK 396ms] (33/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
+[12:20:20] [OK 395ms] (34/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
+[12:20:20] [OK 402ms] (35/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
+[12:20:20] [OK 407ms] (36/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
+[12:20:20] [OK 402ms] (37/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
+[12:20:20] [OK 398ms] (38/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
+[12:20:20] [OK 404ms] (39/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@62.210.91.
+[12:20:20] [OK 429ms] (40/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@62.210.91.
+[12:20:20] [OK 409ms] (41/60) vless://6c077993-952c-4318-9e93-89056a207a9b@141.227.17
+[12:20:22] [OK 359ms] (42/60) vmess://eyJ2IjoiMiIsInBzIjoiQGZpbGVtYmFkIiwiYWRkIjoiNTc
+[12:20:22] [OK 402ms] (43/60) vless://e73df646-1f62-41bf-8c50-653497d603d0@163.172.21
+[12:20:22] [OK 411ms] (44/60) vless://c08f0056-7a6d-4931-813b-aaa3cdd00aed@node-uk.co
+[12:20:23] [OK 1161ms] (45/60) vless://fda89998-7e9a-4494-857a-cd0d00661b58@uk1.connec
+[12:20:23] [OK 1202ms] (46/60) vless://fda89998-7e9a-4494-857a-cd0d00661b58@51.38.71.1
+[12:20:24] [OK 1819ms] (47/60) vless://4201786b-d99b-4147-a5f0-20d47acddb81@132.243.16
+[12:20:25] [OK 202ms] (48/60) vmess://eyJ2IjoiMiIsInBzIjoiQGZpbGVtYmFkIiwiYWRkIjoiODQ
+[12:20:25] [OK 199ms] (49/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@170.101.101.1
+[12:20:25] [OK 207ms] (50/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.156.2
+[12:20:25] [OK 311ms] (51/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@167.88.61.20:
+[12:20:25] [OK 382ms] (52/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.112.13
+[12:20:27] [OK 1972ms] (53/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.155.1
+[12:20:29] [OK 186ms] (54/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.122.11
+[12:20:29] [OK 198ms] (55/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.114.13
+[12:20:29] [OK 228ms] (56/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.122.30
+[12:20:30] [OK 259ms] (57/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.112.17
+[12:20:30] [OK 819ms] (58/60) trojan://123456@us.ctt25.uk:443?allowInsecure=1#
+[12:20:31] [OK 1209ms] (59/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.122.46
+[12:20:35] [OK 744ms] (60/60) trojan://MiTiVPN@199.232.78.160:443?pcs=cd6e838b9bfe31c
+[12:20:39] Подписка живая (+43 в пул). Всего в final.txt: 60/60
