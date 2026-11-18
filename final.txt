@@ -1,8 +1,3 @@
-vless://d65cc14c-f53f-4fe2-b262-97856601319c@169.40.42.35:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=yahoo.com&fp=chrome&pbk=e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg&sid=c39cc7310a&type=tcp&headerType=none#01_DE
-vless://d65cc14c-f53f-4fe2-b262-97856601319c@169.40.42.168:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=yahoo.com&pbk=e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg&sid=c39cc7310a&type=tcp&headerType=none#02_DE
-vless://d65cc14c-f53f-4fe2-b262-97856601319c@169.40.42.74:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=yahoo.com&fp=chrome&pbk=e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg&sid=c39cc7310a&type=tcp&headerType=none#03_DE
-vless://d65cc14c-f53f-4fe2-b262-97856601319c@169.40.42.163:443?security=reality&encryption=none&pbk=e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg&host=%2F%3FTELEGRAM---MARAMBASHI---MARAMBASHI---MARAMBASHI---MARAMBASHI&headerType=none&fp=chrome&type=tcp&flow=xtls-rprx-vision&sni=yahoo.com&sid=c39cc7310a#04_DE
-vless://d65cc14c-f53f-4fe2-b262-97856601319c@169.40.42.231:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=yahoo.com&fp=chrome&pbk=e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg&sid=c39cc7310a&type=tcp&headerType=none#05_DE
 vless://b9bfa54d-bc44-4592-a6d6-89a9665d286f@edge.bookmai.com:443/?type=tcp&encryption=none&flow=xtls-rprx-vision&sni=mother-earth.fyi&fp=chrome&security=reality&pbk=SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc&sid=#06_DE
 vless://f1b9efe3-1d57-41ba-9b72-2a0e72aeda8d@178.104.118.69:443?security=tls&encryption=none&insecure=0&headerType=none&type=tcp&allowInsecure=0&flow=xtls-rprx-vision&sni=bp4q3mbu3ad7.greendop.com#07_DE
 vless://b004e898-f6cf-54a5-d281-f063d741ad53@xray-ckc68nno-swift-harbor-8.cloady.io:443?type=ws&path=%2F3e0261245277336d&host=xray-ckc68nno-swift-harbor-8.cloady.io&security=tls&sni=xray-ckc68nno-swift-harbor-8.cloady.io&fp=chrome#08_DE
@@ -18,7 +13,6 @@ vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206.19:23576?security=realit
 vless://40cc9b52-25b8-4cd5-8b45-715ae26e6baf@163.172.214.188:80?path=%2Fvless%2F&security=&encryption=none&host=sc-thenetherlands1.09vpn.com&type=ws#18_FR
 vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206.34:23576?encryption=none&flow=xtls-rprx-vision&security=reality&sni=fuck.rkn&pbk=1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s&sid=01&type=tcp&headerType=none&host=/?---@Fear_Config---@Fear_Config---@Fear_Config---@Fear_Config---@Fear_Config---@Fear_Config---@Fear_Config---@Fear_Config---@Fear_Config---@Fear_Config---@Fear_Config---@Fear_Config---@Fear_Config---@Fear_Config---@Fear_Config---@Fear_Config---@Fear_Config---@Fear_Config---@Fear_Config---@Fear_Config---@Fear_Config---@Fear_Config---@Fear_Config---@Fear_Config---@Fear_Config---@Fear_Config---@Fear_Config---@Fear_Config---@Fear_Config---@Fear_Config---@Fear_Config---#19_FR
 vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206.103:23576?encryption=none&flow=xtls-rprx-vision&security=reality&sni=fuck.rkn&fp=firefox&pbk=1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s&sid=01&type=tcp&headerType=none#20_FR
-vmess://eyJhZGQiOiIxNDEuMTEuMTM5LjEwMiIsInBvcnQiOiIzMjUxNSIsImlkIjoiMDgxZGJmNWEtZDhiNi00MGM4LTk2ZjgtM2M0Y2E5ZjUwNDQyIiwiYWlkIjoiMCIsInNjeSI6ImF1dG8iLCJuZXQiOiJ0Y3AiLCJ2IjoiMiIsInBzIjoi5pel5pysXzExMTgyMTE3MyBMMCIsImhvc3QiOiIiLCJwYXRoIjoiIiwidGxzIjoiIiwic25pIjoiIiwidHlwZSI6Im5vbmUiLCJzZXJ2ZXJQb3J0IjowLCJuYXRpb24iOiIifQ==
 vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206.26:23576?encryption=none&flow=xtls-rprx-vision&security=reality&sni=fuck.rkn&fp=chrome&pbk=1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s&sid=01&type=tcp&headerType=none#22_FR
 vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206.25:23576?security=reality&encryption=none&pbk=1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s&headerType=none&fp=chrome&type=tcp&flow=xtls-rprx-vision&sni=fuck.rkn&sid=01#23_FR
 vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206.29:23576?security=reality&encryption=none&pbk=1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s&headerType=none&fp=chrome&type=tcp&flow=xtls-rprx-vision&sni=fuck.rkn&sid=01#24_FR
@@ -26,7 +20,6 @@ vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206.20:23576?encryption=none
 vless://45a59c07-4ade-40d4-b4b8-675a36b83947@147.135.213.72:20037?path=%2Fmb-vless&security=&encryption=none&host=147.135.213.72&type=ws#26_FR
 vless://3cfa0d9b-6279-4b73-8533-09ad84e49c80@57.129.41.216:80?encryption=none&security=none&type=ws&host=OV-Germany1.09vpn.com&path=%2Fvless%2F#27_FR
 trojan://ae7eb4dwyaz25pxwgq59@66.23.203.21:59689?allowInsecure=1&sni=#28_US
-vmess://eyJhZGQiOiIyMy4xNjIuMjAwLjE5OCIsInBvcnQiOiIxODAwMCIsImlkIjoiZjhjOGRjM2QtMGQzNy00NmIwLThiMzQtYTcyMzI4ODJmY2ZlIiwiYWlkIjoiMCIsInNjeSI6ImF1dG8iLCJuZXQiOiJ0Y3AiLCJ2IjoiMiIsInBzIjoi5Yqg5ou/5aSnXzExMTgyMTAwNCBMMzYiLCJob3N0IjoiIiwicGF0aCI6IiIsInRscyI6IiIsInNuaSI6IiIsInR5cGUiOiJub25lIiwic2VydmVyUG9ydCI6MCwibmF0aW9uIjoiIn0=
 trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.114.166:443?allowInsecure=0&sni=blog.findconnectwithemployersandbuildprofessionalnetwork.com#30_US
 trojan://nwilryafgkyvuxauc8pz@69.164.240.85:50875?allowInsecure=1&sni=69.164.240.85#31_US
 trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.114.132:443?allowInsecure=1&sni=courses.findconnectwithemployersandbuildprofessionalnetwork.com#32_US
@@ -40,7 +33,6 @@ trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@167.88.61.193:443?allowInsecure=0&sni=
 trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@167.88.61.20:443?allowInsecure=0&sni=api.browseseniorrolesandenhanceyourcareertoday.com#40_US
 trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.112.31:443?allowInsecure=0&sni=unlockyourfuturefindyourperfectcareer.com#41_US
 trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.112.142:443?allowInsecure=0&sni=cdn.unlockyourfuturefindyourperfectcareer.com#42_US
-vmess://eyJhZGQiOiIzOC4xMTAuMS4yNDYiLCJwb3J0IjoiMTgwMDAiLCJpZCI6ImY4YzhkYzNkLTBkMzctNDZiMC04YjM0LWE3MjMyODgyZmNmZSIsImFpZCI6IjAiLCJzY3kiOiJhdXRvIiwibmV0IjoidGNwIiwidiI6IjIiLCJwcyI6Iue+juWbvV8xMTE4MjEwMTcgSDcxIiwiaG9zdCI6IiIsInBhdGgiOiIiLCJ0bHMiOiIiLCJzbmkiOiIiLCJ0eXBlIjoibm9uZSIsInNlcnZlclBvcnQiOjAsIm5hdGlvbiI6IiJ9
 trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.112.76:443?allowInsecure=1&sni=66.163.112.76#44_US
 trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.112.171:443?allowInsecure=0&sni=learn.unlockyourfuturefindyourperfectcareer.com#45_US
 trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.112.121:443?security=tls&sni=www.unlockyourfuturefindyourperfectcareer.com#46_US
@@ -50,9 +42,6 @@ trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.122.30:443?sni=resources.search
 trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.114.45:443?allowInsecure=0&sni=cdn.findconnectwithemployersandbuildprofessionalnetwork.com#50_US
 trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.122.26:443?allowInsecure=0&sni=blog.searchnationwidecareerchangehelperandguidancetoday.com#51_US
 trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@64.176.7.205:443?security=tls&sni=advanceyouremploymentskillsandcareerdevelopmenthub.com#52_US
-vmess://eyJ2IjoiMiIsInBzIjoi8J+HuvCfh7gg576O5Zu9IHwgVVNBIiwiYWRkIjoiMTkyLjc0LjIzNi4xNDgiLCJwb3J0IjoiMzAwMDQiLCJ0eXBlIjoibm9uZSIsImlkIjoiNDE4MDQ4YWYtYTI5My00Yjk5LTliMGMtOThjYTM1ODBkZDI0IiwiYWlkIjoiNjQiLCJuZXQiOiJ3cyIsInBhdGgiOiIvcGF0aC8xNzMzNDc3NzgzNzA1IiwiaG9zdCI6Ind3dy45MTMzNDU2NS54eXoiLCJ0bHMiOiJ0bHMifQ==
-vmess://eyJhZGQiOiIxNjguMTEwLjYzLjI0NyIsInBvcnQiOiI4MDgxIiwiaWQiOiJjM2JkZTI5Ni04ZTQ0LTRiOGMtYTMyNS01NzdkNWIzY2M3YzgiLCJhaWQiOiIwIiwic2N5IjoiYXV0byIsIm5ldCI6IndzIiwidiI6IjIiLCJwcyI6Iue+juWbvV8xMTE4MjE0Mjc4IEwxIiwiaG9zdCI6IiIsInBhdGgiOiIvdmxlc3MiLCJ0bHMiOiIiLCJzbmkiOiIiLCJ0eXBlIjoiIiwic2VydmVyUG9ydCI6MCwibmF0aW9uIjoiIn0=
-vmess://eyJhZGQiOiIxNDkuODguMjMuMjAyIiwicG9ydCI6IjE4MDAwIiwiaWQiOiJmOGM4ZGMzZC0wZDM3LTQ2YjAtOGIzNC1hNzIzMjg4MmZjZmUiLCJhaWQiOiIwIiwic2N5IjoiYXV0byIsIm5ldCI6InRjcCIsInYiOiIyIiwicHMiOiLmlrDliqDlnaFfMTExODIxMDAyIEwwIiwiaG9zdCI6IiIsInBhdGgiOiIiLCJ0bHMiOiIiLCJzbmkiOiIiLCJ0eXBlIjoibm9uZSIsInNlcnZlclBvcnQiOjAsIm5hdGlvbiI6IiJ9
 trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.238.104.154:443?security=tls&sni=findtemporaryworkandfreelancerprojectsonlineplatform.com#56_US
 trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@45.63.30.142:443?security=tls&sni=connectwithemployerstohireyouridealteam.com#57_US
 trojan://123456@34.94.152.229:443?sni=us.ctt25.uk&type=tcp&fp=chrome#58_US
