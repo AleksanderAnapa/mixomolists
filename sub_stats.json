@@ -1,7 +1,7 @@
 {
   "https://warp-gen.cyb-portal.org/CP-044": {
-    "days": 2,
-    "last_fail_date": "2026-11-17"
+    "days": 3,
+    "last_fail_date": "2026-11-18"
   },
   "https://raw.githubusercontent.com/a2470982985/getNode/main/v2ray.txt": {
     "days": 2,
@@ -63,61 +63,57 @@
     "days": 2,
     "last_fail_date": "2026-11-18"
   },
-  "https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/refs/heads/main/output_configs/Armenia.txt": {
-    "days": 1,
-    "last_fail_date": "2026-11-17"
-  },
   "https://warp-gen.cyb-portal.org/CP-001": {
-    "days": 1,
-    "last_fail_date": "2026-11-17"
+    "days": 2,
+    "last_fail_date": "2026-11-18"
   },
   "https://warp-gen.cyb-portal.org/CP-002": {
-    "days": 1,
-    "last_fail_date": "2026-11-17"
+    "days": 2,
+    "last_fail_date": "2026-11-18"
   },
   "https://warp-gen.cyb-portal.org/CP-003": {
-    "days": 1,
-    "last_fail_date": "2026-11-17"
+    "days": 2,
+    "last_fail_date": "2026-11-18"
   },
   "https://warp-gen.cyb-portal.org/CP-005": {
-    "days": 1,
-    "last_fail_date": "2026-11-17"
+    "days": 2,
+    "last_fail_date": "2026-11-18"
   },
   "https://warp-gen.cyb-portal.org/CP-009": {
-    "days": 1,
-    "last_fail_date": "2026-11-17"
+    "days": 2,
+    "last_fail_date": "2026-11-18"
   },
   "https://warp-gen.cyb-portal.org/CP-010": {
-    "days": 1,
-    "last_fail_date": "2026-11-17"
+    "days": 2,
+    "last_fail_date": "2026-11-18"
   },
   "https://warp-gen.cyb-portal.org/CP-012": {
-    "days": 1,
-    "last_fail_date": "2026-11-17"
+    "days": 2,
+    "last_fail_date": "2026-11-18"
   },
   "https://warp-gen.cyb-portal.org/CP-019": {
-    "days": 1,
-    "last_fail_date": "2026-11-17"
+    "days": 2,
+    "last_fail_date": "2026-11-18"
   },
   "https://warp-gen.cyb-portal.org/CP-035": {
-    "days": 1,
-    "last_fail_date": "2026-11-17"
+    "days": 2,
+    "last_fail_date": "2026-11-18"
   },
   "https://warp-gen.cyb-portal.org/CP-038": {
-    "days": 1,
-    "last_fail_date": "2026-11-17"
+    "days": 2,
+    "last_fail_date": "2026-11-18"
   },
   "https://warp-gen.cyb-portal.org/CP-040": {
-    "days": 1,
-    "last_fail_date": "2026-11-17"
+    "days": 2,
+    "last_fail_date": "2026-11-18"
   },
   "https://warp-gen.cyb-portal.org/CP-041": {
-    "days": 1,
-    "last_fail_date": "2026-11-17"
+    "days": 2,
+    "last_fail_date": "2026-11-18"
   },
   "https://warp-gen.cyb-portal.org/CP-042": {
-    "days": 1,
-    "last_fail_date": "2026-11-17"
+    "days": 2,
+    "last_fail_date": "2026-11-18"
   },
   "https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/refs/heads/main/output_configs/Kazakhstan.txt": {
     "days": 1,
