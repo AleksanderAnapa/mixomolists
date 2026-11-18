@@ -44,12 +44,12 @@
     "last_fail_date": "2026-11-18"
   },
   "https://raw.githubusercontent.com/mfuu/v2ray/master/merge/merge.txt": {
-    "days": 1,
-    "last_fail_date": "2026-11-17"
+    "days": 2,
+    "last_fail_date": "2026-11-18"
   },
   "https://raw.githubusercontent.com/wenxig/free-nodes-sub/refs/heads/main/data/sub.txt": {
-    "days": 1,
-    "last_fail_date": "2026-11-17"
+    "days": 2,
+    "last_fail_date": "2026-11-18"
   },
   "https://raw.githubusercontent.com/mahdibland/V2RayAggregator/main/sub/list/66.txt": {
     "days": 1,
