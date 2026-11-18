@@ -1,105 +1,76 @@
 === СТАРТ ПОПОЛНЕНИЯ FINAL.TXT ===
-[04:30:28] В текущем final.txt уже есть уникальных серверов: 0/60
-[04:30:29] Загружено CIDR-подсетей стран: 56719
-[04:30:29] Проверка подписки [87/105] (сбоев: 0 дн.): https://raw.githubusercontent.com/Lewis-1217/FreeNodes/main/
-[04:30:29] Найдено серверов в подписке: 33 (подходящих: 33)
-[04:30:29] После фильтра стран (DE->NL->FR->GB->US) осталось: 0
-[04:30:29] Подписка живая (+0 в пул). Всего в final.txt: 0/60
-[04:30:29] Проверка подписки [88/105] (сбоев: 0 дн.): https://raw.githubusercontent.com/Lewis-1217/FreeNodes/main/
-[04:30:29] Найдено серверов в подписке: 6 (подходящих: 6)
-[04:30:29] После фильтра стран (DE->NL->FR->GB->US) осталось: 4
-[04:30:34] Подписка живая (+0 в пул). Всего в final.txt: 0/60
-[04:30:34] Проверка подписки [89/105] (сбоев: 0 дн.): https://raw.githubusercontent.com/NicProxy/V2ray/main/config
-[04:30:34] Найдено серверов в подписке: 15 (подходящих: 2)
-[04:30:34] После фильтра стран (DE->NL->FR->GB->US) осталось: 1
-[04:30:40] Подписка живая (+0 в пул). Всего в final.txt: 0/60
-[04:30:40] Проверка подписки [90/105] (сбоев: 0 дн.): https://raw.githubusercontent.com/xiyaowong/freeFQ/main/v2ra
-[04:30:40] Найдено серверов в подписке: 106 (подходящих: 101)
-[04:30:40] После фильтра стран (DE->NL->FR->GB->US) осталось: 55
-[04:31:02] Подписка живая (+0 в пул). Всего в final.txt: 0/60
-[04:31:02] Проверка подписки [91/105] (сбоев: 0 дн.): https://raw.githubusercontent.com/vxiaov/free_proxies/main/l
-[04:31:02] Найдено серверов в подписке: 1 (подходящих: 1)
-[04:31:02] После фильтра стран (DE->NL->FR->GB->US) осталось: 1
-[04:31:03] Подписка живая (+0 в пул). Всего в final.txt: 0/60
-[04:31:03] Проверка подписки [92/105] (сбоев: 1 дн.): https://raw.githubusercontent.com/mfuu/v2ray/master/merge/me
-[04:31:03] Ошибка HTTP 404 для https://raw.githubusercontent.com/mfuu/v2ray/maste
-[04:31:03] Подписка пуста или недоступна -> BAD!_02: https://raw.githubusercontent.com/mfuu/v2ray/master/mer
-[04:31:03] Проверка подписки [93/105] (сбоев: 0 дн.): https://raw.githubusercontent.com/Strongmiao168/v2ray/main/1
-[04:31:03] Найдено серверов в подписке: 81 (подходящих: 18)
-[04:31:03] После фильтра стран (DE->NL->FR->GB->US) осталось: 11
-[04:31:08] Подписка живая (+0 в пул). Всего в final.txt: 0/60
-[04:31:08] Проверка подписки [94/105] (сбоев: 1 дн.): https://raw.githubusercontent.com/wenxig/free-nodes-sub/refs
-[04:31:08] Найдено серверов в подписке: 0 (подходящих: 0)
-[04:31:08] Подписка пуста или недоступна -> BAD!_02: https://raw.githubusercontent.com/wenxig/free-nodes-sub
-[04:31:08] Проверка подписки [95/105] (сбоев: 0 дн.): https://raw.githubusercontent.com/free18/v2ray/refs/heads/ma
-[04:31:08] Найдено серверов в подписке: 410 (подходящих: 328)
-[04:31:10] После фильтра стран (DE->NL->FR->GB->US) осталось: 236
-[04:31:11] [OK 314ms] (1/60) vless://855c7aaa-e7d6-463e-971e-d36032744428@159.195.20
-[04:31:11] [OK 460ms] (2/60) vless://88a558b1-9645-42f3-89e5-341570d8486d@157.180.98
-[04:31:11] [OK 554ms] (3/60) vless://287db857-de04-4212-bd69-5d14083e340e@167.233.12
-[04:31:16] [OK 533ms] (4/60) vless://0386df1b-7abd-4676-f3c6-d65d691023b9@sino.bests
-[04:31:21] [OK 226ms] (5/60) vmess://ew0KICAidiI6ICIyIiwNCiAgInBzIjogIlx1RDgzQ1x1RER
-[04:31:24] [OK 899ms] (6/60) vless://57beeeb0-03fc-4fc9-94da-7604488a7134@zfapi.zalo
-[04:31:24] [OK 1141ms] (7/60) vless://57beeeb0-03fc-4fc9-94da-7604488a7134@zfapi.zalo
-[04:31:25] [OK 1979ms] (8/60) vless://57beeeb0-03fc-4fc9-94da-7604488a7134@zfapi.zalo
-[04:31:29] [OK 255ms] (9/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.106.186.4
-[04:31:29] [OK 748ms] (10/60) vmess://ew0KICAidiI6ICIyIiwNCiAgInBzIjogIlx1RDgzQ1x1RER
-[04:31:29] [OK 748ms] (11/60) vmess://ew0KICAidiI6ICIyIiwNCiAgInBzIjogIlx1RDgzQ1x1RER
-[04:31:29] [OK 796ms] (12/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@45.63.30.142:
-[04:31:29] [OK 928ms] (13/60) vless://5269e0b4-0dff-4f97-e0c7-83130bacb009@140.245.62
-[04:31:30] [OK 1240ms] (14/60) vless://b743c868-b35c-4d91-b88b-d9efd7060b5c@xjpp.zjlo.
-[04:31:30] [OK 1722ms] (15/60) vmess://ew0KICAidiI6ICIyIiwNCiAgInBzIjogIlx1RDgzQ1x1RER
-[04:31:33] [OK 186ms] (16/60) vmess://ew0KICAidiI6ICIyIiwNCiAgInBzIjogIlx1RDgzQ1x1RER
-[04:31:33] [OK 208ms] (17/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.114.16
-[04:31:33] [OK 210ms] (18/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.114.45
-[04:31:33] [OK 206ms] (19/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.114.10
-[04:31:33] [OK 213ms] (20/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.114.13
-[04:31:33] [OK 215ms] (21/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.114.12
-[04:31:33] [OK 252ms] (22/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.106.186.1
-[04:31:33] [OK 257ms] (23/60) trojan://f0eb8c92ce8946aaba856569cff1a16b@resources.fin
-[04:31:33] [OK 254ms] (24/60) trojan://f0eb8c92ce8946aaba856569cff1a16b@216.106.186.3
-[04:31:33] [OK 251ms] (25/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.106.186.8
-[04:31:33] [OK 245ms] (26/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.112.13
-[04:31:33] [OK 264ms] (27/60) trojan://dba20dcb635e430fa4d3bfc303a149d2@blog.findloca
-[04:31:33] [OK 310ms] (28/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@167.88.61.20:
-[04:31:33] [OK 313ms] (29/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@167.88.61.52:
-[04:31:35] [OK 111ms] (30/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.155.5
-[04:31:35] [OK 113ms] (31/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.155.1
-[04:31:35] [OK 108ms] (32/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.155.1
-[04:31:35] [OK 118ms] (33/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.155.5
-[04:31:35] [OK 118ms] (34/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.155.2
-[04:31:35] [OK 111ms] (35/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.155.5
-[04:31:35] [OK 119ms] (36/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@170.101.101.2
-[04:31:35] [OK 233ms] (37/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.112.12
-[04:31:35] [OK 244ms] (38/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.112.24
-[04:31:35] [OK 244ms] (39/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.112.31
-[04:31:35] [OK 236ms] (40/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.112.14
-[04:31:35] [OK 346ms] (41/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.127.44
-[04:31:35] [OK 353ms] (42/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.118.20
-[04:31:40] [OK 69ms] (43/60) vmess://ew0KICAidiI6ICIyIiwNCiAgInBzIjogIlx1RDgzQ1x1RER
-[04:31:40] [OK 98ms] (44/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.147.7
-[04:31:40] [OK 98ms] (45/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.147.1
-[04:31:40] [OK 87ms] (46/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.147.7
-[04:31:40] [OK 100ms] (47/60) vmess://ew0KICAidiI6ICIyIiwNCiAgInBzIjogIlx1RDgzQ1x1RER
-[04:31:40] [OK 120ms] (48/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@170.101.101.5
-[04:31:40] [OK 87ms] (49/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.147.4
-[04:31:40] [OK 108ms] (50/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.147.8
-[04:31:40] [OK 115ms] (51/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.147.8
-[04:31:40] [OK 141ms] (52/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@170.101.101.1
-[04:31:40] [OK 126ms] (53/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@170.101.101.2
-[04:31:40] [OK 364ms] (54/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.127.9:
-[04:31:40] [OK 355ms] (55/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.127.21
-[04:31:42] [OK 42ms] (56/60) trojan://nwilryafgkyvuxauc8pz@69.164.240.85:50875?secur
-[04:31:42] [OK 23ms] (57/60) vmess://ew0KICAidiI6ICIyIiwNCiAgInBzIjogIlx1RDgzQ1x1RER
-[04:31:42] [OK 125ms] (58/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@170.101.101.6
-[04:31:42] [OK 129ms] (59/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@170.101.101.1
-[04:31:42] [OK 234ms] (60/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.112.14
-[04:31:42] [OK 163ms] (61/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.156.8
-[04:31:42] [OK 244ms] (62/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.112.17
-[04:31:42] [OK 365ms] (63/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.127.22
-[04:31:42] [OK 345ms] (64/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.127.15
-[04:31:42] [OK 429ms] (65/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.118.25
-[04:31:42] [OK 431ms] (66/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.118.16
-[04:31:42] [OK 500ms] (67/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.118.40
-[04:31:43] [OK 1684ms] (68/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.147.9
-[04:31:43] Подписка живая (+68 в пул). Всего в final.txt: 60/60
+[05:45:20] В текущем final.txt уже есть уникальных серверов: 0/60
+[05:45:21] Загружено CIDR-подсетей стран: 56719
+[05:45:21] Проверка подписки [96/105] (сбоев: 1 дн.): https://raw.githubusercontent.com/mahdibland/V2RayAggregator
+[05:45:21] Ошибка HTTP 404 для https://raw.githubusercontent.com/mahdibland/V2Ray
+[05:45:21] Подписка пуста или недоступна -> BAD!_02: https://raw.githubusercontent.com/mahdibland/V2RayAggre
+[05:45:21] Проверка подписки [97/105] (сбоев: 1 дн.): https://raw.githubusercontent.com/Epodonios/v2ray-configs/ma
+[05:45:21] Ошибка HTTP 404 для https://raw.githubusercontent.com/Epodonios/v2ray-
+[05:45:21] Подписка пуста или недоступна -> BAD!_02: https://raw.githubusercontent.com/Epodonios/v2ray-confi
+[05:45:21] Проверка подписки [98/105] (сбоев: 0 дн.): https://raw.githubusercontent.com/sinavm/SVM/refs/heads/main
+[05:45:22] Найдено серверов в подписке: 198 (подходящих: 126)
+[05:45:22] После фильтра стран (DE->NL->FR->GB->US) осталось: 84
+[05:45:23] [OK 311ms] (1/60) vless://d65cc14c-f53f-4fe2-b262-97856601319c@169.40.42.
+[05:45:23] [OK 317ms] (2/60) vless://d65cc14c-f53f-4fe2-b262-97856601319c@169.40.42.
+[05:45:23] [OK 317ms] (3/60) vless://d65cc14c-f53f-4fe2-b262-97856601319c@169.40.42.
+[05:45:24] [OK 317ms] (4/60) vless://d65cc14c-f53f-4fe2-b262-97856601319c@169.40.42.
+[05:45:24] [OK 358ms] (5/60) vless://d65cc14c-f53f-4fe2-b262-97856601319c@169.40.42.
+[05:45:24] [OK 374ms] (6/60) vless://d65cc14c-f53f-4fe2-b262-97856601319c@169.40.42.
+[05:45:24] [OK 433ms] (7/60) vless://d65cc14c-f53f-4fe2-b262-97856601319c@169.40.42.
+[05:45:24] [OK 436ms] (8/60) vless://d65cc14c-f53f-4fe2-b262-97856601319c@169.40.42.
+[05:45:24] [OK 435ms] (9/60) vless://d65cc14c-f53f-4fe2-b262-97856601319c@169.40.42.
+[05:45:24] [OK 472ms] (10/60) vless://855c7aaa-e7d6-463e-971e-d36032744428@159.195.20
+[05:45:24] [OK 609ms] (11/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
+[05:45:24] [OK 733ms] (12/60) vless://88a558b1-9645-42f3-89e5-341570d8486d@157.180.98
+[05:45:24] [OK 878ms] (13/60) vless://287db857-de04-4212-bd69-5d14083e340e@167.233.12
+[05:45:25] [OK 1414ms] (14/60) vless://ebdfaf99-41d8-4e48-8196-d54510ffb556@45.129.242
+[05:45:29] [OK 571ms] (15/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
+[05:45:29] [OK 589ms] (16/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
+[05:45:29] [OK 594ms] (17/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
+[05:45:29] [OK 597ms] (18/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
+[05:45:29] [OK 602ms] (19/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
+[05:45:29] [OK 605ms] (20/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
+[05:45:29] [OK 601ms] (21/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
+[05:45:29] [OK 602ms] (22/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
+[05:45:29] [OK 593ms] (23/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
+[05:45:29] [OK 599ms] (24/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
+[05:45:29] [OK 625ms] (25/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
+[05:45:29] [OK 602ms] (26/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
+[05:45:29] [OK 606ms] (27/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
+[05:45:29] [OK 619ms] (28/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
+[05:45:29] [OK 614ms] (29/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
+[05:45:30] [OK 92ms] (30/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@15.204.97.
+[05:45:30] [OK 93ms] (31/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@15.204.97.
+[05:45:30] [OK 92ms] (32/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@15.204.97.
+[05:45:30] [OK 90ms] (33/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@15.204.97.
+[05:45:30] [OK 370ms] (34/60) vless://d65cc14c-f53f-4fe2-b262-97856601319c@45.144.112
+[05:45:31] [OK 639ms] (35/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@62.210.91.
+[05:45:31] [OK 649ms] (36/60) vless://7d74eae4-8a06-4306-a923-ad686f30bf26@ov-germany
+[05:45:31] [OK 637ms] (37/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@62.210.91.
+[05:45:31] [OK 641ms] (38/60) vless://81dc0b61-f9fe-4ad6-8b4e-b8c067b73712@152.228.13
+[05:45:31] [OK 710ms] (39/60) vless://5234b2b7-5e07-422c-8159-d62a676c00c6@138.124.18
+[05:45:31] [OK 950ms] (40/60) vless://d65cc14c-f53f-4fe2-b262-97856601319c@82.39.171.
+[05:45:35] [OK 94ms] (41/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@15.204.97.
+[05:45:35] [OK 93ms] (42/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@15.204.97.
+[05:45:35] [OK 94ms] (43/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@15.204.97.
+[05:45:35] [OK 147ms] (44/60) vless://59548d2d-5d7c-4328-aa81-0d5614da0c1b@198.247.12
+[05:45:36] [OK 210ms] (45/60) vless://dbf3f074-3b18-43f3-b82a-debd8c879c69@216.152.15
+[05:45:36] [OK 193ms] (46/60) vmess://eyJhZGQiOiIyMy4xNjIuMjAwLjE5OCIsImFpZCI6MCwiaG9
+[05:45:36] [OK 203ms] (47/60) vmess://eyJhZGQiOiI2Ny4yMjAuOTUuMyIsImFpZCI6MCwiaG9zdCI
+[05:45:36] [OK 307ms] (48/60) vless://14c80e0e-f7ce-4991-94fc-99a1db4a9b1e@159.89.87.
+[05:45:36] [OK 287ms] (49/60) vless://39826f32-f5ca-42a5-ab33-188f7d199478@136.176.65
+[05:45:36] [OK 508ms] (50/60) vless://055a1ce8-2a16-4a0d-a2c2-22826c9b2413@47.253.226
+[05:45:37] [OK 1995ms] (51/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@15.204.97.
+[05:45:41] [OK 479ms] (52/60) vless://140d6fc9-2c6d-41bd-a487-182b52c0184f@45.61.186.
+[05:45:41] [OK 618ms] (53/60) vless://bc058e69-0444-4c7b-98da-bd67f0b143da@130.12.242
+[05:45:41] [OK 703ms] (54/60) vless://8892e34a-339b-4526-b88d-cf68c516231c@152.70.58.
+[05:45:41] [OK 695ms] (55/60) vless://f4ca59b2-767d-3425-8dfc-95a96a0e6802@140.245.11
+[05:45:41] [OK 738ms] (56/60) vless://71b566cb-78c4-48e4-af5b-720e4f7884f2@31.76.32.1
+[05:45:42] [OK 766ms] (57/60) vless://12c53e32-e589-47d6-b857-e4132294f767@46.28.71.2
+[05:45:42] [OK 1675ms] (58/60) vless://f5e70ce3-cfb4-4df1-b25c-d19bfae627c0@144.31.140
+[05:45:43] [OK 1836ms] (59/60) vless://edb50d20-2d3e-4c1e-8a75-a17168a89aa5@145.223.68
+[05:45:47] [OK 520ms] (60/60) vmess://eyJhZGQiOiIxNDkuODguMjMuMjA3IiwiYWlkIjoiMCIsImF
+[05:45:47] [OK 693ms] (61/60) vless://dbf3f074-3b18-43f3-b82a-debd8c879c69@66.163.118
+[05:45:47] [OK 690ms] (62/60) vless://a16bd0e2-ff2e-4e4c-a955-0c684255a065@67.159.52.
+[05:45:47] [OK 792ms] (63/60) vless://e07a6d05-f665-4811-91f0-9b3dc1094e4d@48.102.170
+[05:45:51] Подписка живая (+63 в пул). Всего в final.txt: 60/60
