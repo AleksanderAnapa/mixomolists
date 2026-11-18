@@ -28,13 +28,13 @@ https://warp-gen.cyb-portal.org/CP-002
 https://warp-gen.cyb-portal.org/CP-003
 https://warp-gen.cyb-portal.org/CP-005
 https://warp-gen.cyb-portal.org/CP-009
-BAD!_02 https://warp-gen.cyb-portal.org/CP-010
-BAD!_02 https://warp-gen.cyb-portal.org/CP-012
+https://warp-gen.cyb-portal.org/CP-010
+https://warp-gen.cyb-portal.org/CP-012
 BAD!_02 https://warp-gen.cyb-portal.org/CP-019
-BAD!_02 https://warp-gen.cyb-portal.org/CP-035
-BAD!_02 https://warp-gen.cyb-portal.org/CP-038
-BAD!_02 https://warp-gen.cyb-portal.org/CP-040
-BAD!_02 https://warp-gen.cyb-portal.org/CP-041
+https://warp-gen.cyb-portal.org/CP-035
+https://warp-gen.cyb-portal.org/CP-038
+https://warp-gen.cyb-portal.org/CP-040
+https://warp-gen.cyb-portal.org/CP-041
 BAD!_02 https://warp-gen.cyb-portal.org/CP-042
 BAD!_03 https://warp-gen.cyb-portal.org/CP-044
 
