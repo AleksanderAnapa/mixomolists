@@ -51,10 +51,3 @@ vless://c08f0056-7a6d-4931-813b-aaa3cdd00aed@node-uk.connectsuite.org:8443?sni=n
 vless://80de563a-cac8-40ea-8cb0-4cb082dd92f9@5.178.109.174:14430?encryption=none&path=%2Fvless&security=none&type=ws#51_GB
 vless://d65cc14c-f53f-4fe2-b262-97856601319c@82.39.171.12:443?security=reality&encryption=none&pbk=e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg&headerType=none&type=tcp&flow=xtls-rprx-vision&sni=yahoo.com&sid=c39cc7310a#52_GB
 vless://b59bcb5b-5150-4c6b-9227-681886197014@85.237.207.221:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=dl.google.com&fp=chrome&pbk=lJz7AGWUC-ZTEIJaU5y1GRrROWJ9J_VzQRyrYPmOygs&sid=fd2fa5e06670120b&type=tcp&headerType=none#53_GB
-vless://a30903dc-1bf0-4be5-8b1b-603a3a56211c@48.103.120.9:443?type=raw&security=reality&fp=edge&pbk=drl7nndYdfzZY1aQ0eUAWmNV0nsHig2uDnu9siy9biQ&sid=868419504747f6de&sni=net-rt-mgr.galioncc.com#54_US
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.112.121:443?security=tls&sni=www.unlockyourfuturefindyourperfectcareer.com&insecure=1&allowInsecure=1&type=tcp&headerType=none#55_US
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.156.212:443?security=tls&insecure=0&headerType=none&type=tcp&allowInsecure=0&sni=courses.healthcarejobshubenhancemedicalprofessionalskillstoday.com#56_US
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.122.113:443?security=tls&insecure=0&headerType=none&type=tcp&allowInsecure=0&sni=api.searchnationwidecareerchangehelperandguidancetoday.com#57_US
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@167.88.61.20:443?security=tls&sni=api.browseseniorrolesandenhanceyourcareertoday.com&insecure=1&allowInsecure=1&type=tcp&headerType=none&host=%2F%3FTELEGRAM---MARAMBASHI---MARAMBASHI---MARAMBASHI---MARAMBASHI#58_US
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.122.46:443?security=tls&insecure=0&headerType=none&type=tcp&allowInsecure=0&sni=searchnationwidecareerchangehelperandguidancetoday.com#59_US
-vless://57beeeb0-03fc-4fc9-94da-7604488a7134@zfapi.zalolink.com:43149?security=reality&sni=psstatic.cdn.bcebos.com&insecure=0&fp=firefox&pbk=cvong7paE8XIzzbKWgV5iUruP1pBqI2IhMuBHc8c0UE&sid=15aa0ad4&flow=xtls-rprx-vision#60_US
