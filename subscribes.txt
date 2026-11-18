@@ -23,11 +23,11 @@ https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/refs/heads/main/outp
 https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/refs/heads/main/output_configs/China.txt
 https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/refs/heads/main/output_configs/Czechia.txt
 
-BAD!_02 https://warp-gen.cyb-portal.org/CP-001
-BAD!_02 https://warp-gen.cyb-portal.org/CP-002
-BAD!_02 https://warp-gen.cyb-portal.org/CP-003
-BAD!_02 https://warp-gen.cyb-portal.org/CP-005
-BAD!_02 https://warp-gen.cyb-portal.org/CP-009
+https://warp-gen.cyb-portal.org/CP-001
+https://warp-gen.cyb-portal.org/CP-002
+https://warp-gen.cyb-portal.org/CP-003
+https://warp-gen.cyb-portal.org/CP-005
+https://warp-gen.cyb-portal.org/CP-009
 BAD!_02 https://warp-gen.cyb-portal.org/CP-010
 BAD!_02 https://warp-gen.cyb-portal.org/CP-012
 BAD!_02 https://warp-gen.cyb-portal.org/CP-019
