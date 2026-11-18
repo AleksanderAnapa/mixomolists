@@ -1,8 +1,4 @@
 {
-  "https://warp-gen.cyb-portal.org/CP-044": {
-    "days": 3,
-    "last_fail_date": "2026-11-18"
-  },
   "https://raw.githubusercontent.com/a2470982985/getNode/main/v2ray.txt": {
     "days": 2,
     "last_fail_date": "2026-11-18"
@@ -64,10 +60,6 @@
     "last_fail_date": "2026-11-18"
   },
   "https://warp-gen.cyb-portal.org/CP-019": {
-    "days": 2,
-    "last_fail_date": "2026-11-18"
-  },
-  "https://warp-gen.cyb-portal.org/CP-042": {
     "days": 2,
     "last_fail_date": "2026-11-18"
   },
