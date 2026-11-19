@@ -75,9 +75,9 @@ BAD!_03 https://raw.githubusercontent.com/aiboboxx/v2rayfree/main/v2
 https://raw.githubusercontent.com/ripaojiedian/freenode/main/sub
 https://raw.githubusercontent.com/gitbigg/permalink/main/subscribe
 https://raw.githubusercontent.com/gtang8/SubCrawler/main/sub/share/all
-BAD!_02 https://raw.githubusercontent.com/budamu/clashconfig/main/v2ray.txt
-BAD!_02 https://raw.githubusercontent.com/budamu/clashconfig/main/v2ray2.txt
-BAD!_02 https://raw.githubusercontent.com/mfuu/v2ray/refs/heads/master/v2ray
+BAD!_03 https://raw.githubusercontent.com/budamu/clashconfig/main/v2ray.txt
+BAD!_03 https://raw.githubusercontent.com/budamu/clashconfig/main/v2ray2.txt
+BAD!_03 https://raw.githubusercontent.com/mfuu/v2ray/refs/heads/master/v2ray
 https://raw.githubusercontent.com/snakem982/proxypool/main/source/v2ray-2.txt
 https://raw.githubusercontent.com/10ium/VpnClashFaCollector/main/sub/all/mixed.txt
 https://raw.githubusercontent.com/morteza-v2/free-v2ray-irancell-config/refs/heads/main/Sub1.txt
