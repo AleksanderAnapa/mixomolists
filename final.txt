@@ -38,8 +38,6 @@ trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@167.88.61.193:443?allowInsecure=0&sni=
 trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@167.88.61.20:443?allowInsecure=0&sni=api.browseseniorrolesandenhanceyourcareertoday.com#38_US
 trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.112.31:443?allowInsecure=0&sni=unlockyourfuturefindyourperfectcareer.com#39_US
 trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.112.142:443?allowInsecure=0&sni=cdn.unlockyourfuturefindyourperfectcareer.com#40_US
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.112.76:443?allowInsecure=1&sni=66.163.112.76#41_US
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.112.171:443?allowInsecure=0&sni=learn.unlockyourfuturefindyourperfectcareer.com#42_US
 trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.122.25:443?allowInsecure=0&sni=cdn.searchnationwidecareerchangehelperandguidancetoday.com#43_US
 trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.112.147:443?allowInsecure=0&sni=courses.unlockyourfuturefindyourperfectcareer.com#44_US
 trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.122.30:443?sni=resources.searchnationwidecareerchangehelperandguidancetoday.com&type=tcp&fp=chrome#45_US
