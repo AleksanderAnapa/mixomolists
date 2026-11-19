@@ -27,17 +27,6 @@ vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206.19:23576?encryption=none
 vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206.26:23576?flow=xtls-rprx-vision&fp=chrome&pbk=1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s&security=reality&sid=01&sni=fuck.rkn&type=tcp#27_FR
 vless://f5c47e9c-914a-4a91-a81e-a5a77bc10fc1@ov-france1.09vpn.com:80?encryption=none&host=OV-France1.09vpn.com&path=%2Fvless%2F&security=none&type=ws#28_FR
 vless://7d74eae4-8a06-4306-a923-ad686f30bf26@OV-Germany1.09vpn.com:80?encryption=none&host=OV-Germany1.09vpn.com&path=%2Fvless%2F&security=none&type=ws#29_FR
-vless://d65cc14c-f53f-4fe2-b262-97856601319c@82.39.171.12:443?security=reality&encryption=none&pbk=e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg&headerType=none&fp=chrome&type=tcp&flow=xtls-rprx-vision&sni=yahoo.com&sid=c39cc7310a#30_GB
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@170.101.101.19:443?security=tls&insecure=0&headerType=none&type=tcp&allowInsecure=0&sni=learn.explorecreativejobsandenhanceyourcareerportfolio.com#31_US
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@170.101.101.53:443?security=tls&sni=www.explorecreativejobsandenhanceyourcareerportfolio.com&insecure=0&allowInsecure=0&type=tcp&headerType=none#32_US
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@170.101.101.237:443?security=tls&insecure=0&host=%2F%3FTELEGRAM---i10VPN&headerType=none&type=tcp&allowInsecure=0&sni=cdn.explorecreativejobsandenhanceyourcareerportfolio.com#33_US
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.106.186.82:443?security=tls&insecure=0&headerType=none&type=tcp&allowInsecure=0&sni=courses.findlocaljobnetworkandbuildcommunityconnections.com#34_US
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@167.88.61.52:443?security=tls&insecure=0&host=%2F%3FTelegram---PLANB_NET---PLANB_NET---PLANB_NET---PLANB_NET&headerType=none&type=tcp&allowInsecure=0&sni=courses.browseseniorrolesandenhanceyourcareertoday.com#35_US
-vless://352a250d-080b-47b5-b7db-f9f8fa31c551@187.7.206.176:443?encryption=none&flow=xtls-rprx-vision&fp=firefox&security=tls&sni=1fw71dc.virtual-network.lol&type=tcp#36_US
-vless://352a250d-080b-47b5-b7db-f9f8fa31c551@187.7.206.179:443?encryption=none&flow=xtls-rprx-vision&fp=firefox&security=tls&sni=1fw71df.virtual-network.lol&type=tcp#37_US
-trojan://XnjwEJbEbqBt8bjlrKZPwg@8.6.112.0:443?security=tls&sni=cf.lunex-vpn.xyz&type=ws&host=cf.lunex-vpn.xyz&path=/Lunex&fp=chrome&alpn=h3#38_US
-vless://fdd8f4d0-4500-11ef-8227-1577c1651679@104.17.3.81:80?type=ws&sni=sg-vless-ws.bypass.id&host=sg-vless-ws.bypass.id#39_US
-vless://bc058e69-0444-4c7b-98da-bd67f0b143da@130.12.242.106:443?type=tcp&encryption=none&flow=xtls-rprx-vision&sni=deepl.com&fp=random&security=reality&pbk=vnjp7zIK2H3CGdjSis_79KXqS6IG-opmpbETPUD-EC8&sid=15affa0af66dfc79#40_US
 trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.156.81:443?security=tls&insecure=0&headerType=none&type=tcp&allowInsecure=0&sni=www.healthcarejobshubenhancemedicalprofessionalskillstoday.com#41_US
 trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.112.142:443?security=tls&insecure=0&headerType=none&type=tcp&allowInsecure=0&sni=cdn.unlockyourfuturefindyourperfectcareer.com#42_US
 trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@170.101.101.67:443?security=tls&insecure=0&headerType=none&type=tcp&allowInsecure=0&sni=courses.explorecreativejobsandenhanceyourcareerportfolio.com#43_US
