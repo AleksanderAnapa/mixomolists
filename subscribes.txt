@@ -45,8 +45,8 @@ https://raw.githubusercontent.com/pojiezhiyuanjun/freev2/master/20200808.txt
 https://raw.githubusercontent.com/Mr8AHAL/v2ray/main/SERVER.txt
 https://raw.githubusercontent.com/sami-soft/v2rayN_proxy/main/new1.txt
 https://raw.githubusercontent.com/Tenerome/v2ray/main/vmess.txt
-BAD!_02 https://raw.githubusercontent.com/a2470982985/getNode/main/v2ray.txt
-BAD!_02 https://raw.githubusercontent.com/yaney01/Yaney01/main/yaney_01
+BAD!_03 https://raw.githubusercontent.com/a2470982985/getNode/main/v2ray.txt
+BAD!_03 https://raw.githubusercontent.com/yaney01/Yaney01/main/yaney_01
 https://raw.githubusercontent.com/yaney01/Yaney01/main/temporary
 https://raw.githubusercontent.com/adiwzx/freenode/main/adispeed.txt
 https://raw.githubusercontent.com/Leon406/SubCrawler/refs/heads/main/sub/share/vless
