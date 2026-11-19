@@ -44,12 +44,6 @@ trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@167.88.61.193:443?allowInsecure=0&sni=
 trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@167.88.61.20:443?allowInsecure=0&sni=api.browseseniorrolesandenhanceyourcareertoday.com#44_US
 trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.112.31:443?allowInsecure=0&sni=unlockyourfuturefindyourperfectcareer.com#45_US
 trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.112.142:443?allowInsecure=0&sni=cdn.unlockyourfuturefindyourperfectcareer.com#46_US
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.122.25:443?allowInsecure=0&sni=cdn.searchnationwidecareerchangehelperandguidancetoday.com#47_US
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.112.147:443?allowInsecure=0&sni=courses.unlockyourfuturefindyourperfectcareer.com#48_US
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.122.30:443?sni=resources.searchnationwidecareerchangehelperandguidancetoday.com&type=tcp&fp=chrome#49_US
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.114.45:443?allowInsecure=0&sni=cdn.findconnectwithemployersandbuildprofessionalnetwork.com#50_US
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.122.26:443?allowInsecure=0&sni=blog.searchnationwidecareerchangehelperandguidancetoday.com#51_US
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@64.176.7.205:443?security=tls&sni=advanceyouremploymentskillsandcareerdevelopmenthub.com#52_US
 trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.238.104.154:443?security=tls&sni=findtemporaryworkandfreelancerprojectsonlineplatform.com#53_US
 trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@45.63.30.142:443?security=tls&sni=connectwithemployerstohireyouridealteam.com#54_US
 trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@170.101.101.53:443?security=tls&headerType=none&type=tcp&allowInsecure=0&sni=www.explorecreativejobsandenhanceyourcareerportfolio.com#55_US
