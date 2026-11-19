@@ -1,21 +1,30 @@
 === СТАРТ ПОПОЛНЕНИЯ FINAL.TXT ===
-[07:45:35] В текущем final.txt уже есть уникальных серверов: 58/60
-[07:45:36] Загружено CIDR-подсетей стран: 56706
-[07:45:36] Проверка подписки [96/105] (сбоев: 2 дн.): https://raw.githubusercontent.com/mahdibland/V2RayAggregator
-[07:45:36] Ошибка HTTP 404 для https://raw.githubusercontent.com/mahdibland/V2Ray
-[07:45:36] Подписка пуста или недоступна -> BAD!_03: https://raw.githubusercontent.com/mahdibland/V2RayAggre
-[07:45:36] Проверка подписки [97/105] (сбоев: 2 дн.): https://raw.githubusercontent.com/Epodonios/v2ray-configs/ma
-[07:45:36] Ошибка HTTP 404 для https://raw.githubusercontent.com/Epodonios/v2ray-
-[07:45:36] Подписка пуста или недоступна -> BAD!_03: https://raw.githubusercontent.com/Epodonios/v2ray-confi
-[07:45:36] Проверка подписки [98/105] (сбоев: 0 дн.): https://raw.githubusercontent.com/sinavm/SVM/refs/heads/main
-[07:45:36] Найдено серверов в подписке: 143 (подходящих: 102)
-[07:45:37] После фильтра стран (DE->NL->FR->GB->US) осталось: 73
-[07:45:38] [OK 189ms] (59/60) vmess://eyJhZGQiOiIyMy4xNjIuMjAwLjE5OCIsImFpZCI6MCwiaG9
-[07:45:38] [OK 263ms] (60/60) vmess://eyJ2IjpudWxsLCJwcyI6IlNpTkFWTSB8IFZNRVNTIHwgIzE
-[07:45:38] [OK 273ms] (61/60) vless://055a1ce8-2a16-4a0d-a2c2-22826c9b2413@47.253.226
-[07:45:38] [OK 252ms] (62/60) vless://dbf3f074-3b18-43f3-b82a-debd8c879c69@216.152.15
-[07:45:38] [OK 437ms] (63/60) vless://d65cc14c-f53f-4fe2-b262-97856601319c@169.40.42.
-[07:45:38] [OK 632ms] (64/60) vless://ba0dbd83-3569-46dc-bc3d-ef6e58ffc97b@153.56.229
-[07:45:38] [OK 642ms] (65/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
-[07:45:39] [OK 880ms] (66/60) vless://d65cc14c-f53f-4fe2-b262-97856601319c@82.39.171.
-[07:45:42] Подписка живая (+8 в пул). Всего в final.txt: 60/60
+[08:15:34] В текущем final.txt уже есть уникальных серверов: 51/60
+[08:15:35] Загружено CIDR-подсетей стран: 56706
+[08:15:35] Проверка подписки [99/105] (сбоев: 0 дн.): https://raw.githubusercontent.com/ssrsub/ssr/refs/heads/mast
+[08:15:35] Найдено серверов в подписке: 47 (подходящих: 39)
+[08:15:35] После фильтра стран (DE->NL->FR->GB->US) осталось: 24
+[08:15:36] [OK 386ms] (52/60) vless://b9bfa54d-bc44-4592-a6d6-89a9665d286f@edge.bookm
+[08:15:36] [OK 417ms] (53/60) vless://b9bfa54d-bc44-4592-a6d6-89a9665d286f@163.245.42
+[08:15:36] [OK 414ms] (54/60) vmess://eyJ2IjoiMiIsInBzIjoi8J+HuvCfh7gg5py65Zy65o6o6I2
+[08:15:36] [OK 441ms] (55/60) vmess://eyJ2IjoiMiIsInBzIjoi8J+HuvCfh7gg5py65Zy65o6o6I2
+[08:15:36] [OK 451ms] (56/60) vmess://eyJ2IjoiMiIsInBzIjoi8J+HuvCfh7gg5py65Zy65o6o6I2
+[08:15:37] [OK 492ms] (57/60) vmess://eyJ2IjoiMiIsInBzIjoi8J+HuvCfh7gg5py65Zy65o6o6I2
+[08:15:37] [OK 487ms] (58/60) vmess://eyJ2IjoiMiIsInBzIjoi8J+HuvCfh7gg5py65Zy65o6o6I2
+[08:15:37] [OK 526ms] (59/60) vmess://eyJ2IjoiMiIsInBzIjoi8J+HuvCfh7gg5py65Zy65o6o6I2
+[08:15:46] Подписка живая (+8 в пул). Всего в final.txt: 59/60
+[08:15:46] Проверка подписки [100/105] (сбоев: 0 дн.): https://raw.githubusercontent.com/Barabama/FreeNodes/master/
+[08:15:46] Найдено серверов в подписке: 321 (подходящих: 197)
+[08:15:48] После фильтра стран (DE->NL->FR->GB->US) осталось: 150
+[08:16:41] Подписка живая (+0 в пул). Всего в final.txt: 59/60
+[08:16:41] Проверка подписки [102/105] (сбоев: 0 дн.): https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/
+[08:16:41] Найдено серверов в подписке: 905 (подходящих: 658)
+[08:16:45] После фильтра стран (DE->NL->FR->GB->US) осталось: 531
+[08:16:51] [OK 256ms] (60/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.106.186.8
+[08:16:51] [OK 330ms] (61/60) vmess://eyJhZGQiOiI1Ny4xMjkuMTMyLjIyMyIsImFpZCI6IjAiLCJ
+[08:16:51] [OK 314ms] (62/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@167.88.61.52:
+[08:16:51] [OK 324ms] (63/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@167.88.61.193
+[08:16:51] [OK 314ms] (64/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@167.88.61.20:
+[08:16:51] [OK 334ms] (65/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@167.88.61.198
+[08:16:51] [OK 715ms] (66/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.106.186.1
+[08:16:55] Подписка живая (+7 в пул). Всего в final.txt: 60/60
