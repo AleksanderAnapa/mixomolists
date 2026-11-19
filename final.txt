@@ -1,13 +1,3 @@
-vless://d65cc14c-f53f-4fe2-b262-97856601319c@169.40.42.163:443?&security=reality&flow=xtls-rprx-vision&pbk=e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg&sid=c39cc7310a&fp=ios&sni=yahoo.com&type=tcp&headerType=none&host=yahoo.com&path=%2F#01_DE
-vless://d65cc14c-f53f-4fe2-b262-97856601319c@169.40.42.168:443?&security=reality&flow=xtls-rprx-vision&pbk=e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg&sid=c39cc7310a&fp=ios&sni=yahoo.com&type=tcp&headerType=none&host=yahoo.com&path=%2F#02_DE
-vless://b9bfa54d-bc44-4592-a6d6-89a9665d286f@163.245.42.56:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=mother-earth.fyi&fp=chrome&pbk=SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc&type=tcp&headerType=none#03_DE
-vless://88a558b1-9645-42f3-89e5-341570d8486d@157.180.98.124:49659?encryption=none&flow=xtls-rprx-vision&security=reality&sni=apple.com&fp=chrome&pbk=bBVqro8tG6swTNoAkjwUzcu4Ew4N4VcyDHzADcGviCs&sid=81959fce&type=tcp&headerType=none#04_DE
-vless://b004e898-f6cf-54a5-d281-f063d741ad53@xray-ckc68nno-swift-harbor-8.cloady.io:443?&security=tls&fp=chrome&sni=xray-ckc68nno-swift-harbor-8.cloady.io&type=ws&headerType=none&host=xray-ckc68nno-swift-harbor-8.cloady.io&path=%2F3e0261245277336d#05_DE
-vless://26843758-24de-4f76-b5d0-624038e353c4@153.56.229.218:443?security=reality&type=tcp&packetEncoding=xudp&sni=71b840t.de7.h1clayd.click&fp=firefox&sid=e572b6579ea525d4&pbk=3wFF83gtIA0sXj-6GGCAa--oQbSr0MVUj0FBc-0QmiE&encryption=none#06_DE
-vless://68512eac-cd53-4de3-8d1e-08f6e04af1a9@13.140.56.100:14430?type=ws&host=13.140.56.100&path=/vless#07_DE
-vless://6bdc8320-7eae-46fc-be08-f5f54e65dfc8@in.smrtai.top:443?security=reality&type=tcp&packetEncoding=xudp&sni=www.cloudflare.com&fp=chrome&sid=6bdc8320&pbk=3LbVuwKpQv55GngyRhvGl9KyAHIDAgvJx_VRM5mUD2Q&encryption=none#08_DE
-vless://ba0dbd83-3569-46dc-bc3d-ef6e58ffc97b@153.56.229.218:443?security=reality&type=tcp&packetEncoding=xudp&sni=71b840t.de7.h1clayd.click&fp=firefox&sid=e572b6579ea525d4&pbk=3wFF83gtIA0sXj-6GGCAa--oQbSr0MVUj0FBc-0QmiE&encryption=none#09_DE
-vless://26843758-24de-4f76-b5d0-624038e353c4@153.52.85.198:443?security=reality&type=tcp&packetEncoding=xudp&sni=15d7fft.nl11.h1clayd.click&fp=firefox&sid=c71118d9399fb8c2&pbk=xv6OUZcyzEHXFMTfumuJH-1Rd4NQ0cdmWikek4mm0m4#10_DE
 vless://b9bfa54d-bc44-4592-a6d6-89a9665d286f@edge.bookmai.com:443/?type=tcp&encryption=none&flow=xtls-rprx-vision&sni=mother-earth.fyi&fp=chrome&security=reality&pbk=SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc&sid=#11_DE
 vless://dfe50e18-28ce-459e-a6b9-0f2585bcc3b6@87.58.201.5:443?&security=tls&flow=xtls-rprx-vision&fp=chrome&sni=nl.point.cookie-line.cc&type=tcp&headerType=none&path=%2F#12_NL
 vless://dfe50e18-28ce-459e-a6b9-0f2585bcc3b6@nl.point.cookie-line.cc:443?encryption=none&flow=xtls-rprx-vision&security=tls&sni=nl.point.cookie-line.cc&fp=chrome&insecure=0&allowInsecure=0&type=tcp&headerType=none#13_NL
@@ -49,8 +39,6 @@ vless://4e4f1f70-5e56-4a76-bb9d-db087f4690c4@104.16.10.72:443?&security=tls&fp=u
 vless://f4ca59b2-767d-3425-8dfc-95a96a0e6802@140.245.113.33:443?encryption=none&security=reality&sni=learn.microsoft.com&fp=chrome&flow=xtls-rprx-vision&type=tcp&pbk=tF9nKF6amexok5wKbieQ2QRKQI5_ZTFE6MUj1hUBBkY&sid=c940a3b6d60b8611#49_US
 trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.106.186.155:443?allowInsecure=0&sni=api.findlocaljobnetworkandbuildcommunityconnections.com#50_US
 trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@167.88.61.52:443?security=tls&sni=courses.browseseniorrolesandenhanceyourcareertoday.com#51_US
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@167.88.61.198:443?allowInsecure=0&sni=cdn.browseseniorrolesandenhanceyourcareertoday.com#52_US
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.112.76:443?allowInsecure=1&sni=66.163.112.76#53_US
 trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.112.121:443?security=tls&sni=www.unlockyourfuturefindyourperfectcareer.com#54_US
 trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.112.31:443?allowInsecure=0&sni=unlockyourfuturefindyourperfectcareer.com#55_US
 trojan://ae7eb4dwyaz25pxwgq59@66.23.203.21:59689?allowInsecure=1&sni=#56_US
