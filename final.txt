@@ -53,7 +53,6 @@ trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.112.121:443?security=tls&sni=ww
 trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.114.106:443?sni=www.findconnectwithemployersandbuildprofessionalnetwork.com&type=tcp#53_US
 trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.155.158:443?security=tls&sni=resources.nextjobopportunityandclaimyouridealrole.com&insecure=0&allowInsecure=0&type=tcp&headerType=none#54_US
 trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.155.50:443?security=tls&insecure=0&headerType=none&type=tcp&allowInsecure=0&sni=cdn.nextjobopportunityandclaimyouridealrole.com#55_US
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@170.101.101.211:443?security=tls&insecure=0&headerType=none&type=tcp&allowInsecure=0&sni=api.explorecreativejobsandenhanceyourcareerportfolio.com#56_US
 trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.147.85:443?security=tls&sni=cdn.connectingpeoplewithgreatjobs.com&fp=chrome&insecure=1&allowInsecure=1&type=tcp&headerType=none#57_US
 trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.147.48:443?security=tls&insecure=0&headerType=none&fp=chrome&type=tcp&allowInsecure=0&sni=courses.connectingpeoplewithgreatjobs.com#58_US
 vless://7c053ca8-38cc-45e2-930c-eda1fd66f903@195.123.245.241:443?type=tcp&encryption=none&flow=xtls-rprx-vision&sni=gateway.icloud.com&fp=chrome&security=reality&pbk=hlY5ce1UsVIgE46y5PlEZhUsSaXUnCtoDLLaGrhInjw&sid=23d0950d60bc0d5b&packetEncoding=xudp#59_US
