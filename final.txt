@@ -48,10 +48,8 @@ vless://4e4f1f70-5e56-4a76-bb9d-db087f4690c4@104.16.10.72:443?&security=tls&fp=u
 vless://f4ca59b2-767d-3425-8dfc-95a96a0e6802@140.245.113.33:443?encryption=none&security=reality&sni=learn.microsoft.com&fp=chrome&flow=xtls-rprx-vision&type=tcp&pbk=tF9nKF6amexok5wKbieQ2QRKQI5_ZTFE6MUj1hUBBkY&sid=c940a3b6d60b8611#48_US
 trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.106.186.155:443?allowInsecure=0&sni=api.findlocaljobnetworkandbuildcommunityconnections.com#49_US
 trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@167.88.61.52:443?security=tls&sni=courses.browseseniorrolesandenhanceyourcareertoday.com#50_US
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@167.88.61.20:443?allowInsecure=0&sni=api.browseseniorrolesandenhanceyourcareertoday.com#51_US
 trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@167.88.61.198:443?allowInsecure=0&sni=cdn.browseseniorrolesandenhanceyourcareertoday.com#52_US
 trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.112.76:443?allowInsecure=1&sni=66.163.112.76#53_US
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.112.147:443?allowInsecure=0&sni=courses.unlockyourfuturefindyourperfectcareer.com#54_US
 trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.112.121:443?security=tls&sni=www.unlockyourfuturefindyourperfectcareer.com#55_US
 trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.112.31:443?allowInsecure=0&sni=unlockyourfuturefindyourperfectcareer.com#56_US
 trojan://ae7eb4dwyaz25pxwgq59@66.23.203.21:59689?allowInsecure=1&sni=#57_US
