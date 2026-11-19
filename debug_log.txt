@@ -1,55 +1,8 @@
 === СТАРТ ПОПОЛНЕНИЯ FINAL.TXT ===
-[23:15:35] В текущем final.txt уже есть уникальных серверов: 42/60
-[23:15:36] Загружено CIDR-подсетей стран: 56706
-[23:15:36] Проверка подписки [4/105] (сбоев: 0 дн.): https://github.com/igareck/vpn-configs-for-russia/raw/refs/h
-[23:15:37] Найдено серверов в подписке: 48 (подходящих: 8)
-[23:15:37] После фильтра стран (DE->NL->FR->GB->US) осталось: 0
-[23:15:37] Подписка живая (+0 в пул). Всего в final.txt: 42/60
-[23:15:37] Проверка подписки [5/105] (сбоев: 0 дн.): https://github.com/igareck/vpn-configs-for-russia/raw/refs/h
-[23:15:37] Найдено серверов в подписке: 44 (подходящих: 8)
-[23:15:37] После фильтра стран (DE->NL->FR->GB->US) осталось: 0
-[23:15:37] Подписка живая (+0 в пул). Всего в final.txt: 42/60
-[23:15:37] Проверка подписки [6/105] (сбоев: 0 дн.): https://github.com/igareck/vpn-configs-for-russia/raw/refs/h
-[23:15:38] Найдено серверов в подписке: 128 (подходящих: 34)
-[23:15:38] После фильтра стран (DE->NL->FR->GB->US) осталось: 28
-[23:15:40] [OK 649ms] (43/60) vless://fbe22815-0718-4eae-816f-e91c67d15b54@144.31.215
-[23:15:40] [OK 964ms] (44/60) vless://364D2D52-E61E-4E52-80EC-2BC6BDF15349@fr-free.fa
-[23:15:40] [OK 1332ms] (45/60) vless://3692de53-42e6-4aed-a522-40ec355dcd2f@104.17.70.
-[23:15:41] [OK 1668ms] (46/60) vmess://eyJ2IjoiMiIsInBzIjoi8J+HuPCfh6wgU2luZ2Fwb3JlLCB
-[23:15:41] [OK 1763ms] (47/60) vless://b19c62cc-f2c2-4895-aee1-978a0f58f8c8@www.zoom.u
-[23:15:45] [OK 366ms] (48/60) vmess://eyJ2IjoiMiIsInBzIjoi8J+HuvCfh7ggVW5pdGVkIFN0YXR
-[23:15:45] [OK 374ms] (49/60) vmess://eyJ2IjoiMiIsInBzIjoi8J+HuvCfh7ggVW5pdGVkIFN0YXR
-[23:15:45] [OK 384ms] (50/60) vmess://eyJ2IjoiMiIsInBzIjoi8J+HuvCfh7ggVW5pdGVkIFN0YXR
-[23:15:45] [OK 388ms] (51/60) vmess://eyJ2IjoiMiIsInBzIjoi8J+HuvCfh7ggVW5pdGVkIFN0YXR
-[23:15:45] [OK 385ms] (52/60) vmess://eyJhZGQiOiIxNzIuNjYuMC4xIiwiYWlkIjoiMCIsImhvc3Q
-[23:15:45] [OK 396ms] (53/60) vmess://eyJ2IjoiMiIsInBzIjoi8J+HuvCfh7ggVW5pdGVkIFN0YXR
-[23:15:45] [OK 404ms] (54/60) vmess://eyJhZGQiOiIxODguMTE0Ljk5LjEzNyIsImFpZCI6IjAiLCJ
-[23:15:49] Подписка живая (+12 в пул). Всего в final.txt: 54/60
-[23:15:49] Проверка подписки [7/105] (сбоев: 0 дн.): https://raw.githubusercontent.com/luxxuria/harvester/refs/he
-[23:15:49] Найдено серверов в подписке: 35 (подходящих: 32)
-[23:15:49] После фильтра стран (DE->NL->FR->GB->US) осталось: 6
-[23:15:51] [OK 750ms] (55/60) vless://66c78912-4e2d-41dc-8742-aaae2590804e@13.143.187
-[23:15:52] Подписка живая (+1 в пул). Всего в final.txt: 55/60
-[23:15:52] Проверка подписки [9/105] (сбоев: 0 дн.): https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/
-[23:15:52] Найдено серверов в подписке: 3 (подходящих: 3)
-[23:15:52] После фильтра стран (DE->NL->FR->GB->US) осталось: 1
-[23:15:57] Подписка живая (+0 в пул). Всего в final.txt: 55/60
-[23:15:57] Проверка подписки [10/105] (сбоев: 0 дн.): https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/
-[23:15:57] Найдено серверов в подписке: 14 (подходящих: 9)
-[23:15:57] После фильтра стран (DE->NL->FR->GB->US) осталось: 5
-[23:15:58] Подписка живая (+0 в пул). Всего в final.txt: 55/60
-[23:15:58] Проверка подписки [11/105] (сбоев: 0 дн.): https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/
-[23:15:58] Найдено серверов в подписке: 152 (подходящих: 76)
-[23:15:59] После фильтра стран (DE->NL->FR->GB->US) осталось: 55
-[23:16:02] [OK 470ms] (56/60) vless://b9bfa54d-bc44-4592-a6d6-89a9665d286f@163.245.42
-[23:16:07] [OK 493ms] (57/60) vless://352a250d-080b-47b5-b7db-f9f8fa31c551@187.7.206.
-[23:16:07] [OK 492ms] (58/60) vless://352a250d-080b-47b5-b7db-f9f8fa31c551@187.7.206.
-[23:16:07] [OK 547ms] (59/60) vless://7d74eae4-8a06-4306-a923-ad686f30bf26@OV-Germany
-[23:16:12] Подписка живая (+4 в пул). Всего в final.txt: 59/60
-[23:16:12] Проверка подписки [12/105] (сбоев: 0 дн.): https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/
-[23:16:12] Найдено серверов в подписке: 58 (подходящих: 34)
-[23:16:18] После фильтра стран (DE->NL->FR->GB->US) осталось: 31
-[23:16:19] [OK 521ms] (60/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@62.210.91.
-[23:16:19] [OK 519ms] (61/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@62.210.91.
-[23:16:19] [OK 570ms] (62/60) vless://086bf957-9cd0-4e55-8280-bbef10435b41@161.97.66.
-[23:16:19] Подписка живая (+3 в пул). Всего в final.txt: 60/60
+[23:30:37] В текущем final.txt уже есть уникальных серверов: 59/60
+[23:30:38] Загружено CIDR-подсетей стран: 56706
+[23:30:38] Проверка подписки [13/105] (сбоев: 0 дн.): https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/
+[23:30:38] Найдено серверов в подписке: 147 (подходящих: 77)
+[23:30:39] После фильтра стран (DE->NL->FR->GB->US) осталось: 56
+[23:30:40] [OK 372ms] (60/60) vless://40cc9b52-25b8-4cd5-8b45-715ae26e6baf@163.172.21
+[23:30:44] Подписка живая (+1 в пул). Всего в final.txt: 60/60
