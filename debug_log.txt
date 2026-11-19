@@ -1,20 +1,3 @@
 === СТАРТ ПОПОЛНЕНИЯ FINAL.TXT ===
-[20:45:37] В текущем final.txt уже есть уникальных серверов: 58/60
-[20:45:38] Загружено CIDR-подсетей стран: 56706
-[20:45:38] Проверка подписки [53/105] (сбоев: 0 дн.): https://raw.githubusercontent.com/Leon406/SubCrawler/refs/he
-[20:45:39] Найдено серверов в подписке: 70 (подходящих: 48)
-[20:45:39] После фильтра стран (DE->NL->FR->GB->US) осталось: 39
-[20:45:40] [OK 108ms] (59/60) vmess://eyJhZGQiOiIyMy4xNjIuMjAwLjE5OCIsInBvcnQiOiIxODA
-[20:45:40] [OK 182ms] (60/60) vmess://eyJhZGQiOiIzOC4xMTAuMS4yNDYiLCJwb3J0IjoiMTgwMDA
-[20:45:40] [OK 207ms] (61/60) vmess://eyJhZGQiOiIzOC45MS4xMDcuNDkiLCJwb3J0IjoiMTgwMDA
-[20:45:40] [OK 255ms] (62/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.114.11
-[20:45:40] [OK 262ms] (63/60) trojan://ae7eb4dwyaz25pxwgq59@66.23.203.21:59689?allowI
-[20:45:40] [OK 290ms] (64/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@167.88.61.52:
-[20:45:40] [OK 464ms] (65/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@64.176.7.205:
-[20:45:40] [OK 480ms] (66/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.238.104.1
-[20:45:40] [OK 689ms] (67/60) vmess://eyJhZGQiOiIxNDkuODguMjMuMjAyIiwicG9ydCI6IjE4MDA
-[20:45:40] [OK 755ms] (68/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@45.63.30.142:
-[20:45:41] [OK 904ms] (69/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@139.84.231.14
-[20:45:41] [OK 1623ms] (70/60) vmess://eyJhZGQiOiIxMDQuMTcuNzcuNzciLCJwb3J0IjoiODQ0MyI
-[20:45:41] [OK 1637ms] (71/60) vmess://eyJhZGQiOiI2Ny4yMjAuOTUuMyIsInBvcnQiOiIxODAwMCI
-[20:45:41] Подписка живая (+13 в пул). Всего в final.txt: 60/60
+[20:52:25] В текущем final.txt уже есть уникальных серверов: 60/60
+[20:52:25] Список уже полон (60/60). Новые серверы не требуются.
