@@ -62,9 +62,5 @@
   "https://warp-gen.cyb-portal.org/CP-019": {
     "days": 3,
     "last_fail_date": "2026-11-19"
-  },
-  "https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/refs/heads/main/output_configs/Kazakhstan.txt": {
-    "days": 2,
-    "last_fail_date": "2026-11-19"
   }
 }
