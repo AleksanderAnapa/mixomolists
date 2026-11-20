@@ -11,7 +11,6 @@ vless://05306874-ee0c-42ac-bfcb-d5c20ca07b9c@5.75.195.83:56879?security=tls&type
 vless://4e4f1f70-5e56-4a76-bb9d-db087f4690c4@45.153.245.181:443?&security=tls&fp=unsafe&sni=jp3.yohototo.top&type=ws&headerType=none&host=jp3.yohototo.top&path=%2Ftyxyws#11_DE
 vless://4e4f1f70-5e56-4a76-bb9d-db087f4690c4@62.106.75.37:443?&security=tls&fp=unsafe&sni=jp3.yohototo.top&type=ws&headerType=none&host=jp3.yohototo.top&path=%2Ftyxyws#12_DE
 vless://d65cc14c-f53f-4fe2-b262-97856601319c@169.40.42.89:443?security=reality&encryption=none&pbk=e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg&host=%2F%3FTELEGRAM---MARAMBASHI---MARAMBASHI---MARAMBASHI---MARAMBASHI&headerType=none&fp=chrome&type=tcp&flow=xtls-rprx-vision&sni=yahoo.com&sid=c39cc7310a#13_DE
-vless://d65cc14c-f53f-4fe2-b262-97856601319c@169.40.42.231:443?security=reality&encryption=none&pbk=e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg&headerType=none&type=tcp&flow=xtls-rprx-vision&sni=yahoo.com&sid=c39cc7310a#14_DE
 vless://d65cc14c-f53f-4fe2-b262-97856601319c@169.40.42.168:443?security=reality&encryption=none&pbk=e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg&headerType=none&type=tcp&flow=xtls-rprx-vision&sni=yahoo.com&sid=c39cc7310a#15_DE
 vless://d65cc14c-f53f-4fe2-b262-97856601319c@169.40.42.74:443?security=reality&encryption=none&pbk=e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg&host=%2F%3FTELEGRAM---MARAMBASHI---MARAMBASHI---MARAMBASHI---MARAMBASHI&headerType=none&fp=chrome&type=tcp&flow=xtls-rprx-vision&sni=yahoo.com&sid=c39cc7310a#16_DE
 vless://b9bfa54d-bc44-4592-a6d6-89a9665d286f@163.245.42.87:443?security=reality&encryption=none&pbk=SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc&headerType=none&fp=chrome&type=tcp&flow=xtls-rprx-vision&sni=mother-earth.fyi#17_DE
@@ -51,7 +50,6 @@ vless://055a1ce8-2a16-4a0d-a2c2-22826c9b2413@47.253.226.114:443?encryption=none&
 trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.147.74:443?security=tls&insecure=0&headerType=none&fp=chrome&type=tcp&allowInsecure=0&sni=api.connectingpeoplewithgreatjobs.com#51_US
 trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.147.152:443?security=tls&insecure=0&headerType=none&type=tcp&allowInsecure=0&sni=learn.connectingpeoplewithgreatjobs.com#52_US
 trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.147.93:443?security=tls&insecure=0&headerType=none&type=tcp&allowInsecure=0&sni=connectingpeoplewithgreatjobs.com#53_US
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.147.85:443?security=tls&headerType=none&fp=chrome&type=tcp&allowInsecure=0&sni=cdn.connectingpeoplewithgreatjobs.com#54_US
 trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.147.89:443?security=tls&headerType=none&type=tcp&allowInsecure=0&sni=www.connectingpeoplewithgreatjobs.com#55_US
 trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.147.201:443?fp=chrome&sni=resources.connectingpeoplewithgreatjobs.com#56_US
 vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@15.204.97.198:23576?encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s&security=reality&sid=01&sni=fuck.rkn&type=raw#57_US
