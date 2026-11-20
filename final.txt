@@ -30,7 +30,6 @@ vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206.97:23576?encryption=none
 vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206.87:23576?encryption=none&flow=xtls-rprx-vision&type=tcp&security=reality&sni=fuck.rkn&fp=firefox&pbk=1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s&sid=01#30_FR
 vless://6c077993-952c-4318-9e93-89056a207a9b@141.227.170.220:8443?encryption=none&flow=xtls-rprx-vision&fp=&pbk=SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc&security=reality&sid=6ba85179e30d4fc2&sni=apple.com&type=tcp#31_FR
 vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206.25:23576?encryption=none&flow=xtls-rprx-vision&type=tcp&security=reality&sni=fuck.rkn&fp=firefox&pbk=1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s&sid=01#32_FR
-vless://d65cc14c-f53f-4fe2-b262-97856601319c@45.144.112.55:443?security=reality&encryption=none&pbk=e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg&headerType=none&fp=firefox&type=tcp&flow=xtls-rprx-vision&sni=yahoo.com&sid=c39cc7310a#33_GB
 vless://b392873f-82a2-01f4-ac46-303dd8d4f388@88.210.62.122:443?security=reality&flow=xtls-rprx-vision&fp=firefox&pbk=9F7JxyyP-TNLt0dY2xOB0_34I8W0xXIpFY7rZ7-L0Gg&sid=0a6ba2716a409da6&sni=gateway.dzen-nl-1.com#34_GB
 vless://d6752c6b-80ae-4a91-b446-bb330f7f8177@45.43.153.33:443?security=reality&flow=xtls-rprx-vision&fp=firefox&pbk=_0fpFqEEuCso3B8K7AAcMjctwG_xfCxO2PdKzGd_-hg&sid=88a13cf2655c&sni=www.foxsports.com#35_GB
 vless://80de563a-cac8-40ea-8cb0-4cb082dd92f9@5.178.109.174:14430?encryption=none&path=%2Fvless&security=none&type=ws#36_GB
