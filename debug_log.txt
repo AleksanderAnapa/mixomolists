@@ -1,20 +1,115 @@
 === СТАРТ ПОПОЛНЕНИЯ FINAL.TXT ===
-[03:15:35] В текущем final.txt уже есть уникальных серверов: 59/60
-[03:15:36] Загружено CIDR-подсетей стран: 56702
-[03:15:36] Проверка подписки [53/105] (сбоев: 0 дн.): https://raw.githubusercontent.com/Leon406/SubCrawler/refs/he
-[03:15:37] Найдено серверов в подписке: 98 (подходящих: 74)
-[03:15:37] После фильтра стран (DE->NL->FR->GB->US) осталось: 59
-[03:15:38] [OK 98ms] (60/60) vmess://eyJhZGQiOiI2Ny4yMjAuOTUuMyIsInBvcnQiOiIxODAwMCI
-[03:15:38] [OK 95ms] (61/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.147.7
-[03:15:38] [OK 212ms] (62/60) vmess://eyJhZGQiOiIzOC45MS4xMDcuNDkiLCJwb3J0IjoiMTgwMDA
-[03:15:38] [OK 232ms] (63/60) vmess://eyJhZGQiOiIzOC4xMTAuMS4yNDYiLCJwb3J0IjoiMTgwMDA
-[03:15:38] [OK 235ms] (64/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.112.12
-[03:15:38] [OK 233ms] (65/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@167.88.61.52:
-[03:15:38] [OK 472ms] (66/60) vmess://eyJhZGQiOiI2NC4xNzYuMzQuMTAyIiwicG9ydCI6IjQ2MTM
-[03:15:38] [OK 498ms] (67/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@64.176.7.205:
-[03:15:39] [OK 565ms] (68/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.238.104.1
-[03:15:39] [OK 647ms] (69/60) vmess://eyJhZGQiOiIxNDkuODguMjMuMjAyIiwicG9ydCI6IjE4MDA
-[03:15:39] [OK 762ms] (70/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@45.63.30.142:
-[03:15:39] [OK 975ms] (71/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@139.84.231.14
-[03:15:39] [OK 1474ms] (72/60) vmess://eyJhZGQiOiIyMy4xNjIuMjAwLjE5OCIsInBvcnQiOiIxODA
-[03:15:42] Подписка живая (+13 в пул). Всего в final.txt: 60/60
+[03:30:40] В текущем final.txt уже есть уникальных серверов: 58/60
+[03:30:41] Загружено CIDR-подсетей стран: 56702
+[03:30:42] Проверка подписки [54/105] (сбоев: 0 дн.): https://raw.githubusercontent.com/ZY-404/v2ray/main/v2ray.tx
+[03:30:42] Найдено серверов в подписке: 447 (подходящих: 213)
+[03:30:43] После фильтра стран (DE->NL->FR->GB->US) осталось: 85
+[03:31:15] Подписка живая (+0 в пул). Всего в final.txt: 58/60
+[03:31:15] Проверка подписки [55/105] (сбоев: 0 дн.): https://raw.githubusercontent.com/jiquanxiang/abc/main/v7
+[03:31:15] Найдено серверов в подписке: 42 (подходящих: 24)
+[03:31:15] После фильтра стран (DE->NL->FR->GB->US) осталось: 6
+[03:31:20] Подписка живая (+0 в пул). Всего в final.txt: 58/60
+[03:31:20] Проверка подписки [56/105] (сбоев: 0 дн.): https://raw.githubusercontent.com/zhlx2835/freefq/main/v2
+[03:31:21] Найдено серверов в подписке: 19 (подходящих: 16)
+[03:31:21] После фильтра стран (DE->NL->FR->GB->US) осталось: 2
+[03:31:26] Подписка живая (+0 в пул). Всего в final.txt: 58/60
+[03:31:26] Проверка подписки [57/105] (сбоев: 0 дн.): https://raw.githubusercontent.com/ZywChannel/free/main/sub
+[03:31:26] Найдено серверов в подписке: 215 (подходящих: 159)
+[03:31:27] После фильтра стран (DE->NL->FR->GB->US) осталось: 100
+[03:32:00] Подписка живая (+0 в пул). Всего в final.txt: 58/60
+[03:32:00] Проверка подписки [58/105] (сбоев: 0 дн.): https://raw.githubusercontent.com/zjr13808836946/zjr_clash/m
+[03:32:00] Найдено серверов в подписке: 5 (подходящих: 4)
+[03:32:00] После фильтра стран (DE->NL->FR->GB->US) осталось: 1
+[03:32:06] Подписка живая (+0 в пул). Всего в final.txt: 58/60
+[03:32:06] Проверка подписки [59/105] (сбоев: 0 дн.): https://raw.githubusercontent.com/baipiao0/baipiao02/main/v2
+[03:32:06] Найдено серверов в подписке: 14 (подходящих: 14)
+[03:32:06] После фильтра стран (DE->NL->FR->GB->US) осталось: 0
+[03:32:06] Подписка живая (+0 в пул). Всего в final.txt: 58/60
+[03:32:06] Проверка подписки [60/105] (сбоев: 0 дн.): https://raw.githubusercontent.com/codingbox/Free-Node-Merge/
+[03:32:06] Найдено серверов в подписке: 44 (подходящих: 32)
+[03:32:07] После фильтра стран (DE->NL->FR->GB->US) осталось: 7
+[03:32:12] Подписка живая (+0 в пул). Всего в final.txt: 58/60
+[03:32:12] Проверка подписки [61/105] (сбоев: 0 дн.): https://raw.githubusercontent.com/245237866/v2rayn/main/ever
+[03:32:12] Найдено серверов в подписке: 401 (подходящих: 101)
+[03:32:13] После фильтра стран (DE->NL->FR->GB->US) осталось: 28
+[03:32:24] Подписка живая (+0 в пул). Всего в final.txt: 58/60
+[03:32:24] Проверка подписки [62/105] (сбоев: 0 дн.): https://raw.githubusercontent.com/Creativveb/v2configs/main/
+[03:32:24] Найдено серверов в подписке: 83 (подходящих: 57)
+[03:32:34] После фильтра стран (DE->NL->FR->GB->US) осталось: 36
+[03:32:50] Подписка живая (+0 в пул). Всего в final.txt: 58/60
+[03:32:50] Проверка подписки [63/105] (сбоев: 0 дн.): https://raw.githubusercontent.com/dalazhi/v2ray/main/v2ray%E
+[03:32:50] Найдено серверов в подписке: 18 (подходящих: 15)
+[03:32:50] После фильтра стран (DE->NL->FR->GB->US) осталось: 15
+[03:32:56] Подписка живая (+0 в пул). Всего в final.txt: 58/60
+[03:32:56] Проверка подписки [64/105] (сбоев: 0 дн.): https://raw.githubusercontent.com/hsb4657/v2ray/main/lastest
+[03:32:56] Найдено серверов в подписке: 13 (подходящих: 3)
+[03:32:56] После фильтра стран (DE->NL->FR->GB->US) осталось: 3
+[03:33:01] Подписка живая (+0 в пул). Всего в final.txt: 58/60
+[03:33:01] Проверка подписки [65/105] (сбоев: 3 дн.): https://raw.githubusercontent.com/eycorsican/rule-sets/maste
+[03:33:01] Найдено серверов в подписке: 0 (подходящих: 0)
+[03:33:01] Подписка пуста или недоступна -> BAD!_04: https://raw.githubusercontent.com/eycorsican/rule-sets/
+[03:33:01] Проверка подписки [66/105] (сбоев: 0 дн.): https://raw.githubusercontent.com/imohammadkhalili/V2RAY/mai
+[03:33:01] Найдено серверов в подписке: 32 (подходящих: 24)
+[03:33:11] После фильтра стран (DE->NL->FR->GB->US) осталось: 5
+[03:33:17] Подписка живая (+0 в пул). Всего в final.txt: 58/60
+[03:33:17] Проверка подписки [67/105] (сбоев: 0 дн.): https://raw.githubusercontent.com/Jia-Pingwa/free-v2ray-merg
+[03:33:17] Найдено серверов в подписке: 292 (подходящих: 244)
+[03:33:27] После фильтра стран (DE->NL->FR->GB->US) осталось: 105
+[03:34:05] Подписка живая (+0 в пул). Всего в final.txt: 58/60
+[03:34:05] Проверка подписки [68/105] (сбоев: 3 дн.): https://raw.githubusercontent.com/relcom/ssr_subscrible_tool
+[03:34:05] Найдено серверов в подписке: 0 (подходящих: 0)
+[03:34:05] Подписка пуста или недоступна -> BAD!_04: https://raw.githubusercontent.com/relcom/ssr_subscrible
+[03:34:05] Проверка подписки [69/105] (сбоев: 3 дн.): https://raw.githubusercontent.com/lisylva-lee/v2dyku/main/v2
+[03:34:05] Ошибка HTTP 404 для https://raw.githubusercontent.com/lisylva-lee/v2dy
+[03:34:05] Подписка пуста или недоступна -> BAD!_04: https://raw.githubusercontent.com/lisylva-lee/v2dyku/ma
+[03:34:05] Проверка подписки [70/105] (сбоев: 0 дн.): https://raw.githubusercontent.com/jikelonglie/meskell/main/m
+[03:34:05] Найдено серверов в подписке: 12 (подходящих: 8)
+[03:34:05] После фильтра стран (DE->NL->FR->GB->US) осталось: 7
+[03:34:11] Подписка живая (+0 в пул). Всего в final.txt: 58/60
+[03:34:11] Проверка подписки [71/105] (сбоев: 3 дн.): https://raw.githubusercontent.com/iwxf/free-v2ray/master/ind
+[03:34:11] Найдено серверов в подписке: 0 (подходящих: 0)
+[03:34:11] Подписка пуста или недоступна -> BAD!_04: https://raw.githubusercontent.com/iwxf/free-v2ray/maste
+[03:34:11] Проверка подписки [72/105] (сбоев: 0 дн.): https://raw.githubusercontent.com/lflflf999/0516/main/BX-JD
+[03:34:11] Найдено серверов в подписке: 149 (подходящих: 62)
+[03:34:11] После фильтра стран (DE->NL->FR->GB->US) осталось: 3
+[03:34:16] Подписка живая (+0 в пул). Всего в final.txt: 58/60
+[03:34:16] Проверка подписки [73/105] (сбоев: 0 дн.): https://raw.githubusercontent.com/adminaliang/v2ray/main/v2r
+[03:34:17] Найдено серверов в подписке: 3 (подходящих: 3)
+[03:34:17] После фильтра стран (DE->NL->FR->GB->US) осталось: 1
+[03:34:18] Подписка живая (+0 в пул). Всего в final.txt: 58/60
+[03:34:18] Проверка подписки [74/105] (сбоев: 3 дн.): https://raw.githubusercontent.com/aiboboxx/v2rayfree/main/v2
+[03:34:18] Ошибка HTTP 404 для https://raw.githubusercontent.com/aiboboxx/v2rayfr
+[03:34:18] Подписка пуста или недоступна -> BAD!_04: https://raw.githubusercontent.com/aiboboxx/v2rayfree/ma
+[03:34:18] Проверка подписки [75/105] (сбоев: 0 дн.): https://raw.githubusercontent.com/ripaojiedian/freenode/main
+[03:34:18] Найдено серверов в подписке: 10 (подходящих: 9)
+[03:34:18] После фильтра стран (DE->NL->FR->GB->US) осталось: 9
+[03:34:19] [OK 519ms] (59/60) vless://b9bfa54d-bc44-4592-a6d6-89a9665d286f@edge.bookm
+[03:34:19] Подписка живая (+1 в пул). Всего в final.txt: 59/60
+[03:34:19] Проверка подписки [76/105] (сбоев: 0 дн.): https://raw.githubusercontent.com/gitbigg/permalink/main/sub
+[03:34:19] Найдено серверов в подписке: 7 (подходящих: 6)
+[03:34:19] После фильтра стран (DE->NL->FR->GB->US) осталось: 0
+[03:34:19] Подписка живая (+0 в пул). Всего в final.txt: 59/60
+[03:34:19] Проверка подписки [77/105] (сбоев: 0 дн.): https://raw.githubusercontent.com/gtang8/SubCrawler/main/sub
+[03:34:20] Найдено серверов в подписке: 67 (подходящих: 55)
+[03:34:30] После фильтра стран (DE->NL->FR->GB->US) осталось: 39
+[03:34:42] Подписка живая (+0 в пул). Всего в final.txt: 59/60
+[03:34:42] Проверка подписки [78/105] (сбоев: 3 дн.): https://raw.githubusercontent.com/budamu/clashconfig/main/v2
+[03:34:42] Ошибка HTTP 404 для https://raw.githubusercontent.com/budamu/clashconf
+[03:34:42] Подписка пуста или недоступна -> BAD!_04: https://raw.githubusercontent.com/budamu/clashconfig/ma
+[03:34:42] Проверка подписки [79/105] (сбоев: 3 дн.): https://raw.githubusercontent.com/budamu/clashconfig/main/v2
+[03:34:42] Ошибка HTTP 404 для https://raw.githubusercontent.com/budamu/clashconf
+[03:34:42] Подписка пуста или недоступна -> BAD!_04: https://raw.githubusercontent.com/budamu/clashconfig/ma
+[03:34:42] Проверка подписки [80/105] (сбоев: 3 дн.): https://raw.githubusercontent.com/mfuu/v2ray/refs/heads/mast
+[03:34:42] Ошибка HTTP 404 для https://raw.githubusercontent.com/mfuu/v2ray/refs/
+[03:34:42] Подписка пуста или недоступна -> BAD!_04: https://raw.githubusercontent.com/mfuu/v2ray/refs/heads
+[03:34:42] Проверка подписки [81/105] (сбоев: 0 дн.): https://raw.githubusercontent.com/snakem982/proxypool/main/s
+[03:34:42] Найдено серверов в подписке: 41 (подходящих: 32)
+[03:34:42] После фильтра стран (DE->NL->FR->GB->US) осталось: 9
+[03:34:43] [OK 320ms] (60/60) vless://40992c2a-513e-4837-9594-23411fd42afd@161.35.37.
+[03:34:44] [OK 366ms] (61/60) vless://40992c2a-513e-4837-9594-23411fd42afd@146.190.21
+[03:34:44] [OK 532ms] (62/60) vmess://eyJ2IjoiMiIsInBzIjoi8J+HuvCfh7gg576O5Zu9IHwgVVN
+[03:34:44] [OK 1061ms] (63/60) vless://25ac78e7-6d1d-4c9a-a450-c01a4871769f@quay.gerqi
+[03:34:44] [OK 1077ms] (64/60) vless://cda0862a-0f87-4be9-8ed8-1d0c9e382839@f0d7aft.nl
+[03:34:44] [OK 1103ms] (65/60) vless://53bbdad4-2f4e-45db-8df4-fa491a6a7227@172.64.154
+[03:34:45] [OK 1544ms] (66/60) vless://67864856-8730-40cc-9e1a-a0df697d912b@85.92.156.
+[03:34:48] Подписка живая (+7 в пул). Всего в final.txt: 60/60
