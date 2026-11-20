@@ -1,70 +1,11 @@
 === СТАРТ ПОПОЛНЕНИЯ FINAL.TXT ===
-[15:15:42] В текущем final.txt уже есть уникальных серверов: 6/60
-[15:15:42] Загружено CIDR-подсетей стран: 56702
-[15:15:42] Проверка подписки [35/105] (сбоев: 0 дн.): https://warp-gen.cyb-portal.org/CP-038
-[15:15:43] Найдено серверов в подписке: 108 (подходящих: 87)
-[15:15:44] После фильтра стран (DE->NL->FR->GB->US) осталось: 45
-[15:15:45] [OK 442ms] (7/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
-[15:15:45] [OK 453ms] (8/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
-[15:15:45] [OK 449ms] (9/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
-[15:15:45] [OK 470ms] (10/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
-[15:15:45] [OK 450ms] (11/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
-[15:15:45] [OK 469ms] (12/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
-[15:15:45] [OK 490ms] (13/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
-[15:15:45] [OK 475ms] (14/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
-[15:15:45] [OK 540ms] (15/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
-[15:15:45] [OK 543ms] (16/60) vless://81dc0b61-f9fe-4ad6-8b4e-b8c067b73712@152.228.13
-[15:15:45] [OK 674ms] (17/60) vless://bd6c11e0-0233-4fb1-ba97-8d5f16d7155f@91.107.188
-[15:15:50] [OK 224ms] (18/60) vmess://eyJ2IjoiMiIsInBzIjoi8J+MgCBDWUJFUlBPUlRBTCB8IFd
-[15:15:50] [OK 237ms] (19/60) vmess://eyJ2IjoiMiIsInBzIjoi8J+MgCBDWUJFUlBPUlRBTCB8IFd
-[15:15:50] [OK 251ms] (20/60) vmess://eyJ2IjoiMiIsInBzIjoi8J+MgCBDWUJFUlBPUlRBTCB8IFd
-[15:15:50] [OK 260ms] (21/60) vmess://eyJ2IjoiMiIsInBzIjoi8J+MgCBDWUJFUlBPUlRBTCB8IFd
-[15:15:51] [OK 529ms] (22/60) vless://b9bfa54d-bc44-4592-a6d6-89a9665d286f@edge.bookm
-[15:15:51] [OK 555ms] (23/60) vmess://eyJ2IjoiMiIsInBzIjoi8J+MgCBDWUJFUlBPUlRBTCB8IFd
-[15:15:51] [OK 676ms] (24/60) vmess://eyJ2IjoiMiIsInBzIjoi8J+MgCBDWUJFUlBPUlRBTCB8IFd
-[15:15:51] [OK 1047ms] (25/60) vmess://eyJhZGQiOiIxMDQuMTcuNzcuNzciLCJhaWQiOiIwIiwiYWx
-[15:15:56] [OK 162ms] (26/60) vless://14c80e0e-f7ce-4991-94fc-99a1db4a9b1e@159.89.87.
-[15:15:56] [OK 162ms] (27/60) vmess://eyJ2IjoiMiIsInBzIjoi8J+MgCBDWUJFUlBPUlRBTCB8IFd
-[15:15:56] [OK 225ms] (28/60) vmess://eyJ2IjoiMiIsInBzIjoi8J+MgCBDWUJFUlBPUlRBTCB8IFd
-[15:15:56] [OK 233ms] (29/60) vmess://eyJ2IjoiMiIsInBzIjoi8J+MgCBDWUJFUlBPUlRBTCB8IFd
-[15:15:56] [OK 285ms] (30/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@15.204.97.
-[15:15:56] [OK 289ms] (31/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@15.204.97.
-[15:15:56] [OK 440ms] (32/60) vmess://eyJ2IjoiMiIsInBzIjoi8J+MgCBDWUJFUlBPUlRBTCB8IFd
-[15:16:00] Подписка живая (+26 в пул). Всего в final.txt: 32/60
-[15:16:00] Проверка подписки [36/105] (сбоев: 0 дн.): https://warp-gen.cyb-portal.org/CP-040
-[15:16:06] Найдено серверов в подписке: 102 (подходящих: 12)
-[15:16:06] После фильтра стран (DE->NL->FR->GB->US) осталось: 1
-[15:16:09] [OK 1503ms] (33/60) vless://cebc5f19-18d9-48e6-9029-fb4b04caf393@45.38.143.
-[15:16:09] Подписка живая (+1 в пул). Всего в final.txt: 33/60
-[15:16:09] Проверка подписки [37/105] (сбоев: 0 дн.): https://warp-gen.cyb-portal.org/CP-041
-[15:16:11] Найдено серверов в подписке: 1256 (подходящих: 717)
-[15:16:13] После фильтра стран (DE->NL->FR->GB->US) осталось: 465
-[15:16:14] [OK 222ms] (34/60) vless://d65cc14c-f53f-4fe2-b262-97856601319c@169.40.42.
-[15:16:14] [OK 463ms] (35/60) vless://b9bfa54d-bc44-4592-a6d6-89a9665d286f@163.245.42
-[15:16:16] [OK 1863ms] (36/60) vless://26843758-24de-4f76-b5d0-624038e353c4@153.52.85.
-[15:16:19] [OK 168ms] (37/60) vless://d65cc14c-f53f-4fe2-b262-97856601319c@169.40.42.
-[15:16:19] [OK 218ms] (38/60) vless://d65cc14c-f53f-4fe2-b262-97856601319c@169.40.42.
-[15:16:19] [OK 219ms] (39/60) vless://d65cc14c-f53f-4fe2-b262-97856601319c@169.40.42.
-[15:16:20] [OK 482ms] (40/60) vless://b9bfa54d-bc44-4592-a6d6-89a9665d286f@163.245.42
-[15:16:20] [OK 761ms] (41/60) vless://b004e898-f6cf-54a5-d281-f063d741ad53@xray-ckc68
-[15:16:25] [OK 168ms] (42/60) vless://d65cc14c-f53f-4fe2-b262-97856601319c@169.40.42.
-[15:16:31] [OK 1448ms] (43/60) vless://6bdc8320-7eae-46fc-be08-f5f54e65dfc8@in.smrtai.
-[15:16:36] [OK 425ms] (44/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
-[15:16:36] [OK 462ms] (45/60) vmess://eyJ2IjoiMiIsInBzIjoi8J+MgCBDWUJFUlBPUlRBTCB8IEZ
-[15:16:36] [OK 489ms] (46/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
-[15:16:36] [OK 526ms] (47/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@62.210.91.
-[15:16:41] [OK 454ms] (48/60) vless://2e7c6265-6933-4a91-bd43-b4fd2e9566c8@51.15.16.6
-[15:16:41] [OK 469ms] (49/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
-[15:16:41] [OK 463ms] (50/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
-[15:16:41] [OK 471ms] (51/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
-[15:16:41] [OK 477ms] (52/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
-[15:16:41] [OK 492ms] (53/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@62.210.91.
-[15:16:41] [OK 507ms] (54/60) vmess://eyJ2IjoiMiIsInBzIjoi8J+MgCBDWUJFUlBPUlRBTCB8IEZ
-[15:16:41] [OK 529ms] (55/60) vmess://eyJ2IjoiMiIsInBzIjoi8J+MgCBDWUJFUlBPUlRBTCB8IEZ
-[15:16:46] [OK 186ms] (56/60) vmess://eyJ2IjoiMiIsInBzIjoi8J+MgCBDWUJFUlBPUlRBTCB8IEZ
-[15:16:46] [OK 487ms] (57/60) vmess://eyJ2IjoiMiIsInBzIjoi8J+MgCBDWUJFUlBPUlRBTCB8IEZ
-[15:16:46] [OK 444ms] (58/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
-[15:16:47] [OK 553ms] (59/60) vmess://eyJ2IjoiMiIsInBzIjoi8J+MgCBDWUJFUlBPUlRBTCB8IEZ
-[15:16:52] [OK 314ms] (60/60) vless://d65cc14c-f53f-4fe2-b262-97856601319c@45.144.112
-[15:16:52] [OK 693ms] (61/60) vless://d65cc14c-f53f-4fe2-b262-97856601319c@82.39.171.
-[15:16:56] Подписка живая (+28 в пул). Всего в final.txt: 60/60
+[15:45:45] В текущем final.txt уже есть уникальных серверов: 58/60
+[15:45:46] Загружено CIDR-подсетей стран: 56702
+[15:45:46] Проверка подписки [38/105] (сбоев: 0 дн.): https://warp-gen.cyb-portal.org/CP-042
+[15:45:50] Найдено серверов в подписке: 190 (подходящих: 135)
+[15:45:51] После фильтра стран (DE->NL->FR->GB->US) осталось: 64
+[15:45:52] [OK 435ms] (59/60) vless://dbf3f074-3b18-43f3-b82a-debd8c879c69@136.176.68
+[15:45:52] [OK 492ms] (60/60) vless://b34a52cb-cd52-49a8-9362-b8e97c151d49@212.102.38
+[15:45:53] [OK 634ms] (61/60) vless://bd6c11e0-0233-4fb1-ba97-8d5f16d7155f@91.107.188
+[15:45:53] [OK 1048ms] (62/60) vless://6bdc8320-7eae-46fc-be08-f5f54e65dfc8@178.212.35
+[15:45:57] Подписка живая (+4 в пул). Всего в final.txt: 60/60
