@@ -1,9 +1,6 @@
 vless://d65cc14c-f53f-4fe2-b262-97856601319c@169.40.42.35:443?type=tcp&security=reality&sni=yahoo.com&fp=chrome&flow=xtls-rprx-vision&pbk=e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg&sid=c39cc7310a#01_DE
 vless://d65cc14c-f53f-4fe2-b262-97856601319c@169.40.42.163:443?type=tcp&security=reality&sni=yahoo.com&fp=ios&flow=xtls-rprx-vision&pbk=e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg&sid=c39cc7310a#02_DE
-vless://d65cc14c-f53f-4fe2-b262-97856601319c@169.40.42.231:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=yahoo.com&fp=ios&pbk=e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg&sid=c39cc7310a&type=tcp&headerType=none&host=/?TELEGRAM---MARAMBASHI---MARAMBASHI---MARAMBASHI---MARAMBASHI#03_DE
-vless://bd6c11e0-0233-4fb1-ba97-8d5f16d7155f@91.107.188.129:2083?type=ws&security=tls&fp=chrome&sni=site.check-looks.space#04_DE
 vless://086bf957-9cd0-4e55-8280-bbef10435b41@ai.smrtai.top:443?fp=chrome&host=%2F%3Ftelegram%CE%B3%C3%A7%C3%B6v2ray_confiig&pbk=R-w7BpNgtryZRBMyRoHx81OnjzAwrKhVtV1EUKLFJzc&security=reality&sid=086bf957&sni=www.cloudflare.com&type=tcp#05_DE
-vless://086bf957-9cd0-4e55-8280-bbef10435b41@161.97.66.16:443?fp=chrome&host=%2F%3Ftelegram---marambashi---marambashi---marambashi---marambashi&pbk=R-w7BpNgtryZRBMyRoHx81OnjzAwrKhVtV1EUKLFJzc&security=reality&sid=086bf957&sni=www.cloudflare.com&type=tcp#06_DE
 vless://2da03bdf-8af3-4207-96c7-d70e0dd22c36@94.249.198.124:31652?security=none&encryption=none&headerType=none&type=tcp#07_DE
 vless://26843758-24de-4f76-b5d0-624038e353c4@153.56.229.218:443?encryption=none&fp=chrome&pbk=3wFF83gtIA0sXj-6GGCAa--oQbSr0MVUj0FBc-0QmiE&security=reality&sid=e572b6579ea525d4&sni=71b840t.de7.h1clayd.click&type=tcp#08_DE
 vless://287db857-de04-4212-bd69-5d14083e340e@167.233.129.126:2474?&security=false&fp=chrome&type=tcp&headerType=none&path=%2F#09_DE
