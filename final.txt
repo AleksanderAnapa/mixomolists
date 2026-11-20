@@ -21,7 +21,6 @@ vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206.26:23576?security=realit
 vless://2e7c6265-6933-4a91-bd43-b4fd2e9566c8@51.15.16.68:2053?type=tcp&security=reality&sni=www.apple.com&pbk=nyBUWOwOLHOrVSomGfHaPjt-lgbSGk-XSv89voR6T3o&sid=e9272cf492b43a48#21_FR
 vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206.93:23576?type=tcp&security=reality&sni=fuck.rkn&fp=firefox&flow=xtls-rprx-vision&pbk=1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s&sid=01#22_FR
 vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206.80:23576?encryption=none&flow=xtls-rprx-vision&pbk=1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s&security=reality&sid=01&sni=fuck.rkn&type=raw#23_FR
-vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206.87:23576?security=reality&type=tcp&packetEncoding=xudp&sni=fuck.rkn&fp=chrome&flow=xtls-rprx-vision&sid=01&pbk=1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s&encryption=none#24_FR
 vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206.20:23576?encryption=none&flow=xtls-rprx-vision&fp=&pbk=1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s&security=reality&sid=01&sni=fuck.rkn&type=tcp#25_FR
 vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206.19:23576?type=tcp&security=reality&sni=fuck.rkn&fp=firefox&flow=xtls-rprx-vision&pbk=1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s&sid=01#26_FR
 vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206.8:23576?type=tcp&security=reality&sni=fuck.rkn&fp=firefox&flow=xtls-rprx-vision&pbk=1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s&sid=01#27_FR
