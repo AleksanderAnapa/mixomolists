@@ -1,18 +1,3 @@
 === СТАРТ ПОПОЛНЕНИЯ FINAL.TXT ===
-[19:49:54] В текущем final.txt уже есть уникальных серверов: 58/60
-[19:49:55] Загружено CIDR-подсетей стран: 56702
-[19:49:55] Проверка подписки [96/105] (сбоев: 4 дн.): https://raw.githubusercontent.com/mahdibland/V2RayAggregator
-[19:49:55] Ошибка HTTP 404 для https://raw.githubusercontent.com/mahdibland/V2Ray
-[19:49:55] Подписка пуста или недоступна -> BAD!_04: https://raw.githubusercontent.com/mahdibland/V2RayAggre
-[19:49:55] Проверка подписки [97/105] (сбоев: 4 дн.): https://raw.githubusercontent.com/Epodonios/v2ray-configs/ma
-[19:49:55] Ошибка HTTP 404 для https://raw.githubusercontent.com/Epodonios/v2ray-
-[19:49:55] Подписка пуста или недоступна -> BAD!_04: https://raw.githubusercontent.com/Epodonios/v2ray-confi
-[19:49:55] Проверка подписки [98/105] (сбоев: 0 дн.): https://raw.githubusercontent.com/sinavm/SVM/refs/heads/main
-[19:49:55] Найдено серверов в подписке: 168 (подходящих: 120)
-[19:49:56] После фильтра стран (DE->NL->FR->GB->US) осталось: 78
-[19:49:57] [OK 86ms] (59/60) vless://d65cc14c-f53f-4fe2-b262-97856601319c@169.40.42.
-[19:49:57] [OK 393ms] (60/60) vless://3cfa0d9b-6279-4b73-8533-09ad84e49c80@ov-germany
-[19:49:57] [OK 431ms] (61/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
-[19:49:58] [OK 922ms] (62/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@62.210.91.
-[19:49:59] [OK 1746ms] (63/60) vless://a1cf2f59-ffe0-4cb3-8c68-e6abf44726fc@104.222.18
-[19:50:01] Подписка живая (+5 в пул). Всего в final.txt: 60/60
+[20:32:16] В текущем final.txt уже есть уникальных серверов: 60/60
+[20:32:16] Список уже полон (60/60). Новые серверы не требуются.
