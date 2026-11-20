@@ -1,15 +1,4 @@
-vless://ebdfaf99-41d8-4e48-8196-d54510ffb556@45.129.242.56:443?type=tcp&security=reality&sni=www.cloudflare.com&flow=xtls-rprx-vision&pbk=YURKlEQ3rap4KOXXGsVFZyYev2oDU2gCEbNTXPdKWRY&sid=abcdef#01_DE
-vless://26843758-24de-4f76-b5d0-624038e353c4@153.52.85.198:443?type=tcp&security=reality&sni=15d7fft.nl11.h1clayd.click&pbk=xv6OUZcyzEHXFMTfumuJH-1Rd4NQ0cdmWikek4mm0m4&sid=c71118d9399fb8c2#02_DE
-vless://c762af05-2e92-4133-bc30-8cf45dd40a28@158.220.113.176:80?path=%2F&security=&encryption=none&host=suh.cryptofront.uk&type=ws#03_DE
-vless://6bdc8320-7eae-46fc-be08-f5f54e65dfc8@in.smrtai.top:443?type=tcp&security=reality&sni=www.cloudflare.com&pbk=3LbVuwKpQv55GngyRhvGl9KyAHIDAgvJx_VRM5mUD2Q&sid=6bdc8320#04_DE
-vless://cda0862a-0f87-4be9-8ed8-1d0c9e382839@93.123.85.103:443?type=tcp&security=reality&sni=f0d7aft.nl17.h1clayd.click&fp=firefox&pbk=kkCGiCQCKnkozJR1KKCRNtmdBECmThCgI9VSv7iDcWI&sid=8956c57cb4c4f8d2#05_DE
-vless://26843758-24de-4f76-b5d0-624038e353c4@153.56.229.218:443?security=reality&sni=71b840t.de7.h1clayd.click&fp=firefox&pbk=3wFF83gtIA0sXj-6GGCAa--oQbSr0MVUj0FBc-0QmiE&sid=e572b6579ea525d4#06_DE
-vless://086bf957-9cd0-4e55-8280-bbef10435b41@ai.smrtai.top:443?type=raw&security=reality&fp=firefox&pbk=R-w7BpNgtryZRBMyRoHx81OnjzAwrKhVtV1EUKLFJzc&sid=086bf957&sni=www.cloudflare.com#07_DE
-vless://4201786b-d99b-4147-a5f0-20d47acddb81@4935e4t.de25.h1clayd.click:443?type=tcp&security=reality&flow=xtls-rprx-vision&fp=firefox&pbk=MzgB17ZFbKqs8pbC3EscTzHid_ENc-k_Cp6nXl-2knw&sid=6976d670818644cc&sni=4935e4t.de25.h1clayd.click#08_DE
-vless://bd6c11e0-0233-4fb1-ba97-8d5f16d7155f@91.107.188.129:2083?type=ws&security=tls&fp=chrome&sni=site.check-looks.space#09_DE
-vless://6bdc8320-7eae-46fc-be08-f5f54e65dfc8@178.212.35.198:443?type=tcp&security=reality&fp=firefox&pbk=3LbVuwKpQv55GngyRhvGl9KyAHIDAgvJx_VRM5mUD2Q&sid=6bdc8320&sni=www.cloudflare.com#10_DE
 vless://2da03bdf-8af3-4207-96c7-d70e0dd22c36@94.249.198.124:31652?security=none&encryption=none&headerType=none&type=tcp#11_DE
-vless://352a250d-080b-47b5-b7db-f9f8fa31c551@130.78.30.147:443?&security=tls&flow=xtls-rprx-vision&fp=chrome&sni=105ky37.virtual-network.lol&type=tcp&headerType=none&path=%2F#12_DE
 vless://086bf957-9cd0-4e55-8280-bbef10435b41@161.97.66.16:443?fp=chrome&host=%2F%3Ftelegram---marambashi---marambashi---marambashi---marambashi&pbk=R-w7BpNgtryZRBMyRoHx81OnjzAwrKhVtV1EUKLFJzc&security=reality&sid=086bf957&sni=www.cloudflare.com&type=tcp#13_DE
 vless://4201786b-d99b-4147-a5f0-20d47acddb81@185.255.115.96:443?security=reality&pbk=MzgB17ZFbKqs8pbC3EscTzHid_ENc-k_Cp6nXl-2knw&fp=chrome&type=raw&flow=xtls-rprx-vision&sni=4935e4t.de25.h1clayd.click&sid=6976d670818644cc#14_DE
 vless://4201786b-d99b-4147-a5f0-20d47acddb81@153.56.229.207:443?encryption=none&flow=xtls-rprx-vision&fp=firefox&pbk=MzgB17ZFbKqs8pbC3EscTzHid_ENc-k_Cp6nXl-2knw&security=reality&sid=6976d670818644cc&sni=4935e4t.de25.h1clayd.click&type=tcp#15_DE
