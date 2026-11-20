@@ -1,13 +1,18 @@
 === СТАРТ ПОПОЛНЕНИЯ FINAL.TXT ===
-[05:15:43] В текущем final.txt уже есть уникальных серверов: 54/60
-[05:15:44] Загружено CIDR-подсетей стран: 56702
-[05:15:45] Проверка подписки [99/105] (сбоев: 0 дн.): https://raw.githubusercontent.com/ssrsub/ssr/refs/heads/mast
-[05:15:45] Найдено серверов в подписке: 46 (подходящих: 38)
-[05:15:45] После фильтра стран (DE->NL->FR->GB->US) осталось: 23
-[05:15:46] [OK 124ms] (55/60) vmess://eyJ2IjoiMiIsInBzIjoi8J+HuvCfh7gg5py65Zy65o6o6I2
-[05:15:46] [OK 139ms] (56/60) vmess://eyJ2IjoiMiIsInBzIjoi8J+HuvCfh7gg5py65Zy65o6o6I2
-[05:15:46] [OK 198ms] (57/60) vmess://eyJ2IjoiMiIsInBzIjoi8J+HuvCfh7gg5py65Zy65o6o6I2
-[05:15:46] [OK 198ms] (58/60) vmess://eyJ2IjoiMiIsInBzIjoi8J+HuvCfh7gg5py65Zy65o6o6I2
-[05:15:46] [OK 215ms] (59/60) vmess://eyJ2IjoiMiIsInBzIjoi8J+HuvCfh7gg5py65Zy65o6o6I2
-[05:15:46] [OK 233ms] (60/60) vmess://eyJ2IjoiMiIsInBzIjoi8J+HuvCfh7gg5py65Zy65o6o6I2
-[05:15:51] Подписка живая (+6 в пул). Всего в final.txt: 60/60
+[05:45:37] В текущем final.txt уже есть уникальных серверов: 57/60
+[05:45:38] Загружено CIDR-подсетей стран: 56702
+[05:45:39] Проверка подписки [100/105] (сбоев: 0 дн.): https://raw.githubusercontent.com/Barabama/FreeNodes/master/
+[05:45:39] Найдено серверов в подписке: 321 (подходящих: 197)
+[05:45:40] После фильтра стран (DE->NL->FR->GB->US) осталось: 150
+[05:46:34] Подписка живая (+0 в пул). Всего в final.txt: 57/60
+[05:46:34] Проверка подписки [102/105] (сбоев: 0 дн.): https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/
+[05:46:34] Найдено серверов в подписке: 905 (подходящих: 658)
+[05:46:37] После фильтра стран (DE->NL->FR->GB->US) осталось: 531
+[05:46:43] [OK 96ms] (58/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@170.101.101.2
+[05:46:43] [OK 121ms] (59/60) vless://d65cc14c-f53f-4fe2-b262-97856601319c@45.144.112
+[05:46:44] [OK 299ms] (60/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@167.88.61.193
+[05:46:44] [OK 290ms] (61/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@167.88.61.198
+[05:46:44] [OK 294ms] (62/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@167.88.61.20:
+[05:46:44] [OK 296ms] (63/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@167.88.61.52:
+[05:46:44] [OK 334ms] (64/60) vmess://eyJhZGQiOiI1Ny4xMjkuMTMyLjIyMyIsImFpZCI6IjAiLCJ
+[05:46:48] Подписка живая (+7 в пул). Всего в final.txt: 60/60
