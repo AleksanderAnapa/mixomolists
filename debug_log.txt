@@ -1,27 +1,29 @@
 === СТАРТ ПОПОЛНЕНИЯ FINAL.TXT ===
-[16:15:51] В текущем final.txt уже есть уникальных серверов: 50/60
-[16:15:51] Загружено CIDR-подсетей стран: 56708
-[16:15:51] Проверка подписки [97/106] (сбоев: 5 дн.): https://raw.githubusercontent.com/mahdibland/V2RayAggregator
-[16:15:51] Ошибка HTTP 404 для https://raw.githubusercontent.com/mahdibland/V2Ray
-[16:15:51] Подписка пуста или недоступна -> BAD!_05: https://raw.githubusercontent.com/mahdibland/V2RayAggre
-[16:15:51] Проверка подписки [98/106] (сбоев: 5 дн.): https://raw.githubusercontent.com/Epodonios/v2ray-configs/ma
-[16:15:52] Ошибка HTTP 404 для https://raw.githubusercontent.com/Epodonios/v2ray-
-[16:15:52] Подписка пуста или недоступна -> BAD!_05: https://raw.githubusercontent.com/Epodonios/v2ray-confi
-[16:15:52] Проверка подписки [99/106] (сбоев: 0 дн.): https://raw.githubusercontent.com/sinavm/SVM/refs/heads/main
-[16:15:52] Найдено серверов в подписке: 125 (подходящих: 77)
-[16:15:52] После фильтра стран (DE->NL->FR->GB->US) осталось: 61
-[16:15:53] [OK 68ms] (51/60) vless://d65cc14c-f53f-4fe2-b262-97856601319c@169.40.42.
-[16:15:53] [OK 74ms] (52/60) vless://d65cc14c-f53f-4fe2-b262-97856601319c@169.40.42.
-[16:15:53] [OK 148ms] (53/60) vless://d65cc14c-f53f-4fe2-b262-97856601319c@169.40.42.
-[16:15:53] [OK 185ms] (54/60) vless://d65cc14c-f53f-4fe2-b262-97856601319c@169.40.42.
-[16:15:53] [OK 209ms] (55/60) vless://d65cc14c-f53f-4fe2-b262-97856601319c@169.40.42.
-[16:15:53] [OK 218ms] (56/60) vless://d65cc14c-f53f-4fe2-b262-97856601319c@169.40.42.
-[16:15:53] [OK 221ms] (57/60) vless://d65cc14c-f53f-4fe2-b262-97856601319c@169.40.42.
-[16:15:53] [OK 378ms] (58/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
-[16:15:53] [OK 385ms] (59/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
-[16:15:53] [OK 376ms] (60/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
-[16:15:53] [OK 364ms] (61/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
-[16:15:53] [OK 366ms] (62/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
-[16:15:53] [OK 433ms] (63/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
-[16:15:53] [OK 432ms] (64/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@62.210.91.
-[16:15:57] Подписка живая (+14 в пул). Всего в final.txt: 60/60
+[17:15:51] В текущем final.txt уже есть уникальных серверов: 48/60
+[17:15:51] Загружено CIDR-подсетей стран: 56708
+[17:15:52] Проверка подписки [100/106] (сбоев: 0 дн.): https://raw.githubusercontent.com/ssrsub/ssr/refs/heads/mast
+[17:15:52] Найдено серверов в подписке: 45 (подходящих: 35)
+[17:15:52] После фильтра стран (DE->NL->FR->GB->US) осталось: 21
+[17:15:54] [OK 517ms] (49/60) vmess://eyJ2IjoiMiIsInBzIjoi8J+HuvCfh7gg5py65Zy65o6o6I2
+[17:15:54] [OK 578ms] (50/60) vmess://eyJ2IjoiMiIsInBzIjoi8J+HuvCfh7gg5py65Zy65o6o6I2
+[17:15:54] [OK 590ms] (51/60) vmess://eyJ2IjoiMiIsInBzIjoi8J+HuvCfh7gg5py65Zy65o6o6I2
+[17:15:54] [OK 580ms] (52/60) vmess://eyJ2IjoiMiIsInBzIjoi8J+HuvCfh7gg5py65Zy65o6o6I2
+[17:15:54] [OK 592ms] (53/60) vmess://eyJ2IjoiMiIsInBzIjoi8J+HuvCfh7gg5py65Zy65o6o6I2
+[17:15:54] [OK 593ms] (54/60) vmess://eyJ2IjoiMiIsInBzIjoi8J+HuvCfh7gg5py65Zy65o6o6I2
+[17:16:00] [OK 1367ms] (55/60) vless://66c78912-4e2d-41dc-8742-aaae2590804e@13.143.187
+[17:16:03] Подписка живая (+7 в пул). Всего в final.txt: 55/60
+[17:16:03] Проверка подписки [101/106] (сбоев: 0 дн.): https://raw.githubusercontent.com/Barabama/FreeNodes/master/
+[17:16:03] Найдено серверов в подписке: 321 (подходящих: 197)
+[17:16:04] После фильтра стран (DE->NL->FR->GB->US) осталось: 150
+[17:16:58] Подписка живая (+0 в пул). Всего в final.txt: 55/60
+[17:16:58] Проверка подписки [103/106] (сбоев: 0 дн.): https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/
+[17:16:58] Найдено серверов в подписке: 897 (подходящих: 641)
+[17:17:01] После фильтра стран (DE->NL->FR->GB->US) осталось: 507
+[17:17:08] [OK 221ms] (56/60) vmess://eyJhZGQiOiI4NC4xNy40MS4yIiwiYWlkIjoiMCIsImFscG4
+[17:17:08] [OK 302ms] (57/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@167.88.61.198
+[17:17:08] [OK 300ms] (58/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@167.88.61.193
+[17:17:14] [OK 706ms] (59/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.155.5
+[17:17:14] [OK 974ms] (60/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.122.7:
+[17:17:14] [OK 992ms] (61/60) trojan://242a3d8eee5e4ed1a6bfa4141d549a25@216.106.186.6
+[17:17:14] [OK 1253ms] (62/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.112.12
+[17:17:17] Подписка живая (+7 в пул). Всего в final.txt: 60/60
