@@ -134,7 +134,6 @@ def extract_nodes_from_text(text):
             return True
         return False
 
-    # 1. Пробуем декодировать всю подписку целиком из Base64
     if "://" not in clean_text:
         decoded_whole = decode_base64_safe(clean_text)
         if decoded_whole and "://" in decoded_whole:
@@ -143,7 +142,6 @@ def extract_nodes_from_text(text):
             if total_found_any > 0:
                 return nodes, total_found_any
 
-    # 2. Построчный разбор (обычный текст, смешанный или построчный Base64)
     for line in clean_text.splitlines():
         s = line.strip()
         if not s or s.startswith(("#", "//", "<")):
@@ -173,7 +171,7 @@ def apply_transport_opts(proxy, net, get_p, sni):
 
 
 def uri_to_clash_dict(uri, temp_name):
-    """Создает временный dict для mihomo (рабочая схема из исходника). Исходную строку не меняет."""
+    """Создает временный dict для mihomo и дедупликации. Исходную строку не меняет."""
     try:
         clean_uri = uri.replace("&amp;", "&").strip()
         no_tag, _, _ = clean_uri.rpartition("#") if "#" in clean_uri else (clean_uri, "", "")
@@ -437,29 +435,40 @@ def uri_to_clash_dict(uri, temp_name):
     except Exception:
         return None
     return None
+
+
+def get_server_fingerprint(uri, parsed_dict=None):
+    """Ключ дедупликации в памяти (type + server + port + uuid/password). Исходную строку не меняет."""
+    d = parsed_dict if parsed_dict is not None else uri_to_clash_dict(uri, "fp")
+    if d:
+        cred = d.get("uuid") or d.get("password") or d.get("private-key") or d.get("auth-str") or ""
+        return f"{d.get('type')}|{str(d.get('server', '')).lower()}|{d.get('port')}|{cred}"
+    return uri.strip()
 def load_existing_final():
-    """Загружает существующие рабочие серверы из final.txt в их оригинальном виде."""
+    """Загружает существующие серверы из final.txt в их оригинальном виде, отсекая дубли в памяти."""
     existing = {}
     if os.path.exists(FINAL_FILE):
         with open(FINAL_FILE, "r", encoding="utf-8", errors="ignore") as f:
             for line in f:
                 uri = line.lstrip("\ufeff").strip()
-                if is_proxy_uri(uri) and uri not in existing:
-                    existing[uri] = 1
+                if is_proxy_uri(uri):
+                    fp = get_server_fingerprint(uri)
+                    if fp not in existing:
+                        existing[fp] = (1, uri)
     return existing
 
 
 def save_final_pool(records):
-    """Сохраняет объединенный список серверов в final.txt до MAX_WORKING без правки строк."""
-    items = [(ping, uri) for uri, ping in records.items()]
+    """Сохраняет уникальные серверы в final.txt до MAX_WORKING в их оригинальном виде."""
+    items = [(ping, orig_uri, fp) for fp, (ping, orig_uri) in records.items()]
     items.sort(key=operator.itemgetter(0))
     selected = items[:MAX_WORKING]
 
     with open(FINAL_FILE, "w", encoding="utf-8") as f:
-        for _, orig_uri in selected:
+        for _, orig_uri, _ in selected:
             f.write(f"{orig_uri}\n")
 
-    return {uri: ping for ping, uri in selected}
+    return {fp: (ping, orig_uri) for ping, orig_uri, fp in selected}
 
 
 def test_one_server_isolated(orig_uri, slot_id, encoded_test_url):
@@ -527,7 +536,7 @@ def test_one_server_isolated(orig_uri, slot_id, encoded_test_url):
 
 
 def test_nodes_individually(nodes_to_test, existing_records, test_url, pass_label):
-    """Тестирует кандидатов и сразу сохраняет в final.txt каждые 5 найденных рабочих серверов."""
+    """Тестирует уникальных кандидатов и сохраняет в final.txt первую рабочую строку для каждого сервера."""
     if not nodes_to_test:
         return existing_records, 0
 
@@ -547,16 +556,18 @@ def test_nodes_individually(nodes_to_test, existing_records, test_url, pass_labe
             ]
             for future in as_completed(futures):
                 orig_uri, ping, status = future.result()
-                if status == "OK" and orig_uri not in existing_records:
-                    existing_records[orig_uri] = ping
-                    added_count += 1
-                    unflushed_count += 1
-                    log_debug(f"[{pass_label} OK {ping}ms] ({len(existing_records)}/{MAX_WORKING}) {orig_uri[:55]}")
+                if status == "OK":
+                    fp = get_server_fingerprint(orig_uri)
+                    if fp not in existing_records:
+                        existing_records[fp] = (ping, orig_uri)
+                        added_count += 1
+                        unflushed_count += 1
+                        log_debug(f"[{pass_label} OK {ping}ms] ({len(existing_records)}/{MAX_WORKING}) {orig_uri[:55]}")
 
-                    if unflushed_count >= FLUSH_BATCH_SIZE:
-                        existing_records = save_final_pool(existing_records)
-                        unflushed_count = 0
-                        log_debug(f"[{pass_label}] Сохранено в {FINAL_FILE}: {len(existing_records)}/{MAX_WORKING}")
+                        if unflushed_count >= FLUSH_BATCH_SIZE:
+                            existing_records = save_final_pool(existing_records)
+                            unflushed_count = 0
+                            log_debug(f"[{pass_label}] Сохранено в {FINAL_FILE}: {len(existing_records)}/{MAX_WORKING}")
 
         if len(existing_records) < MAX_WORKING and (start_idx + MAX_WORKERS) < len(nodes_to_test):
             time.sleep(WAVE_COOLDOWN_SEC)
@@ -685,7 +696,11 @@ def run_subscription_pass(
 
         added_from_sub = 0
         if download_ok and batch_nodes:
-            new_candidates = [u for u in batch_nodes if u not in records]
+            new_candidates = []
+            for u in batch_nodes:
+                fp = get_server_fingerprint(u)
+                if fp not in records:
+                    new_candidates.append(u)
             if new_candidates:
                 records, added_from_sub = test_nodes_individually(
                     new_candidates, records, test_url, pass_label
@@ -739,7 +754,7 @@ def main():
         start_time = time.time()
         today_str = datetime.now(timezone.utc).strftime("%Y-%m-%d")
         records = load_existing_final()
-        log_debug(f"В текущем {FINAL_FILE} уже есть серверов: {len(records)}/{MAX_WORKING}")
+        log_debug(f"В текущем {FINAL_FILE} уже есть уникальных серверов: {len(records)}/{MAX_WORKING}")
 
         if len(records) >= MAX_WORKING:
             log_debug("Список уже полон (60/60). Новые серверы не требуются.")
