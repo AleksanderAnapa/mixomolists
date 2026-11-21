@@ -43,7 +43,8 @@ LOCAL_API_HOST = base64.b64decode("aHR0cDovLzEyNy4wLjAuMQ==").decode("utf-8")
 URI_SCHEME_RE = re.compile(r"^[a-zA-Z][a-zA-Z0-9+.-]{1,20}://\S{4,}$")
 NON_PROXY_SCHEMES = (
     "http://", "https://", "file://", "ftp://", "ftps://",
-    "mailto:", "tg://", "javascript:", "data:", "ws://", "wss://", "happ://"
+    "mailto:", "tg://", "javascript:", "data:", "ws://", "wss://", "happ://",
+    "ss://", "ssr://", "wg://", "wireguard://"
 )
 
 
@@ -171,7 +172,7 @@ def apply_transport_opts(proxy, net, get_p, sni):
 
 
 def uri_to_clash_dict(uri, temp_name):
-    """Создает временный dict для mihomo и дедупликации. Исходную строку не меняет."""
+    """Создает временный dict только для современных протоколов с шифрованием/маскировкой."""
     try:
         clean_uri = uri.replace("&amp;", "&").strip()
         no_tag, _, _ = clean_uri.rpartition("#") if "#" in clean_uri else (clean_uri, "", "")
@@ -186,8 +187,10 @@ def uri_to_clash_dict(uri, temp_name):
             d = json.loads(decode_base64_safe(rest))
             if not d.get("add") or not d.get("port") or not d.get("id"):
                 return None
-            net = str(d.get("net", "tcp")).strip().lower()
             tls = str(d.get("tls", "")).lower() in ("tls", "1", "true")
+            if not tls:
+                return None
+            net = str(d.get("net", "tcp")).strip().lower()
             scy = str(d.get("scy", "auto")).strip().lower()
             if scy in ("null", "none", ""):
                 scy = "auto"
@@ -200,7 +203,7 @@ def uri_to_clash_dict(uri, temp_name):
                 "alterId": int(d.get("aid", 0)),
                 "cipher": scy,
                 "udp": True,
-                "tls": tls,
+                "tls": True,
                 "skip-cert-verify": True,
                 "network": net
             }
@@ -217,57 +220,6 @@ def uri_to_clash_dict(uri, temp_name):
                 proxy["grpc-opts"] = {"grpc-service-name": str(d.get("path", "")).strip()}
             return proxy
 
-        if scheme == "ss":
-            main_part, _, _ = rest.partition("?")
-            if "@" in main_part:
-                userinfo, _, hostport = main_part.rpartition("@")
-                if ":" not in userinfo:
-                    userinfo = decode_base64_safe(userinfo)
-                method, _, password = userinfo.partition(":")
-            else:
-                decoded = decode_base64_safe(main_part)
-                if "@" not in decoded:
-                    return None
-                userinfo, _, hostport = decoded.rpartition("@")
-                method, _, password = userinfo.partition(":")
-            host, _, port_str = hostport.rpartition(":")
-            host = host.strip("[]")
-            if not (host and port_str.isdigit() and method):
-                return None
-            return {
-                "name": temp_name,
-                "type": "ss",
-                "server": host,
-                "port": int(port_str),
-                "cipher": urllib.parse.unquote(method),
-                "password": urllib.parse.unquote(password),
-                "udp": True
-            }
-
-        if scheme == "ssr":
-            decoded = decode_base64_safe(rest)
-            main_part, _, param_str = decoded.partition("/?")
-            parts = main_part.split(":")
-            if len(parts) < 6:
-                return None
-            host, port_str, protocol, method, obfs, pwd_b64 = parts[:6]
-            params = urllib.parse.parse_qs(param_str)
-            proxy = {
-                "name": temp_name,
-                "type": "ssr",
-                "server": host,
-                "port": int(port_str),
-                "protocol": protocol,
-                "cipher": method,
-                "obfs": obfs,
-                "password": decode_base64_safe(pwd_b64),
-                "udp": True
-            }
-            if "obfsparam" in params:
-                proxy["obfs-param"] = decode_base64_safe(next(iter(params["obfsparam"])))
-            if "protoparam" in params:
-                proxy["protocol-param"] = decode_base64_safe(next(iter(params["protoparam"])))
-            return proxy
         parsed = urllib.parse.urlparse(no_tag)
         params = urllib.parse.parse_qs(parsed.query)
 
@@ -289,6 +241,8 @@ def uri_to_clash_dict(uri, temp_name):
                 return None
             net = get_p("type", "tcp").lower()
             security = get_p("security", "none").lower()
+            if security not in ("tls", "reality"):
+                return None
             proxy = {
                 "name": temp_name,
                 "type": "vless",
@@ -296,7 +250,7 @@ def uri_to_clash_dict(uri, temp_name):
                 "port": port,
                 "uuid": user,
                 "udp": True,
-                "tls": security in ("tls", "reality"),
+                "tls": True,
                 "skip-cert-verify": True,
                 "servername": sni,
                 "network": net
@@ -394,31 +348,6 @@ def uri_to_clash_dict(uri, temp_name):
                 proxy["alpn"] = [a.strip() for a in get_p("alpn").split(",") if a.strip()]
             return proxy
 
-        if scheme in ("wg", "wireguard"):
-            pk = user or get_p("privateKey") or get_p("private_key")
-            pub = get_p("publicKey") or get_p("public_key")
-            if not (pk and pub):
-                return None
-            raw_addr = get_p("address", "10.0.0.2/32")
-            ip_val = next(iter(raw_addr.split(","))).strip()
-            proxy = {
-                "name": temp_name,
-                "type": "wireguard",
-                "server": host,
-                "port": port,
-                "private-key": pk,
-                "public-key": pub,
-                "ip": ip_val,
-                "udp": True
-            }
-            if get_p("mtu"):
-                proxy["mtu"] = int(get_p("mtu"))
-            if get_p("reserved"):
-                res = [int(x) for x in get_p("reserved").split(",") if x.strip().isdigit()]
-                if res:
-                    proxy["reserved"] = res
-            return proxy
-
         if scheme == "anytls":
             if not user:
                 return None
@@ -435,15 +364,15 @@ def uri_to_clash_dict(uri, temp_name):
     except Exception:
         return None
     return None
-
-
 def get_server_fingerprint(uri, parsed_dict=None):
     """Ключ дедупликации в памяти (type + server + port + uuid/password). Исходную строку не меняет."""
     d = parsed_dict if parsed_dict is not None else uri_to_clash_dict(uri, "fp")
     if d:
-        cred = d.get("uuid") or d.get("password") or d.get("private-key") or d.get("auth-str") or ""
+        cred = d.get("uuid") or d.get("password") or d.get("auth-str") or ""
         return f"{d.get('type')}|{str(d.get('server', '')).lower()}|{d.get('port')}|{cred}"
     return uri.strip()
+
+
 def load_existing_final():
     """Загружает существующие серверы из final.txt в их оригинальном виде, отсекая дубли в памяти."""
     existing = {}
@@ -451,7 +380,7 @@ def load_existing_final():
         with open(FINAL_FILE, "r", encoding="utf-8", errors="ignore") as f:
             for line in f:
                 uri = line.lstrip("\ufeff").strip()
-                if is_proxy_uri(uri):
+                if is_proxy_uri(uri) and uri_to_clash_dict(uri, "chk") is not None:
                     fp = get_server_fingerprint(uri)
                     if fp not in existing:
                         existing[fp] = (1, uri)
@@ -475,7 +404,7 @@ def test_one_server_isolated(orig_uri, slot_id, encoded_test_url):
     """Проверенный способ запуска mihomo через proxies: [p_dict] в /tmp/mihomo_checker."""
     p_dict = uri_to_clash_dict(orig_uri, "single_node")
     if not p_dict:
-        return orig_uri, 0, "INVALID_FORMAT"
+        return orig_uri, 0, "FILTERED_OR_INVALID"
 
     time.sleep(slot_id * 0.25)
 
@@ -698,9 +627,11 @@ def run_subscription_pass(
         if download_ok and batch_nodes:
             new_candidates = []
             for u in batch_nodes:
-                fp = get_server_fingerprint(u)
-                if fp not in records:
-                    new_candidates.append(u)
+                p_d = uri_to_clash_dict(u, "chk")
+                if p_d is not None:
+                    fp = get_server_fingerprint(u, p_d)
+                    if fp not in records:
+                        new_candidates.append(u)
             if new_candidates:
                 records, added_from_sub = test_nodes_individually(
                     new_candidates, records, test_url, pass_label
