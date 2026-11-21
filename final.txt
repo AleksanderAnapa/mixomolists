@@ -1,8 +1,4 @@
 vless://2da03bdf-8af3-4207-96c7-d70e0dd22c36@94.249.198.124:31652?security=none&encryption=none&headerType=none&type=tcp#01_DE
-vless://bc93a03d-13b5-000b-8ee7-d50c11459dab@169.40.34.53:443?encryption=none&flow=xtls-rprx-vision&type=tcp&security=reality&sni=brointelengence.com&fp=chrome&pbk=6VMgXXhZdJCiOG05EyK_zTHh00kpFGrZJeZIEPgqhjY&sid=1c3e8241a8743df9#02_DE
-vless://d65cc14c-f53f-4fe2-b262-97856601319c@169.40.42.74:443?type=tcp&security=reality&sni=yahoo.com&fp=random&flow=xtls-rprx-vision&pbk=e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg&sid=c39cc7310a#03_DE
-vless://d65cc14c-f53f-4fe2-b262-97856601319c@169.40.42.163:443?type=tcp&security=reality&sni=yahoo.com&fp=ios&flow=xtls-rprx-vision&pbk=e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg&sid=c39cc7310a#04_DE
-vless://d65cc14c-f53f-4fe2-b262-97856601319c@169.40.42.89:443?type=tcp&security=reality&sni=yahoo.com&fp=ios&flow=xtls-rprx-vision&pbk=e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg&sid=c39cc7310a#05_DE
 vless://b9bfa54d-bc44-4592-a6d6-89a9665d286f@163.245.42.87:443?type=tcp&security=reality&sni=mother-earth.fyi&fp=firefox&flow=xtls-rprx-vision&pbk=SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc#06_DE
 vless://b9bfa54d-bc44-4592-a6d6-89a9665d286f@163.245.42.56:443?type=tcp&security=reality&sni=mother-earth.fyi&fp=chrome&flow=xtls-rprx-vision&pbk=SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc#07_DE
 vless://26843758-24de-4f76-b5d0-624038e353c4@153.52.85.198:443?type=tcp&security=reality&sni=15d7fft.nl11.h1clayd.click&pbk=xv6OUZcyzEHXFMTfumuJH-1Rd4NQ0cdmWikek4mm0m4&sid=c71118d9399fb8c2#08_DE
