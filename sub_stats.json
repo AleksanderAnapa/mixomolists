@@ -62,5 +62,13 @@
   "https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/refs/heads/main/output_configs/Moldova.txt": {
     "days": 3,
     "last_fail_date": "2026-11-21"
+  },
+  "https://github.com/FLAT447/v2ray-lists/raw/refs/heads/main/BLACK_LTE.txt": {
+    "days": 1,
+    "last_fail_date": "2026-11-21"
+  },
+  "https://raw.githubusercontent.com/luxxuria/harvester/refs/heads/main/non_ru.txt": {
+    "days": 1,
+    "last_fail_date": "2026-11-21"
   }
 }

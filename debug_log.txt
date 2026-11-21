@@ -1,5 +1,212 @@
 === СТАРТ ПОПОЛНЕНИЯ FINAL.TXT ===
-[20:16:19] В текущем final.txt уже есть серверов: 0/60
-[20:16:19] === ПРОХОД 1 (TEST_URL) ===
-[20:16:19] [TEST1] Подписка [43/106] (сбоев: 0 дн.): https://raw.githubusercontent.com/mheidari98/.proxy/main/all
-[20:16:19] [TEST1] Найдено серверов в подписке: 14545
+[20:29:36] В текущем final.txt уже есть серверов: 0/60
+[20:29:36] === ПРОХОД 1 (TEST_URL) ===
+[20:29:36] [TEST1] Подписка [1/106] (сбоев: 0 дн.): https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/ou
+[20:29:36] [TEST1] Найдено серверов в подписке: 128
+[20:29:37] [TEST1 FAIL: MIHOMO_EXITED] ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpvWklvQTY5
+[20:29:37] [TEST1 FAIL: MIHOMO_EXITED] ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpvWklvQTY5
+[20:29:37] [TEST1 FAIL: MIHOMO_EXITED] ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpvWklvQTY5
+[20:30:42] [TEST1] Подписка живая (+0 в пул). В final.txt: 0/60
+[20:30:42] [TEST1] Подписка [2/106] (сбоев: 0 дн.): https://github.com/bobrinaw/vlessforu/raw/refs/heads/main/wo
+[20:30:43] [TEST1] Найдено серверов в подписке: 1
+[20:30:43] [TEST1 FAIL: MIHOMO_EXITED] happ://routing/onadd/eyJOYW1lIjoiVGc6IFZsZXNz
+[20:30:43] [TEST1] Подписка живая (+0 в пул). В final.txt: 0/60
+[20:30:43] [TEST1] Подписка [3/106] (сбоев: 0 дн.): https://github.com/FLAT447/v2ray-lists/raw/refs/heads/main/B
+[20:30:43] [TEST1] Найдено серверов в подписке: 0
+[20:30:43] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://github.com/FLAT447/v2ray-lists/raw/refs/heads/m
+[20:30:43] [TEST1] Подписка [4/106] (сбоев: 0 дн.): https://github.com/kort0881/vpn-vless-configs-russia/raw/ref
+[20:30:44] [TEST1] Найдено серверов в подписке: 39
+[20:30:44] [TEST1 FAIL: MIHOMO_EXITED] vless://0f494b87-2fdd-4978-b467-04f58d7375ce@
+[20:30:44] [TEST1 FAIL: MIHOMO_EXITED] vless://113dd109-540e-4497-9d47-eed30315260f@
+[20:30:45] [TEST1 FAIL: MIHOMO_EXITED] vless://15f34214-d8de-41e9-ba72-93daeafc59ef@
+[20:31:03] [TEST1] Подписка живая (+0 в пул). В final.txt: 0/60
+[20:31:03] [TEST1] Подписка [5/106] (сбоев: 0 дн.): https://github.com/igareck/vpn-configs-for-russia/raw/refs/h
+[20:31:04] [TEST1] Найдено серверов в подписке: 126
+[20:31:04] [TEST1 FAIL: MIHOMO_EXITED] vless://a9ff24d3-f308-4e72-acb9-a76062583837@
+[20:31:04] [TEST1 FAIL: MIHOMO_EXITED] vless://a9ff24d3-f308-4e72-acb9-a76062583837@
+[20:31:04] [TEST1 FAIL: MIHOMO_EXITED] vless://a9ff24d3-f308-4e72-acb9-a76062583837@
+[20:32:07] [TEST1] Подписка живая (+0 в пул). В final.txt: 0/60
+[20:32:07] [TEST1] Подписка [6/106] (сбоев: 0 дн.): https://github.com/igareck/vpn-configs-for-russia/raw/refs/h
+[20:32:07] [TEST1] Найдено серверов в подписке: 85
+[20:32:08] [TEST1 FAIL: MIHOMO_EXITED] vless://a9ff24d3-f308-4e72-acb9-a76062583837@
+[20:32:08] [TEST1 FAIL: MIHOMO_EXITED] vless://a9ff24d3-f308-4e72-acb9-a76062583837@
+[20:32:08] [TEST1 FAIL: MIHOMO_EXITED] vless://a9ff24d3-f308-4e72-acb9-a76062583837@
+[20:32:51] [TEST1] Подписка живая (+0 в пул). В final.txt: 0/60
+[20:32:51] [TEST1] Подписка [7/106] (сбоев: 0 дн.): https://github.com/igareck/vpn-configs-for-russia/raw/refs/h
+[20:32:51] [TEST1] Найдено серверов в подписке: 147
+[20:32:52] [TEST1 FAIL: MIHOMO_EXITED] vless://debafe5b-6760-4b00-b0b2-ee30cbf769f0@
+[20:32:52] [TEST1 FAIL: MIHOMO_EXITED] vless://debafe5b-6760-4b00-b0b2-ee30cbf769f0@
+[20:32:52] [TEST1 FAIL: MIHOMO_EXITED] vless://d6d40100-9442-0001-b5b9-6d259318c421@
+[20:34:07] [TEST1] Подписка живая (+0 в пул). В final.txt: 0/60
+[20:34:07] [TEST1] Подписка [8/106] (сбоев: 0 дн.): https://raw.githubusercontent.com/luxxuria/harvester/refs/he
+[20:34:07] [TEST1] Найдено серверов в подписке: 0
+[20:34:07] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://raw.githubusercontent.com/luxxuria/harvester/re
+[20:34:07] [TEST1] Подписка [10/106] (сбоев: 0 дн.): https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/
+[20:34:07] [TEST1] Найдено серверов в подписке: 8
+[20:34:07] [TEST1 FAIL: MIHOMO_EXITED] ss://2424febb-43cb-488d-bdd1-401e923c8e48@3h-
+[20:34:08] [TEST1 FAIL: MIHOMO_EXITED] ss://a80acd3a-3df5-40b5-a54a-29bb18056115@38.
+[20:34:08] [TEST1 FAIL: MIHOMO_EXITED] ss://b573cefb-7bc7-4a42-b407-b8b534e66773@109
+[20:34:11] [TEST1] Подписка живая (+0 в пул). В final.txt: 0/60
+[20:34:11] [TEST1] Подписка [11/106] (сбоев: 0 дн.): https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/
+[20:34:11] [TEST1] Найдено серверов в подписке: 18
+[20:34:11] [TEST1 FAIL: MIHOMO_EXITED] ss://5c09e56b-f97f-4360-8f01-eb4d39202095@185
+[20:34:11] [TEST1 FAIL: MIHOMO_EXITED] ss://62995b2a-8f82-41f8-ac80-dfdfc1253e76@ch5
+[20:34:12] [TEST1 FAIL: MIHOMO_EXITED] ss://67864856-8730-40cc-9e1a-a0df697d912b@85.
+[20:34:19] [TEST1] Подписка живая (+0 в пул). В final.txt: 0/60
+[20:34:19] [TEST1] Подписка [12/106] (сбоев: 0 дн.): https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/
+[20:34:19] [TEST1] Найдено серверов в подписке: 360
+[20:34:19] [TEST1 FAIL: MIHOMO_EXITED] ss://014f8bf692214f99838f4c16ca90334fOg==@91.
+[20:34:19] [TEST1 FAIL: MIHOMO_EXITED] ss://01e61db7-9e0b-4431-a995-a5288a01b951@147
+[20:34:20] [TEST1 FAIL: MIHOMO_EXITED] ss://01e61db7-9e0b-4431-a995-a5288a01b951@147
+[20:37:23] [TEST1] Подписка живая (+0 в пул). В final.txt: 0/60
+[20:37:23] [TEST1] Подписка [13/106] (сбоев: 0 дн.): https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/
+[20:37:24] [TEST1] Найдено серверов в подписке: 164
+[20:37:24] [TEST1 FAIL: MIHOMO_EXITED] ss://03033cd9-817d-486d-bb3b-37d92b8346f0@147
+[20:37:24] [TEST1 FAIL: MIHOMO_EXITED] ss://086bf957-9cd0-4e55-8280-bbef10435b41@161
+[20:37:24] [TEST1 FAIL: MIHOMO_EXITED] ss://086bf957-9cd0-4e55-8280-bbef10435b41@ai.
+[20:38:48] [TEST1] Подписка живая (+0 в пул). В final.txt: 0/60
+[20:38:48] [TEST1] Подписка [14/106] (сбоев: 0 дн.): https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/
+[20:38:48] [TEST1] Найдено серверов в подписке: 337
+[20:38:48] [TEST1 FAIL: MIHOMO_EXITED] ss://0001f119-4d6d-42ae-b2f0-d07ed4694381@89.
+[20:38:49] [TEST1 FAIL: MIHOMO_EXITED] ss://056405e8-de9f-4d0d-8145-956f13cc34da@79.
+[20:38:49] [TEST1 FAIL: MIHOMO_EXITED] ss://1653818d-532e-46be-b825-384107fb7c3a@ass
+[20:41:42] [TEST1] Подписка живая (+0 в пул). В final.txt: 0/60
+[20:41:42] [TEST1] Подписка [15/106] (сбоев: 0 дн.): https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/
+[20:41:42] [TEST1] Найдено серверов в подписке: 4
+[20:41:43] [TEST1 FAIL: MIHOMO_EXITED] ss://40cba749-bca9-4089-9c02-84a357244ce0@104
+[20:41:43] [TEST1 FAIL: MIHOMO_EXITED] ss://5de0c218-0138-45d8-94d2-c2c3f37a1a6d@94.
+[20:41:43] [TEST1 FAIL: MIHOMO_EXITED] vless://40cba749-bca9-4089-9c02-84a357244ce0@
+[20:41:43] [TEST1] Подписка живая (+0 в пул). В final.txt: 0/60
+[20:41:43] [TEST1] Подписка [16/106] (сбоев: 3 дн.): https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/
+[20:41:44] [TEST1] Ошибка HTTP 404 для https://raw.githubusercontent.com/10ium/ScrapeAndC
+[20:41:44] [TEST1] Подписка пуста/недоступна -> BAD!_03: https://raw.githubusercontent.com/10ium/ScrapeAndCatego
+[20:41:44] [TEST1] Подписка [17/106] (сбоев: 0 дн.): https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/
+[20:41:44] [TEST1] Найдено серверов в подписке: 13
+[20:41:44] [TEST1 FAIL: MIHOMO_EXITED] ss://0ed9418b-e687-4c2d-8869-7e368c44887e@76.
+[20:41:44] [TEST1 FAIL: MIHOMO_EXITED] ss://2cbba076-cadf-4f45-9335-ab1dc46c8d04@103
+[20:41:45] [TEST1 FAIL: MIHOMO_EXITED] ss://32ea050a-1981-4ed2-b63f-77e0f53c4b65@cdn
+[20:41:50] [TEST1] Подписка живая (+0 в пул). В final.txt: 0/60
+[20:41:50] [TEST1] Подписка [18/106] (сбоев: 0 дн.): https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/
+[20:41:50] [TEST1] Найдено серверов в подписке: 57
+[20:41:51] [TEST1 FAIL: MIHOMO_EXITED] ss://0ed9418b-e687-4c2d-8869-7e368c44887e@88.
+[20:41:51] [TEST1 FAIL: MIHOMO_EXITED] ss://1bd128fb-8074-492f-ba3f-96157694e3ac@95e
+[20:41:51] [TEST1 FAIL: MIHOMO_EXITED] ss://1bd128fb-8074-492f-ba3f-96157694e3ac@b36
+[20:42:19] [TEST1] Подписка живая (+0 в пул). В final.txt: 0/60
+[20:42:19] [TEST1] Подписка [19/106] (сбоев: 0 дн.): https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/
+[20:42:19] [TEST1] Найдено серверов в подписке: 53
+[20:42:20] [TEST1 FAIL: MIHOMO_EXITED] ss://128bd8ad-4f6c-4d70-af13-15a2cec331d2@185
+[20:42:20] [TEST1 FAIL: MIHOMO_EXITED] ss://128bd8ad-4f6c-4d70-af13-15a2cec331d2@37.
+[20:42:20] [TEST1 FAIL: MIHOMO_EXITED] ss://4d17e384-933d-452c-b8e6-14f3782bfad7@vpn
+[20:42:45] [TEST1] Подписка живая (+0 в пул). В final.txt: 0/60
+[20:42:45] [TEST1] Подписка [20/106] (сбоев: 0 дн.): https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/
+[20:42:46] [TEST1] Найдено серверов в подписке: 171
+[20:42:46] [TEST1 FAIL: MIHOMO_EXITED] ss://0ad875ef-b751-46e3-aa89-e1ae20e43bcc@dow
+[20:42:46] [TEST1 FAIL: MIHOMO_EXITED] ss://0ad875ef-b751-46e3-aa89-e1ae20e43bcc@fet
+[20:42:46] [TEST1 FAIL: MIHOMO_EXITED] ss://1d383ffa9ede439c98e7c8664151d840@194.110
+[20:44:13] [TEST1] Подписка живая (+0 в пул). В final.txt: 0/60
+[20:44:13] [TEST1] Подписка [21/106] (сбоев: 0 дн.): https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/
+[20:44:13] [TEST1] Найдено серверов в подписке: 2
+[20:44:14] [TEST1 FAIL: MIHOMO_EXITED] ss://128ce9ab-63bc-48dc-92ca-1b5426a9eb46@88.
+[20:44:14] [TEST1 FAIL: MIHOMO_EXITED] vless://128ce9ab-63bc-48dc-92ca-1b5426a9eb46@
+[20:44:14] [TEST1] Подписка живая (+0 в пул). В final.txt: 0/60
+[20:44:14] [TEST1] Подписка [22/106] (сбоев: 0 дн.): https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/
+[20:44:14] [TEST1] Найдено серверов в подписке: 4
+[20:44:14] [TEST1 FAIL: MIHOMO_EXITED] ss://664f65f4-33b3-43a3-b9e5-68192d1d428e@109
+[20:44:15] [TEST1 FAIL: MIHOMO_EXITED] ss://c28ee61d-0d43-4e69-8e6a-6397ed0ffc03@109
+[20:44:15] [TEST1 FAIL: MIHOMO_EXITED] vless://664f65f4-33b3-43a3-b9e5-68192d1d428e@
+[20:44:15] [TEST1] Подписка живая (+0 в пул). В final.txt: 0/60
+[20:44:15] [TEST1] Подписка [23/106] (сбоев: 0 дн.): https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/
+[20:44:15] [TEST1] Найдено серверов в подписке: 56
+[20:44:16] [TEST1 FAIL: MIHOMO_EXITED] ss://08f96221-9b7b-4e6f-8ffe-aee8b9c9b504@ov-
+[20:44:16] [TEST1 FAIL: MIHOMO_EXITED] ss://20b98028-53c9-4f76-9bc9-b6b16b8a9152@54.
+[20:44:16] [TEST1 FAIL: MIHOMO_EXITED] ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTo1NzVoaW9w
+[20:44:44] [TEST1] Подписка живая (+0 в пул). В final.txt: 0/60
+[20:44:44] [TEST1] Подписка [24/106] (сбоев: 0 дн.): https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/
+[20:44:44] [TEST1] Найдено серверов в подписке: 2
+[20:44:44] [TEST1 FAIL: MIHOMO_EXITED] trojan://7d223bae-e183-4bf6-89c3-e327b15df490
+[20:44:45] [TEST1 FAIL: MIHOMO_EXITED] trojan://7d223bae-e183-4bf6-89c3-e327b15df490
+[20:44:45] [TEST1] Подписка живая (+0 в пул). В final.txt: 0/60
+[20:44:45] [TEST1] Подписка [25/106] (сбоев: 0 дн.): https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/
+[20:44:45] [TEST1] Найдено серверов в подписке: 16
+[20:44:45] [TEST1 FAIL: MIHOMO_EXITED] ss://08b6dd4b-08df-4aa2-9580-92a3360cf07c@188
+[20:44:45] [TEST1 FAIL: MIHOMO_EXITED] ss://3dbd9377-43cc-46c3-b32c-2605908024eb@cze
+[20:44:46] [TEST1 FAIL: MIHOMO_EXITED] ss://3dbd9377-43cc-46c3-b32c-2605908024eb@cze
+[20:44:52] [TEST1] Подписка живая (+0 в пул). В final.txt: 0/60
+[20:44:52] [TEST1] Подписка [27/106] (сбоев: 0 дн.): https://warp-gen.cyb-portal.org/CP-001
+[20:44:53] [TEST1] Найдено серверов в подписке: 61
+[20:44:53] [TEST1 FAIL: MIHOMO_EXITED] hysteria2://GIFCjtpiGVOsrCy2kgBmgndXX5lUP7Eb@
+[20:44:53] [TEST1 FAIL: MIHOMO_EXITED] hysteria2://GIFCjtpiGVOsrCy2kgBmgndXX5lUP7Eb@
+[20:44:54] [TEST1 FAIL: MIHOMO_EXITED] hysteria2://GIFCjtpiGVOsrCy2kgBmgndXX5lUP7Eb@
+[20:45:24] [TEST1] Подписка живая (+0 в пул). В final.txt: 0/60
+[20:45:24] [TEST1] Подписка [28/106] (сбоев: 0 дн.): https://warp-gen.cyb-portal.org/CP-002
+[20:45:25] [TEST1] Найдено серверов в подписке: 183
+[20:45:25] [TEST1 FAIL: MIHOMO_EXITED] vless://debafe5b-6760-4b00-b0b2-ee30cbf769f0@
+[20:45:26] [TEST1 FAIL: MIHOMO_EXITED] vless://debafe5b-6760-4b00-b0b2-ee30cbf769f0@
+[20:45:26] [TEST1 FAIL: MIHOMO_EXITED] vless://d6d40100-9442-0001-b5b9-6d259318c421@
+[20:46:59] [TEST1] Подписка живая (+0 в пул). В final.txt: 0/60
+[20:46:59] [TEST1] Подписка [29/106] (сбоев: 0 дн.): https://warp-gen.cyb-portal.org/CP-003
+[20:47:00] [TEST1] Найдено серверов в подписке: 147
+[20:47:00] [TEST1 FAIL: MIHOMO_EXITED] vless://debafe5b-6760-4b00-b0b2-ee30cbf769f0@
+[20:47:01] [TEST1 FAIL: MIHOMO_EXITED] vless://debafe5b-6760-4b00-b0b2-ee30cbf769f0@
+[20:47:01] [TEST1 FAIL: MIHOMO_EXITED] vless://d6d40100-9442-0001-b5b9-6d259318c421@
+[20:48:15] [TEST1] Подписка живая (+0 в пул). В final.txt: 0/60
+[20:48:15] [TEST1] Подписка [30/106] (сбоев: 0 дн.): https://warp-gen.cyb-portal.org/CP-005
+[20:48:16] [TEST1] Найдено серверов в подписке: 85
+[20:48:17] [TEST1 FAIL: MIHOMO_EXITED] vless://a9ff24d3-f308-4e72-acb9-a76062583837@
+[20:48:17] [TEST1 FAIL: MIHOMO_EXITED] vless://a9ff24d3-f308-4e72-acb9-a76062583837@
+[20:48:17] [TEST1 FAIL: MIHOMO_EXITED] vless://a9ff24d3-f308-4e72-acb9-a76062583837@
+[20:49:00] [TEST1] Подписка живая (+0 в пул). В final.txt: 0/60
+[20:49:00] [TEST1] Подписка [31/106] (сбоев: 0 дн.): https://warp-gen.cyb-portal.org/CP-009
+[20:49:01] [TEST1] Найдено серверов в подписке: 30
+[20:49:01] [TEST1 FAIL: MIHOMO_EXITED] vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@
+[20:49:01] [TEST1 FAIL: MIHOMO_EXITED] vless://b432a23a-acff-425c-bf69-70480cd6ed09@
+[20:49:02] [TEST1 FAIL: MIHOMO_EXITED] vless://88e79aa6-f431-4453-8dcc-652a0c747198@
+[20:49:15] [TEST1] Подписка живая (+0 в пул). В final.txt: 0/60
+[20:49:15] [TEST1] Подписка [32/106] (сбоев: 0 дн.): https://warp-gen.cyb-portal.org/CP-010
+[20:49:16] [TEST1] Найдено серверов в подписке: 137
+[20:49:16] [TEST1 FAIL: MIHOMO_EXITED] vless://00000000-0000-0000-0000-000000000000@
+[20:49:16] [TEST1 FAIL: MIHOMO_EXITED] vless://4643976f-85fa-40cf-9e58-ea28b50f253b@
+[20:49:17] [TEST1 FAIL: MIHOMO_EXITED] vless://bc5ec86c-3e65-4272-994c-59a924c72a68@
+[20:50:25] [TEST1] Подписка живая (+0 в пул). В final.txt: 0/60
+[20:50:25] [TEST1] Подписка [33/106] (сбоев: 0 дн.): https://warp-gen.cyb-portal.org/CP-012
+[20:50:26] [TEST1] Найдено серверов в подписке: 139
+[20:50:26] [TEST1 FAIL: MIHOMO_EXITED] vless://37af0181-5598-4aad-a040-d926bcb65757@
+[20:50:27] [TEST1 FAIL: MIHOMO_EXITED] vless://37af0181-5598-4aad-a040-d926bcb65757@
+[20:50:27] [TEST1 FAIL: MIHOMO_EXITED] vless://37af0181-5598-4aad-a040-d926bcb65757@
+[20:51:38] [TEST1] Подписка живая (+0 в пул). В final.txt: 0/60
+[20:51:38] [TEST1] Подписка [34/106] (сбоев: 0 дн.): https://warp-gen.cyb-portal.org/CP-019
+[20:51:38] [TEST1] Найдено серверов в подписке: 2
+[20:51:39] [TEST1 FAIL: MIHOMO_EXITED] vless://ff1b0b50-70dc-4bae-866e-55cff86f4d6d@
+[20:51:39] [TEST1 FAIL: MIHOMO_EXITED] vless://47388561-cf0c-4cfc-91f8-fdfd9fa3d756@
+[20:51:39] [TEST1] Подписка живая (+0 в пул). В final.txt: 0/60
+[20:51:39] [TEST1] Подписка [35/106] (сбоев: 0 дн.): https://warp-gen.cyb-portal.org/CP-035
+[20:51:40] [TEST1] Найдено серверов в подписке: 400
+[20:51:40] [TEST1 FAIL: MIHOMO_EXITED] vless://37af0181-5598-4aad-a040-d926bcb65757@
+[20:51:41] [TEST1 FAIL: MIHOMO_EXITED] vless://37af0181-5598-4aad-a040-d926bcb65757@
+[20:51:41] [TEST1 FAIL: MIHOMO_EXITED] vless://37af0181-5598-4aad-a040-d926bcb65757@
+[20:55:06] [TEST1] Подписка живая (+0 в пул). В final.txt: 0/60
+[20:55:06] [TEST1] Подписка [36/106] (сбоев: 0 дн.): https://warp-gen.cyb-portal.org/CP-038
+[20:55:07] [TEST1] Найдено серверов в подписке: 190
+[20:55:07] [TEST1 FAIL: MIHOMO_EXITED] vless://7a8f716f-37ee-4af3-84c3-67e9a1b17d08@
+[20:55:07] [TEST1 FAIL: MIHOMO_EXITED] vless://f55ea93e-b325-43dc-9e1a-1264e7fd946e@
+[20:55:08] [TEST1 FAIL: MIHOMO_EXITED] ss://YWVzLTI1Ni1nY206aXR6dnBuQDMyMQ@178.162.2
+[20:56:44] [TEST1] Подписка живая (+0 в пул). В final.txt: 0/60
+[20:56:44] [TEST1] Подписка [37/106] (сбоев: 0 дн.): https://warp-gen.cyb-portal.org/CP-040
+[20:56:45] [TEST1] Найдено серверов в подписке: 183
+[20:56:45] [TEST1 FAIL: MIHOMO_EXITED] vless://25ac78e7-6d1d-4c9a-a450-c01a4871769f@
+[20:56:46] [TEST1 FAIL: MIHOMO_EXITED] vless://7370aef1-b137-411d-ad0a-c12cc8c0b65e@
+[20:56:46] [TEST1 FAIL: MIHOMO_EXITED] vless://25ac78e7-6d1d-4c9a-a450-c01a4871769f@
+[20:58:19] [TEST1] Подписка живая (+0 в пул). В final.txt: 0/60
+[20:58:19] [TEST1] Подписка [38/106] (сбоев: 0 дн.): https://warp-gen.cyb-portal.org/CP-041
+[20:58:20] [TEST1] Найдено серверов в подписке: 1856
+[20:58:21] [TEST1 FAIL: MIHOMO_EXITED] hysteria2://https%3A%2F%2Fxship.best@starlink
+[20:58:21] [TEST1 FAIL: MIHOMO_EXITED] hysteria2://s0_sdK93x9wer_D02Lz9cvK3_Sa014Oak
+[20:58:21] [TEST1 FAIL: MIHOMO_EXITED] hysteria2://AIcYjw5Oc9Rrrr9SGDUBbBIC@38.76.15
+[21:14:20] [TEST1] Подписка живая (+0 в пул). В final.txt: 0/60
+[21:14:20] [TEST1] Подписка [39/106] (сбоев: 0 дн.): https://warp-gen.cyb-portal.org/CP-042
+[21:14:22] [TEST1] Найдено серверов в подписке: 390
+[21:14:23] [TEST1 FAIL: MIHOMO_EXITED] vless://572463d3-dab5-4dcb-8459-2b51735186e0@
+[21:14:23] [TEST1 FAIL: MIHOMO_EXITED] vless://d8275e29-e946-4a48-bec6-4402bea6c399@
+[21:14:23] [TEST1 FAIL: MIHOMO_EXITED] vless://cda0862a-0f87-4be9-8ed8-1d0c9e382839@
+[21:17:43] [TEST1] Подписка живая (+0 в пул). В final.txt: 0/60
+[21:17:43] [TEST1] Достигнут лимит времени работы (45 мин). Продолжим в следующем запуске.
