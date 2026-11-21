@@ -14,7 +14,7 @@ import urllib.parse
 import requests
 import yaml
 
-# Щадящие тайминги и лимиты для перегруженных серверов
+# Безопасные тайминги и лимиты для перегруженных серверов
 MAX_PING = 3500
 MAX_WORKING = 60
 MAX_WORKERS = 6
@@ -33,7 +33,6 @@ FINAL_FILE = "final.txt"
 CURSOR_FILE = "sub_cursor.txt"
 SUB_STATS_FILE = "sub_stats.json"
 
-# Фиксированная временная папка в /tmp
 TMP_BASE_DIR = "/tmp" if os.path.isdir("/tmp") else tempfile.gettempdir()
 WORK_TMP_DIR = os.path.join(TMP_BASE_DIR, "mihomo_checker")
 
@@ -42,15 +41,14 @@ TEST_URL2 = base64.b64decode("aHR0cHM6Ly9nc3RhdGljLmNvbS9nZW5lcmF0ZV8yMDQ=").dec
 LOCAL_API_HOST = base64.b64decode("aHR0cDovLzEyNy4wLjAuMQ==").decode("utf-8")
 
 URI_SCHEME_RE = re.compile(r"^[a-zA-Z][a-zA-Z0-9+.-]{1,20}://\S{4,}$")
-BUILTIN_PROXY_NAMES = {"DIRECT", "REJECT", "GLOBAL", "COMPATIBLE", "PASS", "AUTO"}
 NON_PROXY_SCHEMES = (
     "http://", "https://", "file://", "ftp://", "ftps://",
-    "mailto:", "tg://", "javascript:", "data:", "ws://", "wss://"
+    "mailto:", "tg://", "javascript:", "data:", "ws://", "wss://", "happ://"
 )
 
 
 def cleanup_temp_artifacts(recreate=True):
-    """Сразу при старте и при выходе зачищает /tmp/mihomo_checker и любые старые хвосты от аварийных остановок."""
+    """При старте и при выходе зачищает /tmp/mihomo_checker и любые старые хвосты."""
     shutil.rmtree(WORK_TMP_DIR, ignore_errors=True)
     for pattern in (
         os.path.join(TMP_BASE_DIR, "mihomo_pool_*"),
@@ -89,41 +87,34 @@ def set_github_output(name, value):
 
 
 def decode_base64_safe(data):
-    """Безопасно декодирует Base64 целиком (включая многострочный и URL-safe) без порчи содержимого."""
     try:
         cleaned = data.lstrip("\ufeff").strip()
         cleaned = re.sub(r"\s+", "", cleaned).replace("-", "+").replace("_", "/")
-        if len(cleaned) < 12:
-            return ""
-        if not re.fullmatch(r"[A-Za-z0-9+/=]+", cleaned):
+        if not cleaned:
             return ""
         cleaned = cleaned.rstrip("=")
         missing_padding = len(cleaned) % 4
         if missing_padding:
             cleaned += "=" * (4 - missing_padding)
-        raw_bytes = base64.b64decode(cleaned, validate=False)
-        decoded = raw_bytes.decode("utf-8", errors="ignore")
-        return decoded if "://" in decoded else ""
+        return base64.b64decode(cleaned).decode("utf-8", errors="ignore")
     except Exception:
         return ""
 
 
 def is_proxy_uri(line):
-    """Отсекает пустые строки, комментарии, HTML, мусор и обычные веб-ссылки."""
     if not line or len(line) < 12 or len(line) > 8192:
         return False
     if line.startswith(("#", "//", "<", "{", "[", ";", "!")):
         return False
     if not URI_SCHEME_RE.match(line):
         return False
-    lower = line.lower()
-    if lower.startswith(NON_PROXY_SCHEMES):
+    if line.lower().startswith(NON_PROXY_SCHEMES):
         return False
     return True
 
 
 def extract_nodes_from_text(text):
-    """Извлекает реальные прокси-ссылки из полной Base64-подписки, обычного текста или смешанного вида."""
+    """Извлекает исходные URI-строки из полной Base64-подписки или обычного текста без правки строк."""
     if not text or not text.strip():
         return [], 0
 
@@ -143,24 +134,309 @@ def extract_nodes_from_text(text):
             return True
         return False
 
-    decoded_whole = decode_base64_safe(clean_text)
-    if decoded_whole:
-        for line in decoded_whole.splitlines():
-            add_if_valid(line)
-        if total_found_any > 0:
-            return nodes, total_found_any
+    # 1. Пробуем декодировать всю подписку целиком из Base64
+    if "://" not in clean_text:
+        decoded_whole = decode_base64_safe(clean_text)
+        if decoded_whole and "://" in decoded_whole:
+            for line in decoded_whole.splitlines():
+                add_if_valid(line)
+            if total_found_any > 0:
+                return nodes, total_found_any
 
+    # 2. Построчный разбор (обычный текст, смешанный или построчный Base64)
     for line in clean_text.splitlines():
         s = line.strip()
         if not s or s.startswith(("#", "//", "<")):
             continue
         if not add_if_valid(s):
             decoded_line = decode_base64_safe(s)
-            if decoded_line:
+            if decoded_line and "://" in decoded_line:
                 for sub_line in decoded_line.splitlines():
                     add_if_valid(sub_line)
 
     return nodes, total_found_any
+def apply_transport_opts(proxy, net, get_p, sni):
+    if net == "ws":
+        proxy["ws-opts"] = {
+            "path": get_p("path", "/") or "/",
+            "headers": {"Host": get_p("host", sni) or sni}
+        }
+    elif net == "grpc":
+        proxy["grpc-opts"] = {"grpc-service-name": get_p("serviceName", "")}
+    elif net == "httpupgrade":
+        proxy["network"] = "ws"
+        proxy["ws-opts"] = {
+            "path": get_p("path", "/") or "/",
+            "headers": {"Host": get_p("host", sni) or sni},
+            "v2ray-http-upgrade": True
+        }
+
+
+def uri_to_clash_dict(uri, temp_name):
+    """Создает временный dict для mihomo (рабочая схема из исходника). Исходную строку не меняет."""
+    try:
+        clean_uri = uri.replace("&amp;", "&").strip()
+        no_tag, _, _ = clean_uri.rpartition("#") if "#" in clean_uri else (clean_uri, "", "")
+        scheme_match = re.match(r"^([a-zA-Z0-9+.-]+)://(.*)$", no_tag)
+        if not scheme_match:
+            return None
+
+        scheme = scheme_match.group(1).lower()
+        rest = scheme_match.group(2)
+
+        if scheme == "vmess":
+            d = json.loads(decode_base64_safe(rest))
+            if not d.get("add") or not d.get("port") or not d.get("id"):
+                return None
+            net = str(d.get("net", "tcp")).strip().lower()
+            tls = str(d.get("tls", "")).lower() in ("tls", "1", "true")
+            scy = str(d.get("scy", "auto")).strip().lower()
+            if scy in ("null", "none", ""):
+                scy = "auto"
+            proxy = {
+                "name": temp_name,
+                "type": "vmess",
+                "server": str(d["add"]).strip(),
+                "port": int(d["port"]),
+                "uuid": str(d["id"]).strip(),
+                "alterId": int(d.get("aid", 0)),
+                "cipher": scy,
+                "udp": True,
+                "tls": tls,
+                "skip-cert-verify": True,
+                "network": net
+            }
+            if d.get("sni"):
+                proxy["servername"] = str(d["sni"]).strip()
+            elif d.get("host"):
+                proxy["servername"] = str(d["host"]).strip()
+            if net == "ws":
+                proxy["ws-opts"] = {
+                    "path": str(d.get("path", "/")).strip() or "/",
+                    "headers": {"Host": str(d.get("host", d["add"])).strip()}
+                }
+            elif net == "grpc":
+                proxy["grpc-opts"] = {"grpc-service-name": str(d.get("path", "")).strip()}
+            return proxy
+
+        if scheme == "ss":
+            main_part, _, _ = rest.partition("?")
+            if "@" in main_part:
+                userinfo, _, hostport = main_part.rpartition("@")
+                if ":" not in userinfo:
+                    userinfo = decode_base64_safe(userinfo)
+                method, _, password = userinfo.partition(":")
+            else:
+                decoded = decode_base64_safe(main_part)
+                if "@" not in decoded:
+                    return None
+                userinfo, _, hostport = decoded.rpartition("@")
+                method, _, password = userinfo.partition(":")
+            host, _, port_str = hostport.rpartition(":")
+            host = host.strip("[]")
+            if not (host and port_str.isdigit() and method):
+                return None
+            return {
+                "name": temp_name,
+                "type": "ss",
+                "server": host,
+                "port": int(port_str),
+                "cipher": urllib.parse.unquote(method),
+                "password": urllib.parse.unquote(password),
+                "udp": True
+            }
+
+        if scheme == "ssr":
+            decoded = decode_base64_safe(rest)
+            main_part, _, param_str = decoded.partition("/?")
+            parts = main_part.split(":")
+            if len(parts) < 6:
+                return None
+            host, port_str, protocol, method, obfs, pwd_b64 = parts[:6]
+            params = urllib.parse.parse_qs(param_str)
+            proxy = {
+                "name": temp_name,
+                "type": "ssr",
+                "server": host,
+                "port": int(port_str),
+                "protocol": protocol,
+                "cipher": method,
+                "obfs": obfs,
+                "password": decode_base64_safe(pwd_b64),
+                "udp": True
+            }
+            if "obfsparam" in params:
+                proxy["obfs-param"] = decode_base64_safe(next(iter(params["obfsparam"])))
+            if "protoparam" in params:
+                proxy["protocol-param"] = decode_base64_safe(next(iter(params["protoparam"])))
+            return proxy
+        parsed = urllib.parse.urlparse(no_tag)
+        params = urllib.parse.parse_qs(parsed.query)
+
+        def get_p(k, default=""):
+            vals = params.get(k)
+            return str(next(iter(vals))).strip() if vals else default
+
+        if not (parsed.hostname and parsed.port):
+            return None
+
+        host = str(parsed.hostname)
+        port = int(parsed.port)
+        user = urllib.parse.unquote(parsed.username or "")
+        pwd = urllib.parse.unquote(parsed.password or "")
+        sni = get_p("sni") or get_p("peer") or host
+
+        if scheme == "vless":
+            if not user:
+                return None
+            net = get_p("type", "tcp").lower()
+            security = get_p("security", "none").lower()
+            proxy = {
+                "name": temp_name,
+                "type": "vless",
+                "server": host,
+                "port": port,
+                "uuid": user,
+                "udp": True,
+                "tls": security in ("tls", "reality"),
+                "skip-cert-verify": True,
+                "servername": sni,
+                "network": net
+            }
+            flow = get_p("flow")
+            if flow:
+                proxy["flow"] = flow
+            if security == "reality":
+                pbk = get_p("pbk")
+                sid = get_p("sid", "")
+                if not pbk:
+                    return None
+                if sid and (len(sid) > 16 or len(sid) % 2 != 0 or not re.fullmatch(r"[0-9a-fA-F]+", sid)):
+                    return None
+                proxy["reality-opts"] = {"public-key": pbk, "short-id": sid}
+                proxy["client-fingerprint"] = get_p("fp", "chrome") or "chrome"
+            apply_transport_opts(proxy, net, get_p, sni)
+            return proxy
+
+        if scheme == "trojan":
+            if not user:
+                return None
+            net = get_p("type", "tcp").lower()
+            proxy = {
+                "name": temp_name,
+                "type": "trojan",
+                "server": host,
+                "port": port,
+                "password": user,
+                "udp": True,
+                "sni": sni,
+                "skip-cert-verify": True,
+                "network": net
+            }
+            apply_transport_opts(proxy, net, get_p, sni)
+            return proxy
+
+        if scheme in ("hy2", "hysteria2"):
+            auth = f"{user}:{pwd}" if pwd else user
+            if not auth:
+                return None
+            proxy = {
+                "name": temp_name,
+                "type": "hysteria2",
+                "server": host,
+                "port": port,
+                "password": auth,
+                "sni": sni,
+                "skip-cert-verify": True
+            }
+            obfs = get_p("obfs")
+            if obfs and obfs != "none":
+                proxy["obfs"] = obfs
+                if get_p("obfs-password"):
+                    proxy["obfs-password"] = get_p("obfs-password")
+            if get_p("mport"):
+                proxy["ports"] = get_p("mport")
+            return proxy
+
+        if scheme == "hysteria":
+            proxy = {
+                "name": temp_name,
+                "type": "hysteria",
+                "server": host,
+                "port": port,
+                "auth-str": get_p("auth") or user,
+                "up": get_p("upmbps", "50"),
+                "down": get_p("downmbps", "100"),
+                "protocol": get_p("protocol", "udp"),
+                "sni": sni,
+                "skip-cert-verify": True
+            }
+            if get_p("obfsParam"):
+                proxy["obfs"] = get_p("obfsParam")
+            if get_p("alpn"):
+                proxy["alpn"] = [a.strip() for a in get_p("alpn").split(",") if a.strip()]
+            return proxy
+
+        if scheme == "tuic":
+            if not (user and pwd):
+                return None
+            proxy = {
+                "name": temp_name,
+                "type": "tuic",
+                "server": host,
+                "port": port,
+                "uuid": user,
+                "password": pwd,
+                "sni": sni,
+                "skip-cert-verify": True,
+                "congestion-controller": get_p("congestion_control", "bbr"),
+                "udp-relay-mode": get_p("udp_relay_mode", "native")
+            }
+            if get_p("alpn"):
+                proxy["alpn"] = [a.strip() for a in get_p("alpn").split(",") if a.strip()]
+            return proxy
+
+        if scheme in ("wg", "wireguard"):
+            pk = user or get_p("privateKey") or get_p("private_key")
+            pub = get_p("publicKey") or get_p("public_key")
+            if not (pk and pub):
+                return None
+            raw_addr = get_p("address", "10.0.0.2/32")
+            ip_val = next(iter(raw_addr.split(","))).strip()
+            proxy = {
+                "name": temp_name,
+                "type": "wireguard",
+                "server": host,
+                "port": port,
+                "private-key": pk,
+                "public-key": pub,
+                "ip": ip_val,
+                "udp": True
+            }
+            if get_p("mtu"):
+                proxy["mtu"] = int(get_p("mtu"))
+            if get_p("reserved"):
+                res = [int(x) for x in get_p("reserved").split(",") if x.strip().isdigit()]
+                if res:
+                    proxy["reserved"] = res
+            return proxy
+
+        if scheme == "anytls":
+            if not user:
+                return None
+            return {
+                "name": temp_name,
+                "type": "anytls",
+                "server": host,
+                "port": port,
+                "password": user,
+                "sni": sni,
+                "skip-cert-verify": True,
+                "udp": True
+            }
+    except Exception:
+        return None
+    return None
 def load_existing_final():
     """Загружает существующие рабочие серверы из final.txt в их оригинальном виде."""
     existing = {}
@@ -187,45 +463,34 @@ def save_final_pool(records):
 
 
 def test_one_server_isolated(orig_uri, slot_id, encoded_test_url):
-    """Использует фиксированные файлы слота внутри /tmp/mihomo_checker."""
+    """Проверенный способ запуска mihomo через proxies: [p_dict] в /tmp/mihomo_checker."""
+    p_dict = uri_to_clash_dict(orig_uri, "single_node")
+    if not p_dict:
+        return orig_uri, 0, "INVALID_FORMAT"
+
     time.sleep(slot_id * 0.25)
 
     api_port = BASE_PORT + slot_id
-    sub_path = os.path.join(WORK_TMP_DIR, f"sub_slot_{slot_id}.txt")
     cfg_path = os.path.join(WORK_TMP_DIR, f"cfg_slot_{slot_id}.yaml")
+    temp_config = {
+        "external-controller": f"127.0.0.1:{api_port}",
+        "dns": {
+            "enable": True,
+            "ipv6": False,
+            "nameserver": ["1.1.1.1", "8.8.8.8"]
+        },
+        "proxies": [p_dict],
+        "proxy-groups": [
+            {
+                "name": "AUTO",
+                "type": "select",
+                "proxies": ["single_node"]
+            }
+        ]
+    }
 
     proc = None
     try:
-        with open(sub_path, "w", encoding="utf-8") as f:
-            f.write(f"{orig_uri}\n")
-
-        temp_config = {
-            "external-controller": f"127.0.0.1:{api_port}",
-            "log-level": "silent",
-            "dns": {
-                "enable": True,
-                "ipv6": False,
-                "nameserver": ["1.1.1.1", "8.8.8.8"]
-            },
-            "proxy-providers": {
-                "test_prov": {
-                    "type": "file",
-                    "path": sub_path,
-                    "interval": 3600,
-                    "health-check": {
-                        "enable": False
-                    }
-                }
-            },
-            "proxy-groups": [
-                {
-                    "name": "AUTO",
-                    "type": "select",
-                    "use": ["test_prov"]
-                }
-            ]
-        }
-
         with open(cfg_path, "w", encoding="utf-8") as f:
             yaml.dump(temp_config, f, allow_unicode=True)
 
@@ -234,72 +499,21 @@ def test_one_server_isolated(orig_uri, slot_id, encoded_test_url):
             stdout=subprocess.DEVNULL,
             stderr=subprocess.DEVNULL
         )
+        time.sleep(1.2)
 
-        api_ready = False
-        for _ in range(12):
-            time.sleep(0.35)
-            if proc.poll() is not None:
-                return orig_uri, 0, "MIHOMO_EXITED"
-            try:
-                ver_r = requests.get(f"{LOCAL_API_HOST}:{api_port}/version", timeout=2)
-                if ver_r.status_code == 200:
-                    api_ready = True
-                    break
-            except Exception:
-                continue
+        if proc.poll() is not None:
+            return orig_uri, 0, "MIHOMO_REJECTED_NODE"
 
-        if not api_ready:
-            return orig_uri, 0, "API_TIMEOUT"
-
-        try:
-            requests.put(f"{LOCAL_API_HOST}:{api_port}/providers/proxies/test_prov", timeout=3)
-        except Exception:
-            pass
-
-        node_name = None
-        for url_ep in (
-            f"{LOCAL_API_HOST}:{api_port}/providers/proxies/test_prov",
-            f"{LOCAL_API_HOST}:{api_port}/proxies"
-        ):
-            try:
-                r_p = requests.get(url_ep, timeout=3)
-                if r_p.status_code != 200:
-                    continue
-                payload = r_p.json().get("proxies", {})
-                if isinstance(payload, list):
-                    for item in payload:
-                        if isinstance(item, dict) and item.get("name") and item.get("name") not in BUILTIN_PROXY_NAMES:
-                            node_name = item.get("name")
-                            break
-                elif isinstance(payload, dict):
-                    for k, item in payload.items():
-                        if k not in BUILTIN_PROXY_NAMES and isinstance(item, dict) and item.get("type") not in (
-                            "Selector", "URLTest", "Fallback", "LoadBalance", "Direct", "Reject", "Compatible", "Pass"
-                        ):
-                            node_name = k
-                            break
-                if node_name:
-                    break
-            except Exception:
-                continue
-
-        if not node_name:
-            return orig_uri, 0, "NODE_NOT_PARSED"
-
-        encoded_name = urllib.parse.quote(node_name, safe="")
         check_url = (
-            f"{LOCAL_API_HOST}:{api_port}/proxies/{encoded_name}/delay"
+            f"{LOCAL_API_HOST}:{api_port}/proxies/single_node/delay"
             f"?timeout={DELAY_TIMEOUT_MS}&url={encoded_test_url}&expected=204"
         )
         r = requests.get(check_url, timeout=HTTP_DELAY_TIMEOUT_SEC)
-
-        if r.status_code == 200:
-            data = r.json()
-            if "delay" in data:
-                ping = int(data["delay"])
-                if 0 < ping < MAX_PING:
-                    return orig_uri, ping, "OK"
-                return orig_uri, ping, f"HIGH_PING({ping})"
+        if r.status_code == 200 and "delay" in r.json():
+            ping = int(r.json()["delay"])
+            if 0 < ping < MAX_PING:
+                return orig_uri, ping, "OK"
+            return orig_uri, ping, f"HIGH_PING({ping})"
         return orig_uri, 0, f"HTTP_{r.status_code}"
     except Exception as e:
         return orig_uri, 0, f"ERR:{e}"
@@ -320,7 +534,6 @@ def test_nodes_individually(nodes_to_test, existing_records, test_url, pass_labe
     encoded_test_url = urllib.parse.quote(test_url, safe="")
     added_count = 0
     unflushed_count = 0
-    fail_samples = 0
 
     for start_idx in range(0, len(nodes_to_test), MAX_WORKERS):
         if len(existing_records) >= MAX_WORKING:
@@ -344,9 +557,6 @@ def test_nodes_individually(nodes_to_test, existing_records, test_url, pass_labe
                         existing_records = save_final_pool(existing_records)
                         unflushed_count = 0
                         log_debug(f"[{pass_label}] Сохранено в {FINAL_FILE}: {len(existing_records)}/{MAX_WORKING}")
-                elif status != "OK" and fail_samples < 3:
-                    fail_samples += 1
-                    log_debug(f"[{pass_label} FAIL: {status}] {orig_uri[:45]}")
 
         if len(existing_records) < MAX_WORKING and (start_idx + MAX_WORKERS) < len(nodes_to_test):
             time.sleep(WAVE_COOLDOWN_SEC)
@@ -389,7 +599,6 @@ def save_sub_stats(stats):
 
 
 def parse_sub_line(stripped):
-    """Возвращает (is_permanently_bad, current_bad_days, clean_line_without_bad)."""
     if re.match(r"^BAD!_00(?:\s+|$)", stripped, re.IGNORECASE):
         return True, 0, stripped
     m = re.match(r"^BAD!(?:_(\d{1,2}))?\s+(.*)$", stripped, re.IGNORECASE)
@@ -417,7 +626,6 @@ def normalize_github_url(url):
 def run_subscription_pass(
     sub_lines, sub_stats, records, start_time, today_str, test_url, pass_label, dead_urls_cache
 ):
-    """Выполняет один полный проход по списку подписок с заданным test_url."""
     total_lines = len(sub_lines)
     cursor = read_cursor()
     if cursor >= total_lines:
@@ -522,7 +730,6 @@ def run_subscription_pass(
 
 
 def main():
-    # Сразу при старте очищаем /tmp/mihomo_checker и любые оставшиеся временные файлы
     cleanup_temp_artifacts(recreate=True)
 
     with open("debug_log.txt", "w", encoding="utf-8") as f:
