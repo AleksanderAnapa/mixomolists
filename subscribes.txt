@@ -63,22 +63,22 @@ https://raw.githubusercontent.com/245237866/v2rayn/main/everydaynode
 https://raw.githubusercontent.com/Creativveb/v2configs/main/updated
 https://raw.githubusercontent.com/dalazhi/v2ray/main/v2ray%E8%AE%A2%E9%98%85
 https://raw.githubusercontent.com/hsb4657/v2ray/main/lastest.txt
-BAD!_04 https://raw.githubusercontent.com/eycorsican/rule-sets/master/kitsunebi_sub
+BAD!_05 https://raw.githubusercontent.com/eycorsican/rule-sets/master/kitsunebi_sub
 https://raw.githubusercontent.com/imohammadkhalili/V2RAY/main/Mkhalili
 https://raw.githubusercontent.com/Jia-Pingwa/free-v2ray-merge/main/output.txt
-BAD!_04 https://raw.githubusercontent.com/relcom/ssr_subscrible_tool/refs/heads/master/node.txt
-BAD!_04 https://raw.githubusercontent.com/lisylva-lee/v2dyku/main/v2dy
+BAD!_05 https://raw.githubusercontent.com/relcom/ssr_subscrible_tool/refs/heads/master/node.txt
+BAD!_05 https://raw.githubusercontent.com/lisylva-lee/v2dyku/main/v2dy
 https://raw.githubusercontent.com/jikelonglie/meskell/main/meskell
-BAD!_04 https://raw.githubusercontent.com/iwxf/free-v2ray/master/index.html
+BAD!_05 https://raw.githubusercontent.com/iwxf/free-v2ray/master/index.html
 https://raw.githubusercontent.com/lflflf999/0516/main/BX-JD
 https://raw.githubusercontent.com/adminaliang/v2ray/main/v2ray
-BAD!_04 https://raw.githubusercontent.com/aiboboxx/v2rayfree/main/v2
+BAD!_05 https://raw.githubusercontent.com/aiboboxx/v2rayfree/main/v2
 https://raw.githubusercontent.com/ripaojiedian/freenode/main/sub
 https://raw.githubusercontent.com/gitbigg/permalink/main/subscribe
 https://raw.githubusercontent.com/gtang8/SubCrawler/main/sub/share/all
-BAD!_04 https://raw.githubusercontent.com/budamu/clashconfig/main/v2ray.txt
-BAD!_04 https://raw.githubusercontent.com/budamu/clashconfig/main/v2ray2.txt
-BAD!_04 https://raw.githubusercontent.com/mfuu/v2ray/refs/heads/master/v2ray
+BAD!_05 https://raw.githubusercontent.com/budamu/clashconfig/main/v2ray.txt
+BAD!_05 https://raw.githubusercontent.com/budamu/clashconfig/main/v2ray2.txt
+BAD!_05 https://raw.githubusercontent.com/mfuu/v2ray/refs/heads/master/v2ray
 https://raw.githubusercontent.com/snakem982/proxypool/main/source/v2ray-2.txt
 https://raw.githubusercontent.com/10ium/VpnClashFaCollector/main/sub/all/mixed.txt
 https://raw.githubusercontent.com/morteza-v2/free-v2ray-irancell-config/refs/heads/main/Sub1.txt
