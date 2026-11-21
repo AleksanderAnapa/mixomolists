@@ -70,5 +70,9 @@
   "https://raw.githubusercontent.com/luxxuria/harvester/refs/heads/main/non_ru.txt": {
     "days": 1,
     "last_fail_date": "2026-11-21"
+  },
+  "https://github.com/bobrinaw/vlessforu/raw/refs/heads/main/working_configs.txt": {
+    "days": 1,
+    "last_fail_date": "2026-11-21"
   }
 }
