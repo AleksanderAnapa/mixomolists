@@ -1,1 +1,0 @@
-vless://e19c43f2-fbe9-4a05-8f20-a8ef5e0f9409@ipfast.kingmna.com:443?encryption=none&host=kabibe594.global.ssl.fastly.net.&path=%2F&security=tls&sni=cdn.akamai.steamstatic.com&type=ws#4FreeIran-638fe914c1
