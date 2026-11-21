@@ -1,0 +1,1 @@
+vless://e17ca473-bd02-4fe6-873f-5866d729b0a3@149.28.152.20:443?encryption=none&security=reality&sni=itunes.apple.com&fp=chrome&pbk=sli7AT0WEhYMVMARhHh-ZQMK7zHHn0cGsxw2gPhoBis&sid=107ff148&type=ws&host=itunes.apple.com&path=%2Fws#4FreeIran-0a0a7a8c2a
