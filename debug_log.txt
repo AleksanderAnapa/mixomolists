@@ -1,17 +1,31 @@
 === СТАРТ ПОПОЛНЕНИЯ FINAL.TXT ===
-[05:00:54] В текущем final.txt уже есть уникальных серверов: 59/60
-[05:00:55] Загружено CIDR-подсетей стран: 56708
-[05:00:55] Проверка подписки [100/106] (сбоев: 0 дн.): https://raw.githubusercontent.com/ssrsub/ssr/refs/heads/mast
-[05:00:55] Найдено серверов в подписке: 35 (подходящих: 27)
-[05:00:56] После фильтра стран (DE->NL->FR->GB->US) осталось: 14
-[05:00:57] [OK 403ms] (60/60) vmess://eyJ2IjoiMiIsInBzIjoi8J+HuvCfh7gg5py65Zy65o6o6I2
-[05:00:57] [OK 415ms] (61/60) vmess://eyJ2IjoiMiIsInBzIjoi8J+HuvCfh7gg5py65Zy65o6o6I2
-[05:00:57] [OK 478ms] (62/60) vless://b9bfa54d-bc44-4592-a6d6-89a9665d286f@163.245.42
-[05:00:57] [OK 482ms] (63/60) vmess://eyJ2IjoiMiIsInBzIjoi8J+HuvCfh7gg5py65Zy65o6o6I2
-[05:00:57] [OK 506ms] (64/60) vmess://eyJ2IjoiMiIsInBzIjoi8J+HuvCfh7gg5py65Zy65o6o6I2
-[05:00:57] [OK 512ms] (65/60) vmess://eyJ2IjoiMiIsInBzIjoi8J+HuvCfh7gg5py65Zy65o6o6I2
-[05:00:57] [OK 487ms] (66/60) vless://b9bfa54d-bc44-4592-a6d6-89a9665d286f@edge.bookm
-[05:00:57] [OK 523ms] (67/60) vmess://eyJ2IjoiMiIsInBzIjoi8J+HuvCfh7gg5py65Zy65o6o6I2
-[05:00:57] [OK 874ms] (68/60) vless://cda0862a-0f87-4be9-8ed8-1d0c9e382839@961ec0g.nl
-[05:00:58] [OK 1598ms] (69/60) vless://cda0862a-0f87-4be9-8ed8-1d0c9e382839@162.35.101
-[05:01:00] Подписка живая (+10 в пул). Всего в final.txt: 60/60
+[05:30:52] В текущем final.txt уже есть уникальных серверов: 51/60
+[05:30:53] Загружено CIDR-подсетей стран: 56708
+[05:30:53] Проверка подписки [101/106] (сбоев: 0 дн.): https://raw.githubusercontent.com/Barabama/FreeNodes/master/
+[05:30:53] Найдено серверов в подписке: 321 (подходящих: 197)
+[05:30:55] После фильтра стран (DE->NL->FR->GB->US) осталось: 150
+[05:31:48] Подписка живая (+0 в пул). Всего в final.txt: 51/60
+[05:31:48] Проверка подписки [103/106] (сбоев: 0 дн.): https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/
+[05:31:48] Найдено серверов в подписке: 959 (подходящих: 700)
+[05:31:52] После фильтра стран (DE->NL->FR->GB->US) осталось: 569
+[05:31:58] [OK 300ms] (52/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@167.88.61.198
+[05:31:58] [OK 304ms] (53/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@167.88.61.193
+[05:31:58] [OK 302ms] (54/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@167.88.61.20:
+[05:31:58] [OK 302ms] (55/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@167.88.61.52:
+[05:31:58] [OK 328ms] (56/60) vmess://eyJhZGQiOiI1Ny4xMjkuMTMyLjIyMyIsImFpZCI6IjAiLCJ
+[05:32:04] [OK 102ms] (57/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@170.101.101.1
+[05:32:04] [OK 99ms] (58/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@170.101.101.1
+[05:32:04] [OK 100ms] (59/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.155.1
+[05:32:04] [OK 96ms] (60/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.155.5
+[05:32:04] [OK 105ms] (61/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@170.101.101.1
+[05:32:04] [OK 104ms] (62/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@170.101.101.5
+[05:32:04] [OK 100ms] (63/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.155.5
+[05:32:04] [OK 89ms] (64/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.155.2
+[05:32:04] [OK 91ms] (65/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.155.5
+[05:32:04] [OK 184ms] (66/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.156.6
+[05:32:04] [OK 188ms] (67/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.156.2
+[05:32:04] [OK 196ms] (68/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.156.8
+[05:32:04] [OK 276ms] (69/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.106.186.4
+[05:32:04] [OK 275ms] (70/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.112.12
+[05:32:04] [OK 274ms] (71/60) trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.112.13
+[05:32:04] Подписка живая (+20 в пул). Всего в final.txt: 60/60
