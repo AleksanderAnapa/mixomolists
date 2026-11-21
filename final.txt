@@ -1,7 +1,4 @@
 vless://2da03bdf-8af3-4207-96c7-d70e0dd22c36@94.249.198.124:31652?security=none&encryption=none&headerType=none&type=tcp#01_DE
-vless://ebdfaf99-41d8-4e48-8196-d54510ffb556@45.129.242.56:443?encryption=none&amp;flow=xtls-rprx-vision&amp;fp=&amp;pbk=YURKlEQ3rap4KOXXGsVFZyYev2oDU2gCEbNTXPdKWRY&amp;security=reality&amp;sid=abcdef&amp;sni=www.cloudflare.com&amp;type=tcp#02_DE
-vless://086bf957-9cd0-4e55-8280-bbef10435b41@161.97.66.16:443?encryption=none&amp;fp=&amp;pbk=R-w7BpNgtryZRBMyRoHx81OnjzAwrKhVtV1EUKLFJzc&amp;security=reality&amp;sid=086bf957&amp;sni=www.cloudflare.com&amp;type=tcp#03_DE
-vless://287db857-de04-4212-bd69-5d14083e340e@167.233.129.126:2474?encryption=none&security=none&type=tcp#04_DE
 vless://b9bfa54d-bc44-4592-a6d6-89a9665d286f@163.245.42.56:443?security=reality&encryption=none&pbk=SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc&headerType=none&fp=chrome&type=tcp&flow=xtls-rprx-vision&sni=mother-earth.fyi#05_DE
 vless://26843758-24de-4f76-b5d0-624038e353c4@153.52.85.198:443?encryption=none&fp=&pbk=xv6OUZcyzEHXFMTfumuJH-1Rd4NQ0cdmWikek4mm0m4&security=reality&sid=c71118d9399fb8c2&sni=15d7fft.nl11.h1clayd.click&type=tcp#06_DE
 vless://086bf957-9cd0-4e55-8280-bbef10435b41@ai.smrtai.top:443?security=reality&encryption=none&pbk=R-w7BpNgtryZRBMyRoHx81OnjzAwrKhVtV1EUKLFJzc&headerType=none&fp=chrome&type=tcp&sni=www.cloudflare.com&sid=086bf957#07_DE
