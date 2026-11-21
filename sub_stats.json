@@ -48,12 +48,12 @@
     "last_fail_date": "2026-11-21"
   },
   "https://raw.githubusercontent.com/mahdibland/V2RayAggregator/main/sub/list/66.txt": {
-    "days": 4,
-    "last_fail_date": "2026-11-20"
+    "days": 5,
+    "last_fail_date": "2026-11-21"
   },
   "https://raw.githubusercontent.com/Epodonios/v2ray-configs/main/Sub45.txt": {
-    "days": 4,
-    "last_fail_date": "2026-11-20"
+    "days": 5,
+    "last_fail_date": "2026-11-21"
   },
   "https://raw.githubusercontent.com/ndsphonemy/proxy-sub/refs/heads/main/wg.txt": {
     "days": 2,
