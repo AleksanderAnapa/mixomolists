@@ -2,7 +2,7 @@ name: Parse and Test
 
 on:
   schedule:
-    - cron: '0 */2 * * *'
+    - cron: '0 */1 * * *'
   workflow_dispatch:
 
 permissions:
@@ -16,7 +16,7 @@ concurrency:
 jobs:
   parse_and_test:
     runs-on: ubuntu-latest
-    timeout-minutes: 115
+    timeout-minutes: 57
     steps:
       - name: Скачать репозиторий
         uses: actions/checkout@v7
