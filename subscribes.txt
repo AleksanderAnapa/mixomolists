@@ -1,5 +1,5 @@
 https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-NL.txt
-https://github.com/bobrinaw/vlessforu/raw/refs/heads/main/working_configs.txt
+BAD!_02 https://github.com/bobrinaw/vlessforu/raw/refs/heads/main/working_configs.txt
 https://github.com/FLAT447/v2ray-lists/raw/refs/heads/main/BLACK_LTE.txt
 https://github.com/kort0881/vpn-vless-configs-russia/raw/refs/heads/main/output/vless.txt
 https://github.com/igareck/vpn-configs-for-russia/raw/refs/heads/main/WHITE-CIDR-RU-all.txt

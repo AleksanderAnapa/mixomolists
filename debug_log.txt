@@ -1,3 +1,34 @@
 === СТАРТ ПОПОЛНЕНИЯ FINAL.TXT ===
-[17:31:03] В текущем final.txt уже есть уникальных серверов: 60/60
-[17:31:03] Список уже полон (60/60). Новые серверы не требуются.
+[22:34:28] В текущем final.txt уже есть уникальных серверов: 0/60
+[22:34:28] === ПРОХОД 1 (TEST_URL) ===
+[22:34:28] [TEST1] Подписка [1/93] (сбоев: 0 дн.): https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/ou
+[22:34:28] [TEST1] Найдено серверов в подписке: 64
+[22:34:31] [TEST1 OK 480ms] (1/60) vless://44ae52b9-76fc-444d-8e43-186b4384b80a@86.54.28.7
+[22:34:31] [TEST1 OK 506ms] (2/60) vless://44ae52b9-76fc-444d-8e43-186b4384b80a@free-amste
+[22:34:47] [TEST1 OK 524ms] (3/60) vless://bc058e69-0444-4c7b-98da-bd67f0b143da@130.12.242
+[22:34:47] [TEST1 OK 483ms] (4/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
+[22:34:58] [TEST1 OK 519ms] (5/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
+[22:34:58] [TEST1] Сохранено в final.txt: 5/60
+[22:35:21] [TEST1 OK 479ms] (6/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
+[22:35:21] [TEST1 OK 502ms] (7/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
+[22:35:25] [TEST1 OK 646ms] (8/60) hy2://d4ca9415f0eac7897472e1e5b86d2e96@promo.betust.net
+[22:35:42] [TEST1 OK 508ms] (9/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
+[22:35:46] [TEST1 OK 548ms] (10/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
+[22:35:46] [TEST1] Сохранено в final.txt: 10/60
+[22:35:46] [TEST1 OK 521ms] (11/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
+[22:36:00] [TEST1] Сохранен остаток в final.txt: 11/60
+[22:36:00] [TEST1] Подписка живая (+11 в пул). В final.txt: 11/60
+[22:36:00] [TEST1] Подписка [2/93] (сбоев: 0 дн.): https://github.com/bobrinaw/vlessforu/raw/refs/heads/main/wo
+[22:36:00] [TEST1] Найдено серверов в подписке: 0
+[22:36:00] [TEST1] Подписка пуста/недоступна -> BAD!_02: https://github.com/bobrinaw/vlessforu/raw/refs/heads/ma
+[22:36:00] [TEST1] Подписка [3/93] (сбоев: 0 дн.): https://github.com/FLAT447/v2ray-lists/raw/refs/heads/main/B
+[22:36:00] [TEST1] Найдено серверов в подписке: 1
+[22:36:02] [TEST1] Подписка живая (+0 в пул). В final.txt: 11/60
+[22:36:02] [TEST1] Подписка [4/93] (сбоев: 0 дн.): https://github.com/kort0881/vpn-vless-configs-russia/raw/ref
+[22:36:03] [TEST1] Найдено серверов в подписке: 39
+[22:36:18] [TEST1] Подписка живая (+0 в пул). В final.txt: 11/60
+[22:36:18] [TEST1] Подписка [5/93] (сбоев: 0 дн.): https://github.com/igareck/vpn-configs-for-russia/raw/refs/h
+[22:36:18] [TEST1] Найдено серверов в подписке: 139
+[22:36:32] [TEST1 OK 583ms] (12/60) vless://631263fd-3e12-49ac-be1b-c26bcc36ba43@189.74.115
+[22:37:07] [TEST1 OK 965ms] (13/60) vless://2ccb06b6-9eac-44eb-ade7-c1e5afb8e7df@83.171.241
+[22:37:08] [TEST1 OK 785ms] (14/60) vless://2ccb06b6-9eac-44eb-ade7-c1e5afb8e7df@a80b5386.f
