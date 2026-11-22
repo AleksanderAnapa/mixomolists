@@ -1,11 +1,11 @@
 https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-NL.txt
-https://raw.githubusercontent.com/bobrinaw/vlessforu/refs/heads/main/working_configs.txt
+BAD!_02 https://github.com/bobrinaw/vlessforu/raw/refs/heads/main/working_configs.txt
 https://github.com/FLAT447/v2ray-lists/raw/refs/heads/main/BLACK_LTE.txt
 https://github.com/kort0881/vpn-vless-configs-russia/raw/refs/heads/main/output/vless.txt
 https://github.com/igareck/vpn-configs-for-russia/raw/refs/heads/main/WHITE-CIDR-RU-all.txt
 https://github.com/igareck/vpn-configs-for-russia/raw/refs/heads/main/Vless-Reality-White-Lists-Rus-Mobile.txt
 https://github.com/igareck/vpn-configs-for-russia/raw/refs/heads/main/BLACK_VLESS_RUS_mobile.txt
-https://raw.githubusercontent.com/luxxuria/harvester/refs/heads/main/non_ru.txt
+BAD!_02 https://raw.githubusercontent.com/luxxuria/harvester/refs/heads/main/non_ru.txt
 
 https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/refs/heads/main/output_configs/Kazakhstan.txt
 https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/refs/heads/main/output_configs/Estonia.txt

@@ -1,34 +1,105 @@
 === СТАРТ ПОПОЛНЕНИЯ FINAL.TXT ===
-[22:34:28] В текущем final.txt уже есть уникальных серверов: 0/60
-[22:34:28] === ПРОХОД 1 (TEST_URL) ===
-[22:34:28] [TEST1] Подписка [1/93] (сбоев: 0 дн.): https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/ou
-[22:34:28] [TEST1] Найдено серверов в подписке: 64
-[22:34:31] [TEST1 OK 480ms] (1/60) vless://44ae52b9-76fc-444d-8e43-186b4384b80a@86.54.28.7
-[22:34:31] [TEST1 OK 506ms] (2/60) vless://44ae52b9-76fc-444d-8e43-186b4384b80a@free-amste
-[22:34:47] [TEST1 OK 524ms] (3/60) vless://bc058e69-0444-4c7b-98da-bd67f0b143da@130.12.242
-[22:34:47] [TEST1 OK 483ms] (4/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
-[22:34:58] [TEST1 OK 519ms] (5/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
-[22:34:58] [TEST1] Сохранено в final.txt: 5/60
-[22:35:21] [TEST1 OK 479ms] (6/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
-[22:35:21] [TEST1 OK 502ms] (7/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
-[22:35:25] [TEST1 OK 646ms] (8/60) hy2://d4ca9415f0eac7897472e1e5b86d2e96@promo.betust.net
-[22:35:42] [TEST1 OK 508ms] (9/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
-[22:35:46] [TEST1 OK 548ms] (10/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
-[22:35:46] [TEST1] Сохранено в final.txt: 10/60
-[22:35:46] [TEST1 OK 521ms] (11/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
-[22:36:00] [TEST1] Сохранен остаток в final.txt: 11/60
-[22:36:00] [TEST1] Подписка живая (+11 в пул). В final.txt: 11/60
-[22:36:00] [TEST1] Подписка [2/93] (сбоев: 0 дн.): https://github.com/bobrinaw/vlessforu/raw/refs/heads/main/wo
-[22:36:00] [TEST1] Найдено серверов в подписке: 0
-[22:36:00] [TEST1] Подписка пуста/недоступна -> BAD!_02: https://github.com/bobrinaw/vlessforu/raw/refs/heads/ma
-[22:36:00] [TEST1] Подписка [3/93] (сбоев: 0 дн.): https://github.com/FLAT447/v2ray-lists/raw/refs/heads/main/B
-[22:36:00] [TEST1] Найдено серверов в подписке: 1
-[22:36:02] [TEST1] Подписка живая (+0 в пул). В final.txt: 11/60
-[22:36:02] [TEST1] Подписка [4/93] (сбоев: 0 дн.): https://github.com/kort0881/vpn-vless-configs-russia/raw/ref
-[22:36:03] [TEST1] Найдено серверов в подписке: 39
-[22:36:18] [TEST1] Подписка живая (+0 в пул). В final.txt: 11/60
-[22:36:18] [TEST1] Подписка [5/93] (сбоев: 0 дн.): https://github.com/igareck/vpn-configs-for-russia/raw/refs/h
-[22:36:18] [TEST1] Найдено серверов в подписке: 139
-[22:36:32] [TEST1 OK 583ms] (12/60) vless://631263fd-3e12-49ac-be1b-c26bcc36ba43@189.74.115
-[22:37:07] [TEST1 OK 965ms] (13/60) vless://2ccb06b6-9eac-44eb-ade7-c1e5afb8e7df@83.171.241
-[22:37:08] [TEST1 OK 785ms] (14/60) vless://2ccb06b6-9eac-44eb-ade7-c1e5afb8e7df@a80b5386.f
+[22:38:12] В текущем final.txt уже есть уникальных серверов: 0/60
+[22:38:12] === ПРОХОД 1 (TEST_URL) ===
+[22:38:12] [TEST1] Подписка [1/93] (сбоев: 0 дн.): https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/ou
+[22:38:12] [TEST1] Найдено серверов в подписке: 64
+[22:38:14] [TEST1 OK 345ms] (1/60) vless://44ae52b9-76fc-444d-8e43-186b4384b80a@86.54.28.7
+[22:38:15] [TEST1 OK 361ms] (2/60) vless://44ae52b9-76fc-444d-8e43-186b4384b80a@free-amste
+[22:38:30] [TEST1 OK 387ms] (3/60) vless://bc058e69-0444-4c7b-98da-bd67f0b143da@130.12.242
+[22:38:31] [TEST1 OK 351ms] (4/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
+[22:38:41] [TEST1 OK 348ms] (5/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
+[22:38:41] [TEST1] Сохранено в final.txt: 5/60
+[22:39:04] [TEST1 OK 385ms] (6/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
+[22:39:05] [TEST1 OK 360ms] (7/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
+[22:39:09] [TEST1 OK 484ms] (8/60) hy2://d4ca9415f0eac7897472e1e5b86d2e96@promo.betust.net
+[22:39:26] [TEST1 OK 357ms] (9/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
+[22:39:29] [TEST1 OK 352ms] (10/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
+[22:39:29] [TEST1] Сохранено в final.txt: 10/60
+[22:39:30] [TEST1 OK 358ms] (11/60) vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206
+[22:39:43] [TEST1] Сохранен остаток в final.txt: 11/60
+[22:39:43] [TEST1] Подписка живая (+11 в пул). В final.txt: 11/60
+[22:39:43] [TEST1] Подписка [2/93] (сбоев: 0 дн.): https://github.com/bobrinaw/vlessforu/raw/refs/heads/main/wo
+[22:39:43] [TEST1] Найдено серверов в подписке: 0
+[22:39:43] [TEST1] Подписка пуста/недоступна -> BAD!_02: https://github.com/bobrinaw/vlessforu/raw/refs/heads/ma
+[22:39:43] [TEST1] Подписка [3/93] (сбоев: 0 дн.): https://github.com/FLAT447/v2ray-lists/raw/refs/heads/main/B
+[22:39:43] [TEST1] Найдено серверов в подписке: 1
+[22:39:45] [TEST1] Подписка живая (+0 в пул). В final.txt: 11/60
+[22:39:45] [TEST1] Подписка [4/93] (сбоев: 0 дн.): https://github.com/kort0881/vpn-vless-configs-russia/raw/ref
+[22:39:45] [TEST1] Найдено серверов в подписке: 39
+[22:40:00] [TEST1] Подписка живая (+0 в пул). В final.txt: 11/60
+[22:40:00] [TEST1] Подписка [5/93] (сбоев: 0 дн.): https://github.com/igareck/vpn-configs-for-russia/raw/refs/h
+[22:40:00] [TEST1] Найдено серверов в подписке: 139
+[22:40:14] [TEST1 OK 447ms] (12/60) vless://5cb1094a-4c3f-4cef-a4f0-bc00214022ce@189.74.115
+[22:40:16] [TEST1 OK 2472ms] (13/60) vless://631263fd-3e12-49ac-be1b-c26bcc36ba43@189.74.115
+[22:40:49] [TEST1 OK 811ms] (14/60) vless://2ccb06b6-9eac-44eb-ade7-c1e5afb8e7df@83.171.241
+[22:40:50] [TEST1 OK 609ms] (15/60) vless://2ccb06b6-9eac-44eb-ade7-c1e5afb8e7df@a80b5386.f
+[22:41:01] [TEST1 OK 1245ms] (16/60) vless://6bd1d88f-0a26-4d21-b325-15d85120b883@185.178.20
+[22:41:01] [TEST1] Сохранено в final.txt: 16/60
+[22:41:02] [TEST1 OK 1968ms] (17/60) vless://6bd1d88f-0a26-4d21-b325-15d85120b883@sw-api.tel
+[22:43:34] [TEST1 OK 684ms] (18/60) vless://cde5d3ef-7d14-1f40-a74d-ac98e39bf9ec@168.113.13
+[22:43:44] [TEST1 OK 645ms] (19/60) vless://cde5d3ef-7d14-03e8-a74d-ac98e39bf9ec@168.113.13
+[22:43:44] [TEST1 OK 636ms] (20/60) vless://cde5d3ef-7d14-32c8-a74d-ac98e39bf9ec@168.113.13
+[22:43:54] [TEST1] Сохранен остаток в final.txt: 20/60
+[22:43:54] [TEST1] Подписка живая (+9 в пул). В final.txt: 20/60
+[22:43:54] [TEST1] Подписка [6/93] (сбоев: 0 дн.): https://github.com/igareck/vpn-configs-for-russia/raw/refs/h
+[22:43:54] [TEST1] Найдено серверов в подписке: 116
+[22:46:08] [TEST1 OK 1040ms] (21/60) vless://a0c51c22-e51f-41a0-b7f8-480bcdc24e09@129.101.99
+[22:46:18] [TEST1 OK 575ms] (22/60) vless://cde5d3ef-7d14-3a98-a74d-ac98e39bf9ec@168.113.13
+[22:46:34] [TEST1] Сохранен остаток в final.txt: 22/60
+[22:46:34] [TEST1] Подписка живая (+2 в пул). В final.txt: 22/60
+[22:46:34] [TEST1] Подписка [7/93] (сбоев: 0 дн.): https://github.com/igareck/vpn-configs-for-russia/raw/refs/h
+[22:46:34] [TEST1] Найдено серверов в подписке: 137
+[22:46:36] [TEST1 OK 843ms] (23/60) vless://3692de53-42e6-4aed-a522-40ec355dcd2f@104.17.70.
+[22:46:40] [TEST1 OK 619ms] (24/60) vless://88e79aa6-f431-4453-8dcc-652a0c747198@172.67.197
+[22:46:41] [TEST1 OK 624ms] (25/60) vless://88e79aa6-f431-4453-8dcc-652a0c747198@188.114.98
+[22:46:47] [TEST1 OK 1597ms] (26/60) vless://ead3595f-4020-4e76-a3ec-c248e1a2f2f7@free.fugui
+[22:46:53] [TEST1 OK 1957ms] (27/60) vless://3692de53-42e6-4aed-a522-40ec355dcd2f@104.27.97.
+[22:46:53] [TEST1] Сохранено в final.txt: 27/60
+[22:46:58] [TEST1 OK 2588ms] (28/60) vless://ead3595f-4020-4e76-a3ec-c248e1a2f2f7@free.fugui
+[22:46:58] [TEST1 OK 1783ms] (29/60) vless://4e4f1f70-5e56-4a76-bb9d-db087f4690c4@104.16.10.
+[22:46:59] [TEST1 OK 3468ms] (30/60) vless://4e4f1f70-5e56-4a76-bb9d-db087f4690c4@104.16.10.
+[22:47:10] [TEST1 OK 3315ms] (31/60) vless://4e4f1f70-5e56-4a76-bb9d-db087f4690c4@104.21.0.8
+[22:47:32] [TEST1 OK 950ms] (32/60) vless://43BCAE0A-10A6-4003-8615-BD510F4215BA@fr-free.fa
+[22:47:32] [TEST1] Сохранено в final.txt: 32/60
+[22:47:32] [TEST1 OK 2096ms] (33/60) vless://4d8d9640-7cc7-4c55-ba54-6ce0d1709541@141.193.21
+[22:47:39] [TEST1 OK 235ms] (34/60) vless://631263fd-3e12-49ac-be1b-c26bcc36ba43@152.232.62
+[22:47:40] [TEST1 OK 417ms] (35/60) vless://65c21703-ae89-4eed-ae87-8bec8a4c000c@tachu37.to
+[22:47:41] [TEST1 OK 2126ms] (36/60) vless://b538377e-c372-414d-bd02-becfed21852f@185.16.110
+[22:47:45] [TEST1 OK 993ms] (37/60) vless://da39704f-79b2-460e-b77f-8d12397b3112@43.110.39.
+[22:47:45] [TEST1] Сохранено в final.txt: 37/60
+[22:47:45] [TEST1 OK 800ms] (38/60) vless://26843758-24de-4f76-b5d0-624038e353c4@71b840t.de
+[22:47:49] [TEST1 OK 459ms] (39/60) vless://a20ea704-ec9d-4c5d-9b12-fa760cdf2290@172.64.155
+[22:47:49] [TEST1 OK 295ms] (40/60) vless://a20ea704-ec9d-4c5d-9b12-fa760cdf2290@chatgpt.co
+[22:47:50] [TEST1 OK 694ms] (41/60) vless://c2425034-91ef-44bf-9fd4-f2be9c1e989a@chatgpt.co
+[22:47:51] [TEST1 OK 1643ms] (42/60) vless://c2425034-91ef-44bf-9fd4-f2be9c1e989a@chatgpt.co
+[22:47:51] [TEST1] Сохранено в final.txt: 42/60
+[22:47:55] [TEST1 OK 851ms] (43/60) vless://c2425034-91ef-44bf-9fd4-f2be9c1e989a@sinavm3.so
+[22:47:56] [TEST1 OK 1466ms] (44/60) hysteria2://9a9f167d-b461-466f-be50-f0ffd598a6f8@german
+[22:48:06] [TEST1 OK 1638ms] (45/60) vmess://eyJ2IjoiMiIsInBzIjoi8J+HuvCfh7ggVW5pdGVkIFN0YXR
+[22:48:07] [TEST1 OK 1412ms] (46/60) vmess://eyJ2IjoiMiIsInBzIjoi8J+HuvCfh7ggVW5pdGVkIFN0YXR
+[22:48:08] [TEST1 OK 2903ms] (47/60) vmess://eyJ2IjoiMiIsInBzIjoi8J+HuvCfh7ggVW5pdGVkIFN0YXR
+[22:48:08] [TEST1] Сохранено в final.txt: 47/60
+[22:48:08] [TEST1 OK 3409ms] (48/60) vmess://eyJ2IjoiMiIsInBzIjoi8J+HuvCfh7ggVW5pdGVkIFN0YXR
+[22:48:12] [TEST1 OK 134ms] (49/60) vmess://eyJhZGQiOiIxNzIuNjcuMTUyLjE4MyIsImFpZCI6IjAiLCJ
+[22:48:13] [TEST1 OK 2545ms] (50/60) vmess://eyJhZGQiOiIxMDQuMTcuMTM2LjE5OCIsImFpZCI6IjAiLCJ
+[22:48:13] [TEST1 OK 2805ms] (51/60) vmess://eyJ2IjoiMiIsInBzIjoi8J+HuvCfh7ggVW5pdGVkIFN0YXR
+[22:48:32] [TEST1 OK 2328ms] (52/60) vmess://eyJ2IjoiMiIsInBzIjoi8J+HuvCfh7ggVW5pdGVkIFN0YXR
+[22:48:32] [TEST1] Сохранено в final.txt: 52/60
+[22:48:32] [TEST1 OK 2140ms] (53/60) vmess://eyJ2IjoiMiIsInBzIjoi8J+HuvCfh7ggVW5pdGVkIFN0YXR
+[22:48:37] [TEST1 OK 254ms] (54/60) vmess://eyJhZGQiOiIxMDQuMjEuNy4xMzMiLCJhaWQiOiIwIiwiYWx
+[22:49:06] [TEST1 OK 3258ms] (55/60) vmess://eyJ2IjoiMiIsInBzIjoi8J+MkCBBbnljYXN0LUlQIHwg8J+
+[22:49:06] [TEST1 OK 3099ms] (56/60) vmess://eyJ2IjoiMiIsInBzIjoi8J+MkCBBbnljYXN0LUlQIHwg8J+
+[22:49:06] [TEST1 OK 3341ms] (57/60) vmess://eyJ2IjoiMiIsInBzIjoi8J+MkCBBbnljYXN0LUlQIHwg8J+
+[22:49:06] [TEST1] Сохранено в final.txt: 57/60
+[22:49:13] [TEST1 OK 703ms] (58/60) vmess://eyJhZGQiOiIxODguMTE0Ljk5LjEzNyIsImFpZCI6IjAiLCJ
+[22:49:14] [TEST1 OK 1180ms] (59/60) trojan://57beeeb0-03fc-4fc9-94da-7604488a7134@77.93.89.
+[22:49:15] [TEST1] Сохранен остаток в final.txt: 59/60
+[22:49:15] [TEST1] Подписка живая (+37 в пул). В final.txt: 59/60
+[22:49:15] [TEST1] Подписка [8/93] (сбоев: 0 дн.): https://raw.githubusercontent.com/luxxuria/harvester/refs/he
+[22:49:15] [TEST1] Найдено серверов в подписке: 0
+[22:49:15] [TEST1] Подписка пуста/недоступна -> BAD!_02: https://raw.githubusercontent.com/luxxuria/harvester/re
+[22:49:15] [TEST1] Подписка [10/93] (сбоев: 0 дн.): https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/
+[22:49:16] [TEST1] Найдено серверов в подписке: 4
+[22:49:18] [TEST1 OK 1654ms] (60/60) vless://b573cefb-7bc7-4a42-b407-b8b534e66773@109.248.17
+[22:49:18] [TEST1] Сохранен остаток в final.txt: 60/60
+[22:49:18] [TEST1] Подписка живая (+1 в пул). В final.txt: 60/60
