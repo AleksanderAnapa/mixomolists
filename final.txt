@@ -10,7 +10,6 @@ hysteria2://57beeeb0-03fc-4fc9-94da-7604488a7134@hkzfsg2.mateflora.com:443?insec
 vless://26843758-24de-4f76-b5d0-624038e353c4@79.182.70.192:443?encryption=none&fp=firefox&pbk=xv6OUZcyzEHXFMTfumuJH-1Rd4NQ0cdmWikek4mm0m4&security=reality&sid=c71118d9399fb8c2&sni=15d7fft.nl11.h1clayd.click&type=tcp#Бесплатный VPN tg:VLESSFORU 🇳🇱
 vless://a5b1d16b-719b-4bd6-9d7b-fe6d84607da9@45.9.190.245:443?type=xhttp&security=tls&fp=firefox&sni=fortuna.masynbazar.ru&host=fortuna.masynbazar.ru&mode=auto#Бесплатный VPN tg:VLESSFORU 🇳🇱
 vless://4fddfe0e-fddc-4032-b4c8-09c6d811fed0@152.53.1.170:443?flow=xtls-rprx-vision&security=tls&sni=node-au.neverlock.uk&alpn=h2%2Chttp%2F1.1#Бесплатный VPN tg:VLESSFORU 🇦🇹
-vless://e89a2a0e-7803-447e-b050-3ba67962ed95@179.254.126.86:25201?type=grpc&security=reality&fp=firefox&pbk=YOgsoXtChX3RvA0Gf9SSsP8VLP4GGk7dytVBo9qZCH4&sid=221ba0d14384ccf1&sni=s-25454.nl18.h1clayd.click&serviceName=becc6caf9bea#Бесплатный VPN tg:VLESSFORU 🇪🇪
 hysteria2://linlin-2026@3.106.35.101:36712?insecure=1#Бесплатный VPN tg:VLESSFORU 🇦🇺
 hy2://b42d90fa667942aebc734d60@159.13.55.48:20000?sni=hy2-au2.whuiy.xyz&obfs=salamander&obfs-password=b42d90fa667942aebc734d60#Бесплатный VPN tg:VLESSFORU 🇦🇺
 vless://6050b89e-8da4-47b7-973b-9baf0027754f@ab1.yndx-game.com:443?type=tcp&headerType=none&security=tls&encryption=none&sni=ab1.yndx-game.com&fp=firefox&alpn=h2%2Chttp%2F1.1&flow=xtls-rprx-vision#Бесплатный VPN tg:VLESSFORU 🇳🇱
