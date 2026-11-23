@@ -1,27 +1,26 @@
 https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-NL.txt
 https://github.com/bobrinaw/vlessforu/raw/refs/heads/main/working_configs.txt
-BAD!_02 https://github.com/FLAT447/v2ray-lists/raw/refs/heads/main/BLACK_LTE.txt
-BAD!_01 https://github.com/kort0881/vpn-vless-configs-russia/raw/refs/heads/main/output/vless.txt
-BAD!_01 https://github.com/igareck/vpn-configs-for-russia/raw/refs/heads/main/WHITE-CIDR-RU-all.txt
-BAD!_01 https://github.com/igareck/vpn-configs-for-russia/raw/refs/heads/main/Vless-Reality-White-Lists-Rus-Mobile.txt
-BAD!_01 https://github.com/igareck/vpn-configs-for-russia/raw/refs/heads/main/BLACK_VLESS_RUS_mobile.txt
-BAD!_03 https://raw.githubusercontent.com/luxxuria/harvester/refs/heads/main/non_ru.txt
-
-BAD!_01 https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/refs/heads/main/output_configs/Kazakhstan.txt
-BAD!_01 https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/refs/heads/main/output_configs/Estonia.txt
-BAD!_01 https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/refs/heads/main/output_configs/Germany.txt
-BAD!_01 https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/refs/heads/main/output_configs/France.txt
-BAD!_01 https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/refs/heads/main/output_configs/Netherlands.txt
-BAD!_01 https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/refs/heads/main/output_configs/Latvia.txt
-BAD!_01 https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/refs/heads/main/output_configs/Romania.txt
-BAD!_01 https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/refs/heads/main/output_configs/Sweden.txt
-BAD!_01 https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/refs/heads/main/output_configs/Turkey.txt
-BAD!_01 https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/refs/heads/main/output_configs/UK.txt
-BAD!_01 https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/refs/heads/main/output_configs/Armenia.txt
-BAD!_01 https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/refs/heads/main/output_configs/Belgium.txt
-BAD!_01 https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/refs/heads/main/output_configs/Canada.txt
-BAD!_01 https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/refs/heads/main/output_configs/China.txt
-BAD!_01 https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/refs/heads/main/output_configs/Czechia.txt
+https://github.com/FLAT447/v2ray-lists/raw/refs/heads/main/BLACK_LTE.txt
+https://github.com/kort0881/vpn-vless-configs-russia/raw/refs/heads/main/output/vless.txt
+https://github.com/igareck/vpn-configs-for-russia/raw/refs/heads/main/WHITE-CIDR-RU-all.txt
+https://github.com/igareck/vpn-configs-for-russia/raw/refs/heads/main/Vless-Reality-White-Lists-Rus-Mobile.txt
+https://github.com/igareck/vpn-configs-for-russia/raw/refs/heads/main/BLACK_VLESS_RUS_mobile.txt
+https://raw.githubusercontent.com/luxxuria/harvester/refs/heads/main/non_ru.txt
+https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/refs/heads/main/output_configs/Kazakhstan.txt
+https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/refs/heads/main/output_configs/Estonia.txt
+https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/refs/heads/main/output_configs/Germany.txt
+https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/refs/heads/main/output_configs/France.txt
+https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/refs/heads/main/output_configs/Netherlands.txt
+https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/refs/heads/main/output_configs/Latvia.txt
+https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/refs/heads/main/output_configs/Romania.txt
+https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/refs/heads/main/output_configs/Sweden.txt
+https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/refs/heads/main/output_configs/Turkey.txt
+https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/refs/heads/main/output_configs/UK.txt
+https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/refs/heads/main/output_configs/Armenia.txt
+https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/refs/heads/main/output_configs/Belgium.txt
+https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/refs/heads/main/output_configs/Canada.txt
+https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/refs/heads/main/output_configs/China.txt
+https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/refs/heads/main/output_configs/Czechia.txt
 
 BAD!_01 https://warp-gen.cyb-portal.org/CP-001
 BAD!_01 https://warp-gen.cyb-portal.org/CP-002
