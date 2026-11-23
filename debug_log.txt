@@ -1,13 +1,20 @@
 === СТАРТ ПОПОЛНЕНИЯ FINAL.TXT ===
-[14:20:36] В текущем final.txt уже есть уникальных серверов: 57/60
-[14:20:36] === ПРОХОД 1 (TEST_URL) ===
-[14:20:36] [TEST1] Подписка [1/90] (сбоев: 0 дн.): https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/ou
-[14:20:36] [TEST1] Найдено серверов в подписке: 64
-[14:21:31] [TEST1] Подписка живая (+0 в пул). В final.txt: 57/60
-[14:21:31] [TEST1] Подписка [2/90] (сбоев: 0 дн.): https://github.com/bobrinaw/vlessforu/raw/refs/heads/main/wo
-[14:21:31] [TEST1] Найдено серверов в подписке: 240
-[14:21:35] [TEST1 OK 2020ms] (58/60) vless://58e22afd-bf74-4736-984d-63a8ca03d7f0@31.76.3.51
-[14:22:20] [TEST1 OK 3388ms] (59/60) vless://0b6a7fe0-206b-4071-9f96-cd397d1ec01a@cedar.filn
-[14:22:29] [TEST1 OK 719ms] (60/60) vless://755a5cf7-355c-48fb-b699-01b58c64eabc@api.setevo
-[14:22:36] [TEST1] Сохранен остаток в final.txt: 60/60
-[14:22:36] [TEST1] Подписка живая (+3 в пул). В final.txt: 60/60
+[14:40:32] В текущем final.txt уже есть уникальных серверов: 53/60
+[14:40:32] === ПРОХОД 1 (TEST_URL) ===
+[14:40:32] [TEST1] Подписка [1/90] (сбоев: 0 дн.): https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/ou
+[14:40:33] [TEST1] Найдено серверов в подписке: 64
+[14:41:27] [TEST1] Подписка живая (+0 в пул). В final.txt: 53/60
+[14:41:27] [TEST1] Подписка [2/90] (сбоев: 0 дн.): https://github.com/bobrinaw/vlessforu/raw/refs/heads/main/wo
+[14:41:28] [TEST1] Найдено серверов в подписке: 236
+[14:42:00] [TEST1 OK 1100ms] (54/60) vless://a026e2a4-d9a8-0001-9978-575deda2aa3d@185.178.20
+[14:42:10] [TEST1 OK 1173ms] (55/60) vless://c2b17066-5386-0001-803b-5e652c0528f9@185.178.20
+[14:42:12] [TEST1 OK 1965ms] (56/60) vless://0b6a7fe0-206b-4071-9f96-cd397d1ec01a@amber.filn
+[14:42:12] [TEST1 OK 2848ms] (57/60) vless://0b6a7fe0-206b-4071-9f96-cd397d1ec01a@paperclip.
+[14:42:22] [TEST1 OK 1668ms] (58/60) vless://0b6a7fe0-206b-4071-9f96-cd397d1ec01a@archive.fi
+[14:42:22] [TEST1] Сохранено в final.txt: 58/60
+[14:42:23] [TEST1 OK 2113ms] (59/60) trojan://UyJoqPqycR@5.53.124.50:2095?security=tls&sni=5
+[14:42:28] [TEST1 OK 844ms] (60/60) vless://7ad63b26-bf70-4872-8fab-ebaf73a1e19d@176.98.176
+[14:42:29] [TEST1 OK 1372ms] (61/60) trojan://UyJoqPqycR@5.53.124.50:8443?security=tls&sni=5
+[14:42:29] [TEST1 OK 1183ms] (62/60) trojan://UyJoqPqycR@5.53.124.50:443?security=tls&sni=5.
+[14:42:33] [TEST1] Сохранен остаток в final.txt: 60/60
+[14:42:33] [TEST1] Подписка живая (+9 в пул). В final.txt: 60/60
