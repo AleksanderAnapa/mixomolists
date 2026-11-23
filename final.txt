@@ -57,3 +57,4 @@ vless://0b6a7fe0-206b-4071-9f96-cd397d1ec01a@188.225.36.219:443?alpn=h2&encrypti
 vless://0b6a7fe0-206b-4071-9f96-cd397d1ec01a@paperclip.filnex.baby:443?encryption=none&type=ws&security=tls&sni=candlebark.gerqix.online&fp=firefox&alpn=http/1.1&path=/api/de3/stream#YT Бесплатный VPN tg:VLESSFORU 🇩🇪
 trojan://UyJoqPqycR@5.53.124.50:2087?security=tls&sni=5.53.124.50&alpn=h2&fp=android#tg:VLESSFORU 🇹🇷
 hysteria2://7ltdv0p-ThUzWHLNKwejOnmWRVfgq7gswzL34GP_7n8@48.102.229.114:443?sni=der.substituteme.space#Бесплатный VPN tg:VLESSFORU 🇩🇪
+vless://f656c4b9-54dc-44cc-a142-e242ce687e56@78.159.250.83:443?flow=xtls-rprx-vision&security=tls&sni=dualarrow.net&alpn=http%252F1.1&fp=firefox#LTE/5G TgOnly Все операторы 🇪🇺
