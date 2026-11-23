@@ -1,4 +1,4 @@
 === СТАРТ ПОПОЛНЕНИЯ FINAL.TXT ===
-[00:00:33] В текущем final.txt уже есть серверов: 31/60
-[00:00:33] === ПРОХОД 1 (TEST_URL) ===
-[00:00:33] [TEST1] Подписка [1/93] (сбоев: 0 дн.): https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/ou
+[00:20:52] В текущем final.txt уже есть серверов: 3/60
+[00:20:52] === ПРОХОД 1 (TEST_URL) ===
+[00:20:52] [TEST1] Подписка [1/93] (сбоев: 0 дн.): https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/ou
