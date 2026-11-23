@@ -16,7 +16,7 @@ import yaml
 
 # Безопасные тайминги и лимиты для перегруженных серверов
 MAX_PING = 3500
-MAX_WORKING = 60
+MAX_WORKING = 20
 MAX_WORKERS = 6
 FLUSH_BATCH_SIZE = 5
 BASE_PORT = 9100
