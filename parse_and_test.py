@@ -145,7 +145,7 @@ def build_uri_name_map(raw_text):
         all_uris.append(uri)
         node_name = ""
         if lower.startswith("vmess://"):
-            body = uri[8:].split("#", 1)
+            body, _, _ = uri[8:].partition("#")
             try:
                 d = json.loads(decode_base64_safe(body))
                 if str(d.get("tls", "")).lower() not in ("tls", "1", "true"):
@@ -155,14 +155,13 @@ def build_uri_name_map(raw_text):
             except Exception:
                 pass
         elif "#" in uri:
-            raw_tag = uri.rsplit("#", 1)
+            _, _, raw_tag = uri.rpartition("#")
             node_name = urllib.parse.unquote(raw_tag).strip()
 
         if node_name:
             name_to_uris.setdefault(node_name, []).append(uri)
 
     return name_to_uris, all_uris
-
 
 def test_delay_via_mihomo_api(api_port, node_name, encoded_test_url, slot_id):
     """Замеряет задержку конкретной ноды через API уже запущенного mihomo."""
