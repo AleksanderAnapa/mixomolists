@@ -67,16 +67,8 @@
     "days": 3,
     "last_fail_date": "2026-11-23"
   },
-  "https://github.com/bobrinaw/vlessforu/raw/refs/heads/main/working_configs.txt": {
-    "days": 3,
-    "last_fail_date": "2026-11-23"
-  },
   "https://github.com/FLAT447/v2ray-lists/raw/refs/heads/main/BLACK_LTE.txt": {
     "days": 2,
-    "last_fail_date": "2026-11-23"
-  },
-  "https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-NL.txt": {
-    "days": 1,
     "last_fail_date": "2026-11-23"
   },
   "https://github.com/kort0881/vpn-vless-configs-russia/raw/refs/heads/main/output/vless.txt": {
