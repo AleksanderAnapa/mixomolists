@@ -1,8 +1,25 @@
 === СТАРТ ПОПОЛНЕНИЯ FINAL.TXT ===
-[16:40:29] В текущем final.txt уже есть уникальных серверов: 59/60
-[16:40:29] === ПРОХОД 1 (TEST_URL) ===
-[16:40:29] [TEST1] Подписка [1/90] (сбоев: 0 дн.): https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/ou
-[16:40:29] [TEST1] Найдено серверов в подписке: 64
-[16:40:32] [TEST1 OK 436ms] (60/60) vless://bc058e69-0444-4c7b-98da-bd67f0b143da@130.12.242
-[16:40:32] [TEST1] Сохранен остаток в final.txt: 60/60
-[16:40:32] [TEST1] Подписка живая (+1 в пул). В final.txt: 60/60
+[17:00:31] В текущем final.txt уже есть уникальных серверов: 49/60
+[17:00:31] === ПРОХОД 1 (TEST_URL) ===
+[17:00:31] [TEST1] Подписка [1/90] (сбоев: 0 дн.): https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/ou
+[17:00:31] [TEST1] Найдено серверов в подписке: 64
+[17:01:26] [TEST1] Подписка живая (+0 в пул). В final.txt: 49/60
+[17:01:26] [TEST1] Подписка [2/90] (сбоев: 0 дн.): https://github.com/bobrinaw/vlessforu/raw/refs/heads/main/wo
+[17:01:26] [TEST1] Найдено серверов в подписке: 199
+[17:02:12] [TEST1 OK 2269ms] (50/60) vless://a026e2a4-d9a8-0001-9978-575deda2aa3d@185.178.20
+[17:02:13] [TEST1 OK 2044ms] (51/60) vless://c2b17066-5386-0001-803b-5e652c0528f9@185.178.20
+[17:02:24] [TEST1 OK 2221ms] (52/60) vless://0b6a7fe0-206b-4071-9f96-cd397d1ec01a@paperclip.
+[17:02:26] [TEST1 OK 3241ms] (53/60) vless://0b6a7fe0-206b-4071-9f96-cd397d1ec01a@marina.ger
+[17:02:34] [TEST1 OK 887ms] (54/60) vless://7ad63b26-bf70-4872-8fab-ebaf73a1e19d@176.98.176
+[17:02:34] [TEST1] Сохранено в final.txt: 54/60
+[17:02:36] [TEST1 OK 2568ms] (55/60) vless://0b6a7fe0-206b-4071-9f96-cd397d1ec01a@tapestry.g
+[17:02:36] [TEST1 OK 1888ms] (56/60) vless://cda0862a-0f87-4be9-8ed8-1d0c9e382839@9.247.54.2
+[17:02:45] [TEST1 OK 618ms] (57/60) hysteria2://a35c508f-4d5d-4531-842e-6e9d43c762c0@179.25
+[17:02:45] [TEST1 OK 595ms] (58/60) hysteria2://a35c508f-4d5d-4531-842e-6e9d43c762c0@bl1.ne
+[17:02:58] [TEST1 OK 3099ms] (59/60) vless://cda0862a-0f87-4be9-8ed8-1d0c9e382839@961ec0g.nl
+[17:02:58] [TEST1] Сохранено в final.txt: 59/60
+[17:03:05] [TEST1 OK 510ms] (60/60) vless://4fddfe0e-fddc-4032-b4c8-09c6d811fed0@152.53.1.1
+[17:03:06] [TEST1 OK 1545ms] (61/60) vless://0b6a7fe0-206b-4071-9f96-cd397d1ec01a@birchbark.
+[17:03:07] [TEST1 OK 2091ms] (62/60) vless://83706ae4-be2f-4b2b-8079-c3eb4e0b2e3e@hazelnut.m
+[17:03:12] [TEST1] Сохранен остаток в final.txt: 60/60
+[17:03:12] [TEST1] Подписка живая (+13 в пул). В final.txt: 60/60
