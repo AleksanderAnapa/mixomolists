@@ -1,12 +1,13 @@
 === СТАРТ ПОПОЛНЕНИЯ FINAL.TXT ===
-[11:40:34] В текущем final.txt уже есть уникальных серверов: 58/60
-[11:40:34] === ПРОХОД 1 (TEST_URL) ===
-[11:40:34] [TEST1] Подписка [1/92] (сбоев: 0 дн.): https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/ou
-[11:40:34] [TEST1] Найдено серверов в подписке: 64
-[11:41:29] [TEST1] Подписка живая (+0 в пул). В final.txt: 58/60
-[11:41:29] [TEST1] Подписка [2/92] (сбоев: 0 дн.): https://github.com/bobrinaw/vlessforu/raw/refs/heads/main/wo
-[11:41:30] [TEST1] Найдено серверов в подписке: 263
-[11:41:32] [TEST1 OK 785ms] (59/60) vless://cb73ec56-1faa-491d-b2eb-8edec2e4b12e@188.225.75
-[11:41:33] [TEST1 OK 1054ms] (60/60) vless://cb73ec56-1faa-491d-b2eb-8edec2e4b12e@78.159.246
-[11:41:33] [TEST1] Сохранен остаток в final.txt: 60/60
-[11:41:33] [TEST1] Подписка живая (+2 в пул). В final.txt: 60/60
+[12:20:31] В текущем final.txt уже есть уникальных серверов: 59/60
+[12:20:31] === ПРОХОД 1 (TEST_URL) ===
+[12:20:31] [TEST1] Подписка [1/92] (сбоев: 0 дн.): https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/ou
+[12:20:31] [TEST1] Найдено серверов в подписке: 64
+[12:21:26] [TEST1] Подписка живая (+0 в пул). В final.txt: 59/60
+[12:21:26] [TEST1] Подписка [2/92] (сбоев: 0 дн.): https://github.com/bobrinaw/vlessforu/raw/refs/heads/main/wo
+[12:21:26] [TEST1] Найдено серверов в подписке: 263
+[12:21:28] [TEST1 OK 632ms] (60/60) hysteria2://1e180391-2420-4c11-95fe-ec561b11124c@189.74
+[12:21:30] [TEST1 OK 1489ms] (61/60) vless://cb73ec56-1faa-491d-b2eb-8edec2e4b12e@78.159.240
+[12:21:31] [TEST1 OK 2065ms] (62/60) vless://cb73ec56-1faa-491d-b2eb-8edec2e4b12e@46.243.232
+[12:21:31] [TEST1] Сохранен остаток в final.txt: 60/60
+[12:21:31] [TEST1] Подписка живая (+3 в пул). В final.txt: 60/60

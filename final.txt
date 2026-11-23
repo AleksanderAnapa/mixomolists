@@ -57,3 +57,4 @@ hysteria2://PEisy6m-98HcX1TWZt0yXiCS7jRZG4IzKQTXo6k1qb4@48.102.130.17:443?sni=de
 hysteria2://247802ca-0fbb-428a-b807-91a6e571b5c7@166.0.28.140:443?obfs=salamander&obfs-password=S4iBMpc3aIzLC1c-6fE6rU15ZzXyfjr0ciGdh0A3alI&sni=static-de.snobmenu.xyz#Бесплатный VPN tg:VLESSFORU 🇩🇪
 vless://cb73ec56-1faa-491d-b2eb-8edec2e4b12e@188.225.75.52:8443?flow=xtls-rprx-vision&security=reality&sni=agent.mperialbank.xyz&fp=qq&pbk=4_mdROaBWtpQEmgXNbbwO2QzB4gwUYSFnLF3yx7w62I&sid=be28922db425c596#tg:VLESSFORU top ping 🇳🇱
 vless://cb73ec56-1faa-491d-b2eb-8edec2e4b12e@78.159.246.51:443?encryption=none&flow=xtls-rprx-vision&type=tcp&security=reality&sni=212.192.156.15&pbk=OAW8MtjDM0nnBqOt3bUZLtw23vHFkJ7-Emb7fe6h8ho&sid=4a8bb8586111eb8d&fp=firefox#LTE/5G Все операторы 🇪🇺
+hysteria2://1e180391-2420-4c11-95fe-ec561b11124c@189.74.114.12:54183?sni=outh.yandex-cloud.org#tg:VLESSFORU 🇧🇬 ⚡
