@@ -1,4 +1,184 @@
 === СТАРТ ПОПОЛНЕНИЯ FINAL.TXT ===
-[05:28:09] В текущем final.txt уже есть серверов: 2/60
-[05:28:09] === ПРОХОД 1 (TEST_URL) ===
-[05:28:09] [TEST1] Подписка [1/93] (сбоев: 0 дн.): https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/ou
+[08:41:28] В текущем final.txt уже есть серверов: 2/60
+[08:41:28] === ПРОХОД 1 (TEST_URL) ===
+[08:41:28] [TEST1] Подписка [1/93] (сбоев: 0 дн.): https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/ou
+[08:41:28] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://github.com/Au1rxx/free-vpn-subscriptions/raw/ma
+[08:41:28] [TEST1] Подписка [2/93] (сбоев: 2 дн.): https://github.com/bobrinaw/vlessforu/raw/refs/heads/main/wo
+[08:41:29] [TEST1] Подписка пуста/недоступна -> BAD!_03: https://github.com/bobrinaw/vlessforu/raw/refs/heads/ma
+[08:41:29] [TEST1] Подписка [3/93] (сбоев: 1 дн.): https://github.com/FLAT447/v2ray-lists/raw/refs/heads/main/B
+[08:41:30] [TEST1] Подписка пуста/недоступна -> BAD!_02: https://github.com/FLAT447/v2ray-lists/raw/refs/heads/m
+[08:41:30] [TEST1] Подписка [4/93] (сбоев: 0 дн.): https://github.com/kort0881/vpn-vless-configs-russia/raw/ref
+[08:41:31] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://github.com/kort0881/vpn-vless-configs-russia/ra
+[08:41:31] [TEST1] Подписка [5/93] (сбоев: 0 дн.): https://github.com/igareck/vpn-configs-for-russia/raw/refs/h
+[08:41:32] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://github.com/igareck/vpn-configs-for-russia/raw/r
+[08:41:32] [TEST1] Подписка [6/93] (сбоев: 0 дн.): https://github.com/igareck/vpn-configs-for-russia/raw/refs/h
+[08:41:32] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://github.com/igareck/vpn-configs-for-russia/raw/r
+[08:41:32] [TEST1] Подписка [7/93] (сбоев: 0 дн.): https://github.com/igareck/vpn-configs-for-russia/raw/refs/h
+[08:41:33] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://github.com/igareck/vpn-configs-for-russia/raw/r
+[08:41:33] [TEST1] Подписка [8/93] (сбоев: 2 дн.): https://raw.githubusercontent.com/luxxuria/harvester/refs/he
+[08:41:33] [TEST1] Подписка пуста/недоступна -> BAD!_03: https://raw.githubusercontent.com/luxxuria/harvester/re
+[08:41:33] [TEST1] Подписка [10/93] (сбоев: 0 дн.): https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/
+[08:41:34] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://raw.githubusercontent.com/10ium/ScrapeAndCatego
+[08:41:34] [TEST1] Подписка [11/93] (сбоев: 0 дн.): https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/
+[08:41:35] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://raw.githubusercontent.com/10ium/ScrapeAndCatego
+[08:41:35] [TEST1] Подписка [12/93] (сбоев: 0 дн.): https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/
+[08:41:35] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://raw.githubusercontent.com/10ium/ScrapeAndCatego
+[08:41:35] [TEST1] Подписка [13/93] (сбоев: 0 дн.): https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/
+[08:41:36] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://raw.githubusercontent.com/10ium/ScrapeAndCatego
+[08:41:36] [TEST1] Подписка [14/93] (сбоев: 0 дн.): https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/
+[08:41:36] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://raw.githubusercontent.com/10ium/ScrapeAndCatego
+[08:41:36] [TEST1] Подписка [15/93] (сбоев: 0 дн.): https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/
+[08:41:37] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://raw.githubusercontent.com/10ium/ScrapeAndCatego
+[08:41:37] [TEST1] Подписка [16/93] (сбоев: 0 дн.): https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/
+[08:41:38] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://raw.githubusercontent.com/10ium/ScrapeAndCatego
+[08:41:38] [TEST1] Подписка [17/93] (сбоев: 0 дн.): https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/
+[08:41:38] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://raw.githubusercontent.com/10ium/ScrapeAndCatego
+[08:41:38] [TEST1] Подписка [18/93] (сбоев: 0 дн.): https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/
+[08:41:39] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://raw.githubusercontent.com/10ium/ScrapeAndCatego
+[08:41:39] [TEST1] Подписка [19/93] (сбоев: 0 дн.): https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/
+[08:41:39] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://raw.githubusercontent.com/10ium/ScrapeAndCatego
+[08:41:39] [TEST1] Подписка [20/93] (сбоев: 0 дн.): https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/
+[08:41:40] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://raw.githubusercontent.com/10ium/ScrapeAndCatego
+[08:41:40] [TEST1] Подписка [21/93] (сбоев: 0 дн.): https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/
+[08:41:41] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://raw.githubusercontent.com/10ium/ScrapeAndCatego
+[08:41:41] [TEST1] Подписка [22/93] (сбоев: 0 дн.): https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/
+[08:41:41] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://raw.githubusercontent.com/10ium/ScrapeAndCatego
+[08:41:41] [TEST1] Подписка [23/93] (сбоев: 0 дн.): https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/
+[08:41:42] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://raw.githubusercontent.com/10ium/ScrapeAndCatego
+[08:41:42] [TEST1] Подписка [24/93] (сбоев: 0 дн.): https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/
+[08:41:42] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://raw.githubusercontent.com/10ium/ScrapeAndCatego
+[08:41:42] [TEST1] Подписка [26/93] (сбоев: 0 дн.): https://warp-gen.cyb-portal.org/CP-001
+[08:41:44] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://warp-gen.cyb-portal.org/CP-001
+[08:41:44] [TEST1] Подписка [27/93] (сбоев: 0 дн.): https://warp-gen.cyb-portal.org/CP-002
+[08:41:45] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://warp-gen.cyb-portal.org/CP-002
+[08:41:45] [TEST1] Подписка [28/93] (сбоев: 0 дн.): https://warp-gen.cyb-portal.org/CP-003
+[08:41:46] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://warp-gen.cyb-portal.org/CP-003
+[08:41:46] [TEST1] Подписка [29/93] (сбоев: 0 дн.): https://warp-gen.cyb-portal.org/CP-005
+[08:41:48] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://warp-gen.cyb-portal.org/CP-005
+[08:41:48] [TEST1] Подписка [30/93] (сбоев: 0 дн.): https://warp-gen.cyb-portal.org/CP-009
+[08:41:48] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://warp-gen.cyb-portal.org/CP-009
+[08:41:48] [TEST1] Подписка [31/93] (сбоев: 0 дн.): https://warp-gen.cyb-portal.org/CP-010
+[08:41:49] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://warp-gen.cyb-portal.org/CP-010
+[08:41:49] [TEST1] Подписка [32/93] (сбоев: 0 дн.): https://warp-gen.cyb-portal.org/CP-012
+[08:41:51] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://warp-gen.cyb-portal.org/CP-012
+[08:41:51] [TEST1] Подписка [33/93] (сбоев: 0 дн.): https://warp-gen.cyb-portal.org/CP-019
+[08:41:52] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://warp-gen.cyb-portal.org/CP-019
+[08:41:52] [TEST1] Подписка [34/93] (сбоев: 0 дн.): https://warp-gen.cyb-portal.org/CP-035
+[08:41:53] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://warp-gen.cyb-portal.org/CP-035
+[08:41:53] [TEST1] Подписка [35/93] (сбоев: 0 дн.): https://warp-gen.cyb-portal.org/CP-038
+[08:41:54] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://warp-gen.cyb-portal.org/CP-038
+[08:41:54] [TEST1] Подписка [36/93] (сбоев: 0 дн.): https://warp-gen.cyb-portal.org/CP-040
+[08:41:56] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://warp-gen.cyb-portal.org/CP-040
+[08:41:56] [TEST1] Подписка [37/93] (сбоев: 0 дн.): https://warp-gen.cyb-portal.org/CP-041
+[08:41:58] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://warp-gen.cyb-portal.org/CP-041
+[08:41:58] [TEST1] Подписка [38/93] (сбоев: 0 дн.): https://warp-gen.cyb-portal.org/CP-042
+[08:41:59] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://warp-gen.cyb-portal.org/CP-042
+[08:41:59] [TEST1] Подписка [39/93] (сбоев: 0 дн.): https://warp-gen.cyb-portal.org/CP-044
+[08:42:00] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://warp-gen.cyb-portal.org/CP-044
+[08:42:00] [TEST1] Подписка [41/93] (сбоев: 0 дн.): https://raw.githubusercontent.com/ermaozi01/free_clash_vpn/m
+[08:42:01] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://raw.githubusercontent.com/ermaozi01/free_clash_
+[08:42:01] [TEST1] Подписка [42/93] (сбоев: 0 дн.): https://raw.githubusercontent.com/mheidari98/.proxy/main/all
+[08:42:02] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://raw.githubusercontent.com/mheidari98/.proxy/mai
+[08:42:02] [TEST1] Подписка [43/93] (сбоев: 0 дн.): https://raw.githubusercontent.com/hotsymbol/vpnsetting/maste
+[08:42:02] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://raw.githubusercontent.com/hotsymbol/vpnsetting/
+[08:42:02] [TEST1] Подписка [44/93] (сбоев: 0 дн.): https://raw.githubusercontent.com/pojiezhiyuanjun/freev2/mas
+[08:42:03] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://raw.githubusercontent.com/pojiezhiyuanjun/freev
+[08:42:03] [TEST1] Подписка [45/93] (сбоев: 0 дн.): https://raw.githubusercontent.com/Mr8AHAL/v2ray/main/SERVER.
+[08:42:04] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://raw.githubusercontent.com/Mr8AHAL/v2ray/main/SE
+[08:42:04] [TEST1] Подписка [46/93] (сбоев: 0 дн.): https://raw.githubusercontent.com/sami-soft/v2rayN_proxy/mai
+[08:42:04] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://raw.githubusercontent.com/sami-soft/v2rayN_prox
+[08:42:04] [TEST1] Подписка [47/93] (сбоев: 0 дн.): https://raw.githubusercontent.com/Tenerome/v2ray/main/vmess.
+[08:42:05] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://raw.githubusercontent.com/Tenerome/v2ray/main/v
+[08:42:05] [TEST1] Подписка [48/93] (сбоев: 0 дн.): https://raw.githubusercontent.com/a2470982985/getNode/main/v
+[08:42:05] [TEST1] Более 5 дней сбоев -> бан BAD!_00: https://raw.githubusercontent.com/a2470982985/getNode/m
+[08:42:05] [TEST1] Подписка [49/93] (сбоев: 0 дн.): https://raw.githubusercontent.com/yaney01/Yaney01/main/yaney
+[08:42:06] [TEST1] Более 5 дней сбоев -> бан BAD!_00: https://raw.githubusercontent.com/yaney01/Yaney01/main/
+[08:42:06] [TEST1] Подписка [50/93] (сбоев: 0 дн.): https://raw.githubusercontent.com/yaney01/Yaney01/main/tempo
+[08:42:07] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://raw.githubusercontent.com/yaney01/Yaney01/main/
+[08:42:07] [TEST1] Подписка [51/93] (сбоев: 0 дн.): https://raw.githubusercontent.com/adiwzx/freenode/main/adisp
+[08:42:07] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://raw.githubusercontent.com/adiwzx/freenode/main/
+[08:42:07] [TEST1] Подписка [52/93] (сбоев: 0 дн.): https://raw.githubusercontent.com/Leon406/SubCrawler/refs/he
+[08:42:08] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://raw.githubusercontent.com/Leon406/SubCrawler/re
+[08:42:08] [TEST1] Подписка [53/93] (сбоев: 0 дн.): https://raw.githubusercontent.com/Leon406/SubCrawler/refs/he
+[08:42:09] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://raw.githubusercontent.com/Leon406/SubCrawler/re
+[08:42:09] [TEST1] Подписка [54/93] (сбоев: 0 дн.): https://raw.githubusercontent.com/ZY-404/v2ray/main/v2ray.tx
+[08:42:09] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://raw.githubusercontent.com/ZY-404/v2ray/main/v2r
+[08:42:09] [TEST1] Подписка [55/93] (сбоев: 0 дн.): https://raw.githubusercontent.com/jiquanxiang/abc/main/v7
+[08:42:10] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://raw.githubusercontent.com/jiquanxiang/abc/main/
+[08:42:10] [TEST1] Подписка [56/93] (сбоев: 0 дн.): https://raw.githubusercontent.com/zhlx2835/freefq/main/v2
+[08:42:11] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://raw.githubusercontent.com/zhlx2835/freefq/main/
+[08:42:11] [TEST1] Подписка [57/93] (сбоев: 0 дн.): https://raw.githubusercontent.com/ZywChannel/free/main/sub
+[08:42:11] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://raw.githubusercontent.com/ZywChannel/free/main/
+[08:42:11] [TEST1] Подписка [58/93] (сбоев: 0 дн.): https://raw.githubusercontent.com/zjr13808836946/zjr_clash/m
+[08:42:12] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://raw.githubusercontent.com/zjr13808836946/zjr_cl
+[08:42:12] [TEST1] Подписка [59/93] (сбоев: 0 дн.): https://raw.githubusercontent.com/baipiao0/baipiao02/main/v2
+[08:42:13] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://raw.githubusercontent.com/baipiao0/baipiao02/ma
+[08:42:13] [TEST1] Подписка [60/93] (сбоев: 0 дн.): https://raw.githubusercontent.com/codingbox/Free-Node-Merge/
+[08:42:13] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://raw.githubusercontent.com/codingbox/Free-Node-M
+[08:42:13] [TEST1] Подписка [61/93] (сбоев: 0 дн.): https://raw.githubusercontent.com/245237866/v2rayn/main/ever
+[08:42:14] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://raw.githubusercontent.com/245237866/v2rayn/main
+[08:42:14] [TEST1] Подписка [62/93] (сбоев: 0 дн.): https://raw.githubusercontent.com/Creativveb/v2configs/main/
+[08:42:15] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://raw.githubusercontent.com/Creativveb/v2configs/
+[08:42:15] [TEST1] Подписка [63/93] (сбоев: 0 дн.): https://raw.githubusercontent.com/dalazhi/v2ray/main/v2ray%E
+[08:42:15] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://raw.githubusercontent.com/dalazhi/v2ray/main/v2
+[08:42:15] [TEST1] Подписка [64/93] (сбоев: 0 дн.): https://raw.githubusercontent.com/hsb4657/v2ray/main/lastest
+[08:42:16] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://raw.githubusercontent.com/hsb4657/v2ray/main/la
+[08:42:16] [TEST1] Подписка [65/93] (сбоев: 0 дн.): https://raw.githubusercontent.com/eycorsican/rule-sets/maste
+[08:42:16] [TEST1] Более 5 дней сбоев -> бан BAD!_00: https://raw.githubusercontent.com/eycorsican/rule-sets/
+[08:42:16] [TEST1] Подписка [66/93] (сбоев: 0 дн.): https://raw.githubusercontent.com/imohammadkhalili/V2RAY/mai
+[08:42:17] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://raw.githubusercontent.com/imohammadkhalili/V2RA
+[08:42:17] [TEST1] Подписка [67/93] (сбоев: 0 дн.): https://raw.githubusercontent.com/Jia-Pingwa/free-v2ray-merg
+[08:42:17] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://raw.githubusercontent.com/Jia-Pingwa/free-v2ray
+[08:42:17] [TEST1] Подписка [68/93] (сбоев: 0 дн.): https://raw.githubusercontent.com/jikelonglie/meskell/main/m
+[08:42:18] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://raw.githubusercontent.com/jikelonglie/meskell/m
+[08:42:18] [TEST1] Подписка [69/93] (сбоев: 0 дн.): https://raw.githubusercontent.com/lflflf999/0516/main/BX-JD
+[08:42:19] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://raw.githubusercontent.com/lflflf999/0516/main/B
+[08:42:19] [TEST1] Подписка [70/93] (сбоев: 0 дн.): https://raw.githubusercontent.com/adminaliang/v2ray/main/v2r
+[08:42:19] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://raw.githubusercontent.com/adminaliang/v2ray/mai
+[08:42:19] [TEST1] Подписка [71/93] (сбоев: 0 дн.): https://raw.githubusercontent.com/ripaojiedian/freenode/main
+[08:42:20] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://raw.githubusercontent.com/ripaojiedian/freenode
+[08:42:20] [TEST1] Подписка [72/93] (сбоев: 0 дн.): https://raw.githubusercontent.com/gitbigg/permalink/main/sub
+[08:42:20] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://raw.githubusercontent.com/gitbigg/permalink/mai
+[08:42:20] [TEST1] Подписка [73/93] (сбоев: 0 дн.): https://raw.githubusercontent.com/gtang8/SubCrawler/main/sub
+[08:42:21] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://raw.githubusercontent.com/gtang8/SubCrawler/mai
+[08:42:21] [TEST1] Подписка [74/93] (сбоев: 0 дн.): https://raw.githubusercontent.com/snakem982/proxypool/main/s
+[08:42:21] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://raw.githubusercontent.com/snakem982/proxypool/m
+[08:42:21] [TEST1] Подписка [75/93] (сбоев: 0 дн.): https://raw.githubusercontent.com/10ium/VpnClashFaCollector/
+[08:42:22] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://raw.githubusercontent.com/10ium/VpnClashFaColle
+[08:42:22] [TEST1] Подписка [76/93] (сбоев: 0 дн.): https://raw.githubusercontent.com/morteza-v2/free-v2ray-iran
+[08:42:23] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://raw.githubusercontent.com/morteza-v2/free-v2ray
+[08:42:23] [TEST1] Подписка [77/93] (сбоев: 0 дн.): https://raw.githubusercontent.com/Everyday-VPN/Everyday-VPN/
+[08:42:23] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://raw.githubusercontent.com/Everyday-VPN/Everyday
+[08:42:23] [TEST1] Подписка [78/93] (сбоев: 0 дн.): https://raw.githubusercontent.com/Huibq/TrojanLinks/master/l
+[08:42:24] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://raw.githubusercontent.com/Huibq/TrojanLinks/mas
+[08:42:24] [TEST1] Подписка [79/93] (сбоев: 0 дн.): https://raw.githubusercontent.com/xiaoji235/airport-free/ref
+[08:42:25] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://raw.githubusercontent.com/xiaoji235/airport-fre
+[08:42:25] [TEST1] Подписка [80/93] (сбоев: 0 дн.): https://raw.githubusercontent.com/Lewis-1217/FreeNodes/main/
+[08:42:26] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://raw.githubusercontent.com/Lewis-1217/FreeNodes/
+[08:42:26] [TEST1] Подписка [81/93] (сбоев: 0 дн.): https://raw.githubusercontent.com/Lewis-1217/FreeNodes/main/
+[08:42:26] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://raw.githubusercontent.com/Lewis-1217/FreeNodes/
+[08:42:26] [TEST1] Подписка [82/93] (сбоев: 0 дн.): https://raw.githubusercontent.com/NicProxy/V2ray/main/config
+[08:42:27] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://raw.githubusercontent.com/NicProxy/V2ray/main/c
+[08:42:27] [TEST1] Подписка [83/93] (сбоев: 0 дн.): https://raw.githubusercontent.com/xiyaowong/freeFQ/main/v2ra
+[08:42:27] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://raw.githubusercontent.com/xiyaowong/freeFQ/main
+[08:42:27] [TEST1] Подписка [84/93] (сбоев: 0 дн.): https://raw.githubusercontent.com/vxiaov/free_proxies/main/l
+[08:42:28] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://raw.githubusercontent.com/vxiaov/free_proxies/m
+[08:42:28] [TEST1] Подписка [85/93] (сбоев: 0 дн.): https://raw.githubusercontent.com/Strongmiao168/v2ray/main/1
+[08:42:29] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://raw.githubusercontent.com/Strongmiao168/v2ray/m
+[08:42:29] [TEST1] Подписка [86/93] (сбоев: 0 дн.): https://raw.githubusercontent.com/free18/v2ray/refs/heads/ma
+[08:42:29] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://raw.githubusercontent.com/free18/v2ray/refs/hea
+[08:42:29] [TEST1] Подписка [87/93] (сбоев: 0 дн.): https://raw.githubusercontent.com/sinavm/SVM/refs/heads/main
+[08:42:30] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://raw.githubusercontent.com/sinavm/SVM/refs/heads
+[08:42:30] [TEST1] Подписка [88/93] (сбоев: 0 дн.): https://raw.githubusercontent.com/ssrsub/ssr/refs/heads/mast
+[08:42:30] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://raw.githubusercontent.com/ssrsub/ssr/refs/heads
+[08:42:30] [TEST1] Подписка [89/93] (сбоев: 0 дн.): https://raw.githubusercontent.com/Barabama/FreeNodes/master/
+[08:42:31] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://raw.githubusercontent.com/Barabama/FreeNodes/ma
+[08:42:31] [TEST1] Подписка [90/93] (сбоев: 0 дн.): https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/
+[08:42:32] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://raw.githubusercontent.com/10ium/ScrapeAndCatego
+[08:42:32] [TEST1] Подписка [91/93] (сбоев: 0 дн.): https://raw.githubusercontent.com/Barabama/FreeNodes/master/
+[08:42:32] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://raw.githubusercontent.com/Barabama/FreeNodes/ma
+[08:42:32] [TEST1] Подписка [92/93] (сбоев: 0 дн.): https://raw.githubusercontent.com/Barabama/FreeNodes/master/
+[08:42:33] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://raw.githubusercontent.com/Barabama/FreeNodes/ma
+[08:42:33] [TEST1] Подписка [93/93] (сбоев: 0 дн.): https://raw.githubusercontent.com/MOnday9907/v2ray/main/v2ra
+[08:42:33] [TEST1] Подписка пуста/недоступна -> BAD!_01: https://raw.githubusercontent.com/MOnday9907/v2ray/main
+[08:42:33] === ПРОХОД 2 (TEST_URL2) ===
