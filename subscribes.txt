@@ -21,72 +21,70 @@ https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/refs/heads/main/outp
 https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/refs/heads/main/output_configs/Canada.txt
 https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/refs/heads/main/output_configs/China.txt
 https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/refs/heads/main/output_configs/Czechia.txt
-
-BAD!_01 https://warp-gen.cyb-portal.org/CP-001
-BAD!_01 https://warp-gen.cyb-portal.org/CP-002
-BAD!_01 https://warp-gen.cyb-portal.org/CP-003
-BAD!_01 https://warp-gen.cyb-portal.org/CP-005
-BAD!_01 https://warp-gen.cyb-portal.org/CP-009
-BAD!_01 https://warp-gen.cyb-portal.org/CP-010
-BAD!_01 https://warp-gen.cyb-portal.org/CP-012
-BAD!_01 https://warp-gen.cyb-portal.org/CP-019
-BAD!_01 https://warp-gen.cyb-portal.org/CP-035
-BAD!_01 https://warp-gen.cyb-portal.org/CP-038
-BAD!_01 https://warp-gen.cyb-portal.org/CP-040
-BAD!_01 https://warp-gen.cyb-portal.org/CP-041
-BAD!_01 https://warp-gen.cyb-portal.org/CP-042
-BAD!_01 https://warp-gen.cyb-portal.org/CP-044
-
-BAD!_01 https://raw.githubusercontent.com/ermaozi01/free_clash_vpn/main/subscribe/v2ray.txt
-BAD!_01 https://raw.githubusercontent.com/mheidari98/.proxy/main/all
-BAD!_01 https://raw.githubusercontent.com/hotsymbol/vpnsetting/master/v2rayopen
-BAD!_01 https://raw.githubusercontent.com/pojiezhiyuanjun/freev2/master/20200808.txt
-BAD!_01 https://raw.githubusercontent.com/Mr8AHAL/v2ray/main/SERVER.txt
-BAD!_01 https://raw.githubusercontent.com/sami-soft/v2rayN_proxy/main/new1.txt
-BAD!_01 https://raw.githubusercontent.com/Tenerome/v2ray/main/vmess.txt
-BAD!_00 https://raw.githubusercontent.com/a2470982985/getNode/main/v2ray.txt
-BAD!_00 https://raw.githubusercontent.com/yaney01/Yaney01/main/yaney_01
-BAD!_01 https://raw.githubusercontent.com/yaney01/Yaney01/main/temporary
-BAD!_01 https://raw.githubusercontent.com/adiwzx/freenode/main/adispeed.txt
-BAD!_01 https://raw.githubusercontent.com/Leon406/SubCrawler/refs/heads/main/sub/share/vless
-BAD!_01 https://raw.githubusercontent.com/Leon406/SubCrawler/refs/heads/main/sub/share/a11
-BAD!_01 https://raw.githubusercontent.com/ZY-404/v2ray/main/v2ray.txt
-BAD!_01 https://raw.githubusercontent.com/jiquanxiang/abc/main/v7
-BAD!_01 https://raw.githubusercontent.com/zhlx2835/freefq/main/v2
-BAD!_01 https://raw.githubusercontent.com/ZywChannel/free/main/sub
-BAD!_01 https://raw.githubusercontent.com/zjr13808836946/zjr_clash/main/V2_SSR_M
-BAD!_01 https://raw.githubusercontent.com/baipiao0/baipiao02/main/v2ray
-BAD!_01 https://raw.githubusercontent.com/codingbox/Free-Node-Merge/main/node.txt
-BAD!_01 https://raw.githubusercontent.com/245237866/v2rayn/main/everydaynode
-BAD!_01 https://raw.githubusercontent.com/Creativveb/v2configs/main/updated
-BAD!_01 https://raw.githubusercontent.com/dalazhi/v2ray/main/v2ray%E8%AE%A2%E9%98%85
-BAD!_01 https://raw.githubusercontent.com/hsb4657/v2ray/main/lastest.txt
-BAD!_00 https://raw.githubusercontent.com/eycorsican/rule-sets/master/kitsunebi_sub
-BAD!_01 https://raw.githubusercontent.com/imohammadkhalili/V2RAY/main/Mkhalili
-BAD!_01 https://raw.githubusercontent.com/Jia-Pingwa/free-v2ray-merge/main/output.txt
-BAD!_01 https://raw.githubusercontent.com/jikelonglie/meskell/main/meskell
-BAD!_01 https://raw.githubusercontent.com/lflflf999/0516/main/BX-JD
-BAD!_01 https://raw.githubusercontent.com/adminaliang/v2ray/main/v2ray
-BAD!_01 https://raw.githubusercontent.com/ripaojiedian/freenode/main/sub
-BAD!_01 https://raw.githubusercontent.com/gitbigg/permalink/main/subscribe
-BAD!_01 https://raw.githubusercontent.com/gtang8/SubCrawler/main/sub/share/all
-BAD!_01 https://raw.githubusercontent.com/snakem982/proxypool/main/source/v2ray-2.txt
-BAD!_01 https://raw.githubusercontent.com/10ium/VpnClashFaCollector/main/sub/all/mixed.txt
-BAD!_01 https://raw.githubusercontent.com/morteza-v2/free-v2ray-irancell-config/refs/heads/main/Sub1.txt
-BAD!_01 https://raw.githubusercontent.com/Everyday-VPN/Everyday-VPN/refs/heads/main/subscription/main.txt
-BAD!_01 https://raw.githubusercontent.com/Huibq/TrojanLinks/master/links/vmess
-BAD!_01 https://raw.githubusercontent.com/xiaoji235/airport-free/refs/heads/main/v2ray.txt
-BAD!_01 https://raw.githubusercontent.com/Lewis-1217/FreeNodes/main/bpjzx1
-BAD!_01 https://raw.githubusercontent.com/Lewis-1217/FreeNodes/main/bpjzx2
-BAD!_01 https://raw.githubusercontent.com/NicProxy/V2ray/main/configs
-BAD!_01 https://raw.githubusercontent.com/xiyaowong/freeFQ/main/v2ray
-BAD!_01 https://raw.githubusercontent.com/vxiaov/free_proxies/main/links.txt
-BAD!_01 https://raw.githubusercontent.com/Strongmiao168/v2ray/main/1203
-BAD!_01 https://raw.githubusercontent.com/free18/v2ray/refs/heads/main/v.txt
-BAD!_01 https://raw.githubusercontent.com/sinavm/SVM/refs/heads/main/config.txt
-BAD!_01 https://raw.githubusercontent.com/ssrsub/ssr/refs/heads/master/v2ray
-BAD!_01 https://raw.githubusercontent.com/Barabama/FreeNodes/master/nodes/merged.txt
-BAD!_01 https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/refs/heads/main/output_configs/USA.txt
-BAD!_01 https://raw.githubusercontent.com/Barabama/FreeNodes/master/nodes/zyfxs.txt
-BAD!_01 https://raw.githubusercontent.com/Barabama/FreeNodes/master/nodes/yudou66.txt
-BAD!_01 https://raw.githubusercontent.com/MOnday9907/v2ray/main/v2ray.txt
+https://warp-gen.cyb-portal.org/CP-001
+https://warp-gen.cyb-portal.org/CP-002
+https://warp-gen.cyb-portal.org/CP-003
+https://warp-gen.cyb-portal.org/CP-005
+https://warp-gen.cyb-portal.org/CP-009
+https://warp-gen.cyb-portal.org/CP-010
+https://warp-gen.cyb-portal.org/CP-012
+https://warp-gen.cyb-portal.org/CP-019
+https://warp-gen.cyb-portal.org/CP-035
+https://warp-gen.cyb-portal.org/CP-038
+https://warp-gen.cyb-portal.org/CP-040
+https://warp-gen.cyb-portal.org/CP-041
+https://warp-gen.cyb-portal.org/CP-042
+https://warp-gen.cyb-portal.org/CP-044
+https://raw.githubusercontent.com/ermaozi01/free_clash_vpn/main/subscribe/v2ray.txt
+https://raw.githubusercontent.com/mheidari98/.proxy/main/all
+https://raw.githubusercontent.com/hotsymbol/vpnsetting/master/v2rayopen
+https://raw.githubusercontent.com/pojiezhiyuanjun/freev2/master/20200808.txt
+https://raw.githubusercontent.com/Mr8AHAL/v2ray/main/SERVER.txt
+https://raw.githubusercontent.com/sami-soft/v2rayN_proxy/main/new1.txt
+https://raw.githubusercontent.com/Tenerome/v2ray/main/vmess.txt
+https://raw.githubusercontent.com/a2470982985/getNode/main/v2ray.txt
+https://raw.githubusercontent.com/yaney01/Yaney01/main/yaney_01
+https://raw.githubusercontent.com/yaney01/Yaney01/main/temporary
+https://raw.githubusercontent.com/adiwzx/freenode/main/adispeed.txt
+https://raw.githubusercontent.com/Leon406/SubCrawler/refs/heads/main/sub/share/vless
+https://raw.githubusercontent.com/Leon406/SubCrawler/refs/heads/main/sub/share/a11
+https://raw.githubusercontent.com/ZY-404/v2ray/main/v2ray.txt
+https://raw.githubusercontent.com/jiquanxiang/abc/main/v7
+https://raw.githubusercontent.com/zhlx2835/freefq/main/v2
+https://raw.githubusercontent.com/ZywChannel/free/main/sub
+https://raw.githubusercontent.com/zjr13808836946/zjr_clash/main/V2_SSR_M
+https://raw.githubusercontent.com/baipiao0/baipiao02/main/v2ray
+https://raw.githubusercontent.com/codingbox/Free-Node-Merge/main/node.txt
+https://raw.githubusercontent.com/245237866/v2rayn/main/everydaynode
+https://raw.githubusercontent.com/Creativveb/v2configs/main/updated
+https://raw.githubusercontent.com/dalazhi/v2ray/main/v2ray%E8%AE%A2%E9%98%85
+https://raw.githubusercontent.com/hsb4657/v2ray/main/lastest.txt
+https://raw.githubusercontent.com/eycorsican/rule-sets/master/kitsunebi_sub
+https://raw.githubusercontent.com/imohammadkhalili/V2RAY/main/Mkhalili
+https://raw.githubusercontent.com/Jia-Pingwa/free-v2ray-merge/main/output.txt
+https://raw.githubusercontent.com/jikelonglie/meskell/main/meskell
+https://raw.githubusercontent.com/lflflf999/0516/main/BX-JD
+https://raw.githubusercontent.com/adminaliang/v2ray/main/v2ray
+https://raw.githubusercontent.com/ripaojiedian/freenode/main/sub
+https://raw.githubusercontent.com/gitbigg/permalink/main/subscribe
+https://raw.githubusercontent.com/gtang8/SubCrawler/main/sub/share/all
+https://raw.githubusercontent.com/snakem982/proxypool/main/source/v2ray-2.txt
+https://raw.githubusercontent.com/10ium/VpnClashFaCollector/main/sub/all/mixed.txt
+https://raw.githubusercontent.com/morteza-v2/free-v2ray-irancell-config/refs/heads/main/Sub1.txt
+https://raw.githubusercontent.com/Everyday-VPN/Everyday-VPN/refs/heads/main/subscription/main.txt
+https://raw.githubusercontent.com/Huibq/TrojanLinks/master/links/vmess
+https://raw.githubusercontent.com/xiaoji235/airport-free/refs/heads/main/v2ray.txt
+https://raw.githubusercontent.com/Lewis-1217/FreeNodes/main/bpjzx1
+https://raw.githubusercontent.com/Lewis-1217/FreeNodes/main/bpjzx2
+https://raw.githubusercontent.com/NicProxy/V2ray/main/configs
+https://raw.githubusercontent.com/xiyaowong/freeFQ/main/v2ray
+https://raw.githubusercontent.com/vxiaov/free_proxies/main/links.txt
+https://raw.githubusercontent.com/Strongmiao168/v2ray/main/1203
+https://raw.githubusercontent.com/free18/v2ray/refs/heads/main/v.txt
+https://raw.githubusercontent.com/sinavm/SVM/refs/heads/main/config.txt
+https://raw.githubusercontent.com/ssrsub/ssr/refs/heads/master/v2ray
+https://raw.githubusercontent.com/Barabama/FreeNodes/master/nodes/merged.txt
+https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/refs/heads/main/output_configs/USA.txt
+https://raw.githubusercontent.com/Barabama/FreeNodes/master/nodes/zyfxs.txt
+https://raw.githubusercontent.com/Barabama/FreeNodes/master/nodes/yudou66.txt
+https://raw.githubusercontent.com/MOnday9907/v2ray/main/v2ray.txt
