@@ -15,7 +15,6 @@ vless://6050b89e-8da4-47b7-973b-9baf0027754f@ab1.yndx-game.com:443?type=tcp&head
 vless://0b6a7fe0-206b-4071-9f96-cd397d1ec01a@81.200.158.26:443?type=grpc&security=tls&fp=firefox&sni=fernglade.gerqix.online&serviceName=glush.de1.v1#Бесплатный VPN tg:VLESSFORU 🇷🇺
 vless://0b6a7fe0-206b-4071-9f96-cd397d1ec01a@honeycomb.merlano.monster:443?alpn=h2&encryption=none&security=tls&serviceName=glush.de7.v1&sni=honeycomb.merlano.monster&type=grpc&fp=safari#Бесплатный VPN tg:VLESSFORU 🇷🇺
 vless://cda0862a-0f87-4be9-8ed8-1d0c9e382839@13.143.232.161:443?security=reality&type=grpc&mode=gun&serviceName=7d5abcd7d8a1&packetEncoding=xudp&sni=961ec0g.nl13.h1clayd.click&fp=chrome&sid=6d289ff0f47c0aac&pbk=xn7KVKS5MOnsFrYrEeRS04JssBCOxh12rxegaDFyGkA#Бесплатный VPN tg:VLESSFORU 🇳🇱
-hysteria2://1e180391-2420-4c11-95fe-ec561b11124c@189.74.114.12:54183?sni=outh.yandex-cloud.org#tg:VLESSFORU 🇧🇬 ⚡
 vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206.93:23576?flow=xtls-rprx-vision&fp=chrome&pbk=1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s&security=reality&sid=01&sni=fuck.rkn&type=tcp#vless-1853340230
 vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206.25:23576?flow=xtls-rprx-vision&fp=random&pbk=1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s&security=reality&sni=fuck.rkn&type=tcp#vless-1853341457
 vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206.26:23576?flow=xtls-rprx-vision&fp=chrome&pbk=1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s&security=reality&sid=01&sni=fuck.rkn&type=tcp#vless-1882484918
