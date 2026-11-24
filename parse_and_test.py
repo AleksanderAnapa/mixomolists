@@ -688,7 +688,7 @@ def main():
         log_debug(f"В текущем {FINAL_FILE} уже есть уникальных серверов: {len(records)}/{MAX_WORKING}")
 
         if len(records) >= MAX_WORKING:
-            log_debug("Список уже полон (60/60). Новые серверы не требуются.")
+            log_debug("Список уже полон. Новые серверы не требуются.")
             set_github_output("has_more", "false")
             return
 
